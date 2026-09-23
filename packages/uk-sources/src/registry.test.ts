@@ -31,7 +31,7 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
   const fetchFixture = async (input: string | URL | Request): Promise<Response> => {
     const target =
       typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
-    if (target.includes('api.beta.ons.gov.uk')) {
+    if (new URL(target).hostname === 'api.beta.ons.gov.uk') {
       return jsonResponse(readFixtureJson('ons-datasets.json'));
     }
     if (target.includes('/readings')) {
