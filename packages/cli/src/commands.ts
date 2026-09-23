@@ -1,15 +1,16 @@
 import { parseArgs } from 'node:util';
 
 import {
-  DIGITAL_NZ_MEDIA_TYPES,
-  NZ_DATA_SOURCES,
-  getNzDataSource,
-  probeNzDataSource,
-  searchDigitalNzMedia,
-} from '@nzlab/nz-sources';
-import type { DigitalNzMediaType } from '@nzlab/nz-sources';
-import { createStatsNzClient, serializeStatsNzRowsToCsv } from '@nzlab/stats-nz';
-import type { StatsNzClient } from '@nzlab/stats-nz';
+  DEFAULT_FLOOD_STATION_REFERENCE,
+  fetchFloodStationReadings,
+  fetchFloodStations,
+  fetchOnsDatasets,
+  getUkDataSource,
+  probeUkDataSource,
+  summarizeFloodReadings,
+  summarizeOnsDatasets,
+  UK_DATA_SOURCES,
+} from '@open-data-connectors/uk-sources';
 
 /** Where the CLI writes its output. Injectable for tests. */
 export interface CliOutput {
@@ -19,55 +20,52 @@ export interface CliOutput {
 
 /** Optional overrides so tests can stub network calls. */
 export interface CliDependencies {
-  probeSource?: typeof probeNzDataSource;
-  searchMedia?: typeof searchDigitalNzMedia;
-  statsNzClient?: StatsNzClient;
+  probeSource?: typeof probeUkDataSource;
+  fetchStations?: typeof fetchFloodStations;
+  fetchReadings?: typeof fetchFloodStationReadings;
+  fetchDatasets?: typeof fetchOnsDatasets;
 }
 
-/** Help text shown by `nzdata help` and on unknown commands. */
-export const HELP_TEXT = `nzdata - NZ open data connectors
+/** Help text shown by `ukdata help` and on unknown commands. */
+export const HELP_TEXT = `ukdata - UK open data connectors
 
 Usage:
-  nzdata sources                          List every data source adapter
-  nzdata probe <id>                       Live probe one source (e.g. linz)
-  nzdata media --query <q> [--type <type>]
-                                          Search DigitalNZ media (images,
-                                          newspapers, videos, audio,
-                                          literature, artwork)
-  nzdata catalogue                        List every Stats NZ dataflow
-  nzdata data --dataflow <id> [--format json|csv]
-                                          Pull data rows for a dataflow
-  nzdata codelist --codelist <id>         Resolve dimension codes to labels
-  nzdata help                             Show this help
+  ukdata sources                          List every data source adapter
+  ukdata probe <id>                       Live probe one source (e.g. flood-stations)
+  ukdata flood-stations [--limit <n>]     List Environment Agency monitoring stations
+  ukdata flood-readings [--station <ref>] [--limit <n>]
+                                          Recent water levels for one station,
+                                          newest first
+  ukdata ons-datasets [--limit <n>]       List the ONS dataset catalogue
+  ukdata help                             Show this help
 
 Options:
-  -d, --dataflow <id>   Stats NZ dataflow id (e.g. AGR_AGR_003)
-  -f, --format <fmt>    Output format: json (default) or csv
-  -c, --codelist <id>   Stats NZ codelist id (e.g. CL_LIVESTOCK_AGR_AGR_003)
-  -q, --query <q>       DigitalNZ media search text
-  -t, --type <type>     Media type: images (default), newspapers, videos,
-                        audio, literature, artwork
+  -l, --limit <n>       How many records to ask for
+  -s, --station <ref>   Flood-monitoring station reference (default ${DEFAULT_FLOOD_STATION_REFERENCE})
   -h, --help            Show help
 
-Keys are read from the environment (STATS_NZ_SUBSCRIPTION_KEY, LINZ_API_KEY,
-DIGITAL_NZ_API_KEY). Output goes to stdout as JSON (or CSV); errors go to stderr.`;
+Every UK source is keyless, so no API keys are needed. Output goes to
+stdout as JSON; errors go to stderr.`;
 
-function createCliStatsNzClient(): StatsNzClient {
-  const options: { subscriptionKey?: string } = {};
-  if (process.env.STATS_NZ_SUBSCRIPTION_KEY !== undefined) {
-    options.subscriptionKey = process.env.STATS_NZ_SUBSCRIPTION_KEY;
+/**
+ * Reads a positive integer option value.
+ *
+ * @param value - Raw option value, or undefined when the flag is absent.
+ * @param label - Option name used in the error message.
+ * @returns The parsed number, or an error string.
+ */
+function parseLimitOption(
+  value: string | undefined,
+  label: string
+): { limit?: number } | { error: string } {
+  if (value === undefined) {
+    return {};
   }
-  return createStatsNzClient(options);
-}
-
-function getApiKeyForSource(id: string): string | undefined {
-  if (id === 'linz') {
-    return process.env.LINZ_API_KEY;
+  const parsed = Number(value);
+  if (!Number.isInteger(parsed) || parsed <= 0) {
+    return { error: `Unknown ${label}: ${value} (use a positive whole number)` };
   }
-  if (id === 'digitalnz') {
-    return process.env.DIGITAL_NZ_API_KEY;
-  }
-  return undefined;
+  return { limit: parsed };
 }
 
 /** Runs one CLI invocation and returns the process exit code. */
@@ -80,11 +78,8 @@ export async function runCli(
     const { values, positionals } = parseArgs({
       args,
       options: {
-        dataflow: { type: 'string', short: 'd' },
-        format: { type: 'string', short: 'f' },
-        codelist: { type: 'string', short: 'c' },
-        query: { type: 'string', short: 'q' },
-        type: { type: 'string', short: 't' },
+        limit: { type: 'string', short: 'l' },
+        station: { type: 'string', short: 's' },
         help: { type: 'boolean', short: 'h' },
       },
       allowPositionals: true,
@@ -96,12 +91,15 @@ export async function runCli(
     }
 
     const command = positionals[0];
-    const probeSource = deps.probeSource ?? probeNzDataSource;
-    const searchMedia = deps.searchMedia ?? searchDigitalNzMedia;
-    const client = deps.statsNzClient ?? createCliStatsNzClient();
+    const parsedLimit = parseLimitOption(values.limit, 'limit');
+    if ('error' in parsedLimit) {
+      output.writeErr(parsedLimit.error);
+      return 1;
+    }
+    const limitOptions = parsedLimit.limit === undefined ? {} : { limit: parsedLimit.limit };
 
     if (command === 'sources') {
-      const sources = NZ_DATA_SOURCES.map((source) => ({
+      const sources = UK_DATA_SOURCES.map((source) => ({
         id: source.id,
         name: source.name,
         auth: source.auth,
@@ -114,74 +112,41 @@ export async function runCli(
     if (command === 'probe') {
       const id = positionals[1];
       if (id === undefined) {
-        output.writeErr('Usage: nzdata probe <id>');
+        output.writeErr('Usage: ukdata probe <id>');
         return 1;
       }
-      const adapter = getNzDataSource(id);
+      const adapter = getUkDataSource(id);
       if (adapter === undefined) {
         output.writeErr(`Unknown source: ${id}`);
         return 1;
       }
-      const apiKey = getApiKeyForSource(id);
-      const probe = await probeSource(adapter, apiKey === undefined ? {} : { apiKey });
+      const probeSource = deps.probeSource ?? probeUkDataSource;
+      const probe = await probeSource(adapter);
       output.writeOut(JSON.stringify(probe, null, 2));
       return probe.ok ? 0 : 1;
     }
 
-    if (command === 'media') {
-      const query = values.query;
-      if (typeof query !== 'string' || query.length === 0) {
-        output.writeErr('Usage: nzdata media --query <q> [--type <type>]');
-        return 1;
-      }
-      const rawType = values.type ?? 'images';
-      if (!DIGITAL_NZ_MEDIA_TYPES.includes(rawType as DigitalNzMediaType)) {
-        output.writeErr(
-          `Unknown media type: ${rawType}. Choose one of: ${DIGITAL_NZ_MEDIA_TYPES.join(', ')}`
-        );
-        return 1;
-      }
-      const mediaType = rawType as DigitalNzMediaType;
-      const apiKey = getApiKeyForSource('digitalnz');
-      const records = await searchMedia(query, mediaType, apiKey === undefined ? {} : { apiKey });
-      output.writeOut(JSON.stringify({ query, mediaType, records }, null, 2));
+    if (command === 'flood-stations') {
+      const fetchStations = deps.fetchStations ?? fetchFloodStations;
+      const stations = await fetchStations(limitOptions);
+      output.writeOut(JSON.stringify({ stations }, null, 2));
       return 0;
     }
 
-    if (command === 'catalogue') {
-      const dataflows = await client.getDataflowCatalogue();
-      output.writeOut(JSON.stringify(dataflows, null, 2));
+    if (command === 'flood-readings') {
+      const station = values.station ?? DEFAULT_FLOOD_STATION_REFERENCE;
+      const fetchReadings = deps.fetchReadings ?? fetchFloodStationReadings;
+      const readings = await fetchReadings(station, limitOptions);
+      output.writeOut(
+        JSON.stringify({ station, summary: summarizeFloodReadings(readings), readings }, null, 2)
+      );
       return 0;
     }
 
-    if (command === 'data') {
-      const dataflowId = values.dataflow;
-      if (typeof dataflowId !== 'string' || dataflowId.length === 0) {
-        output.writeErr('Usage: nzdata data --dataflow <id> [--format json|csv]');
-        return 1;
-      }
-      const format = values.format;
-      if (format !== undefined && format !== 'json' && format !== 'csv') {
-        output.writeErr(`Unknown format: ${format} (use json or csv)`);
-        return 1;
-      }
-      const rows = await client.getData({ dataflowId, format: 'csv' });
-      if (format === 'csv') {
-        output.writeOut(serializeStatsNzRowsToCsv(rows));
-      } else {
-        output.writeOut(JSON.stringify(rows, null, 2));
-      }
-      return 0;
-    }
-
-    if (command === 'codelist') {
-      const codelistId = values.codelist;
-      if (typeof codelistId !== 'string' || codelistId.length === 0) {
-        output.writeErr('Usage: nzdata codelist --codelist <id>');
-        return 1;
-      }
-      const codelist = await client.getCodelist(codelistId);
-      output.writeOut(JSON.stringify(codelist, null, 2));
+    if (command === 'ons-datasets') {
+      const fetchDatasets = deps.fetchDatasets ?? fetchOnsDatasets;
+      const records = await fetchDatasets(limitOptions);
+      output.writeOut(JSON.stringify({ summary: summarizeOnsDatasets(records), records }, null, 2));
       return 0;
     }
 

@@ -1,20 +1,16 @@
-# @nzlab/uk-sources
+# @open-data-connectors/uk-sources
 
 Uniform TypeScript adapters for UK public data sources. Every adapter has the
 same shape: a live fetch, a strict parse, and a committed fixture fallback so
 builds work offline.
 
-The package scope is still `@nzlab` because the rest of this repo is a
-scaffold of the NZ connectors repo. Renaming every scope to `@uklab` is a
-separate change.
-
 ## Adapters
 
-| id               | Source                               | Auth | What it does                                      |
-| ---------------- | ------------------------------------ | ---- | ------------------------------------------------- |
-| `flood-stations` | Environment Agency flood-monitoring  | none | Monitoring stations with river and catchment      |
-| `flood-readings` | Environment Agency flood-monitoring  | none | Recent water levels for one station, newest first |
-| `ons-datasets`   | ONS beta API dataset catalogue       | none | Every dataset the ONS lists, with its state and stamp |
+| id               | Source                              | Auth | What it does                                      |
+| ---------------- | ----------------------------------- | ---- | ------------------------------------------------- |
+| `flood-stations` | Environment Agency flood-monitoring | none | Monitoring stations with river and catchment      |
+| `flood-readings` | Environment Agency flood-monitoring | none | Recent water levels for one station, newest first |
+| `ons-datasets`   | ONS beta API dataset catalogue      | none | Every dataset the ONS lists, with its state and stamp |
 
 The flood-monitoring adapters use `environment.data.gov.uk` under the Open
 Government Licence v3:
@@ -32,8 +28,8 @@ editions, versions, and observations.
 ## Usage
 
 ```ts
-import { fetchFloodStationReadings, summarizeFloodReadings } from '@nzlab/uk-sources';
-import { fetchOnsDatasets, summarizeOnsDatasets } from '@nzlab/uk-sources';
+import { fetchFloodStationReadings, summarizeFloodReadings } from '@open-data-connectors/uk-sources';
+import { fetchOnsDatasets, summarizeOnsDatasets } from '@open-data-connectors/uk-sources';
 
 const readings = await fetchFloodStationReadings('1029TH', { limit: 96 });
 const summary = summarizeFloodReadings(readings);
@@ -48,6 +44,6 @@ console.log(catalogue.datasetCount, catalogue.yearCounts);
 Unit tests run against the committed fixtures in `src/fixtures`, offline.
 
 ```bash
-npm run test --workspace @nzlab/uk-sources
-npm run test:smoke --workspace @nzlab/uk-sources   # hits the live APIs
+npm run test --workspace @open-data-connectors/uk-sources
+npm run test:smoke --workspace @open-data-connectors/uk-sources   # hits the live APIs
 ```

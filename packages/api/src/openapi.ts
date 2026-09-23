@@ -2,11 +2,11 @@
 export const OPEN_API_DOCUMENT = {
   openapi: '3.0.3',
   info: {
-    title: 'NZ Open Data Connectors',
+    title: 'UK Open Data Connectors',
     version: '0.1.0',
     description:
-      'Language-agnostic HTTP wrapper over NZ public data connectors. ' +
-      'API keys stay server-side; every endpoint works keyless unless noted.',
+      'Language-agnostic HTTP wrapper over UK public data connectors. ' +
+      'Every endpoint is keyless and reads from the live source API.',
   },
   paths: {
     '/openapi.json': {
@@ -63,79 +63,60 @@ export const OPEN_API_DOCUMENT = {
         },
       },
     },
-    '/api/digitalnz/media': {
+    '/api/flood/stations': {
       get: {
-        summary: 'Search DigitalNZ media (images, newspapers, videos, audio, literature, artwork)',
+        summary: 'List Environment Agency flood-monitoring stations',
         parameters: [
           {
-            name: 'q',
+            name: 'limit',
             in: 'query',
-            required: true,
-            schema: { type: 'string' },
-          },
-          {
-            name: 'type',
-            in: 'query',
-            schema: {
-              type: 'string',
-              enum: ['images', 'newspapers', 'videos', 'audio', 'literature', 'artwork'],
-            },
+            schema: { type: 'integer', minimum: 1, maximum: 500, default: 25 },
           },
         ],
         responses: {
-          '200': { description: 'Media records with preview image URLs' },
-          '400': { description: 'Missing or empty q' },
+          '200': { description: 'Monitoring stations with river, catchment, and measures' },
+          '400': { description: 'Invalid limit' },
           '429': { description: 'Rate limit exceeded' },
         },
       },
     },
-    '/api/stats-nz/catalogue': {
+    '/api/flood/readings': {
       get: {
-        summary: 'List every Aotearoa Data Explorer dataflow',
+        summary: 'Recent water level readings for one station, newest first',
+        parameters: [
+          {
+            name: 'station',
+            in: 'query',
+            schema: { type: 'string', default: '1029TH' },
+          },
+          {
+            name: 'limit',
+            in: 'query',
+            schema: { type: 'integer', minimum: 1, maximum: 2000, default: 96 },
+          },
+        ],
         responses: {
-          '200': { description: 'Dataflow list' },
+          '200': { description: 'Readings plus a count, range, and trend summary' },
+          '400': { description: 'Invalid station or limit' },
           '429': { description: 'Rate limit exceeded' },
         },
       },
     },
-    '/api/stats-nz/data': {
+    '/api/ons/datasets': {
       get: {
-        summary: 'Pull data rows for a dataflow',
+        summary: 'List the ONS beta API dataset catalogue',
         parameters: [
           {
-            name: 'dataflowId',
+            name: 'limit',
             in: 'query',
-            required: true,
-            schema: { type: 'string' },
-          },
-          {
-            name: 'format',
-            in: 'query',
-            schema: { type: 'string', enum: ['json', 'csv'] },
+            schema: { type: 'integer', minimum: 1, maximum: 1000, default: 1000 },
           },
         ],
         responses: {
-          '200': { description: 'Rows as JSON or CSV' },
-          '400': { description: 'Missing or invalid dataflowId' },
-          '429': { description: 'Rate limit exceeded' },
-        },
-      },
-    },
-    '/api/stats-nz/codelist': {
-      get: {
-        summary: 'Resolve dimension codes to labels',
-        parameters: [
-          {
-            name: 'codelistId',
-            in: 'query',
-            required: true,
-            schema: { type: 'string' },
+          '200': {
+            description: 'Catalogue records plus counts by year and national-statistic flag',
           },
-        ],
-        responses: {
-          '200': { description: 'Codelist items' },
-          '400': { description: 'Missing or invalid codelistId' },
-          '401': { description: 'Subscription key required' },
+          '400': { description: 'Invalid limit' },
           '429': { description: 'Rate limit exceeded' },
         },
       },

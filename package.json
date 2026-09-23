@@ -10,35 +10,25 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "next dev",
-    "build": "npm run build -w @nzlab/nz-sources -w @nzlab/stats-nz && npm run build -w @nzlab/connectors-cli",
-    "start": "next start",
-    "setup": "node scripts/setup.mjs",
-    "typecheck": "tsc --noEmit",
+    "build": "npm run build -w @open-data-connectors/uk-sources -w @open-data-connectors/connectors-cli",
     "lint": "npm run lint --workspaces --if-present",
     "format": "npm run format --workspaces --if-present",
     "format:check": "npm run format:check --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
-    "test:watch": "vitest",
     "test:coverage": "npm run test:coverage --workspaces --if-present",
-    "test:e2e": "playwright test",
-    "test:a11y": "playwright test a11y",
-    "perf": "pnpm dlx @lhci/cli@latest autorun",
-    "smoke": "bash scripts/smoke.sh",
+    "test:smoke": "npm run test:smoke --workspaces --if-present",
     "check:links": "node scripts/check-internal-links.mjs",
     "check:external-links": "node scripts/check-external-links.mjs",
     "audit": "npm audit",
-    "test:setup": "node --test scripts/setup.test.mjs",
     "check": "npm run format:check && npm run build && npm run lint && npm run type-check && npm run test:coverage",
     "type-check": "npm run type-check --workspaces --if-present",
-    "test:smoke": "npm run test:smoke --workspaces --if-present",
-    "dev:api": "npm run dev -w @nzlab/connectors-api",
-    "start:api": "npm run start -w @nzlab/connectors-api"
+    "dev:api": "npm run dev -w @open-data-connectors/connectors-api",
+    "start:api": "npm run start -w @open-data-connectors/connectors-api"
   },
   "devDependencies": {
     "prettier": "3.9.6",
     "@vitest/coverage-v8": "3.2.7"
   },
   "dependencies": {},
-  "description": "UK open data connectors (scaffold, derived from nz-open-data-connectors)"
+  "description": "UK open data connectors: TypeScript adapters for UK public data sources, with an HTTP API and a CLI."
 }

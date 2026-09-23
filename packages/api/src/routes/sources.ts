@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
 import { z } from 'zod';
 
-import { NZ_DATA_SOURCES, probeNzDataSource } from '@nzlab/nz-sources';
+import { UK_DATA_SOURCES, probeUkDataSource } from '@open-data-connectors/uk-sources';
 
 const probeParamSchema = z.object({
   id: z
@@ -13,22 +13,21 @@ const probeParamSchema = z.object({
 
 /** Options for the source listing and probe routes. */
 export interface SourcesRouteOptions {
-  apiKeys?: Record<string, string>;
-  probeFn?: typeof probeNzDataSource;
+  probeFn?: typeof probeUkDataSource;
 }
 
 /**
- * Routes that list and probe the uniform NZ data source adapters.
+ * Routes that list and probe the uniform UK data source adapters.
  *
- * @param options - Optional API keys and probe function override.
+ * @param options - Optional probe function override.
  * @returns A Hono app with the source listing and probe routes.
  */
 export function createSourcesRoutes(options: SourcesRouteOptions = {}): Hono {
   const app = new Hono();
-  const probeFn = options.probeFn ?? probeNzDataSource;
+  const probeFn = options.probeFn ?? probeUkDataSource;
 
   app.get('/sources', (c) => {
-    const sources = NZ_DATA_SOURCES.map((source) => ({
+    const sources = UK_DATA_SOURCES.map((source) => ({
       id: source.id,
       name: source.name,
       auth: source.auth,
@@ -39,13 +38,12 @@ export function createSourcesRoutes(options: SourcesRouteOptions = {}): Hono {
 
   app.get('/sources/:id/probe', zValidator('param', probeParamSchema), async (c) => {
     const { id } = c.req.valid('param');
-    const adapter = NZ_DATA_SOURCES.find((source) => source.id === id);
+    const adapter = UK_DATA_SOURCES.find((source) => source.id === id);
     if (adapter === undefined) {
       const NOT_FOUND = 404;
       return c.json({ error: `Unknown source: ${id}` }, NOT_FOUND);
     }
-    const apiKey = options.apiKeys?.[adapter.id];
-    const probe = await probeFn(adapter, apiKey === undefined ? {} : { apiKey });
+    const probe = await probeFn(adapter);
     return c.json(probe);
   });
 

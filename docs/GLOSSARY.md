@@ -4,10 +4,8 @@ Plain-language definitions. Terms used in this repo, in alphabetical order.
 
 ## A
 
-- **ADE (Aotearoa Data Explorer)** - Stats NZ's data portal and API.
-
 - **Adapter** - one piece of code that talks to one data source and
-  returns plain objects. For example, `geonetAdapter`.
+  returns plain objects. For example, `floodStationsAdapter`.
 
 - **API** - a way for one program to ask another program for data.
 
@@ -15,8 +13,8 @@ Plain-language definitions. Terms used in this repo, in alphabetical order.
 
 ## C
 
-- **Codelist** - a list of codes and their human-readable labels. Data can
-  use codes like "ANIMALS" where the label is "Livestock".
+- **Catchment** - the area of land that drains into one river or river
+  system. The flood-monitoring API reports it for each station.
 
 - **CORS (Cross-Origin Resource Sharing)** - a browser rule that decides
   whether a page from one site may call an API on another site.
@@ -24,20 +22,10 @@ Plain-language definitions. Terms used in this repo, in alphabetical order.
 - **Coverage** - the share of code exercised by tests. 60% threshold means
   at least 60% of lines run during tests.
 
-- **CSV** - comma-separated values. A common table format.
-
 ## D
 
-- **Dataflow** - one dataset in the ADE catalogue, like `AGR_AGR_003`
-  (agriculture by region).
-
-- **Data.govt.nz** - the NZ government's open data catalogue.
-
-- **DigitalNZ** - a search index of NZ digital cultural content.
-
-- **Media search** - a DigitalNZ search filtered by media type (images,
-  newspapers, videos, audio, literature, artwork). Records include preview
-  image URLs where the source supplies them.
+- **Dataset** - one published collection of data. The ONS catalogue lists
+  them with an id, a title, and a last-updated stamp.
 
 ## E
 
@@ -46,14 +34,17 @@ Plain-language definitions. Terms used in this repo, in alphabetical order.
 
 - **Endpoint** - one address that an API answers. For example, `/health`.
 
+- **Environment Agency** - the UK public body that runs the
+  flood-monitoring API used by the flood adapters.
+
 ## F
 
 - **Fixture** - a real snapshot of a live API response, stored in the repo
   and used by offline tests.
 
-## G
-
-- **GeoNet** - GNS Science's earthquake and geohazard monitoring service.
+- **Flood-monitoring station** - a measuring point on a river, coast, or
+  groundwater borehole. Reference `1029TH` is Bourton Dickler on the River
+  Dikler.
 
 ## I
 
@@ -66,19 +57,32 @@ Plain-language definitions. Terms used in this repo, in alphabetical order.
 
 ## K
 
-- **Key** - a secret string that unlocks more of an API. Optional in this
-  repo.
+- **Key** - a secret string that unlocks more of an API. No UK source in
+  this repo needs one.
 
 ## L
 
-- **LINZ** - Land Information New Zealand. Runs the property and land data
-  platform.
-
 - **Lint** - a tool that reads code and flags style and safety problems.
+
+## M
+
+- **Measure** - one thing a station reports, such as water level in metres
+  every 15 minutes.
+
+## N
+
+- **National statistic** - an ONS dataset that meets the Code of Practice
+  for Statistics. The catalogue flags these separately.
 
 ## O
 
-- **Observation** - one row of data, for example one region in one year.
+- **Observation** - one row of data, for example one reading at one time.
+
+- **OGL (Open Government Licence v3)** - the licence the UK government uses
+  for published data. It allows reuse with attribution.
+
+- **ONS (Office for National Statistics)** - the UK's national statistics
+  institute, and the source behind the ONS adapters.
 
 - **OpenAPI** - a machine-readable description of an API's endpoints.
 
@@ -87,28 +91,30 @@ Plain-language definitions. Terms used in this repo, in alphabetical order.
 - **Probe** - a live test that checks whether a source answers and parses.
 
 - **Port** - a copy of the same design in another language (Python, Ruby).
+  In this repo the ports still cover the NZ connectors.
 
 ## R
 
 - **Rate limit** - the maximum number of requests an API allows in a time
   window.
 
-## S
+- **Reading** - one water level value at one timestamp, for one measure.
 
-- **SDMX** - the standard format Stats NZ uses to send data.
+## S
 
 - **Smoke test** - a quick live test against the real service, opt-in via
   `RUN_SMOKE=1`.
 
-- **Subscription key** - the key Stats NZ issues.
+- **Summary** - the counts and ranges an adapter computes next to the raw
+  records, so callers do not repeat the work.
 
 ## T
-
-- **Trade Me** - NZ's marketplace site, with a public category API.
 
 - **Type-check** - a tool that proves code uses values of the right type.
 
 ## U
+
+- **UK adapter** - one adapter behind the shared `UkDataAdapter` interface.
 
 - **Unit test** - a test of one small piece of logic in isolation.
 

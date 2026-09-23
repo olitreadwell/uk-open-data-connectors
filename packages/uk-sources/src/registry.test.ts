@@ -7,8 +7,8 @@ import {
   probeAllUkDataSources,
   probeUkDataSource,
   UK_DATA_SOURCES,
-} from './registry';
-import type { UkDataAdapter } from './types';
+} from './registry.js';
+import type { UkDataAdapter } from './types.js';
 
 function readFixtureJson(name: string): unknown {
   return JSON.parse(readFileSync(path.join(process.cwd(), 'src/fixtures', name), 'utf8'));

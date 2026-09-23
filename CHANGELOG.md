@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+- Scope: every package is now `@open-data-connectors/*`, replacing the old NZ
+  scope, and the CLI binary is `ukdata` (was `nzdata`). No reference to the old
+  scope is left anywhere in the repo.
+- Removed `packages/nz-sources` and `packages/stats-nz`, along with the
+  API routes and CLI commands that served them. The API and CLI now serve the
+  UK adapters: `/api/flood/stations`, `/api/flood/readings`, and
+  `/api/ons/datasets`.
+- Root scripts: `build` builds `packages/uk-sources` and `packages/cli`. The
+  broken root `typecheck` script is gone; `npm run type-check` runs each
+  package's own check.
+- CI: the coverage artifact path lists the packages that exist.
 - DigitalNZ media search: `nzdata media --query <q> --type <type>` and
   `GET /api/digitalnz/media?q=<q>&type=<type>` for images, newspapers,
   videos, audio, literature, and artwork, with preview image URLs. Mirrored

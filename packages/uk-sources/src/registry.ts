@@ -1,6 +1,6 @@
-import { floodReadingsAdapter, floodStationsAdapter } from './floodMonitoring';
-import { onsDatasetsAdapter } from './onsDatasets';
-import type { UkDataAdapter, UkFetchOptions, UkSourceProbe } from './types';
+import { floodReadingsAdapter, floodStationsAdapter } from './floodMonitoring.js';
+import { onsDatasetsAdapter } from './onsDatasets.js';
+import type { UkDataAdapter, UkFetchOptions, UkSourceProbe } from './types.js';
 
 /** Every UK data source behind the uniform adapter interface. */
 export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [
