@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors';
-import { readFixtureJson } from './fixtures';
-import type { UkDataAdapter } from './types';
+import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { readFixtureJson } from './fixtures.js';
+import type { UkDataAdapter } from './types.js';
 
 /**
  * The ONS beta API dataset catalogue. Keyless, published by the Office for

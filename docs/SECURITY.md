@@ -5,10 +5,10 @@ are, and what to check before shipping.
 
 ## API keys
 
-Three optional keys exist: `STATS_NZ_SUBSCRIPTION_KEY`, `LINZ_API_KEY`,
-`DIGITAL_NZ_API_KEY`.
+No UK source in this repo needs a key. Every adapter is keyless, so the API
+and CLI run with an empty environment.
 
-Rules:
+Rules that apply to any source that needs a key later:
 - Keys come from the environment only, server-side
 - The HTTP API and CLI never accept keys from callers
 - Real keys are never committed; `.env` is gitignored
