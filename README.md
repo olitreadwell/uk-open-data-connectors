@@ -11,6 +11,7 @@ Keyless-first: every connector works without an API key. Optional keys unlock mo
 | Package | What it is |
 | ------- | ---------- |
 | `@nzlab/nz-sources` | Uniform adapters for 8 NZ data sources (GeoNet, data.govt.nz, LINZ, DigitalNZ, Trade Me, NZOR, ADE search, MSB benefits datastore) with live probes and offline fixtures |
+| `@nzlab/uk-sources` | Uniform adapters for UK public data sources. Two so far, the Environment Agency flood-monitoring station list and readings, both keyless with live probes and offline fixtures |
 | `@nzlab/stats-nz` | Client for the Aotearoa Data Explorer (ADE) API: dataflow catalogue, data pulls, codelists, CSV parsing and serialization |
 | `@nzlab/connectors-api` | HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP |
 | `@nzlab/connectors-cli` | `nzdata` command line tool that prints JSON or CSV to stdout, so any language can shell out to it |
@@ -38,6 +39,27 @@ DigitalNZ with `DIGITAL_NZ_API_KEY` and LINZ with `LINZ_API_KEY`.
 | `mfe` | MfE Data Service layer catalogue | Yes | - | `npx tsx packages/cli/src/cli.ts probe mfe` |
 | `lris` | LRIS land and soil layer search (Landcare Research) | Yes | - | `npx tsx packages/cli/src/cli.ts probe lris` |
 | `nzta` | Waka Kotahi holiday journey hotspots | Yes | - | `npx tsx packages/cli/src/cli.ts probe nzta` |
+
+### UK sources
+
+Two adapters in `@nzlab/uk-sources`, both keyless, both keyed off the
+Environment Agency flood-monitoring API under the Open Government Licence v3.
+
+| id | Source | Keyless? | Example command |
+| --- | --- | --- | --- |
+| `flood-stations` | Environment Agency monitoring stations, with river and catchment | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
+| `flood-readings` | Recent water levels for one station, newest first | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
+
+Two sources that look obvious for a UK repo and are not usable as they stand:
+
+- `api.ons.gov.uk` was retired on 2024-11-25. Every path now answers with a
+  plain-text decommission notice, so the ONS entry in `awesome-open-uk-data`
+  points at a dead API while still returning HTTP 200.
+- `data.gov.uk/api/3/action/...` redirects to an HTML landing page, so the
+  CKAN API is no longer at that path.
+
+The live ONS beta API at `api.beta.ons.gov.uk/v1` still answers with JSON and
+is the next UK adapter to add.
 
 ### Adapter examples
 
