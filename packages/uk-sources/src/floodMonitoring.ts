@@ -21,8 +21,10 @@ export interface FloodStation {
   label: string;
   riverName: string;
   catchmentName: string;
-  latitude: number;
-  longitude: number;
+  /** Null for the handful of groundwater stations that publish no coordinates. */
+  latitude: number | null;
+  /** Null for the handful of groundwater stations that publish no coordinates. */
+  longitude: number | null;
   measures: FloodMeasure[];
 }
 
@@ -61,16 +63,28 @@ const FLOOD_MEASURE_SCHEMA = z.object({
   period: z.number().optional(),
 });
 
+// The agency returns a bare string for most fields but wraps a few in an
+// array, so both shapes have to be accepted.
+const FLOOD_TEXT_SCHEMA = z.union([z.string(), z.array(z.string())]);
+
 const FLOOD_STATION_SCHEMA = z.object({
   '@id': z.string(),
   notation: z.string(),
-  label: z.string(),
-  riverName: z.string().optional(),
-  catchmentName: z.string().optional(),
-  lat: z.number(),
-  long: z.number(),
+  label: FLOOD_TEXT_SCHEMA,
+  riverName: FLOOD_TEXT_SCHEMA.optional(),
+  catchmentName: FLOOD_TEXT_SCHEMA.optional(),
+  lat: z.number().optional(),
+  long: z.number().optional(),
   measures: z.array(FLOOD_MEASURE_SCHEMA).optional(),
 });
+
+/** Flattens a field that the agency publishes as a string or an array. */
+function readFloodText(value: string | string[] | undefined): string {
+  if (value === undefined) {
+    return '';
+  }
+  return Array.isArray(value) ? value.join(' / ') : value;
+}
 
 const FLOOD_STATIONS_RESPONSE_SCHEMA = z.object({
   items: z.array(FLOOD_STATION_SCHEMA),
@@ -96,11 +110,11 @@ export function parseFloodStations(payload: unknown): FloodStation[] {
   return parsed.data.items.map((station) => ({
     id: station['@id'],
     notation: station.notation,
-    label: station.label,
-    riverName: station.riverName ?? '',
-    catchmentName: station.catchmentName ?? '',
-    latitude: station.lat,
-    longitude: station.long,
+    label: readFloodText(station.label),
+    riverName: readFloodText(station.riverName),
+    catchmentName: readFloodText(station.catchmentName),
+    latitude: station.lat ?? null,
+    longitude: station.long ?? null,
     measures: (station.measures ?? []).map((measure) => ({
       id: measure['@id'],
       parameter: measure.parameter,

@@ -25,10 +25,42 @@ describe('parseFloodStations', () => {
     const first = stations[0];
     expect(first?.notation).toMatch(/^[0-9A-Z]+$/);
     expect(first?.label.length).toBeGreaterThan(0);
-    expect(first?.latitude).toBeGreaterThan(49);
-    expect(first?.latitude).toBeLessThan(61);
+    expect(first?.latitude ?? 0).toBeGreaterThan(49);
+    expect(first?.latitude ?? 0).toBeLessThan(61);
     expect(first?.measures.length).toBeGreaterThan(0);
     expect(first?.measures[0]?.parameterName.length).toBeGreaterThan(0);
+  });
+
+  it('reads a station whose text fields come back as arrays', () => {
+    const stations = parseFloodStations({
+      items: [
+        {
+          '@id': 'https://example.test/stations/X1',
+          notation: 'X1',
+          label: ['Bourton Dickler', 'Bourton Dickler (old)'],
+          riverName: 'River Dikler',
+          catchmentName: ['Cotswolds', 'Thames'],
+          measures: [],
+        },
+      ],
+    });
+    expect(stations[0]?.label).toBe('Bourton Dickler / Bourton Dickler (old)');
+    expect(stations[0]?.catchmentName).toBe('Cotswolds / Thames');
+  });
+
+  it('reads a groundwater station that publishes no coordinates', () => {
+    const stations = parseFloodStations({
+      items: [
+        {
+          '@id': 'https://example.test/stations/E9030',
+          notation: 'E9030',
+          label: 'HOUNDEAN BOTTOM GWL',
+          measures: [],
+        },
+      ],
+    });
+    expect(stations[0]?.latitude).toBeNull();
+    expect(stations[0]?.longitude).toBeNull();
   });
 
   it('rejects a payload without an items array', () => {
