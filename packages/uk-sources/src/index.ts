@@ -18,6 +18,19 @@ export type {
   FloodReadingSummary,
   FloodStation,
 } from './floodMonitoring';
+/** Food Standards Agency food hygiene registers (keyless). */
+export {
+  DEFAULT_LARGEST_AUTHORITY_LIMIT,
+  fetchFoodHygieneAuthorities,
+  foodHygieneAuthoritiesAdapter,
+  FSA_API_VERSION,
+  FSA_API_VERSION_HEADER,
+  FSA_AUTHORITIES_URL,
+  parseFoodHygieneAuthorities,
+  summarizeFoodHygieneAuthorities,
+} from './foodHygiene';
+/** Food hygiene register types. */
+export type { FoodHygieneAuthority, FoodHygieneScheme, FoodHygieneSummary } from './foodHygiene';
 /** Office for National Statistics dataset catalogue (keyless). */
 export {
   fetchOnsDatasets,

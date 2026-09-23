@@ -1,4 +1,5 @@
 import { floodReadingsAdapter, floodStationsAdapter } from './floodMonitoring';
+import { foodHygieneAuthoritiesAdapter } from './foodHygiene';
 import { onsDatasetsAdapter } from './onsDatasets';
 import type { UkDataAdapter, UkFetchOptions, UkSourceProbe } from './types';
 
@@ -7,6 +8,7 @@ export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [
   floodStationsAdapter,
   floodReadingsAdapter,
   onsDatasetsAdapter,
+  foodHygieneAuthoritiesAdapter,
 ];
 
 /** Looks up a source adapter by id. */
