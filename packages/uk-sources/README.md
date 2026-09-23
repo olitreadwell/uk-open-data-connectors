@@ -10,27 +10,37 @@ separate change.
 
 ## Adapters
 
-| id               | Source                                      | Auth | What it does                                     |
-| ---------------- | ------------------------------------------- | ---- | ------------------------------------------------ |
-| `flood-stations` | Environment Agency flood-monitoring         | none | Monitoring stations with river and catchment     |
-| `flood-readings` | Environment Agency flood-monitoring         | none | Recent water levels for one station, newest first |
+| id               | Source                               | Auth | What it does                                      |
+| ---------------- | ------------------------------------ | ---- | ------------------------------------------------- |
+| `flood-stations` | Environment Agency flood-monitoring  | none | Monitoring stations with river and catchment      |
+| `flood-readings` | Environment Agency flood-monitoring  | none | Recent water levels for one station, newest first |
+| `ons-datasets`   | ONS beta API dataset catalogue       | none | Every dataset the ONS lists, with its state and stamp |
 
-Both use the Environment Agency flood-monitoring API, keyless, under the Open
-Government Licence v3: <https://environment.data.gov.uk/flood-monitoring/doc/reference>
+The flood-monitoring adapters use `environment.data.gov.uk` under the Open
+Government Licence v3:
+<https://environment.data.gov.uk/flood-monitoring/doc/reference>
+
+The ONS adapter uses the beta API behind the ONS website rebuild,
+<https://api.beta.ons.gov.uk/v1/datasets>, also keyless and under the Open
+Government Licence v3.
 
 Note on sources that look obvious but are not usable: `api.ons.gov.uk` was
 retired on 2024-11-25 and now answers every request with a decommission notice.
-The ONS beta API at `api.beta.ons.gov.uk/v1` is still live, and is the next
-adapter to add.
+The beta API at `api.beta.ons.gov.uk/v1` replaced it for dataset metadata,
+editions, versions, and observations.
 
 ## Usage
 
 ```ts
 import { fetchFloodStationReadings, summarizeFloodReadings } from '@nzlab/uk-sources';
+import { fetchOnsDatasets, summarizeOnsDatasets } from '@nzlab/uk-sources';
 
 const readings = await fetchFloodStationReadings('1029TH', { limit: 96 });
 const summary = summarizeFloodReadings(readings);
 console.log(summary.latest?.value, summary.trend);
+
+const catalogue = summarizeOnsDatasets(await fetchOnsDatasets());
+console.log(catalogue.datasetCount, catalogue.yearCounts);
 ```
 
 ## Tests
@@ -39,5 +49,5 @@ Unit tests run against the committed fixtures in `src/fixtures`, offline.
 
 ```bash
 npm run test --workspace @nzlab/uk-sources
-npm run test:smoke --workspace @nzlab/uk-sources   # hits the live API
+npm run test:smoke --workspace @nzlab/uk-sources   # hits the live APIs
 ```
