@@ -1,5 +1,5 @@
 /** Errors shared by every UK source adapter. */
-export { UkSourceApiError, UkSourceError, UkSourceParseError } from './errors.js';
+export { UkSourceApiError, UkSourceError, UkSourceParseError } from './errors';
 /** Environment Agency flood-monitoring stations and readings (keyless). */
 export {
   DEFAULT_FLOOD_STATION_REFERENCE,
@@ -10,20 +10,31 @@ export {
   parseFloodReadings,
   parseFloodStations,
   summarizeFloodReadings,
-} from './floodMonitoring.js';
+} from './floodMonitoring';
 /** Flood-monitoring types. */
 export type {
   FloodMeasure,
   FloodReading,
   FloodReadingSummary,
   FloodStation,
-} from './floodMonitoring.js';
+} from './floodMonitoring';
+/** Office for National Statistics dataset catalogue (keyless). */
+export {
+  fetchOnsDatasets,
+  onsDatasetsAdapter,
+  ONS_DATASETS_LIMIT,
+  ONS_DATASETS_URL,
+  parseOnsDatasets,
+  summarizeOnsDatasets,
+} from './onsDatasets';
+/** ONS catalogue types. */
+export type { OnsDatasetRecord, OnsDatasetSummary, OnsDatasetYearCount } from './onsDatasets';
 /** The uniform adapter registry and probe helpers. */
 export {
   UK_DATA_SOURCES,
   getUkDataSource,
   probeAllUkDataSources,
   probeUkDataSource,
-} from './registry.js';
+} from './registry';
 /** Shared adapter contract types. */
-export type { UkDataAdapter, UkFetchOptions, UkSourceAuth, UkSourceProbe } from './types.js';
+export type { UkDataAdapter, UkFetchOptions, UkSourceAuth, UkSourceProbe } from './types';

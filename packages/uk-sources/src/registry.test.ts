@@ -3,12 +3,12 @@ import path from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import {
-  UK_DATA_SOURCES,
   getUkDataSource,
   probeAllUkDataSources,
   probeUkDataSource,
-} from './registry.js';
-import type { UkDataAdapter } from './types.js';
+  UK_DATA_SOURCES,
+} from './registry';
+import type { UkDataAdapter } from './types';
 
 function readFixtureJson(name: string): unknown {
   return JSON.parse(readFileSync(path.join(process.cwd(), 'src/fixtures', name), 'utf8'));
@@ -26,20 +26,38 @@ function firstSource(): UkDataAdapter<unknown> {
   return source;
 }
 
+/** Answers each registered source with its own committed fixture. */
+function fixtureFetchImpl(): typeof globalThis.fetch {
+  const fetchFixture = async (input: string | URL | Request): Promise<Response> => {
+    const target =
+      typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
+    if (new URL(target).hostname === 'api.beta.ons.gov.uk') {
+      return jsonResponse(readFixtureJson('ons-datasets.json'));
+    }
+    if (target.includes('/readings')) {
+      return jsonResponse(readFixtureJson('flood-station-readings.json'));
+    }
+    return jsonResponse(readFixtureJson('flood-stations.json'));
+  };
+  return vi.fn(fetchFixture);
+}
+
 afterEach(() => {
   vi.unstubAllGlobals();
 });
 
 describe('registry', () => {
-  it('registers the Environment Agency flood-monitoring adapters', () => {
+  it('registers the Environment Agency and ONS adapters', () => {
     expect(UK_DATA_SOURCES.map((source) => source.id)).toEqual([
       'flood-stations',
       'flood-readings',
+      'ons-datasets',
     ]);
   });
 
   it('looks up a source adapter by id', () => {
     expect(getUkDataSource('flood-readings')?.name).toContain('Environment Agency');
+    expect(getUkDataSource('ons-datasets')?.name).toContain('Office for National Statistics');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 
@@ -63,14 +81,7 @@ describe('registry', () => {
   });
 
   it('probes every registered source', async () => {
-    vi.stubGlobal(
-      'fetch',
-      vi.fn(async (url: string | URL) =>
-        String(url).includes('/readings')
-          ? jsonResponse(readFixtureJson('flood-station-readings.json'))
-          : jsonResponse(readFixtureJson('flood-stations.json'))
-      )
-    );
+    vi.stubGlobal('fetch', fixtureFetchImpl());
     const probes = await probeAllUkDataSources();
     expect(probes).toHaveLength(UK_DATA_SOURCES.length);
     expect(probes.every((probe) => probe.ok)).toBe(true);
