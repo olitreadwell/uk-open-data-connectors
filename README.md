@@ -11,7 +11,7 @@ Keyless-first: every connector works without an API key. Optional keys unlock mo
 | Package | What it is |
 | ------- | ---------- |
 | `@nzlab/nz-sources` | Uniform adapters for 8 NZ data sources (GeoNet, data.govt.nz, LINZ, DigitalNZ, Trade Me, NZOR, ADE search, MSB benefits datastore) with live probes and offline fixtures |
-| `@nzlab/uk-sources` | Uniform adapters for UK public data sources. Four so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, and the FSA food hygiene registers, all keyless with live probes and offline fixtures |
+| `@nzlab/uk-sources` | Uniform adapters for UK public data sources. Five so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, and Transport for London's cycle hire docking stations, all keyless with live probes and offline fixtures |
 | `@nzlab/stats-nz` | Client for the Aotearoa Data Explorer (ADE) API: dataflow catalogue, data pulls, codelists, CSV parsing and serialization |
 | `@nzlab/connectors-api` | HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP |
 | `@nzlab/connectors-cli` | `nzdata` command line tool that prints JSON or CSV to stdout, so any language can shell out to it |
@@ -42,8 +42,8 @@ DigitalNZ with `DIGITAL_NZ_API_KEY` and LINZ with `LINZ_API_KEY`.
 
 ### UK sources
 
-Four adapters in `@nzlab/uk-sources`, all keyless and all under the Open
-Government Licence v3.
+Five adapters in `@nzlab/uk-sources`, all keyless. Four carry data published
+under the Open Government Licence v3; the TfL one carries TfL Open Data.
 
 | id | Source | Keyless? | Example command |
 | --- | --- | --- | --- |
@@ -51,6 +51,7 @@ Government Licence v3.
 | `flood-readings` | Recent water levels for one station, newest first | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 | `ons-datasets` | ONS beta API dataset catalogue | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 | `food-hygiene-authorities` | FSA food hygiene registers, with establishment counts | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
+| `tfl-bike-points` | TfL Santander Cycles docking stations, with docking points and docked bikes | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 
 Two sources that look obvious for a UK repo and are not usable as they stand:
 
@@ -64,6 +65,10 @@ The live ONS beta API at `api.beta.ons.gov.uk/v1` answers with JSON and backs
 the `ons-datasets` adapter. The FSA Food Hygiene Rating Scheme API at
 `api.ratings.food.gov.uk` answers keyless as long as the call carries the
 `x-api-version: 2` header, and backs `food-hygiene-authorities`.
+
+The TfL Unified API at `api.tfl.gov.uk` answers keyless too, and backs
+`tfl-bike-points`. TfL asks for an app key above the free rate limit, so the
+adapter takes one as an optional `apiKey` and sends it as `app_key`.
 
 ### Adapter examples
 
