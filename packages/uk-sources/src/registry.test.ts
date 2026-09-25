@@ -37,6 +37,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     if (new URL(target).hostname === 'api.ratings.food.gov.uk') {
       return jsonResponse(readFixtureJson('food-hygiene-authorities.json'));
     }
+    if (new URL(target).hostname === 'api.tfl.gov.uk') {
+      return jsonResponse(readFixtureJson('tfl-bike-points.json'));
+    }
     if (target.includes('/readings')) {
       return jsonResponse(readFixtureJson('flood-station-readings.json'));
     }
@@ -50,12 +53,13 @@ afterEach(() => {
 });
 
 describe('registry', () => {
-  it('registers the Environment Agency, ONS, and FSA adapters', () => {
+  it('registers the Environment Agency, ONS, FSA, and TfL adapters', () => {
     expect(UK_DATA_SOURCES.map((source) => source.id)).toEqual([
       'flood-stations',
       'flood-readings',
       'ons-datasets',
       'food-hygiene-authorities',
+      'tfl-bike-points',
     ]);
   });
 
@@ -63,6 +67,7 @@ describe('registry', () => {
     expect(getUkDataSource('flood-readings')?.name).toContain('Environment Agency');
     expect(getUkDataSource('ons-datasets')?.name).toContain('Office for National Statistics');
     expect(getUkDataSource('food-hygiene-authorities')?.name).toContain('Food Standards Agency');
+    expect(getUkDataSource('tfl-bike-points')?.name).toContain('Transport for London');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 

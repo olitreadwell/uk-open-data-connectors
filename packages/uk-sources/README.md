@@ -16,6 +16,7 @@ separate change.
 | `flood-readings`           | Environment Agency flood-monitoring | none | Recent water levels for one station, newest first            |
 | `ons-datasets`             | ONS beta API dataset catalogue      | none | Every dataset the ONS lists, with its state and stamp        |
 | `food-hygiene-authorities` | Food Standards Agency food hygiene  | none | Every local authority register, with its establishment count |
+| `tfl-bike-points`           | Transport for London cycle hire     | none | Every Santander Cycles docking station, with docking points and docked bikes |
 
 The flood-monitoring adapters use `environment.data.gov.uk` under the Open
 Government Licence v3:
@@ -30,6 +31,12 @@ The food hygiene adapter uses the FSA Food Hygiene Rating Scheme API,
 Open Government Licence v3. It answers only with the version header the FSA
 asks for, `x-api-version: 2`; without it the endpoint returns HTTP 404.
 
+The docking station adapter uses TfL's Unified API,
+<https://api.tfl.gov.uk/BikePoint>, which answers without a key. TfL asks for
+an app key above the free rate limit, so `fetchTflBikePoints` takes an optional
+key and sends it as the `app_key` query parameter. The data is published as TfL
+Open Data: <https://tfl.gov.uk/info-for/open-data-users/>.
+
 Note on sources that look obvious but are not usable: `api.ons.gov.uk` was
 retired on 2024-11-25 and now answers every request with a decommission notice.
 The beta API at `api.beta.ons.gov.uk/v1` replaced it for dataset metadata,
@@ -41,6 +48,7 @@ editions, versions, and observations.
 import { fetchFloodStationReadings, summarizeFloodReadings } from '@nzlab/uk-sources';
 import { fetchOnsDatasets, summarizeOnsDatasets } from '@nzlab/uk-sources';
 import { fetchFoodHygieneAuthorities, summarizeFoodHygieneAuthorities } from '@nzlab/uk-sources';
+import { fetchTflBikePoints, summarizeTflBikePoints } from '@nzlab/uk-sources';
 
 const readings = await fetchFloodStationReadings('1029TH', { limit: 96 });
 const summary = summarizeFloodReadings(readings);
@@ -51,6 +59,9 @@ console.log(catalogue.datasetCount, catalogue.yearCounts);
 
 const registers = summarizeFoodHygieneAuthorities(await fetchFoodHygieneAuthorities());
 console.log(registers.authorityCount, registers.establishmentCount);
+
+const docks = summarizeTflBikePoints(await fetchTflBikePoints());
+console.log(docks.stationCount, docks.dockCount, docks.largestStations[0]?.name);
 ```
 
 ## Tests

@@ -42,6 +42,17 @@ export {
 } from './onsDatasets';
 /** ONS catalogue types. */
 export type { OnsDatasetRecord, OnsDatasetSummary, OnsDatasetYearCount } from './onsDatasets';
+/** Transport for London Santander Cycles docking stations (keyless). */
+export {
+  DEFAULT_LARGEST_STATION_LIMIT,
+  fetchTflBikePoints,
+  parseTflBikePoints,
+  summarizeTflBikePoints,
+  tflBikePointsAdapter,
+  TFL_BIKE_POINTS_URL,
+} from './tflBikePoints';
+/** Docking station types. */
+export type { DockingStation, DockingStationSummary } from './tflBikePoints';
 /** The uniform adapter registry and probe helpers. */
 export {
   UK_DATA_SOURCES,
