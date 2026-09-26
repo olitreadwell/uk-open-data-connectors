@@ -18,6 +18,7 @@ separate change.
 | `food-hygiene-authorities` | Food Standards Agency food hygiene  | none | Every local authority register, with its establishment count |
 | `tfl-bike-points`           | Transport for London cycle hire     | none | Every Santander Cycles docking station, with docking points and docked bikes |
 | `planning-datasets`        | Planning Data platform (MHCLG)      | none | Every planning dataset, with the records published behind it |
+| `ancient-woodland`         | Natural England ancient woodland    | none | Ancient woodland polygons for England, counted by type and size |
 
 The flood-monitoring adapters use `environment.data.gov.uk` under the Open
 Government Licence v3:
@@ -38,6 +39,14 @@ which answers without a key under the Open Government Licence v3. The file
 lists datasets alongside the platform's pipeline configuration and provenance
 tables, so the adapter keeps the entries whose `realm` is `dataset`.
 
+The ancient woodland adapter uses Natural England's Ancient Woodland (England)
+layer on the Defra ArcGIS estate,
+<https://services.arcgis.com/JJzESW51TqeY9uat/arcgis/rest/services/Ancient_Woodland_England/FeatureServer/0>,
+which answers without a key under the Open Government Licence v3. The layer
+carries more than fifty thousand polygons, past ArcGIS's page size, so the
+adapter reads the counts from the service's own statistics queries instead of
+downloading the features.
+
 The docking station adapter uses TfL's Unified API,
 <https://api.tfl.gov.uk/BikePoint>, which answers without a key. TfL asks for
 an app key above the free rate limit, so `fetchTflBikePoints` takes an optional
@@ -52,7 +61,11 @@ editions, versions, and observations.
 ## Usage
 
 ```ts
-import { fetchFloodStationReadings, summarizeFloodReadings } from '@nzlab/uk-sources';
+import {
+  fetchAncientWoodlandProfile,
+  fetchFloodStationReadings,
+  summarizeFloodReadings,
+} from '@nzlab/uk-sources';
 import { fetchOnsDatasets, summarizeOnsDatasets } from '@nzlab/uk-sources';
 import { fetchFoodHygieneAuthorities, summarizeFoodHygieneAuthorities } from '@nzlab/uk-sources';
 import { fetchTflBikePoints, summarizeTflBikePoints } from '@nzlab/uk-sources';
@@ -72,6 +85,9 @@ console.log(docks.stationCount, docks.dockCount, docks.largestStations[0]?.name)
 
 const planning = summarizePlanningDatasets(await fetchPlanningDatasets());
 console.log(planning.datasetCount, planning.entityCount, planning.emptyDatasetCount);
+
+const woodland = await fetchAncientWoodlandProfile();
+console.log(woodland.recordCount, woodland.totalHectares, woodland.sizeBands[0]?.recordCount);
 ```
 
 ## Tests

@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
+import { ANCIENT_WOODLAND_SIZE_BANDS } from './ancientWoodland';
 import {
   getUkDataSource,
   probeAllUkDataSources,
@@ -43,6 +44,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     if (new URL(target).hostname === 'www.planning.data.gov.uk') {
       return jsonResponse(readFixtureJson('planning-datasets.json'));
     }
+    if (new URL(target).hostname === 'services.arcgis.com') {
+      return jsonResponse(ancientWoodlandResponse(new URL(target)));
+    }
     if (target.includes('/readings')) {
       return jsonResponse(readFixtureJson('flood-station-readings.json'));
     }
@@ -51,12 +55,31 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
   return vi.fn(fetchFixture);
 }
 
+/** Answers one ancient woodland statistics query from the fixture bundle. */
+function ancientWoodlandResponse(url: URL): unknown {
+  const fixture = readFixtureJson('ancient-woodland.json') as {
+    totals: unknown;
+    categoryTotals: unknown;
+    sizeBandCounts: unknown[];
+  };
+  const grouped = url.searchParams.get('groupByFieldsForStatistics');
+  if (grouped === null) {
+    return fixture.totals;
+  }
+  const where = url.searchParams.get('where');
+  if (where === '1=1') {
+    return fixture.categoryTotals;
+  }
+  const bandIndex = ANCIENT_WOODLAND_SIZE_BANDS.findIndex((band) => band.where === where);
+  return fixture.sizeBandCounts[bandIndex];
+}
+
 afterEach(() => {
   vi.unstubAllGlobals();
 });
 
 describe('registry', () => {
-  it('registers the Environment Agency, ONS, FSA, TfL, and MHCLG adapters', () => {
+  it('registers every UK source adapter', () => {
     expect(UK_DATA_SOURCES.map((source) => source.id)).toEqual([
       'flood-stations',
       'flood-readings',
@@ -64,6 +87,7 @@ describe('registry', () => {
       'food-hygiene-authorities',
       'tfl-bike-points',
       'planning-datasets',
+      'ancient-woodland',
     ]);
   });
 
@@ -73,6 +97,7 @@ describe('registry', () => {
     expect(getUkDataSource('food-hygiene-authorities')?.name).toContain('Food Standards Agency');
     expect(getUkDataSource('tfl-bike-points')?.name).toContain('Transport for London');
     expect(getUkDataSource('planning-datasets')?.name).toContain('Ministry of Housing');
+    expect(getUkDataSource('ancient-woodland')?.name).toContain('Natural England');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 

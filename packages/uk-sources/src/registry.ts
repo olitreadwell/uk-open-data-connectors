@@ -1,3 +1,4 @@
+import { ancientWoodlandAdapter } from './ancientWoodland';
 import { floodReadingsAdapter, floodStationsAdapter } from './floodMonitoring';
 import { foodHygieneAuthoritiesAdapter } from './foodHygiene';
 import { onsDatasetsAdapter } from './onsDatasets';
@@ -13,6 +14,7 @@ export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [
   foodHygieneAuthoritiesAdapter,
   tflBikePointsAdapter,
   planningDatasetsAdapter,
+  ancientWoodlandAdapter,
 ];
 
 /** Looks up a source adapter by id. */

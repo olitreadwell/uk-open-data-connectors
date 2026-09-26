@@ -1,3 +1,23 @@
+/** Natural England ancient woodland polygons for England (keyless). */
+export {
+  ANCIENT_WOODLAND_CATEGORIES,
+  ANCIENT_WOODLAND_DATASET_URL,
+  ANCIENT_WOODLAND_QUERY_URL,
+  ANCIENT_WOODLAND_SIZE_BANDS,
+  ANCIENT_WOODLAND_SOURCE_ID,
+  ancientWoodlandAdapter,
+  fetchAncientWoodlandProfile,
+  parseAncientWoodlandProfile,
+} from './ancientWoodland';
+/** Ancient woodland types. */
+export type {
+  AncientWoodlandCategory,
+  AncientWoodlandCategoryId,
+  AncientWoodlandProfile,
+  AncientWoodlandResponses,
+  AncientWoodlandSizeBand,
+  AncientWoodlandSizeBandDefinition,
+} from './ancientWoodland';
 /** Errors shared by every UK source adapter. */
 export { UkSourceApiError, UkSourceError, UkSourceParseError } from './errors';
 /** Environment Agency flood-monitoring stations and readings (keyless). */
