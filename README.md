@@ -11,7 +11,7 @@ Keyless-first: every connector works without an API key. Optional keys unlock mo
 | Package | What it is |
 | ------- | ---------- |
 | `@nzlab/nz-sources` | Uniform adapters for 8 NZ data sources (GeoNet, data.govt.nz, LINZ, DigitalNZ, Trade Me, NZOR, ADE search, MSB benefits datastore) with live probes and offline fixtures |
-| `@nzlab/uk-sources` | Uniform adapters for UK public data sources. Six so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, Transport for London's cycle hire docking stations, and the Planning Data platform's dataset catalogue, all keyless with live probes and offline fixtures |
+| `@nzlab/uk-sources` | Uniform adapters for UK public data sources. Eight so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, Transport for London's cycle hire docking stations, the Planning Data platform's dataset catalogue, Natural England's ancient woodland layer, and the Bank of England's daily Bank Rate, all keyless with live probes and offline fixtures |
 | `@nzlab/stats-nz` | Client for the Aotearoa Data Explorer (ADE) API: dataflow catalogue, data pulls, codelists, CSV parsing and serialization |
 | `@nzlab/connectors-api` | HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP |
 | `@nzlab/connectors-cli` | `nzdata` command line tool that prints JSON or CSV to stdout, so any language can shell out to it |
@@ -42,8 +42,10 @@ DigitalNZ with `DIGITAL_NZ_API_KEY` and LINZ with `LINZ_API_KEY`.
 
 ### UK sources
 
-Six adapters in `@nzlab/uk-sources`, all keyless. Five carry data published
-under the Open Government Licence v3; the TfL one carries TfL Open Data.
+Eight adapters in `@nzlab/uk-sources`, all keyless. Six carry data published
+under the Open Government Licence v3; the TfL one carries TfL Open Data, and
+the Bank of England places reproduction of its Database data under the same
+licence in its terms.
 
 | id | Source | Keyless? | Example command |
 | --- | --- | --- | --- |
@@ -53,6 +55,8 @@ under the Open Government Licence v3; the TfL one carries TfL Open Data.
 | `food-hygiene-authorities` | FSA food hygiene registers, with establishment counts | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 | `tfl-bike-points` | TfL Santander Cycles docking stations, with docking points and docked bikes | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 | `planning-datasets` | Planning Data platform datasets, with the records published behind each one | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
+| `ancient-woodland` | Natural England ancient woodland polygons for England, counted by type and size | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
+| `bank-rate` | Bank of England official Bank Rate, one reading per business day since 1975 | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 
 Two sources that look obvious for a UK repo and are not usable as they stand:
 

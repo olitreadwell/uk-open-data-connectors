@@ -19,6 +19,7 @@ separate change.
 | `tfl-bike-points`           | Transport for London cycle hire     | none | Every Santander Cycles docking station, with docking points and docked bikes |
 | `planning-datasets`        | Planning Data platform (MHCLG)      | none | Every planning dataset, with the records published behind it |
 | `ancient-woodland`         | Natural England ancient woodland    | none | Ancient woodland polygons for England, counted by type and size |
+| `bank-rate`                | Bank of England Bank Rate           | none | The daily official Bank Rate, one reading per business day since 1975 |
 
 The flood-monitoring adapters use `environment.data.gov.uk` under the Open
 Government Licence v3:
@@ -46,6 +47,15 @@ which answers without a key under the Open Government Licence v3. The layer
 carries more than fifty thousand polygons, past ArcGIS's page size, so the
 adapter reads the counts from the service's own statistics queries instead of
 downloading the features.
+
+The Bank Rate adapter uses the Bank of England's Interactive Statistical
+Database (IADB),
+<https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp>,
+which answers without a key. The daily series, `IUDBEDR`, starts on 2 January
+1975; asking for an earlier start returns the database's error page instead of
+a CSV, so the adapter starts there. The Bank's published terms place
+reproduction of Database data under the Open Government Licence v3:
+<https://www.bankofengland.co.uk/legal>.
 
 The docking station adapter uses TfL's Unified API,
 <https://api.tfl.gov.uk/BikePoint>, which answers without a key. TfL asks for

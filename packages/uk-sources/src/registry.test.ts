@@ -15,6 +15,10 @@ function readFixtureJson(name: string): unknown {
   return JSON.parse(readFileSync(path.join(process.cwd(), 'src/fixtures', name), 'utf8'));
 }
 
+function readFixtureText(name: string): string {
+  return readFileSync(path.join(process.cwd(), 'src/fixtures', name), 'utf8');
+}
+
 function jsonResponse(payload: unknown): Response {
   return new Response(JSON.stringify(payload), { status: 200 });
 }
@@ -43,6 +47,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     }
     if (new URL(target).hostname === 'www.planning.data.gov.uk') {
       return jsonResponse(readFixtureJson('planning-datasets.json'));
+    }
+    if (new URL(target).hostname === 'www.bankofengland.co.uk') {
+      return new Response(readFixtureText('bank-rate.csv'), { status: 200 });
     }
     if (new URL(target).hostname === 'services.arcgis.com') {
       return jsonResponse(ancientWoodlandResponse(new URL(target)));
@@ -88,6 +95,7 @@ describe('registry', () => {
       'tfl-bike-points',
       'planning-datasets',
       'ancient-woodland',
+      'bank-rate',
     ]);
   });
 
@@ -98,6 +106,7 @@ describe('registry', () => {
     expect(getUkDataSource('tfl-bike-points')?.name).toContain('Transport for London');
     expect(getUkDataSource('planning-datasets')?.name).toContain('Ministry of Housing');
     expect(getUkDataSource('ancient-woodland')?.name).toContain('Natural England');
+    expect(getUkDataSource('bank-rate')?.name).toContain('Bank of England');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 

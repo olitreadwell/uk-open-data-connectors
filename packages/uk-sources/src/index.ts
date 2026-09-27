@@ -18,6 +18,22 @@ export type {
   AncientWoodlandSizeBand,
   AncientWoodlandSizeBandDefinition,
 } from './ancientWoodland';
+/** Bank of England Bank Rate, the daily official rate since 1975 (keyless). */
+export {
+  bankRateAdapter,
+  BANK_RATE_CSV_URL,
+  BANK_RATE_FIRST_QUERY_DATE,
+  BANK_RATE_SERIES_CODE,
+  BANK_RATE_SOURCE_ID,
+  buildBankRateCsvUrl,
+  buildBankRateSpells,
+  fetchBankRateObservations,
+  formatBankRateQueryDate,
+  parseBankRateCsv,
+  summarizeBankRateSeries,
+} from './bankRate';
+/** Bank Rate types. */
+export type { BankRateObservation, BankRateSpell, BankRateSummary } from './bankRate';
 /** Errors shared by every UK source adapter. */
 export { UkSourceApiError, UkSourceError, UkSourceParseError } from './errors';
 /** Environment Agency flood-monitoring stations and readings (keyless). */
