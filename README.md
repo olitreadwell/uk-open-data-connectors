@@ -42,10 +42,10 @@ DigitalNZ with `DIGITAL_NZ_API_KEY` and LINZ with `LINZ_API_KEY`.
 
 ### UK sources
 
-Eight adapters in `@nzlab/uk-sources`, all keyless. Six carry data published
-under the Open Government Licence v3; the TfL one carries TfL Open Data, and
-the Bank of England places reproduction of its Database data under the same
-licence in its terms.
+Nine adapters in `@nzlab/uk-sources`, all keyless. Eight carry data published
+under the Open Government Licence v3, counting the Bank of England, whose terms
+place reproduction of its Database data under that licence; the remaining one
+carries TfL Open Data.
 
 | id | Source | Keyless? | Example command |
 | --- | --- | --- | --- |
@@ -57,6 +57,7 @@ licence in its terms.
 | `planning-datasets` | Planning Data platform datasets, with the records published behind each one | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 | `ancient-woodland` | Natural England ancient woodland polygons for England, counted by type and size | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 | `bank-rate` | Bank of England official Bank Rate, one reading per business day since 1975 | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
+| `police-crimes` | Home Office police.uk recorded crime within a mile of a point, counted by crime type and outcome | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 
 Two sources that look obvious for a UK repo and are not usable as they stand:
 
@@ -79,6 +80,14 @@ The Planning Data platform at `www.planning.data.gov.uk` answers keyless as
 well, and backs `planning-datasets`. The catalogue call returns every dataset
 and pipeline table the platform lists, with a record count for each; the
 adapter keeps the entries the platform marks as datasets.
+
+The Home Office police.uk API at `data.police.uk` answers keyless and backs
+`police-crimes`. It holds the last 36 months of street-level crime, published
+by the 44 forces of England, Wales and Northern Ireland; Police Scotland
+publishes elsewhere, so nothing here covers Scotland. Its street-level
+endpoints answer for everything within a mile of a point, so the adapter
+counts around one point and cannot ask for a smaller radius. Calls are made
+one month at a time, well inside the API's limit of 15 requests a second.
 
 ### Adapter examples
 

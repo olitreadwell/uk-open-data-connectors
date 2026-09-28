@@ -54,6 +54,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     if (new URL(target).hostname === 'services.arcgis.com') {
       return jsonResponse(ancientWoodlandResponse(new URL(target)));
     }
+    if (new URL(target).hostname === 'data.police.uk') {
+      return jsonResponse(policeResponse(new URL(target)));
+    }
     if (target.includes('/readings')) {
       return jsonResponse(readFixtureJson('flood-station-readings.json'));
     }
@@ -81,6 +84,22 @@ function ancientWoodlandResponse(url: URL): unknown {
   return fixture.sizeBandCounts[bandIndex];
 }
 
+/** Answers one police.uk call from the recorded crime fixture bundle. */
+function policeResponse(url: URL): unknown {
+  const fixture = readFixtureJson('police-crimes.json') as {
+    categories: unknown;
+    months: { month: string; records: unknown }[];
+  };
+  if (url.pathname.endsWith('/crime-categories')) {
+    return fixture.categories;
+  }
+  if (url.pathname.endsWith('/crimes-street-dates')) {
+    return fixture.months.map((month) => ({ date: month.month }));
+  }
+  const month = url.searchParams.get('date');
+  return fixture.months.find((entry) => entry.month === month)?.records ?? [];
+}
+
 afterEach(() => {
   vi.unstubAllGlobals();
 });
@@ -96,6 +115,7 @@ describe('registry', () => {
       'planning-datasets',
       'ancient-woodland',
       'bank-rate',
+      'police-crimes',
     ]);
   });
 
@@ -107,6 +127,7 @@ describe('registry', () => {
     expect(getUkDataSource('planning-datasets')?.name).toContain('Ministry of Housing');
     expect(getUkDataSource('ancient-woodland')?.name).toContain('Natural England');
     expect(getUkDataSource('bank-rate')?.name).toContain('Bank of England');
+    expect(getUkDataSource('police-crimes')?.name).toContain('Home Office');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 

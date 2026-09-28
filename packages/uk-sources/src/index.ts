@@ -90,6 +90,33 @@ export {
 } from './planningDatasets';
 /** Planning dataset types. */
 export type { PlanningDataset, PlanningDatasetSummary } from './planningDatasets';
+/** Home Office police.uk street-level recorded crime (keyless). */
+export {
+  buildPoliceStreetCrimesUrl,
+  DEFAULT_POLICE_CRIME_LOCATION,
+  DEFAULT_POLICE_CRIME_MONTH_COUNT,
+  fetchPoliceCrimeCategories,
+  fetchPoliceCrimeMonths,
+  fetchPoliceCrimeSummary,
+  parsePoliceCrimeSummary,
+  policeCrimesAdapter,
+  POLICE_API_BASE_URL,
+  POLICE_CRIME_CATEGORIES_URL,
+  POLICE_CRIMES_SOURCE_ID,
+  POLICE_STREET_CRIMES_RADIUS_MILES,
+  POLICE_STREET_CRIMES_URL,
+  POLICE_STREET_DATES_URL,
+} from './policeCrimes';
+/** Recorded crime types. */
+export type {
+  PoliceCategoryCount,
+  PoliceCrimeCategory,
+  PoliceCrimeLocation,
+  PoliceCrimeResponses,
+  PoliceCrimeSummary,
+  PoliceMonthCount,
+  PoliceOutcomeCount,
+} from './policeCrimes';
 /** Transport for London Santander Cycles docking stations (keyless). */
 export {
   DEFAULT_LARGEST_STATION_LIMIT,

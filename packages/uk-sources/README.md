@@ -20,6 +20,7 @@ separate change.
 | `planning-datasets`        | Planning Data platform (MHCLG)      | none | Every planning dataset, with the records published behind it |
 | `ancient-woodland`         | Natural England ancient woodland    | none | Ancient woodland polygons for England, counted by type and size |
 | `bank-rate`                | Bank of England Bank Rate           | none | The daily official Bank Rate, one reading per business day since 1975 |
+| `police-crimes`            | Home Office police.uk               | none | Street-level crime within a mile of a point, counted by crime type and outcome |
 
 The flood-monitoring adapters use `environment.data.gov.uk` under the Open
 Government Licence v3:
@@ -56,6 +57,15 @@ which answers without a key. The daily series, `IUDBEDR`, starts on 2 January
 a CSV, so the adapter starts there. The Bank's published terms place
 reproduction of Database data under the Open Government Licence v3:
 <https://www.bankofengland.co.uk/legal>.
+
+The recorded crime adapter uses the Home Office police.uk API,
+<https://data.police.uk/api/crimes-street/all-crime>, which answers without a
+key under the Open Government Licence v3. It holds the last 36 months of
+street-level crime from the 44 forces of England, Wales and Northern Ireland,
+so nothing here covers Scotland. A call takes a point and returns everything
+within a mile of it, which is why the adapter counts around one point rather
+than a boundary, and it asks for one month at a time to stay inside the API's
+limit of 15 requests a second.
 
 The docking station adapter uses TfL's Unified API,
 <https://api.tfl.gov.uk/BikePoint>, which answers without a key. TfL asks for
