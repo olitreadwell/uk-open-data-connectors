@@ -21,6 +21,7 @@ separate change.
 | `ancient-woodland`         | Natural England ancient woodland    | none | Ancient woodland polygons for England, counted by type and size |
 | `bank-rate`                | Bank of England Bank Rate           | none | The daily official Bank Rate, one reading per business day since 1975 |
 | `police-crimes`            | Home Office police.uk               | none | Street-level crime within a mile of a point, counted by crime type and outcome |
+| `carbon-intensity`         | National Energy System Operator     | none | Half-hourly carbon intensity for Great Britain, with the window's cleanest and dirtiest half hours |
 
 The flood-monitoring adapters use `environment.data.gov.uk` under the Open
 Government Licence v3:
@@ -73,6 +74,15 @@ an app key above the free rate limit, so `fetchTflBikePoints` takes an optional
 key and sends it as the `app_key` query parameter. The data is published as TfL
 Open Data: <https://tfl.gov.uk/info-for/open-data-users/>.
 
+The carbon intensity adapter uses the National Energy System Operator's Carbon
+Intensity API, <https://api.carbonintensity.org.uk/intensity>, which answers
+without a key. It is the official half-hourly series for Great Britain, with a
+reading and a grade for every half hour, and the API's own terms place the data
+under the Creative Commons Attribution 4.0 licence:
+<https://terms.carbonintensity.org.uk/>. The API refuses a range longer than 31
+days, so the adapter reads whole days and asks for a window that ends at the
+start of today, which keeps every reading in it a settled one.
+
 Note on sources that look obvious but are not usable: `api.ons.gov.uk` was
 retired on 2024-11-25 and now answers every request with a decommission notice.
 The beta API at `api.beta.ons.gov.uk/v1` replaced it for dataset metadata,
@@ -89,6 +99,7 @@ import {
 import { fetchOnsDatasets, summarizeOnsDatasets } from '@nzlab/uk-sources';
 import { fetchFoodHygieneAuthorities, summarizeFoodHygieneAuthorities } from '@nzlab/uk-sources';
 import { fetchTflBikePoints, summarizeTflBikePoints } from '@nzlab/uk-sources';
+import { fetchCarbonIntensityWindow } from '@nzlab/uk-sources';
 
 const readings = await fetchFloodStationReadings('1029TH', { limit: 96 });
 const summary = summarizeFloodReadings(readings);
@@ -108,6 +119,9 @@ console.log(planning.datasetCount, planning.entityCount, planning.emptyDatasetCo
 
 const woodland = await fetchAncientWoodlandProfile();
 console.log(woodland.recordCount, woodland.totalHectares, woodland.sizeBands[0]?.recordCount);
+
+const intensity = await fetchCarbonIntensityWindow();
+console.log(intensity.periodCount, intensity.averageIntensity, intensity.lowestPeriod.intensity);
 ```
 
 ## Tests

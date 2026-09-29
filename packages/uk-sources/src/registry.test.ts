@@ -54,6 +54,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     if (new URL(target).hostname === 'services.arcgis.com') {
       return jsonResponse(ancientWoodlandResponse(new URL(target)));
     }
+    if (new URL(target).hostname === 'api.carbonintensity.org.uk') {
+      return jsonResponse(readFixtureJson('carbon-intensity.json'));
+    }
     if (new URL(target).hostname === 'data.police.uk') {
       return jsonResponse(policeResponse(new URL(target)));
     }
@@ -116,6 +119,7 @@ describe('registry', () => {
       'ancient-woodland',
       'bank-rate',
       'police-crimes',
+      'carbon-intensity',
     ]);
   });
 
@@ -128,6 +132,7 @@ describe('registry', () => {
     expect(getUkDataSource('ancient-woodland')?.name).toContain('Natural England');
     expect(getUkDataSource('bank-rate')?.name).toContain('Bank of England');
     expect(getUkDataSource('police-crimes')?.name).toContain('Home Office');
+    expect(getUkDataSource('carbon-intensity')?.name).toContain('National Energy System Operator');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 

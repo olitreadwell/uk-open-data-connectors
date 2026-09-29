@@ -34,6 +34,29 @@ export {
 } from './bankRate';
 /** Bank Rate types. */
 export type { BankRateObservation, BankRateSpell, BankRateSummary } from './bankRate';
+/** National Energy System Operator half-hourly carbon intensity (keyless). */
+export {
+  buildCarbonIntensityWindowUrl,
+  carbonIntensityAdapter,
+  CARBON_INTENSITY_API_BASE_URL,
+  CARBON_INTENSITY_INDEX_BANDS,
+  CARBON_INTENSITY_MAX_WINDOW_DAYS,
+  CARBON_INTENSITY_PERIOD_MINUTES,
+  CARBON_INTENSITY_RANGE_URL,
+  CARBON_INTENSITY_SOURCE_ID,
+  DEFAULT_CARBON_INTENSITY_WINDOW_DAYS,
+  fetchCarbonIntensityWindow,
+  formatCarbonIntensityInstant,
+  parseCarbonIntensityWindow,
+  resolveCarbonIntensityWindow,
+} from './carbonIntensity';
+/** Carbon intensity types. */
+export type {
+  CarbonIntensityBandCount,
+  CarbonIntensityIndex,
+  CarbonIntensityPeriod,
+  CarbonIntensityWindow,
+} from './carbonIntensity';
 /** Errors shared by every UK source adapter. */
 export { UkSourceApiError, UkSourceError, UkSourceParseError } from './errors';
 /** Environment Agency flood-monitoring stations and readings (keyless). */

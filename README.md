@@ -11,7 +11,7 @@ Keyless-first: every connector works without an API key. Optional keys unlock mo
 | Package | What it is |
 | ------- | ---------- |
 | `@nzlab/nz-sources` | Uniform adapters for 8 NZ data sources (GeoNet, data.govt.nz, LINZ, DigitalNZ, Trade Me, NZOR, ADE search, MSB benefits datastore) with live probes and offline fixtures |
-| `@nzlab/uk-sources` | Uniform adapters for UK public data sources. Eight so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, Transport for London's cycle hire docking stations, the Planning Data platform's dataset catalogue, Natural England's ancient woodland layer, and the Bank of England's daily Bank Rate, all keyless with live probes and offline fixtures |
+| `@nzlab/uk-sources` | Uniform adapters for UK public data sources. Ten so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, Transport for London's cycle hire docking stations, the Planning Data platform's dataset catalogue, Natural England's ancient woodland layer, the Bank of England's daily Bank Rate, Home Office police.uk recorded crime, and the National Energy System Operator's half-hourly carbon intensity, all keyless with live probes and offline fixtures |
 | `@nzlab/stats-nz` | Client for the Aotearoa Data Explorer (ADE) API: dataflow catalogue, data pulls, codelists, CSV parsing and serialization |
 | `@nzlab/connectors-api` | HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP |
 | `@nzlab/connectors-cli` | `nzdata` command line tool that prints JSON or CSV to stdout, so any language can shell out to it |
@@ -42,10 +42,11 @@ DigitalNZ with `DIGITAL_NZ_API_KEY` and LINZ with `LINZ_API_KEY`.
 
 ### UK sources
 
-Nine adapters in `@nzlab/uk-sources`, all keyless. Eight carry data published
+Ten adapters in `@nzlab/uk-sources`, all keyless. Eight carry data published
 under the Open Government Licence v3, counting the Bank of England, whose terms
-place reproduction of its Database data under that licence; the remaining one
-carries TfL Open Data.
+place reproduction of its Database data under that licence; the TfL adapter
+carries TfL Open Data, and the carbon intensity adapter carries data published
+under the Creative Commons Attribution 4.0 licence.
 
 | id | Source | Keyless? | Example command |
 | --- | --- | --- | --- |
@@ -58,6 +59,7 @@ carries TfL Open Data.
 | `ancient-woodland` | Natural England ancient woodland polygons for England, counted by type and size | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 | `bank-rate` | Bank of England official Bank Rate, one reading per business day since 1975 | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 | `police-crimes` | Home Office police.uk recorded crime within a mile of a point, counted by crime type and outcome | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
+| `carbon-intensity` | National Energy System Operator half-hourly carbon intensity for Great Britain | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 
 Two sources that look obvious for a UK repo and are not usable as they stand:
 
@@ -88,6 +90,12 @@ publishes elsewhere, so nothing here covers Scotland. Its street-level
 endpoints answer for everything within a mile of a point, so the adapter
 counts around one point and cannot ask for a smaller radius. Calls are made
 one month at a time, well inside the API's limit of 15 requests a second.
+
+The Carbon Intensity API at `api.carbonintensity.org.uk` answers keyless and
+backs `carbon-intensity`. It is the official half-hourly series for Great
+Britain, with a reading for every half hour and a grade for each one. A range
+is read in one call, and the API refuses a range longer than 31 days, so the
+adapter asks for 30 complete days ending at the start of today.
 
 ### Adapter examples
 
