@@ -17,6 +17,10 @@ separate change.
 | `ons-datasets`             | ONS beta API dataset catalogue      | none | Every dataset the ONS lists, with its state and stamp        |
 | `food-hygiene-authorities` | Food Standards Agency food hygiene  | none | Every local authority register, with its establishment count |
 | `tfl-bike-points`           | Transport for London cycle hire     | none | Every Santander Cycles docking station, with docking points and docked bikes |
+| `planning-datasets`        | Planning Data platform (MHCLG)      | none | Every planning dataset, with the records published behind it |
+| `ancient-woodland`         | Natural England ancient woodland    | none | Ancient woodland polygons for England, counted by type and size |
+| `bank-rate`                | Bank of England Bank Rate           | none | The daily official Bank Rate, one reading per business day since 1975 |
+| `police-crimes`            | Home Office police.uk               | none | Street-level crime within a mile of a point, counted by crime type and outcome |
 
 The flood-monitoring adapters use `environment.data.gov.uk` under the Open
 Government Licence v3:
@@ -30,6 +34,38 @@ The food hygiene adapter uses the FSA Food Hygiene Rating Scheme API,
 <https://api.ratings.food.gov.uk/Authorities/basic>, also keyless and under the
 Open Government Licence v3. It answers only with the version header the FSA
 asks for, `x-api-version: 2`; without it the endpoint returns HTTP 404.
+
+The Planning Data platform adapter uses the dataset catalogue behind
+<https://www.planning.data.gov.uk/dataset>, <https://www.planning.data.gov.uk/dataset.json>,
+which answers without a key under the Open Government Licence v3. The file
+lists datasets alongside the platform's pipeline configuration and provenance
+tables, so the adapter keeps the entries whose `realm` is `dataset`.
+
+The ancient woodland adapter uses Natural England's Ancient Woodland (England)
+layer on the Defra ArcGIS estate,
+<https://services.arcgis.com/JJzESW51TqeY9uat/arcgis/rest/services/Ancient_Woodland_England/FeatureServer/0>,
+which answers without a key under the Open Government Licence v3. The layer
+carries more than fifty thousand polygons, past ArcGIS's page size, so the
+adapter reads the counts from the service's own statistics queries instead of
+downloading the features.
+
+The Bank Rate adapter uses the Bank of England's Interactive Statistical
+Database (IADB),
+<https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp>,
+which answers without a key. The daily series, `IUDBEDR`, starts on 2 January
+1975; asking for an earlier start returns the database's error page instead of
+a CSV, so the adapter starts there. The Bank's published terms place
+reproduction of Database data under the Open Government Licence v3:
+<https://www.bankofengland.co.uk/legal>.
+
+The recorded crime adapter uses the Home Office police.uk API,
+<https://data.police.uk/api/crimes-street/all-crime>, which answers without a
+key under the Open Government Licence v3. It holds the last 36 months of
+street-level crime from the 44 forces of England, Wales and Northern Ireland,
+so nothing here covers Scotland. A call takes a point and returns everything
+within a mile of it, which is why the adapter counts around one point rather
+than a boundary, and it asks for one month at a time to stay inside the API's
+limit of 15 requests a second.
 
 The docking station adapter uses TfL's Unified API,
 <https://api.tfl.gov.uk/BikePoint>, which answers without a key. TfL asks for
@@ -45,7 +81,11 @@ editions, versions, and observations.
 ## Usage
 
 ```ts
-import { fetchFloodStationReadings, summarizeFloodReadings } from '@nzlab/uk-sources';
+import {
+  fetchAncientWoodlandProfile,
+  fetchFloodStationReadings,
+  summarizeFloodReadings,
+} from '@nzlab/uk-sources';
 import { fetchOnsDatasets, summarizeOnsDatasets } from '@nzlab/uk-sources';
 import { fetchFoodHygieneAuthorities, summarizeFoodHygieneAuthorities } from '@nzlab/uk-sources';
 import { fetchTflBikePoints, summarizeTflBikePoints } from '@nzlab/uk-sources';
@@ -62,6 +102,12 @@ console.log(registers.authorityCount, registers.establishmentCount);
 
 const docks = summarizeTflBikePoints(await fetchTflBikePoints());
 console.log(docks.stationCount, docks.dockCount, docks.largestStations[0]?.name);
+
+const planning = summarizePlanningDatasets(await fetchPlanningDatasets());
+console.log(planning.datasetCount, planning.entityCount, planning.emptyDatasetCount);
+
+const woodland = await fetchAncientWoodlandProfile();
+console.log(woodland.recordCount, woodland.totalHectares, woodland.sizeBands[0]?.recordCount);
 ```
 
 ## Tests

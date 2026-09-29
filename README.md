@@ -11,7 +11,7 @@ Keyless-first: every connector works without an API key. Optional keys unlock mo
 | Package | What it is |
 | ------- | ---------- |
 | `@nzlab/nz-sources` | Uniform adapters for 8 NZ data sources (GeoNet, data.govt.nz, LINZ, DigitalNZ, Trade Me, NZOR, ADE search, MSB benefits datastore) with live probes and offline fixtures |
-| `@nzlab/uk-sources` | Uniform adapters for UK public data sources. Five so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, and Transport for London's cycle hire docking stations, all keyless with live probes and offline fixtures |
+| `@nzlab/uk-sources` | Uniform adapters for UK public data sources. Eight so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, Transport for London's cycle hire docking stations, the Planning Data platform's dataset catalogue, Natural England's ancient woodland layer, and the Bank of England's daily Bank Rate, all keyless with live probes and offline fixtures |
 | `@nzlab/stats-nz` | Client for the Aotearoa Data Explorer (ADE) API: dataflow catalogue, data pulls, codelists, CSV parsing and serialization |
 | `@nzlab/connectors-api` | HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP |
 | `@nzlab/connectors-cli` | `nzdata` command line tool that prints JSON or CSV to stdout, so any language can shell out to it |
@@ -42,8 +42,10 @@ DigitalNZ with `DIGITAL_NZ_API_KEY` and LINZ with `LINZ_API_KEY`.
 
 ### UK sources
 
-Five adapters in `@nzlab/uk-sources`, all keyless. Four carry data published
-under the Open Government Licence v3; the TfL one carries TfL Open Data.
+Nine adapters in `@nzlab/uk-sources`, all keyless. Eight carry data published
+under the Open Government Licence v3, counting the Bank of England, whose terms
+place reproduction of its Database data under that licence; the remaining one
+carries TfL Open Data.
 
 | id | Source | Keyless? | Example command |
 | --- | --- | --- | --- |
@@ -52,6 +54,10 @@ under the Open Government Licence v3; the TfL one carries TfL Open Data.
 | `ons-datasets` | ONS beta API dataset catalogue | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 | `food-hygiene-authorities` | FSA food hygiene registers, with establishment counts | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 | `tfl-bike-points` | TfL Santander Cycles docking stations, with docking points and docked bikes | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
+| `planning-datasets` | Planning Data platform datasets, with the records published behind each one | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
+| `ancient-woodland` | Natural England ancient woodland polygons for England, counted by type and size | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
+| `bank-rate` | Bank of England official Bank Rate, one reading per business day since 1975 | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
+| `police-crimes` | Home Office police.uk recorded crime within a mile of a point, counted by crime type and outcome | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
 
 Two sources that look obvious for a UK repo and are not usable as they stand:
 
@@ -69,6 +75,19 @@ the `ons-datasets` adapter. The FSA Food Hygiene Rating Scheme API at
 The TfL Unified API at `api.tfl.gov.uk` answers keyless too, and backs
 `tfl-bike-points`. TfL asks for an app key above the free rate limit, so the
 adapter takes one as an optional `apiKey` and sends it as `app_key`.
+
+The Planning Data platform at `www.planning.data.gov.uk` answers keyless as
+well, and backs `planning-datasets`. The catalogue call returns every dataset
+and pipeline table the platform lists, with a record count for each; the
+adapter keeps the entries the platform marks as datasets.
+
+The Home Office police.uk API at `data.police.uk` answers keyless and backs
+`police-crimes`. It holds the last 36 months of street-level crime, published
+by the 44 forces of England, Wales and Northern Ireland; Police Scotland
+publishes elsewhere, so nothing here covers Scotland. Its street-level
+endpoints answer for everything within a mile of a point, so the adapter
+counts around one point and cannot ask for a smaller radius. Calls are made
+one month at a time, well inside the API's limit of 15 requests a second.
 
 ### Adapter examples
 
