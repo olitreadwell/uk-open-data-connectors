@@ -8,7 +8,7 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 | Package | What it is |
 | ------- | ---------- |
-| `@uk-open-data-connectors/uk-sources` | Uniform adapters for UK data sources, with live probes and offline fixtures |
+| `@uk-open-data-connectors/uk-sources` | Uniform adapters for UK public data sources. Ten so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, Transport for London's cycle hire docking stations, the Planning Data platform's dataset catalogue, Natural England's ancient woodland layer, the Bank of England's daily Bank Rate, Home Office police.uk recorded crime, and the National Energy System Operator's half-hourly carbon intensity, all keyless with live probes and offline fixtures |
 | `@uk-open-data-connectors/connectors-api` | HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP |
 | `@uk-open-data-connectors/connectors-cli` | `ukdata` command line tool that prints JSON to stdout, so any language can shell out to it |
 | `python/` (`nzdata` on PyPI) | Python port carried over from the NZ origin. Still NZ sources, see Language ports |
@@ -17,9 +17,10 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 ## Connectors
 
-Five adapters in `@uk-open-data-connectors/uk-sources`, all keyless. Four carry
-data published under the Open Government Licence v3; the TfL one carries TfL
-Open Data.
+Ten adapters in `@uk-open-data-connectors/uk-sources`, all keyless. Most carry
+Open Government Licence v3 data; the TfL one carries TfL Open Data, and the
+carbon intensity series is Creative Commons Attribution 4.0 under the
+operator's own terms.
 
 | id | Source | Keyless? | Example command |
 | --- | ------ | -------- | --------------- |
@@ -28,6 +29,11 @@ Open Data.
 | `ons-datasets` | Office for National Statistics dataset catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe ons-datasets` |
 | `food-hygiene-authorities` | FSA food hygiene registers, with establishment counts | Yes | `npx tsx packages/cli/src/cli.ts probe food-hygiene-authorities` |
 | `tfl-bike-points` | TfL Santander Cycles docking stations, with docking points and docked bikes | Yes | `npx tsx packages/cli/src/cli.ts probe tfl-bike-points` |
+| `planning-datasets` | Planning Data platform datasets, with the records published behind each one | Yes | `npx tsx packages/cli/src/cli.ts probe planning-datasets` |
+| `ancient-woodland` | Natural England ancient woodland polygons for England, counted by type and size | Yes | `npx tsx packages/cli/src/cli.ts probe ancient-woodland` |
+| `bank-rate` | Bank of England official Bank Rate, one reading per business day since 1975 | Yes | `npx tsx packages/cli/src/cli.ts probe bank-rate` |
+| `police-crimes` | Home Office police.uk recorded crime within a mile of a point, counted by crime type and outcome | Yes | `npx tsx packages/cli/src/cli.ts probe police-crimes` |
+| `carbon-intensity` | National Energy System Operator half-hourly carbon intensity for Great Britain | Yes | `npx tsx packages/cli/src/cli.ts probe carbon-intensity` |
 
 Sources that look obvious for a UK repo and are not usable as they stand:
 
@@ -45,6 +51,25 @@ the `ons-datasets` adapter. The FSA Food Hygiene Rating Scheme API at
 The TfL Unified API at `api.tfl.gov.uk` answers keyless too, and backs
 `tfl-bike-points`. TfL asks for an app key above the free rate limit, so the
 adapter takes one as an optional `apiKey` and sends it as `app_key`.
+
+The Planning Data platform at `www.planning.data.gov.uk` answers keyless as
+well, and backs `planning-datasets`. The catalogue call returns every dataset
+and pipeline table the platform lists, with a record count for each; the
+adapter keeps the entries the platform marks as datasets.
+
+The Home Office police.uk API at `data.police.uk` answers keyless and backs
+`police-crimes`. It holds the last 36 months of street-level crime, published
+by the 44 forces of England, Wales and Northern Ireland; Police Scotland
+publishes elsewhere, so nothing here covers Scotland. Its street-level
+endpoints answer for everything within a mile of a point, so the adapter
+counts around one point and cannot ask for a smaller radius. Calls are made
+one month at a time, well inside the API's limit of 15 requests a second.
+
+The Carbon Intensity API at `api.carbonintensity.org.uk` answers keyless and
+backs `carbon-intensity`. It is the official half-hourly series for Great
+Britain, with a reading for every half hour and a grade for each one. A range
+is read in one call, and the API refuses a range longer than 31 days, so the
+adapter asks for 30 complete days ending at the start of today.
 
 ### Adapter examples
 

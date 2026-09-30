@@ -1,6 +1,11 @@
+import { ancientWoodlandAdapter } from './ancientWoodland.js';
+import { bankRateAdapter } from './bankRate.js';
+import { carbonIntensityAdapter } from './carbonIntensity.js';
 import { floodReadingsAdapter, floodStationsAdapter } from './floodMonitoring.js';
 import { foodHygieneAuthoritiesAdapter } from './foodHygiene.js';
 import { onsDatasetsAdapter } from './onsDatasets.js';
+import { planningDatasetsAdapter } from './planningDatasets.js';
+import { policeCrimesAdapter } from './policeCrimes.js';
 import { tflBikePointsAdapter } from './tflBikePoints.js';
 import type { UkDataAdapter, UkFetchOptions, UkSourceProbe } from './types.js';
 
@@ -11,6 +16,11 @@ export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [
   onsDatasetsAdapter,
   foodHygieneAuthoritiesAdapter,
   tflBikePointsAdapter,
+  planningDatasetsAdapter,
+  ancientWoodlandAdapter,
+  bankRateAdapter,
+  policeCrimesAdapter,
+  carbonIntensityAdapter,
 ];
 
 /** Looks up a source adapter by id. */

@@ -138,6 +138,11 @@ describe('createConnectorsApp', () => {
       'ons-datasets',
       'food-hygiene-authorities',
       'tfl-bike-points',
+      'planning-datasets',
+      'ancient-woodland',
+      'bank-rate',
+      'police-crimes',
+      'carbon-intensity',
     ]);
     for (const source of sources) {
       expect(source.name.length).toBeGreaterThan(0);

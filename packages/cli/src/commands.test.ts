@@ -114,6 +114,11 @@ describe('runCli', () => {
       'ons-datasets',
       'food-hygiene-authorities',
       'tfl-bike-points',
+      'planning-datasets',
+      'ancient-woodland',
+      'bank-rate',
+      'police-crimes',
+      'carbon-intensity',
     ]);
     expect(sources.every((source) => source.auth === 'none')).toBe(true);
   });

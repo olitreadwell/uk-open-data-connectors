@@ -19,6 +19,11 @@ describe('built ukdata bin', () => {
       'ons-datasets',
       'food-hygiene-authorities',
       'tfl-bike-points',
+      'planning-datasets',
+      'ancient-woodland',
+      'bank-rate',
+      'police-crimes',
+      'carbon-intensity',
     ]);
   });
 });
