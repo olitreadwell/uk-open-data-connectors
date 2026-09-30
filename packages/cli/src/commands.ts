@@ -10,7 +10,7 @@ import {
   summarizeFloodReadings,
   summarizeOnsDatasets,
   UK_DATA_SOURCES,
-} from '@open-data-connectors/uk-sources';
+} from '@uk-open-data-connectors/uk-sources';
 
 /** Where the CLI writes its output. Injectable for tests. */
 export interface CliOutput {

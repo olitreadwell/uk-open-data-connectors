@@ -8,22 +8,26 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 | Package | What it is |
 | ------- | ---------- |
-| `@open-data-connectors/uk-sources` | Uniform adapters for UK data sources, with live probes and offline fixtures |
-| `@open-data-connectors/connectors-api` | HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP |
-| `@open-data-connectors/connectors-cli` | `ukdata` command line tool that prints JSON to stdout, so any language can shell out to it |
+| `@uk-open-data-connectors/uk-sources` | Uniform adapters for UK data sources, with live probes and offline fixtures |
+| `@uk-open-data-connectors/connectors-api` | HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP |
+| `@uk-open-data-connectors/connectors-cli` | `ukdata` command line tool that prints JSON to stdout, so any language can shell out to it |
 | `python/` (`nzdata` on PyPI) | Python port carried over from the NZ origin. Still NZ sources, see Language ports |
 | `ruby/` (`nzdata` gem) | Ruby port carried over from the NZ origin. Still NZ sources, see Language ports |
 
+
 ## Connectors
 
-Three adapters in `@open-data-connectors/uk-sources`, all keyless, all under
-the Open Government Licence v3.
+Five adapters in `@uk-open-data-connectors/uk-sources`, all keyless. Four carry
+data published under the Open Government Licence v3; the TfL one carries TfL
+Open Data.
 
 | id | Source | Keyless? | Example command |
 | --- | ------ | -------- | --------------- |
 | `flood-stations` | Environment Agency flood-monitoring stations, with river and catchment | Yes | `npx tsx packages/cli/src/cli.ts probe flood-stations` |
 | `flood-readings` | Recent water levels for one station, newest first | Yes | `npx tsx packages/cli/src/cli.ts probe flood-readings` |
 | `ons-datasets` | Office for National Statistics dataset catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe ons-datasets` |
+| `food-hygiene-authorities` | FSA food hygiene registers, with establishment counts | Yes | `npx tsx packages/cli/src/cli.ts probe food-hygiene-authorities` |
+| `tfl-bike-points` | TfL Santander Cycles docking stations, with docking points and docked bikes | Yes | `npx tsx packages/cli/src/cli.ts probe tfl-bike-points` |
 
 Sources that look obvious for a UK repo and are not usable as they stand:
 
@@ -34,7 +38,13 @@ Sources that look obvious for a UK repo and are not usable as they stand:
   CKAN API is no longer at that path.
 
 The live ONS beta API at `api.beta.ons.gov.uk/v1` answers with JSON and backs
-the `ons-datasets` adapter.
+the `ons-datasets` adapter. The FSA Food Hygiene Rating Scheme API at
+`api.ratings.food.gov.uk` answers keyless as long as the call carries the
+`x-api-version: 2` header, and backs `food-hygiene-authorities`.
+
+The TfL Unified API at `api.tfl.gov.uk` answers keyless too, and backs
+`tfl-bike-points`. TfL asks for an app key above the free rate limit, so the
+adapter takes one as an optional `apiKey` and sends it as `app_key`.
 
 ### Adapter examples
 
@@ -105,7 +115,7 @@ import {
   summarizeFloodReadings,
   summarizeOnsDatasets,
   UK_DATA_SOURCES,
-} from '@open-data-connectors/uk-sources';
+} from '@uk-open-data-connectors/uk-sources';
 
 const readings = await fetchFloodStationReadings('1029TH', { limit: 96 });
 console.log(summarizeFloodReadings(readings).trend);

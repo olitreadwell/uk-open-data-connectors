@@ -1,5 +1,7 @@
 import { floodReadingsAdapter, floodStationsAdapter } from './floodMonitoring.js';
+import { foodHygieneAuthoritiesAdapter } from './foodHygiene.js';
 import { onsDatasetsAdapter } from './onsDatasets.js';
+import { tflBikePointsAdapter } from './tflBikePoints.js';
 import type { UkDataAdapter, UkFetchOptions, UkSourceProbe } from './types.js';
 
 /** Every UK data source behind the uniform adapter interface. */
@@ -7,6 +9,8 @@ export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [
   floodStationsAdapter,
   floodReadingsAdapter,
   onsDatasetsAdapter,
+  foodHygieneAuthoritiesAdapter,
+  tflBikePointsAdapter,
 ];
 
 /** Looks up a source adapter by id. */

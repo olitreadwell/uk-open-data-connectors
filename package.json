@@ -2,15 +2,15 @@
   "name": "uk-open-data-connectors",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "npm@10.9.2",
+  "packageManager": "npm@10.9.9",
   "engines": {
-    "node": ">=22.17.1"
+    "node": ">=22.23.3"
   },
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build -w @open-data-connectors/uk-sources -w @open-data-connectors/connectors-cli",
+    "build": "npm run build -w @uk-open-data-connectors/uk-sources -w @uk-open-data-connectors/connectors-cli",
     "lint": "npm run lint --workspaces --if-present",
     "format": "npm run format --workspaces --if-present",
     "format:check": "npm run format:check --workspaces --if-present",
@@ -22,11 +22,11 @@
     "audit": "npm audit",
     "check": "npm run format:check && npm run build && npm run lint && npm run type-check && npm run test:coverage",
     "type-check": "npm run type-check --workspaces --if-present",
-    "dev:api": "npm run dev -w @open-data-connectors/connectors-api",
-    "start:api": "npm run start -w @open-data-connectors/connectors-api"
+    "dev:api": "npm run dev -w @uk-open-data-connectors/connectors-api",
+    "start:api": "npm run start -w @uk-open-data-connectors/connectors-api"
   },
   "devDependencies": {
-    "prettier": "3.9.6",
+    "prettier": "3.9.9",
     "@vitest/coverage-v8": "3.2.7"
   },
   "dependencies": {},

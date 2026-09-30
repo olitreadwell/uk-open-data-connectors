@@ -65,7 +65,7 @@ cd ruby && bundle exec rake check
 1. Vendoring: `uk-data-lab` runs `scripts/sync-connectors.mjs` against this
    repo. That script matches the package name this repo used before the scope
    rename, so the daily loop cannot vendor this package until the script is
-   updated for the `@open-data-connectors` scope.
+   updated for the `@uk-open-data-connectors` scope.
 2. More UK sources are candidates once they are verified live. Two that are
    not usable as they stand: `api.ons.gov.uk` (retired 2024-11-25) and the
    CKAN API path on `data.gov.uk`.

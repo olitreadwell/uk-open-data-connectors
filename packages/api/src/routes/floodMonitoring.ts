@@ -7,7 +7,7 @@ import {
   fetchFloodStationReadings,
   fetchFloodStations,
   summarizeFloodReadings,
-} from '@open-data-connectors/uk-sources';
+} from '@uk-open-data-connectors/uk-sources';
 
 /** Most stations the listing route will return in one call. */
 const MAX_STATION_LIMIT = 500;

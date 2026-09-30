@@ -5,13 +5,13 @@ import {
   fetchFloodStations,
   fetchOnsDatasets,
   probeUkDataSource,
-} from '@open-data-connectors/uk-sources';
+} from '@uk-open-data-connectors/uk-sources';
 import type {
   FloodReading,
   FloodStation,
   OnsDatasetRecord,
   UkDataAdapter,
-} from '@open-data-connectors/uk-sources';
+} from '@uk-open-data-connectors/uk-sources';
 
 import { runCli } from './commands.js';
 import type { CliOutput } from './commands.js';
@@ -112,6 +112,8 @@ describe('runCli', () => {
       'flood-stations',
       'flood-readings',
       'ons-datasets',
+      'food-hygiene-authorities',
+      'tfl-bike-points',
     ]);
     expect(sources.every((source) => source.auth === 'none')).toBe(true);
   });

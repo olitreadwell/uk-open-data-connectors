@@ -7,7 +7,7 @@ import {
   fetchFloodStations,
   fetchOnsDatasets,
   probeUkDataSource,
-} from '@open-data-connectors/uk-sources';
+} from '@uk-open-data-connectors/uk-sources';
 
 import { OPEN_API_DOCUMENT } from './openapi';
 import { createErrorTracker } from './errorTracking';

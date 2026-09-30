@@ -20,7 +20,7 @@ the UK adapters in `packages/uk-sources`.
 ## Checklist
 
 - [x] Rename the adapter interface (`NzDataAdapter` -> `UKDataAdapter`)
-- [x] Rename the npm scope to `@open-data-connectors`
+- [x] Rename the npm scope to `@uk-open-data-connectors`
 - [x] Remove the NZ adapter packages and rewire the API and CLI
 - [x] Point the root `build` script at the packages that exist
 - [x] Port the API and CLI exposure for the UK adapters

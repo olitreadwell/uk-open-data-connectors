@@ -17,6 +17,8 @@ describe('built ukdata bin', () => {
       'flood-stations',
       'flood-readings',
       'ons-datasets',
+      'food-hygiene-authorities',
+      'tfl-bike-points',
     ]);
   });
 });

@@ -1,5 +1,5 @@
 {
-  "name": "@open-data-connectors/uk-sources",
+  "name": "@uk-open-data-connectors/uk-sources",
   "version": "0.1.0",
   "private": false,
   "type": "module",
@@ -29,9 +29,9 @@
     "test:smoke": "RUN_SMOKE=1 vitest run src/smoke.test.ts"
   },
   "devDependencies": {
-    "@open-data-connectors/config-eslint": "*",
-    "@open-data-connectors/config-typescript": "*",
-    "@types/node": "22.20.1",
+    "@uk-open-data-connectors/config-eslint": "*",
+    "@uk-open-data-connectors/config-typescript": "*",
+    "@types/node": "22.20.4",
     "eslint": "9.39.5",
     "typescript": "6.0.3",
     "vitest": "3.2.7"

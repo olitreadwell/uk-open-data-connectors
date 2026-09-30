@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
 import { z } from 'zod';
 
-import { fetchOnsDatasets, summarizeOnsDatasets } from '@open-data-connectors/uk-sources';
+import { fetchOnsDatasets, summarizeOnsDatasets } from '@uk-open-data-connectors/uk-sources';
 
 /** Most dataset records the route will return in one call. */
 const MAX_DATASET_LIMIT = 1000;

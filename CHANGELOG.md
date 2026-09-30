@@ -2,7 +2,10 @@
 
 ## Unreleased
 
-- Scope: every package is now `@open-data-connectors/*`, replacing the old NZ
+- Merged `main`. The FSA food hygiene registers and the TfL cycle hire docking
+  stations join `packages/uk-sources`, so the API and the CLI now list five UK
+  adapters instead of three.
+- Scope: every package is now `@uk-open-data-connectors/*`, replacing the old NZ
   scope, and the CLI binary is `ukdata` (was `nzdata`). No reference to the old
   scope is left anywhere in the repo.
 - Removed `packages/nz-sources` and `packages/stats-nz`, along with the
