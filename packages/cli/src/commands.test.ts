@@ -119,6 +119,7 @@ describe('runCli', () => {
       'bank-rate',
       'police-crimes',
       'carbon-intensity',
+      'parliament-seats',
     ]);
     expect(sources.every((source) => source.auth === 'none')).toBe(true);
   });

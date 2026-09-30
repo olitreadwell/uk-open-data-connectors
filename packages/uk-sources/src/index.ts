@@ -101,6 +101,28 @@ export {
 } from './onsDatasets.js';
 /** ONS catalogue types. */
 export type { OnsDatasetRecord, OnsDatasetSummary, OnsDatasetYearCount } from './onsDatasets.js';
+/** UK Parliament state of the parties in the Commons and the Lords (keyless). */
+export {
+  buildParliamentSeatsUrl,
+  fetchParliamentSeats,
+  formatParliamentQueryDate,
+  parliamentSeatsAdapter,
+  parseParliamentPartySeats,
+  parseParliamentSeats,
+  PARLIAMENT_COMMONS_HOUSE,
+  PARLIAMENT_LORDS_HOUSE,
+  PARLIAMENT_MEMBERS_API_BASE_URL,
+  PARLIAMENT_SEATS_SOURCE_ID,
+  PARLIAMENT_STATE_OF_PARTIES_PATH,
+  summarizeParliamentPartySeats,
+} from './parliamentSeats.js';
+/** Parliament seat types. */
+export type {
+  ParliamentHouse,
+  ParliamentParty,
+  ParliamentPartySeats,
+  ParliamentSeatSummary,
+} from './parliamentSeats.js';
 /** Planning Data platform dataset catalogue, published by MHCLG (keyless). */
 export {
   DEFAULT_LARGEST_DATASET_LIMIT,

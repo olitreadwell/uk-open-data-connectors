@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- `parliament-seats`: the UK Parliament Members API state of the parties in the
+  Commons and the Lords, with the seats each party holds and the members
+  counted behind them (Open Parliament Licence v3.0).
 - Merged `main`. The FSA food hygiene registers and the TfL cycle hire docking
   stations join `packages/uk-sources`, so the API and the CLI now list five UK
   adapters instead of three.
