@@ -1,13 +1,13 @@
-import { ancientWoodlandAdapter } from './ancientWoodland';
-import { carbonIntensityAdapter } from './carbonIntensity';
-import { bankRateAdapter } from './bankRate';
-import { floodReadingsAdapter, floodStationsAdapter } from './floodMonitoring';
-import { foodHygieneAuthoritiesAdapter } from './foodHygiene';
-import { onsDatasetsAdapter } from './onsDatasets';
-import { planningDatasetsAdapter } from './planningDatasets';
-import { policeCrimesAdapter } from './policeCrimes';
-import { tflBikePointsAdapter } from './tflBikePoints';
-import type { UkDataAdapter, UkFetchOptions, UkSourceProbe } from './types';
+import { ancientWoodlandAdapter } from './ancientWoodland.js';
+import { bankRateAdapter } from './bankRate.js';
+import { carbonIntensityAdapter } from './carbonIntensity.js';
+import { floodReadingsAdapter, floodStationsAdapter } from './floodMonitoring.js';
+import { foodHygieneAuthoritiesAdapter } from './foodHygiene.js';
+import { onsDatasetsAdapter } from './onsDatasets.js';
+import { planningDatasetsAdapter } from './planningDatasets.js';
+import { policeCrimesAdapter } from './policeCrimes.js';
+import { tflBikePointsAdapter } from './tflBikePoints.js';
+import type { UkDataAdapter, UkFetchOptions, UkSourceProbe } from './types.js';
 
 /** Every UK data source behind the uniform adapter interface. */
 export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [

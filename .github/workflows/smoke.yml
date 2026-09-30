@@ -1,7 +1,10 @@
 name: Live smoke tests
 
-# Hits the real NZ public APIs nightly. Unit tests use fixtures and never
+# Hits the real public APIs nightly. Unit tests use fixtures and never
 # touch the network; these jobs prove the fixtures have not drifted.
+# The TypeScript job covers the UK sources and needs no keys. The Python and
+# Ruby jobs cover the NZ ports; their optional keys come from the secrets
+# below.
 on:
   schedule:
     - cron: "5 5 * * *"
@@ -12,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  STATS_NZ_SUBSCRIPTION_KEY: ${{ secrets.STATS_NZ_SUBSCRIPTION_KEY }}
+  # Optional, for the NZ ports only.
   LINZ_API_KEY: ${{ secrets.LINZ_API_KEY }}
 
 jobs:

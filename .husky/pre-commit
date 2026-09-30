@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Pre-commit gate: lint, typecheck, and tests in parallel.
+# Pre-commit gate: lint, type-check, and tests in parallel.
 set -e
 
 echo "=== Pre-commit checks ==="
@@ -10,7 +10,7 @@ echo "=== Pre-commit checks ==="
 G1=$!
 
 (
-  npm run typecheck --if-present
+  npm run type-check --if-present
 ) &
 G2=$!
 

@@ -8,7 +8,7 @@ export {
   ancientWoodlandAdapter,
   fetchAncientWoodlandProfile,
   parseAncientWoodlandProfile,
-} from './ancientWoodland';
+} from './ancientWoodland.js';
 /** Ancient woodland types. */
 export type {
   AncientWoodlandCategory,
@@ -17,7 +17,7 @@ export type {
   AncientWoodlandResponses,
   AncientWoodlandSizeBand,
   AncientWoodlandSizeBandDefinition,
-} from './ancientWoodland';
+} from './ancientWoodland.js';
 /** Bank of England Bank Rate, the daily official rate since 1975 (keyless). */
 export {
   bankRateAdapter,
@@ -31,9 +31,9 @@ export {
   formatBankRateQueryDate,
   parseBankRateCsv,
   summarizeBankRateSeries,
-} from './bankRate';
+} from './bankRate.js';
 /** Bank Rate types. */
-export type { BankRateObservation, BankRateSpell, BankRateSummary } from './bankRate';
+export type { BankRateObservation, BankRateSpell, BankRateSummary } from './bankRate.js';
 /** National Energy System Operator half-hourly carbon intensity (keyless). */
 export {
   buildCarbonIntensityWindowUrl,
@@ -49,16 +49,16 @@ export {
   formatCarbonIntensityInstant,
   parseCarbonIntensityWindow,
   resolveCarbonIntensityWindow,
-} from './carbonIntensity';
+} from './carbonIntensity.js';
 /** Carbon intensity types. */
 export type {
   CarbonIntensityBandCount,
   CarbonIntensityIndex,
   CarbonIntensityPeriod,
   CarbonIntensityWindow,
-} from './carbonIntensity';
+} from './carbonIntensity.js';
 /** Errors shared by every UK source adapter. */
-export { UkSourceApiError, UkSourceError, UkSourceParseError } from './errors';
+export { UkSourceApiError, UkSourceError, UkSourceParseError } from './errors.js';
 /** Environment Agency flood-monitoring stations and readings (keyless). */
 export {
   DEFAULT_FLOOD_STATION_REFERENCE,
@@ -69,14 +69,14 @@ export {
   parseFloodReadings,
   parseFloodStations,
   summarizeFloodReadings,
-} from './floodMonitoring';
+} from './floodMonitoring.js';
 /** Flood-monitoring types. */
 export type {
   FloodMeasure,
   FloodReading,
   FloodReadingSummary,
   FloodStation,
-} from './floodMonitoring';
+} from './floodMonitoring.js';
 /** Food Standards Agency food hygiene registers (keyless). */
 export {
   DEFAULT_LARGEST_AUTHORITY_LIMIT,
@@ -87,9 +87,9 @@ export {
   FSA_AUTHORITIES_URL,
   parseFoodHygieneAuthorities,
   summarizeFoodHygieneAuthorities,
-} from './foodHygiene';
+} from './foodHygiene.js';
 /** Food hygiene register types. */
-export type { FoodHygieneAuthority, FoodHygieneScheme, FoodHygieneSummary } from './foodHygiene';
+export type { FoodHygieneAuthority, FoodHygieneScheme, FoodHygieneSummary } from './foodHygiene.js';
 /** Office for National Statistics dataset catalogue (keyless). */
 export {
   fetchOnsDatasets,
@@ -98,9 +98,9 @@ export {
   ONS_DATASETS_URL,
   parseOnsDatasets,
   summarizeOnsDatasets,
-} from './onsDatasets';
+} from './onsDatasets.js';
 /** ONS catalogue types. */
-export type { OnsDatasetRecord, OnsDatasetSummary, OnsDatasetYearCount } from './onsDatasets';
+export type { OnsDatasetRecord, OnsDatasetSummary, OnsDatasetYearCount } from './onsDatasets.js';
 /** Planning Data platform dataset catalogue, published by MHCLG (keyless). */
 export {
   DEFAULT_LARGEST_DATASET_LIMIT,
@@ -110,9 +110,9 @@ export {
   PLANNING_DATASET_REALM,
   PLANNING_DATASETS_URL,
   summarizePlanningDatasets,
-} from './planningDatasets';
+} from './planningDatasets.js';
 /** Planning dataset types. */
-export type { PlanningDataset, PlanningDatasetSummary } from './planningDatasets';
+export type { PlanningDataset, PlanningDatasetSummary } from './planningDatasets.js';
 /** Home Office police.uk street-level recorded crime (keyless). */
 export {
   buildPoliceStreetCrimesUrl,
@@ -129,7 +129,7 @@ export {
   POLICE_STREET_CRIMES_RADIUS_MILES,
   POLICE_STREET_CRIMES_URL,
   POLICE_STREET_DATES_URL,
-} from './policeCrimes';
+} from './policeCrimes.js';
 /** Recorded crime types. */
 export type {
   PoliceCategoryCount,
@@ -139,7 +139,7 @@ export type {
   PoliceCrimeSummary,
   PoliceMonthCount,
   PoliceOutcomeCount,
-} from './policeCrimes';
+} from './policeCrimes.js';
 /** Transport for London Santander Cycles docking stations (keyless). */
 export {
   DEFAULT_LARGEST_STATION_LIMIT,
@@ -148,15 +148,15 @@ export {
   summarizeTflBikePoints,
   tflBikePointsAdapter,
   TFL_BIKE_POINTS_URL,
-} from './tflBikePoints';
+} from './tflBikePoints.js';
 /** Docking station types. */
-export type { DockingStation, DockingStationSummary } from './tflBikePoints';
+export type { DockingStation, DockingStationSummary } from './tflBikePoints.js';
 /** The uniform adapter registry and probe helpers. */
 export {
   UK_DATA_SOURCES,
   getUkDataSource,
   probeAllUkDataSources,
   probeUkDataSource,
-} from './registry';
+} from './registry.js';
 /** Shared adapter contract types. */
-export type { UkDataAdapter, UkFetchOptions, UkSourceAuth, UkSourceProbe } from './types';
+export type { UkDataAdapter, UkFetchOptions, UkSourceAuth, UkSourceProbe } from './types.js';

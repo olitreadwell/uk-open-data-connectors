@@ -1,19 +1,19 @@
 # Agent instructions
 
-TypeScript connectors for New Zealand public data, with Python and Ruby
-ports. npm workspaces, one package per concern. Read `docs/ARCHITECTURE.md`
-for the plain-language map, `docs/GLOSSARY.md` for terms.
+TypeScript connectors for UK public data, with Python and Ruby ports that
+still track the New Zealand connectors they came from. npm workspaces, one
+package per concern. Read `docs/ARCHITECTURE.md` for the plain-language map,
+`docs/GLOSSARY.md` for terms.
 
 ## Repo map
 
-- `packages/nz-sources` - one adapter per NZ data source (GeoNet,
-  data.govt.nz, LINZ, DigitalNZ, Trade Me, NZOR, ADE search, MSD benefits)
-- `packages/stats-nz` - Aotearoa Data Explorer (ADE) client
+- `packages/uk-sources` - one adapter per UK data source (Environment
+  Agency flood-monitoring stations and readings, ONS dataset catalogue)
 - `packages/api` - HTTP wrapper (Hono), OpenAPI spec, Swagger UI
-- `packages/cli` - `nzdata` command line tool
+- `packages/cli` - `ukdata` command line tool
 - `packages/config-eslint`, `packages/config-typescript` - shared config
-- `python/` - Python port (`nzdata` on PyPI)
-- `ruby/` - Ruby port (`nzdata` gem)
+- `python/` - Python port of the NZ connectors (`nzdata` on PyPI)
+- `ruby/` - Ruby port of the NZ connectors (`nzdata` gem)
 - `docs/` - architecture, security, glossary, releasing
 
 ## Commands
@@ -42,20 +42,19 @@ Ruby changes run their own gates.
 
 ## Conventions
 
-- Adapters live in `packages/nz-sources`, the Stats NZ client in
-  `packages/stats-nz`
+- Adapters live in `packages/uk-sources`
 - The HTTP wrapper is `packages/api`, the CLI is `packages/cli`
-- Keys are read from env only, server-side. The API and CLI never accept
-  keys from callers
+- Every UK source is keyless. Any future key is read from env only,
+  server-side, and the API and CLI never accept keys from callers
 - Tests never hit the network unless `RUN_SMOKE=1` is set
 - Test files sit next to their source file (`client.test.ts` tests
   `client.ts`)
 - Use 2-3 word, domain-prefixed names for exports
-  (`getNzDataSource`, not `get`)
+  (`getUkDataSource`, not `get`)
 - Pick one spelling per concept and use it everywhere (`dataflowId`, not
   `dataset` in one place and `flow` in another)
-- Keep changes in all three languages when a behavior change affects the
-  shared design
+- The Python and Ruby ports are still the NZ ones. Say so in any change
+  that touches the shared design, or port them.
 
 ## Docs for humans and agents
 

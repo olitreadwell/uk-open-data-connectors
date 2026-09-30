@@ -1,71 +1,45 @@
-UK open data connectors (scaffold). Derived from nz-open-data-connectors; adapters being ported to UK sources. See COUNTRY.md.
+# UK Open Data Connectors
 
-# NZ Open Data Connectors
+TypeScript connectors for UK public data, with language-agnostic wrappers so you can use them from any language (Python, R, Julia, curl, whatever you like).
 
-TypeScript connectors for New Zealand public data, with language-agnostic wrappers so you can use them from any language (Python, R, Julia, curl, whatever you like).
-
-Keyless-first: every connector works without an API key. Optional keys unlock more, and keys stay server-side - they are read from the environment and never exposed over the API or committed to the repo.
+Every connector is keyless today. There are no API keys to request and no secrets to keep.
 
 ## Packages
 
 | Package | What it is |
 | ------- | ---------- |
-| `@nzlab/nz-sources` | Uniform adapters for 8 NZ data sources (GeoNet, data.govt.nz, LINZ, DigitalNZ, Trade Me, NZOR, ADE search, MSB benefits datastore) with live probes and offline fixtures |
-| `@nzlab/uk-sources` | Uniform adapters for UK public data sources. Ten so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, Transport for London's cycle hire docking stations, the Planning Data platform's dataset catalogue, Natural England's ancient woodland layer, the Bank of England's daily Bank Rate, Home Office police.uk recorded crime, and the National Energy System Operator's half-hourly carbon intensity, all keyless with live probes and offline fixtures |
-| `@nzlab/stats-nz` | Client for the Aotearoa Data Explorer (ADE) API: dataflow catalogue, data pulls, codelists, CSV parsing and serialization |
-| `@nzlab/connectors-api` | HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP |
-| `@nzlab/connectors-cli` | `nzdata` command line tool that prints JSON or CSV to stdout, so any language can shell out to it |
-| `python/` (`nzdata` on PyPI) | Python port of the connectors, one dependency (`httpx`) |
-| `ruby/` (`nzdata` gem) | Ruby port of the connectors, one dependency (`rexml`) |
+| `@uk-open-data-connectors/uk-sources` | Uniform adapters for UK public data sources. Ten so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, Transport for London's cycle hire docking stations, the Planning Data platform's dataset catalogue, Natural England's ancient woodland layer, the Bank of England's daily Bank Rate, Home Office police.uk recorded crime, and the National Energy System Operator's half-hourly carbon intensity, all keyless with live probes and offline fixtures |
+| `@uk-open-data-connectors/connectors-api` | HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP |
+| `@uk-open-data-connectors/connectors-cli` | `ukdata` command line tool that prints JSON to stdout, so any language can shell out to it |
+| `python/` (`nzdata` on PyPI) | Python port carried over from the NZ origin. Still NZ sources, see Language ports |
+| `ruby/` (`nzdata` gem) | Ruby port carried over from the NZ origin. Still NZ sources, see Language ports |
+
 
 ## Connectors
 
-Thirteen source adapters, all in `@nzlab/nz-sources`. Every one works
-keyless. Two accept an optional key from the environment to unlock more:
-DigitalNZ with `DIGITAL_NZ_API_KEY` and LINZ with `LINZ_API_KEY`.
-
-| id | Source | Keyless? | Key env var | Example command |
-| --- | --- | --- | --- | --- |
-| `geonet` | GeoNet (GNS Science) | Yes | - | `npx tsx packages/cli/src/cli.ts probe geonet` |
-| `data-govt-nz` | data.govt.nz catalogue | Yes | - | `npx tsx packages/cli/src/cli.ts probe data-govt-nz` |
-| `data-govt-datastore` | data.govt.nz datastore (MSD benefits) | Yes | - | `npx tsx packages/cli/src/cli.ts probe data-govt-datastore` |
-| `ade-search` | Aotearoa Data Explorer search index | Yes | - | `npx tsx packages/cli/src/cli.ts probe ade-search` |
-| `digitalnz` | DigitalNZ (National Library) | Yes | `DIGITAL_NZ_API_KEY` | `npx tsx packages/cli/src/cli.ts probe digitalnz` |
-| `trademe` | Trade Me categories | Yes | - | `npx tsx packages/cli/src/cli.ts probe trademe` |
-| `nzor` | NZ Organisms Register | Yes | - | `npx tsx packages/cli/src/cli.ts probe nzor` |
-| `linz` | LINZ Data Service catalogue | Yes | `LINZ_API_KEY` | `npx tsx packages/cli/src/cli.ts probe linz` |
-| `arcgis` | ArcGIS Hub open data (Auckland, Wellington, Canterbury, NZTA) | Yes | - | `npx tsx packages/cli/src/cli.ts probe arcgis` |
-| `lawa` | LAWA river quality monitoring sites | Yes | - | `npx tsx packages/cli/src/cli.ts probe lawa` |
-| `mfe` | MfE Data Service layer catalogue | Yes | - | `npx tsx packages/cli/src/cli.ts probe mfe` |
-| `lris` | LRIS land and soil layer search (Landcare Research) | Yes | - | `npx tsx packages/cli/src/cli.ts probe lris` |
-| `nzta` | Waka Kotahi holiday journey hotspots | Yes | - | `npx tsx packages/cli/src/cli.ts probe nzta` |
-
-### UK sources
-
-Ten adapters in `@nzlab/uk-sources`, all keyless. Eight carry data published
-under the Open Government Licence v3, counting the Bank of England, whose terms
-place reproduction of its Database data under that licence; the TfL adapter
-carries TfL Open Data, and the carbon intensity adapter carries data published
-under the Creative Commons Attribution 4.0 licence.
+Ten adapters in `@uk-open-data-connectors/uk-sources`, all keyless. Most carry
+Open Government Licence v3 data; the TfL one carries TfL Open Data, and the
+carbon intensity series is Creative Commons Attribution 4.0 under the
+operator's own terms.
 
 | id | Source | Keyless? | Example command |
-| --- | --- | --- | --- |
-| `flood-stations` | Environment Agency monitoring stations, with river and catchment | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
-| `flood-readings` | Recent water levels for one station, newest first | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
-| `ons-datasets` | ONS beta API dataset catalogue | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
-| `food-hygiene-authorities` | FSA food hygiene registers, with establishment counts | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
-| `tfl-bike-points` | TfL Santander Cycles docking stations, with docking points and docked bikes | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
-| `planning-datasets` | Planning Data platform datasets, with the records published behind each one | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
-| `ancient-woodland` | Natural England ancient woodland polygons for England, counted by type and size | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
-| `bank-rate` | Bank of England official Bank Rate, one reading per business day since 1975 | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
-| `police-crimes` | Home Office police.uk recorded crime within a mile of a point, counted by crime type and outcome | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
-| `carbon-intensity` | National Energy System Operator half-hourly carbon intensity for Great Britain | Yes | `npm run test:smoke --workspace @nzlab/uk-sources` |
+| --- | ------ | -------- | --------------- |
+| `flood-stations` | Environment Agency flood-monitoring stations, with river and catchment | Yes | `npx tsx packages/cli/src/cli.ts probe flood-stations` |
+| `flood-readings` | Recent water levels for one station, newest first | Yes | `npx tsx packages/cli/src/cli.ts probe flood-readings` |
+| `ons-datasets` | Office for National Statistics dataset catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe ons-datasets` |
+| `food-hygiene-authorities` | FSA food hygiene registers, with establishment counts | Yes | `npx tsx packages/cli/src/cli.ts probe food-hygiene-authorities` |
+| `tfl-bike-points` | TfL Santander Cycles docking stations, with docking points and docked bikes | Yes | `npx tsx packages/cli/src/cli.ts probe tfl-bike-points` |
+| `planning-datasets` | Planning Data platform datasets, with the records published behind each one | Yes | `npx tsx packages/cli/src/cli.ts probe planning-datasets` |
+| `ancient-woodland` | Natural England ancient woodland polygons for England, counted by type and size | Yes | `npx tsx packages/cli/src/cli.ts probe ancient-woodland` |
+| `bank-rate` | Bank of England official Bank Rate, one reading per business day since 1975 | Yes | `npx tsx packages/cli/src/cli.ts probe bank-rate` |
+| `police-crimes` | Home Office police.uk recorded crime within a mile of a point, counted by crime type and outcome | Yes | `npx tsx packages/cli/src/cli.ts probe police-crimes` |
+| `carbon-intensity` | National Energy System Operator half-hourly carbon intensity for Great Britain | Yes | `npx tsx packages/cli/src/cli.ts probe carbon-intensity` |
 
-Two sources that look obvious for a UK repo and are not usable as they stand:
+Sources that look obvious for a UK repo and are not usable as they stand:
 
 - `api.ons.gov.uk` was retired on 2024-11-25. Every path now answers with a
-  plain-text decommission notice, so the ONS entry in `awesome-open-uk-data`
-  points at a dead API while still returning HTTP 200.
+  plain-text decommission notice, so an entry that still points at it returns
+  HTTP 200 while serving nothing usable.
 - `data.gov.uk/api/3/action/...` redirects to an HTML landing page, so the
   CKAN API is no longer at that path.
 
@@ -103,68 +77,18 @@ Each probe prints a JSON summary with the probe `id`, `name`, `auth`, an
 `ok` or `status` line, and a `sample` of the live data.
 
 ```sh
-# GeoNet - recent felt earthquakes (magnitude 3+)
-npx tsx packages/cli/src/cli.ts probe geonet
+# Environment Agency - monitoring stations, with river and catchment
+npx tsx packages/cli/src/cli.ts probe flood-stations
 ```
 
 ```sh
-# data.govt.nz - datasets matching "sheep" from the national catalogue
-npx tsx packages/cli/src/cli.ts probe data-govt-nz
+# Environment Agency - recent water levels for a station
+npx tsx packages/cli/src/cli.ts flood-readings --station 1029TH --limit 8
 ```
 
 ```sh
-# data.govt.nz datastore - national MSD benefit rows
-npx tsx packages/cli/src/cli.ts probe data-govt-datastore
-```
-
-```sh
-# ADE search - tables matching "median annual earnings"
-npx tsx packages/cli/src/cli.ts probe ade-search
-```
-
-```sh
-# DigitalNZ - digitised records matching "sheep"
-npx tsx packages/cli/src/cli.ts probe digitalnz
-```
-
-```sh
-# Trade Me - the public category tree
-npx tsx packages/cli/src/cli.ts probe trademe
-```
-
-```sh
-# NZOR - organism names matching "kiwi"
-npx tsx packages/cli/src/cli.ts probe nzor
-```
-
-```sh
-# LINZ - layers matching "property" (property titles, parcels, boundaries)
-npx tsx packages/cli/src/cli.ts probe linz
-```
-
-```sh
-# ArcGIS Hub - open data collections from Auckland Council (default host)
-npx tsx packages/cli/src/cli.ts probe arcgis
-```
-
-```sh
-# LAWA - river quality monitoring sites across New Zealand
-npx tsx packages/cli/src/cli.ts probe lawa
-```
-
-```sh
-# MfE Data Service - layers matching "water" from the Ministry for the Environment
-npx tsx packages/cli/src/cli.ts probe mfe
-```
-
-```sh
-# LRIS - land and soil layers matching "soil" from Landcare Research
-npx tsx packages/cli/src/cli.ts probe lris
-```
-
-```sh
-# Waka Kotahi - predicted busy holiday journey hotspots
-npx tsx packages/cli/src/cli.ts probe nzta
+# ONS - the dataset catalogue with counts by year and national-statistic flag
+npx tsx packages/cli/src/cli.ts ons-datasets --limit 20
 ```
 
 ## Language-agnostic access
@@ -182,86 +106,88 @@ npm run dev:api        # http://localhost:8787
 - `GET /docs` - Swagger UI
 - `GET /api/sources` - list every adapter
 - `GET /api/sources/:id/probe` - live probe one source
-- `GET /api/digitalnz/media?q=kiwi&type=images` - DigitalNZ media search (images, newspapers, videos, audio, literature, artwork)
-- `GET /api/stats-nz/catalogue` - every ADE dataflow
-- `GET /api/stats-nz/data?dataflowId=AGR_AGR_003` - data rows as JSON
-- `GET /api/stats-nz/data?dataflowId=AGR_AGR_003&format=csv` - data rows as CSV
-- `GET /api/stats-nz/codelist?codelistId=CL_LIVESTOCK_AGR_AGR_003` - dimension codes to labels (needs a key)
+- `GET /api/flood/stations?limit=25` - Environment Agency monitoring stations
+- `GET /api/flood/readings?station=1029TH&limit=96` - recent water levels, newest first
+- `GET /api/ons/datasets?limit=1000` - ONS dataset catalogue with a yearly summary
 
 ```sh
-curl 'http://localhost:8787/api/stats-nz/data?dataflowId=AGR_AGR_003'
+curl 'http://localhost:8787/api/flood/readings'
 ```
 
 ### CLI
 
 ```sh
 npx tsx packages/cli/src/cli.ts sources
-npx tsx packages/cli/src/cli.ts probe linz
-npx tsx packages/cli/src/cli.ts media --query kiwi --type images
-npx tsx packages/cli/src/cli.ts catalogue
-npx tsx packages/cli/src/cli.ts data --dataflow AGR_AGR_003 --format csv
-npx tsx packages/cli/src/cli.ts codelist --codelist CL_LIVESTOCK_AGR_AGR_003
+npx tsx packages/cli/src/cli.ts probe flood-stations
+npx tsx packages/cli/src/cli.ts flood-stations --limit 5
+npx tsx packages/cli/src/cli.ts flood-readings --station 1029TH
+npx tsx packages/cli/src/cli.ts ons-datasets --limit 1000
 ```
 
-Output goes to stdout as JSON (or CSV), errors go to stderr, and the exit code is 0 on success.
+Output goes to stdout as JSON, errors go to stderr, and the exit code is 0 on success.
 
 ## Quick start (TypeScript)
 
 ```sh
 npm install
-cp .env.example .env   # optional keys, see below
 npm run check
 ```
 
 ```ts
-import { probeAllNzDataSources } from '@nzlab/nz-sources';
-import { createStatsNzClient } from '@nzlab/stats-nz';
+import {
+  fetchFloodStationReadings,
+  fetchOnsDatasets,
+  summarizeFloodReadings,
+  summarizeOnsDatasets,
+  UK_DATA_SOURCES,
+} from '@uk-open-data-connectors/uk-sources';
 
-const probes = await probeAllNzDataSources({});
-console.log(probes.map((p) => `${p.id}: ${p.ok ? 'ok' : p.status}`).join('\n'));
+const readings = await fetchFloodStationReadings('1029TH', { limit: 96 });
+console.log(summarizeFloodReadings(readings).trend);
 
-const client = createStatsNzClient({});
-const dataflows = await client.getDataflowCatalogue();
-console.log(dataflows.length); // 911
+const catalogue = summarizeOnsDatasets(await fetchOnsDatasets());
+console.log(catalogue.datasetCount, catalogue.yearCounts.length);
+
+console.log(UK_DATA_SOURCES.map((source) => source.id).join(', '));
 ```
 
 ## Environment variables
 
 | Variable | Needed for | Where to get it |
 | -------- | ---------- | --------------- |
-| `STATS_NZ_SUBSCRIPTION_KEY` | Stats NZ codelists and non-agriculture tables | Free signup at portal.apis.stats.govt.nz |
-| `LINZ_API_KEY` | LINZ layer search (optional) | data.linz.govt.nz |
-| `DIGITAL_NZ_API_KEY` | DigitalNZ search (optional) | digitalnz.org |
 | `SENTRY_DSN` | Error tracking (optional, off by default) | sentry.io |
+| `CORS_ORIGIN` | Restricting browser access to `/api` (default: any origin) | your own deployment |
+| `RATE_LIMIT_MAX` | Per-IP request budget for `/api` (default: 60 per minute) | your own deployment |
+| `RATE_LIMIT_WINDOW_MS` | Rate limit window (default: 60000) | your own deployment |
+| `PORT` | Port the API listens on (default: 8787) | your own deployment |
 
-Copy `.env.example` to `.env` and fill in your own keys. Real keys are gitignored and never committed.
+Copy `.env.example` to `.env` and fill in your own values.
 
 ## Testing
 
 ```sh
-npm run check          # lint + type-check + unit tests (fixtures only, no network)
-npm run test:smoke     # live smoke tests against the real APIs (needs keys in env)
+npm run check          # format + lint + type-check + build + unit tests with coverage
+npm run test:smoke     # live smoke tests against the real APIs
 ```
 
-Unit tests use committed fixture snapshots pulled from the live APIs, so they run offline. Smoke tests are opt-in via `RUN_SMOKE=1` and hit the real endpoints.
+Unit tests use committed fixture snapshots pulled from the live APIs, so they run offline. Smoke tests are opt-in via `RUN_SMOKE=1`, need no keys, and hit the real endpoints.
 
 ## Language ports
 
-- `python/` - Python package, publishable to PyPI as `nzdata` (tag `python-v*`).
-- `ruby/` - Ruby gem, publishable to RubyGems as `nzdata` (tag `ruby-v*`).
-
-Both ports mirror the TypeScript surface: the same 8 adapters, the same Stats NZ client, the same fixture-based tests, and opt-in live smoke tests. Each port has its own quality gates (`ruff` + `mypy` + coverage for Python, `rubocop` + coverage for Ruby) enforced in CI. See each directory's README for quickstarts and publishing steps.
+`python/` and `ruby/` are the Python and Ruby ports carried over from the NZ
+origin of this repo. They still implement the NZ `nzdata` surface, and they
+are not UK connectors yet. Both keep their own quality gates in CI (`ruff` +
+`mypy` + pytest for Python, `rubocop` + SimpleCov for Ruby). See each
+directory's README for quickstarts and publishing steps.
 
 ## Run the API in Docker
 
 The `Dockerfile` at the repo root runs the HTTP API on port `8787` with a non-root user and a health check.
 
 ```sh
-docker build -t nz-connectors .
-docker run -p 8787:8787 --env-file .env nz-connectors
+docker build -t uk-connectors .
+docker run -p 8787:8787 uk-connectors
 ```
-
-Optional keys come from the environment only. Without a `.env` file every keyless endpoint still works.
 
 ## Documentation
 

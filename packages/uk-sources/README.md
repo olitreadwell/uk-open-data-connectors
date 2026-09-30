@@ -1,12 +1,8 @@
-# @nzlab/uk-sources
+# @uk-open-data-connectors/uk-sources
 
 Uniform TypeScript adapters for UK public data sources. Every adapter has the
 same shape: a live fetch, a strict parse, and a committed fixture fallback so
 builds work offline.
-
-The package scope is still `@nzlab` because the rest of this repo is a
-scaffold of the NZ connectors repo. Renaming every scope to `@uklab` is a
-separate change.
 
 ## Adapters
 
@@ -16,7 +12,7 @@ separate change.
 | `flood-readings`           | Environment Agency flood-monitoring | none | Recent water levels for one station, newest first            |
 | `ons-datasets`             | ONS beta API dataset catalogue      | none | Every dataset the ONS lists, with its state and stamp        |
 | `food-hygiene-authorities` | Food Standards Agency food hygiene  | none | Every local authority register, with its establishment count |
-| `tfl-bike-points`           | Transport for London cycle hire     | none | Every Santander Cycles docking station, with docking points and docked bikes |
+| `tfl-bike-points`          | Transport for London cycle hire     | none | Every Santander Cycles docking station, with docking points and docked bikes |
 | `planning-datasets`        | Planning Data platform (MHCLG)      | none | Every planning dataset, with the records published behind it |
 | `ancient-woodland`         | Natural England ancient woodland    | none | Ancient woodland polygons for England, counted by type and size |
 | `bank-rate`                | Bank of England Bank Rate           | none | The daily official Bank Rate, one reading per business day since 1975 |
@@ -91,15 +87,15 @@ editions, versions, and observations.
 ## Usage
 
 ```ts
-import {
-  fetchAncientWoodlandProfile,
-  fetchFloodStationReadings,
-  summarizeFloodReadings,
-} from '@nzlab/uk-sources';
-import { fetchOnsDatasets, summarizeOnsDatasets } from '@nzlab/uk-sources';
-import { fetchFoodHygieneAuthorities, summarizeFoodHygieneAuthorities } from '@nzlab/uk-sources';
-import { fetchTflBikePoints, summarizeTflBikePoints } from '@nzlab/uk-sources';
-import { fetchCarbonIntensityWindow } from '@nzlab/uk-sources';
+import { fetchFloodStationReadings, summarizeFloodReadings } from '@uk-open-data-connectors/uk-sources';
+import { fetchOnsDatasets, summarizeOnsDatasets } from '@uk-open-data-connectors/uk-sources';
+import { fetchFoodHygieneAuthorities, summarizeFoodHygieneAuthorities } from '@uk-open-data-connectors/uk-sources';
+import { fetchTflBikePoints, summarizeTflBikePoints } from '@uk-open-data-connectors/uk-sources';
+import { fetchPlanningDatasets, summarizePlanningDatasets } from '@uk-open-data-connectors/uk-sources';
+import { fetchAncientWoodlandProfile } from '@uk-open-data-connectors/uk-sources';
+import { fetchBankRateObservations, summarizeBankRateSeries } from '@uk-open-data-connectors/uk-sources';
+import { fetchPoliceCrimeSummary } from '@uk-open-data-connectors/uk-sources';
+import { fetchCarbonIntensityWindow } from '@uk-open-data-connectors/uk-sources';
 
 const readings = await fetchFloodStationReadings('1029TH', { limit: 96 });
 const summary = summarizeFloodReadings(readings);
@@ -129,6 +125,6 @@ console.log(intensity.periodCount, intensity.averageIntensity, intensity.lowestP
 Unit tests run against the committed fixtures in `src/fixtures`, offline.
 
 ```bash
-npm run test --workspace @nzlab/uk-sources
-npm run test:smoke --workspace @nzlab/uk-sources   # hits the live APIs
+npm run test --workspace @uk-open-data-connectors/uk-sources
+npm run test:smoke --workspace @uk-open-data-connectors/uk-sources   # hits the live APIs
 ```

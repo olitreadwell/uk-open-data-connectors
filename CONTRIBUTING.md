@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for contributing to NZ Open Data Connectors.
+Thanks for contributing to UK Open Data Connectors.
 
 This guide explains how to set up the repo, run the checks, and open a
 pull request (PR). It is written in plain language. If anything is
@@ -10,13 +10,15 @@ unclear, open an issue and ask.
 
 One design, three languages.
 
-- `packages/` - the TypeScript source of truth. This is where adapters,
-  the Stats NZ client, the HTTP API, and the CLI live.
-- `python/` - a Python port of the same design (package name `nzdata`).
-- `ruby/` - a Ruby port of the same design (gem name `nzdata`).
+- `packages/` - the TypeScript source of truth. This is where the UK
+  adapters, the HTTP API, and the CLI live.
+- `python/` - a Python port of the NZ connectors (package name `nzdata`).
+- `ruby/` - a Ruby port of the NZ connectors (gem name `nzdata`).
 
-A fix or a new source usually has to land in all three places. See
-`docs/ARCHITECTURE.md` for the full map and `docs/GLOSSARY.md` for terms.
+A new UK source lands in `packages/uk-sources` and is exposed by the API
+and the CLI. The Python and Ruby ports still mirror the New Zealand
+connectors they were ported from. See `docs/ARCHITECTURE.md` for the full
+map and `docs/GLOSSARY.md` for terms.
 
 ## Set up your machine
 
@@ -27,13 +29,13 @@ A fix or a new source usually has to land in all three places. See
 2. Run `npm ci` to install dependencies. This installs the exact
    versions from `package-lock.json`.
 
-### Python
+### Python (NZ port, carried over)
 
 1. Install [uv](https://docs.astral.sh/uv/).
 2. Run `cd python && uv sync`. This creates `.venv/` and installs the
    pinned dependencies from `uv.lock`.
 
-### Ruby
+### Ruby (NZ port, carried over)
 
 1. Install Ruby and [Bundler](https://bundler.io/).
 2. Run `cd ruby && bundle install`. This installs the pinned
@@ -52,13 +54,13 @@ npm run check
 
 `npm run check` runs format, lint, type-check, and tests with coverage.
 
-### Python
+### Python (NZ port)
 
 ```sh
 cd python && .venv/bin/ruff check src tests && .venv/bin/mypy && .venv/bin/pytest
 ```
 
-### Ruby
+### Ruby (NZ port)
 
 ```sh
 cd ruby && bundle exec rake check
@@ -102,8 +104,9 @@ Example: `docs/contributing_guide/8`.
   per commit.
 - Use Conventional Commits for messages. Examples: `feat:`, `fix:`,
   `docs:`, `chore:`.
-- When a change affects the shared design, update all three languages:
-  TypeScript, Python, and Ruby.
+- A UK-facing change lands in TypeScript. The Python and Ruby ports still
+  track the NZ connectors, so they are updated only when the shared design
+  changes.
 - Run the quality gates above before you push.
 - Open the PR with `gh pr create`. Describe what changed and why.
 
@@ -130,5 +133,6 @@ Ruby:
 cd ruby && RUN_SMOKE=1 bundle exec rake check
 ```
 
-Smoke tests need the optional API keys in your environment. See
-`README.md` for the list of keys. Endpoints without keys still work.
+Every UK source is keyless, so the TypeScript smoke tests need no
+environment variables. The Python and Ruby smoke tests still probe NZ APIs
+and read their keys from the environment.
