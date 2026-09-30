@@ -24,6 +24,7 @@ describe('built ukdata bin', () => {
       'bank-rate',
       'police-crimes',
       'carbon-intensity',
+      'parliament-seats',
     ]);
   });
 });

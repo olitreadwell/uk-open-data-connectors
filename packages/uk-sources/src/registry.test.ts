@@ -57,6 +57,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     if (new URL(target).hostname === 'api.carbonintensity.org.uk') {
       return jsonResponse(readFixtureJson('carbon-intensity.json'));
     }
+    if (new URL(target).hostname === 'members-api.parliament.uk') {
+      return jsonResponse(readFixtureJson('parliament-seats.json'));
+    }
     if (new URL(target).hostname === 'data.police.uk') {
       return jsonResponse(policeResponse(new URL(target)));
     }
@@ -120,6 +123,7 @@ describe('registry', () => {
       'bank-rate',
       'police-crimes',
       'carbon-intensity',
+      'parliament-seats',
     ]);
   });
 
@@ -133,6 +137,7 @@ describe('registry', () => {
     expect(getUkDataSource('bank-rate')?.name).toContain('Bank of England');
     expect(getUkDataSource('police-crimes')?.name).toContain('Home Office');
     expect(getUkDataSource('carbon-intensity')?.name).toContain('National Energy System Operator');
+    expect(getUkDataSource('parliament-seats')?.name).toContain('UK Parliament');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 

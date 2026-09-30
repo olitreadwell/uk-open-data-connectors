@@ -18,6 +18,7 @@ builds work offline.
 | `bank-rate`                | Bank of England Bank Rate           | none | The daily official Bank Rate, one reading per business day since 1975 |
 | `police-crimes`            | Home Office police.uk               | none | Street-level crime within a mile of a point, counted by crime type and outcome |
 | `carbon-intensity`         | National Energy System Operator     | none | Half-hourly carbon intensity for Great Britain, with the window's cleanest and dirtiest half hours |
+| `parliament-seats`         | UK Parliament Members API           | none | Seats each party holds in the Commons, with the members counted behind them |
 
 The flood-monitoring adapters use `environment.data.gov.uk` under the Open
 Government Licence v3:
@@ -79,6 +80,15 @@ under the Creative Commons Attribution 4.0 licence:
 days, so the adapter reads whole days and asks for a window that ends at the
 start of today, which keeps every reading in it a settled one.
 
+The Parliament seat adapter uses the UK Parliament Members API,
+<https://members-api.parliament.uk/api/Parties/StateOfTheParties>, which
+answers without a key. It is the current state of the parties in each house,
+with the seats a party holds and the members counted behind them, published
+under the Open Parliament Licence v3.0:
+<https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/>.
+The call needs a house and a date, so the adapter asks for the caller's own
+date rather than a fixed one.
+
 Note on sources that look obvious but are not usable: `api.ons.gov.uk` was
 retired on 2024-11-25 and now answers every request with a decommission notice.
 The beta API at `api.beta.ons.gov.uk/v1` replaced it for dataset metadata,
@@ -96,6 +106,7 @@ import { fetchAncientWoodlandProfile } from '@uk-open-data-connectors/uk-sources
 import { fetchBankRateObservations, summarizeBankRateSeries } from '@uk-open-data-connectors/uk-sources';
 import { fetchPoliceCrimeSummary } from '@uk-open-data-connectors/uk-sources';
 import { fetchCarbonIntensityWindow } from '@uk-open-data-connectors/uk-sources';
+import { fetchParliamentSeats } from '@uk-open-data-connectors/uk-sources';
 
 const readings = await fetchFloodStationReadings('1029TH', { limit: 96 });
 const summary = summarizeFloodReadings(readings);
@@ -118,7 +129,72 @@ console.log(woodland.recordCount, woodland.totalHectares, woodland.sizeBands[0]?
 
 const intensity = await fetchCarbonIntensityWindow();
 console.log(intensity.periodCount, intensity.averageIntensity, intensity.lowestPeriod.intensity);
+
+const seats = await fetchParliamentSeats();
+console.log(seats.seatCount, seats.partyCount, seats.largestParty.party.name);
 ```
+
+## UK Parliament seats
+
+`fetchParliamentSeats` reads the state of the parties in the House of Commons
+and returns the seat counts a page can print.
+
+```ts
+import { fetchParliamentSeats } from '@uk-open-data-connectors/uk-sources';
+
+const seats = await fetchParliamentSeats();
+// { seatCount: 650, partyCount: 18, majorityThreshold: 326, ... }
+console.log(seats.largestParty.party.name, seats.largestParty.seatCount);
+```
+
+The payload is validated with this schema before anything is counted:
+
+```ts
+const PARLIAMENT_PARTY_SCHEMA = z.object({
+  id: z.number().int(),
+  name: z.string().nullable(),
+  abbreviation: z.string().nullable(),
+  backgroundColour: z.string().nullable(),
+  foregroundColour: z.string().nullable(),
+  isIndependentParty: z.boolean(),
+});
+
+const PARLIAMENT_SEAT_COUNT_SCHEMA = z.object({
+  male: z.number().int().nonnegative().nullable(),
+  female: z.number().int().nonnegative().nullable(),
+  nonBinary: z.number().int().nonnegative().nullable(),
+  total: z.number().int(),
+  party: PARLIAMENT_PARTY_SCHEMA.nullable(),
+});
+
+const PARLIAMENT_RESPONSE_SCHEMA = z.object({
+  items: z.array(z.object({ value: PARLIAMENT_SEAT_COUNT_SCHEMA.nullable() })).nullable(),
+});
+```
+
+The public surface also carries `buildParliamentSeatsUrl(house, forDate)` for
+a specific house and date, `formatParliamentQueryDate(date)` for the
+`YYYY-MM-DD` the path takes, and `parseParliamentSeats(payload)` /
+`summarizeParliamentPartySeats(seats)` for parsing a payload or a list of
+parties on its own. `PARLIAMENT_COMMONS_HOUSE` is 1 and
+`PARLIAMENT_LORDS_HOUSE` is 2.
+
+Quirks worth knowing before you build on this:
+
+- A vacant seat appears as its own party, named `Vacant`, with one seat and
+  no members behind it. The summary keeps it in `seats` and reports the gap
+  per row as `unallocatedSeatCount`, so `male + female + nonBinary` can sit
+  below `seatCount`.
+- `backgroundColour` and `foregroundColour` are null for a few parties,
+  including the Speaker, so a chart needs its own fallback colour rather than
+  reading the field straight.
+- The house is a path segment, not a query parameter: 1 is the Commons and 2
+  is the Lords, and the same call returns peers for house 2.
+- The call can be slow. One request here timed out at 25 seconds and the next
+  answered in two, so give it a generous timeout and keep a committed fixture
+  fallback.
+- The date is part of the call, so a page that wants "today" has to send its
+  own date; the response does not echo the date or the house back.
 
 ## Tests
 

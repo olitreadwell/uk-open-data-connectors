@@ -18,6 +18,14 @@ describe.skipIf(!RUN_SMOKE)('live API smoke test', () => {
       'flood-stations',
       'flood-readings',
       'ons-datasets',
+      'food-hygiene-authorities',
+      'tfl-bike-points',
+      'planning-datasets',
+      'ancient-woodland',
+      'bank-rate',
+      'police-crimes',
+      'carbon-intensity',
+      'parliament-seats',
     ]);
   });
 

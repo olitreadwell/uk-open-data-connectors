@@ -8,7 +8,7 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 | Package | What it is |
 | ------- | ---------- |
-| `@uk-open-data-connectors/uk-sources` | Uniform adapters for UK public data sources. Ten so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, Transport for London's cycle hire docking stations, the Planning Data platform's dataset catalogue, Natural England's ancient woodland layer, the Bank of England's daily Bank Rate, Home Office police.uk recorded crime, and the National Energy System Operator's half-hourly carbon intensity, all keyless with live probes and offline fixtures |
+| `@uk-open-data-connectors/uk-sources` | Uniform adapters for UK public data sources. Eleven so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, Transport for London's cycle hire docking stations, the Planning Data platform's dataset catalogue, Natural England's ancient woodland layer, the Bank of England's daily Bank Rate, Home Office police.uk recorded crime, the National Energy System Operator's half-hourly carbon intensity, and the UK Parliament state of the parties, all keyless with live probes and offline fixtures |
 | `@uk-open-data-connectors/connectors-api` | HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP |
 | `@uk-open-data-connectors/connectors-cli` | `ukdata` command line tool that prints JSON to stdout, so any language can shell out to it |
 | `python/` (`nzdata` on PyPI) | Python port carried over from the NZ origin. Still NZ sources, see Language ports |
@@ -17,10 +17,11 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 ## Connectors
 
-Ten adapters in `@uk-open-data-connectors/uk-sources`, all keyless. Most carry
+Eleven adapters in `@uk-open-data-connectors/uk-sources`, all keyless. Most carry
 Open Government Licence v3 data; the TfL one carries TfL Open Data, and the
 carbon intensity series is Creative Commons Attribution 4.0 under the
-operator's own terms.
+operator's own terms, while the Parliament seat counts carry the Open
+Parliament Licence v3.
 
 | id | Source | Keyless? | Example command |
 | --- | ------ | -------- | --------------- |
@@ -34,6 +35,7 @@ operator's own terms.
 | `bank-rate` | Bank of England official Bank Rate, one reading per business day since 1975 | Yes | `npx tsx packages/cli/src/cli.ts probe bank-rate` |
 | `police-crimes` | Home Office police.uk recorded crime within a mile of a point, counted by crime type and outcome | Yes | `npx tsx packages/cli/src/cli.ts probe police-crimes` |
 | `carbon-intensity` | National Energy System Operator half-hourly carbon intensity for Great Britain | Yes | `npx tsx packages/cli/src/cli.ts probe carbon-intensity` |
+| `parliament-seats` | UK Parliament seats each party holds in the House of Commons | Yes | `npx tsx packages/cli/src/cli.ts probe parliament-seats` |
 
 Sources that look obvious for a UK repo and are not usable as they stand:
 
@@ -70,6 +72,12 @@ backs `carbon-intensity`. It is the official half-hourly series for Great
 Britain, with a reading for every half hour and a grade for each one. A range
 is read in one call, and the API refuses a range longer than 31 days, so the
 adapter asks for 30 complete days ending at the start of today.
+
+The Members API at `members-api.parliament.uk` answers keyless and backs
+`parliament-seats`. Its state-of-the-parties call takes a house (1 for the
+Commons, 2 for the Lords) and a date, and returns each party with the seats it
+holds and the members counted behind them. Parliament publishes the data under
+the Open Parliament Licence v3.0.
 
 ### Adapter examples
 

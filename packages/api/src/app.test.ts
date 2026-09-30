@@ -143,6 +143,7 @@ describe('createConnectorsApp', () => {
       'bank-rate',
       'police-crimes',
       'carbon-intensity',
+      'parliament-seats',
     ]);
     for (const source of sources) {
       expect(source.name.length).toBeGreaterThan(0);
