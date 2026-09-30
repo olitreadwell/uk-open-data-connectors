@@ -42,6 +42,18 @@ export {
 } from './onsDatasets';
 /** ONS catalogue types. */
 export type { OnsDatasetRecord, OnsDatasetSummary, OnsDatasetYearCount } from './onsDatasets';
+/** Planning Data platform dataset catalogue, published by MHCLG (keyless). */
+export {
+  DEFAULT_LARGEST_DATASET_LIMIT,
+  fetchPlanningDatasets,
+  parsePlanningDatasets,
+  planningDatasetsAdapter,
+  PLANNING_DATASET_REALM,
+  PLANNING_DATASETS_URL,
+  summarizePlanningDatasets,
+} from './planningDatasets';
+/** Planning dataset types. */
+export type { PlanningDataset, PlanningDatasetSummary } from './planningDatasets';
 /** Transport for London Santander Cycles docking stations (keyless). */
 export {
   DEFAULT_LARGEST_STATION_LIMIT,

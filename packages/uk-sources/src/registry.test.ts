@@ -40,6 +40,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     if (new URL(target).hostname === 'api.tfl.gov.uk') {
       return jsonResponse(readFixtureJson('tfl-bike-points.json'));
     }
+    if (new URL(target).hostname === 'www.planning.data.gov.uk') {
+      return jsonResponse(readFixtureJson('planning-datasets.json'));
+    }
     if (target.includes('/readings')) {
       return jsonResponse(readFixtureJson('flood-station-readings.json'));
     }
@@ -53,13 +56,14 @@ afterEach(() => {
 });
 
 describe('registry', () => {
-  it('registers the Environment Agency, ONS, FSA, and TfL adapters', () => {
+  it('registers the Environment Agency, ONS, FSA, TfL, and MHCLG adapters', () => {
     expect(UK_DATA_SOURCES.map((source) => source.id)).toEqual([
       'flood-stations',
       'flood-readings',
       'ons-datasets',
       'food-hygiene-authorities',
       'tfl-bike-points',
+      'planning-datasets',
     ]);
   });
 
@@ -68,6 +72,7 @@ describe('registry', () => {
     expect(getUkDataSource('ons-datasets')?.name).toContain('Office for National Statistics');
     expect(getUkDataSource('food-hygiene-authorities')?.name).toContain('Food Standards Agency');
     expect(getUkDataSource('tfl-bike-points')?.name).toContain('Transport for London');
+    expect(getUkDataSource('planning-datasets')?.name).toContain('Ministry of Housing');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 

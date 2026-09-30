@@ -17,6 +17,7 @@ separate change.
 | `ons-datasets`             | ONS beta API dataset catalogue      | none | Every dataset the ONS lists, with its state and stamp        |
 | `food-hygiene-authorities` | Food Standards Agency food hygiene  | none | Every local authority register, with its establishment count |
 | `tfl-bike-points`           | Transport for London cycle hire     | none | Every Santander Cycles docking station, with docking points and docked bikes |
+| `planning-datasets`        | Planning Data platform (MHCLG)      | none | Every planning dataset, with the records published behind it |
 
 The flood-monitoring adapters use `environment.data.gov.uk` under the Open
 Government Licence v3:
@@ -30,6 +31,12 @@ The food hygiene adapter uses the FSA Food Hygiene Rating Scheme API,
 <https://api.ratings.food.gov.uk/Authorities/basic>, also keyless and under the
 Open Government Licence v3. It answers only with the version header the FSA
 asks for, `x-api-version: 2`; without it the endpoint returns HTTP 404.
+
+The Planning Data platform adapter uses the dataset catalogue behind
+<https://www.planning.data.gov.uk/dataset>, <https://www.planning.data.gov.uk/dataset.json>,
+which answers without a key under the Open Government Licence v3. The file
+lists datasets alongside the platform's pipeline configuration and provenance
+tables, so the adapter keeps the entries whose `realm` is `dataset`.
 
 The docking station adapter uses TfL's Unified API,
 <https://api.tfl.gov.uk/BikePoint>, which answers without a key. TfL asks for
@@ -62,6 +69,9 @@ console.log(registers.authorityCount, registers.establishmentCount);
 
 const docks = summarizeTflBikePoints(await fetchTflBikePoints());
 console.log(docks.stationCount, docks.dockCount, docks.largestStations[0]?.name);
+
+const planning = summarizePlanningDatasets(await fetchPlanningDatasets());
+console.log(planning.datasetCount, planning.entityCount, planning.emptyDatasetCount);
 ```
 
 ## Tests
