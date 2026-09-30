@@ -234,12 +234,19 @@ describe('carbonIntensityAdapter', () => {
   });
 
   it('reads live through the supplied fetch implementation', async () => {
-    // The default window ends at the start of today, so it trims a reading or
-    // two from either end of the committed snapshot. The count is a range
-    // rather than a number for that reason.
-    const fetchImpl = vi.fn(async () => jsonResponse(readFixtureJson('carbon-intensity.json')));
-    const window = await carbonIntensityAdapter.fetchLive({ fetchImpl });
-    expect(window.periodCount).toBeGreaterThan(1400);
-    expect(window.periods[0]?.from).toBe('2026-08-30T00:00Z');
+    // The default window ends at the start of today, so the committed snapshot
+    // loses a reading for every day the wall clock moves past it. Pin the clock
+    // to the day the snapshot was captured, so this test measures the adapter
+    // rather than the calendar.
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date('2026-09-29T12:00:00Z'));
+    try {
+      const fetchImpl = vi.fn(async () => jsonResponse(readFixtureJson('carbon-intensity.json')));
+      const window = await carbonIntensityAdapter.fetchLive({ fetchImpl });
+      expect(window.periodCount).toBeGreaterThan(1400);
+      expect(window.periods[0]?.from).toBe('2026-08-30T00:00Z');
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });
