@@ -1,0 +1,50 @@
+{
+  "name": "@uk-open-data-connectors/uk-mcp",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "uk-open-data-mcp": "./dist/stdio.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "npm run build",
+    "lint": "eslint .",
+    "format": "prettier --write \"src/**/*.{ts,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,json}\"",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest --watch",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo coverage",
+    "clean:all": "rm -rf dist tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo coverage node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.1",
+    "eslint": "9.39.5",
+    "typescript": "6.0.3",
+    "vitest": "3.2.7",
+    "@uk-open-data-connectors/config-eslint": "*",
+    "@uk-open-data-connectors/config-typescript": "*"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.0",
+    "@uk-open-data-connectors/uk-sources": "^0.1.0",
+    "zod": "3.25.76"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "MCP server exposing the UK open data connector library to Claude and ChatGPT"
+}

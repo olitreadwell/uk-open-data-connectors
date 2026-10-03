@@ -10,7 +10,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build -w @uk-open-data-connectors/uk-sources -w @uk-open-data-connectors/connectors-cli",
+    "build": "npm run build -w @uk-open-data-connectors/uk-sources && npm run build -w @uk-open-data-connectors/uk-mcp && npm run build -w @uk-open-data-connectors/connectors-cli",
     "lint": "npm run lint --workspaces --if-present",
     "format": "npm run format --workspaces --if-present",
     "format:check": "npm run format:check --workspaces --if-present",
