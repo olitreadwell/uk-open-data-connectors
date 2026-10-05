@@ -17,12 +17,20 @@ npm workspaces, one package per concern.
 ## Current state
 
 - `main` is the integration branch. Pull requests target `main`.
-- Three UK adapters, all keyless: `flood-stations` and `flood-readings`
-  (Environment Agency flood-monitoring API, Open Government Licence v3) and
-  `ons-datasets` (ONS beta API dataset catalogue).
+- Twenty-two UK adapters, all keyless. Eleven shipped earlier (Environment
+  Agency flood-monitoring, ONS dataset catalogue, FSA food hygiene, TfL cycle
+  hire, Planning Data, Natural England ancient woodland, Bank of England Bank
+  Rate, police.uk crime, carbon intensity, Parliament seats). Eleven more
+  landed on 2026-10-05: `postcode-lookup`, `explore-education-statistics`,
+  `london-datastore`, `tna-discovery`, `ukhsa-dashboard`, `nomis`,
+  `fingertips-indicators`, `find-a-tender`, `tfl-line-status`,
+  `public-health-scotland`, and `nhsbsa-ckan`. Licences and endpoints are in
+  `docs/CONNECTOR_DISCOVERY.md`.
 - Adapters live in `packages/uk-sources/src/*.ts` next to their tests, with
-  committed fixtures in `packages/uk-sources/src/fixtures/`.
-- Working tree clean; `npm run check` green.
+  committed fixtures in `packages/uk-sources/src/fixtures/`. New fixtures are
+  dated in their filenames.
+- `npm run check` is green. The Nomis fixture is a documented trim of the
+  1,617-definition live catalogue; the adapter reads the whole live response.
 
 ## Commands
 
@@ -66,9 +74,10 @@ cd ruby && bundle exec rake check
    repo. That script matches the package name this repo used before the scope
    rename, so the daily loop cannot vendor this package until the script is
    updated for the `@uk-open-data-connectors` scope.
-2. More UK sources are candidates once they are verified live. Two that are
-   not usable as they stand: `api.ons.gov.uk` (retired 2024-11-25) and the
-   CKAN API path on `data.gov.uk`.
+2. Two sources are still not usable as they stand: `api.ons.gov.uk` (retired
+   2024-11-25) and the CKAN API path on `data.gov.uk`. The Public Health
+   Scotland portal is occasionally flaky (504 or reset), so the nightly smoke
+   run can fail on it now and then.
 3. Watch the nightly smoke workflow after any adapter change.
 4. TS versioning is manual (no changesets); documented in `docs/RELEASING.md`.
 

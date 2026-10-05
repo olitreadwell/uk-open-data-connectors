@@ -1,13 +1,24 @@
 import { ancientWoodlandAdapter } from './ancientWoodland.js';
 import { bankRateAdapter } from './bankRate.js';
 import { carbonIntensityAdapter } from './carbonIntensity.js';
+import { exploreEducationStatisticsAdapter } from './exploreEducationStatistics.js';
+import { findATenderAdapter } from './findATender.js';
+import { fingertipsIndicatorsAdapter } from './fingertipsIndicators.js';
 import { floodReadingsAdapter, floodStationsAdapter } from './floodMonitoring.js';
 import { foodHygieneAuthoritiesAdapter } from './foodHygiene.js';
+import { londonDatastoreAdapter } from './londonDatastore.js';
+import { nhsbsaCkanAdapter } from './nhsbsaCkan.js';
+import { nomisAdapter } from './nomis.js';
 import { onsDatasetsAdapter } from './onsDatasets.js';
 import { parliamentSeatsAdapter } from './parliamentSeats.js';
 import { planningDatasetsAdapter } from './planningDatasets.js';
 import { policeCrimesAdapter } from './policeCrimes.js';
+import { postcodeLookupAdapter } from './postcodeLookup.js';
+import { publicHealthScotlandAdapter } from './publicHealthScotland.js';
 import { tflBikePointsAdapter } from './tflBikePoints.js';
+import { tflLineStatusAdapter } from './tflLineStatus.js';
+import { tnaDiscoveryAdapter } from './tnaDiscovery.js';
+import { ukhsaDashboardAdapter } from './ukhsaDashboard.js';
 import type { UkDataAdapter, UkFetchOptions, UkSourceProbe } from './types.js';
 
 /** Every UK data source behind the uniform adapter interface. */
@@ -23,6 +34,17 @@ export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [
   policeCrimesAdapter,
   carbonIntensityAdapter,
   parliamentSeatsAdapter,
+  postcodeLookupAdapter,
+  exploreEducationStatisticsAdapter,
+  londonDatastoreAdapter,
+  tnaDiscoveryAdapter,
+  ukhsaDashboardAdapter,
+  nomisAdapter,
+  fingertipsIndicatorsAdapter,
+  findATenderAdapter,
+  tflLineStatusAdapter,
+  publicHealthScotlandAdapter,
+  nhsbsaCkanAdapter,
 ];
 
 /** Looks up a source adapter by id. */

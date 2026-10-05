@@ -1,6 +1,6 @@
 {
   "name": "uk-open-data-connectors",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "packageManager": "npm@10.9.9",
   "engines": {
@@ -30,5 +30,13 @@
     "@vitest/coverage-v8": "3.2.7"
   },
   "dependencies": {},
-  "description": "UK open data connectors: TypeScript adapters for UK public data sources, with an HTTP API and a CLI."
+  "description": "UK open data connectors: TypeScript adapters for UK public data sources, with an HTTP API and a CLI.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olitreadwell/uk-open-data-connectors.git"
+  },
+  "homepage": "https://github.com/olitreadwell/uk-open-data-connectors#readme",
+  "bugs": {
+    "url": "https://github.com/olitreadwell/uk-open-data-connectors/issues"
+  }
 }

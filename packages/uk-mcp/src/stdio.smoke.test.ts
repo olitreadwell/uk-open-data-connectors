@@ -1,5 +1,6 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
+import { UK_DATA_SOURCES } from '@uk-open-data-connectors/uk-sources';
 import { describe, expect, it } from 'vitest';
 
 const RUN_SMOKE = process.env.RUN_SMOKE === '1';
@@ -24,7 +25,7 @@ describe.runIf(RUN_SMOKE)('the built stdio server', () => {
     expect(tools.map((tool) => tool.name)).toContain('uk_parliament_seats');
 
     const sources = await client.callTool({ name: 'list_sources', arguments: {} });
-    expect(JSON.parse(firstText(sources)).length).toBe(11);
+    expect(JSON.parse(firstText(sources))).toHaveLength(UK_DATA_SOURCES.length);
 
     const probe = await client.callTool({
       name: 'probe_sources',

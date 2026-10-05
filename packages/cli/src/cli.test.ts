@@ -1,6 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { UK_DATA_SOURCES } from '@uk-open-data-connectors/uk-sources';
 import { describe, expect, it } from 'vitest';
 
 /** dist/cli.js, the file the `ukdata` bin entry point points at. */
@@ -13,18 +14,6 @@ describe('built ukdata bin', () => {
       encoding: 'utf8',
     });
     const sources = JSON.parse(stdout) as Array<{ id: string }>;
-    expect(sources.map((source) => source.id)).toEqual([
-      'flood-stations',
-      'flood-readings',
-      'ons-datasets',
-      'food-hygiene-authorities',
-      'tfl-bike-points',
-      'planning-datasets',
-      'ancient-woodland',
-      'bank-rate',
-      'police-crimes',
-      'carbon-intensity',
-      'parliament-seats',
-    ]);
+    expect(sources.map((source) => source.id)).toEqual(UK_DATA_SOURCES.map((source) => source.id));
   });
 });

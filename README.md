@@ -8,7 +8,7 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 | Package | What it is |
 | ------- | ---------- |
-| `@uk-open-data-connectors/uk-sources` | Uniform adapters for UK public data sources. Eleven so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, Transport for London's cycle hire docking stations, the Planning Data platform's dataset catalogue, Natural England's ancient woodland layer, the Bank of England's daily Bank Rate, Home Office police.uk recorded crime, the National Energy System Operator's half-hourly carbon intensity, and the UK Parliament state of the parties, all keyless with live probes and offline fixtures |
+| [`@uk-open-data-connectors/uk-sources`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources) | Uniform adapters for UK public data sources. Twenty-two so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, Transport for London's cycle hire docking stations and Tube line status, the Planning Data platform's dataset catalogue, Natural England's ancient woodland layer, the Bank of England's daily Bank Rate, Home Office police.uk recorded crime, the National Energy System Operator's half-hourly carbon intensity, the UK Parliament state of the parties, postcodes.io postcode lookup, Department for Education statistics releases, the London Datastore, The National Archives Discovery catalogue, the UKHSA data dashboard, the Nomis catalogue, Fingertips public health indicators, Find a Tender procurement notices, the Public Health Scotland catalogue, and the NHSBSA catalogue, all keyless with live probes and offline fixtures |
 | `@uk-open-data-connectors/connectors-api` | HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP |
 | `@uk-open-data-connectors/connectors-cli` | `ukdata` command line tool that prints JSON to stdout, so any language can shell out to it |
 | `python/` (`nzdata` on PyPI) | Python port carried over from the NZ origin. Still NZ sources, see Language ports |
@@ -17,11 +17,13 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 ## Connectors
 
-Eleven adapters in `@uk-open-data-connectors/uk-sources`, all keyless. Most carry
-Open Government Licence v3 data; the TfL one carries TfL Open Data, and the
-carbon intensity series is Creative Commons Attribution 4.0 under the
-operator's own terms, while the Parliament seat counts carry the Open
-Parliament Licence v3.
+Twenty-two adapters in `@uk-open-data-connectors/uk-sources`, all keyless.
+Most carry Open Government Licence v3 data; the two TfL adapters carry TfL
+Open Data, the carbon intensity series is Creative Commons Attribution 4.0
+under the operator's own terms, and the Parliament seat counts carry the Open
+Parliament Licence v3. The postcode lookup goes through postcodes.io, a third
+party that serves Open Government Licence postcode data from the ONS and
+Ordnance Survey.
 
 | id | Source | Keyless? | Example command |
 | --- | ------ | -------- | --------------- |
@@ -36,6 +38,17 @@ Parliament Licence v3.
 | `police-crimes` | Home Office police.uk recorded crime within a mile of a point, counted by crime type and outcome | Yes | `npx tsx packages/cli/src/cli.ts probe police-crimes` |
 | `carbon-intensity` | National Energy System Operator half-hourly carbon intensity for Great Britain | Yes | `npx tsx packages/cli/src/cli.ts probe carbon-intensity` |
 | `parliament-seats` | UK Parliament seats each party holds in the House of Commons | Yes | `npx tsx packages/cli/src/cli.ts probe parliament-seats` |
+| `postcode-lookup` | postcodes.io postcode lookup, with country, region, wards, and coordinates | Yes | `npx tsx packages/cli/src/cli.ts probe postcode-lookup` |
+| `explore-education-statistics` | Department for Education statistics releases, most recent first | Yes | `npx tsx packages/cli/src/cli.ts probe explore-education-statistics` |
+| `london-datastore` | Greater London Authority London Datastore dataset catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe london-datastore` |
+| `tna-discovery` | The National Archives Discovery catalogue search | Yes | `npx tsx packages/cli/src/cli.ts probe tna-discovery` |
+| `ukhsa-dashboard` | UK Health Security Agency data dashboard metric points | Yes | `npx tsx packages/cli/src/cli.ts probe ukhsa-dashboard` |
+| `nomis` | ONS Nomis SDMX dataset definitions, with maintenance status | Yes | `npx tsx packages/cli/src/cli.ts probe nomis` |
+| `fingertips-indicators` | Fingertips public health indicator metadata, published by OHID | Yes | `npx tsx packages/cli/src/cli.ts probe fingertips-indicators` |
+| `find-a-tender` | Cabinet Office Find a Tender procurement notices (OCDS 1.1) | Yes | `npx tsx packages/cli/src/cli.ts probe find-a-tender` |
+| `tfl-line-status` | Live status of every London Underground line | Yes | `npx tsx packages/cli/src/cli.ts probe tfl-line-status` |
+| `public-health-scotland` | Public Health Scotland open data catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe public-health-scotland` |
+| `nhsbsa-ckan` | NHS Business Services Authority open data catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe nhsbsa-ckan` |
 
 Sources that look obvious for a UK repo and are not usable as they stand:
 
@@ -78,6 +91,29 @@ The Members API at `members-api.parliament.uk` answers keyless and backs
 Commons, 2 for the Lords) and a date, and returns each party with the seats it
 holds and the members counted behind them. Parliament publishes the data under
 the Open Parliament Licence v3.0.
+
+### Added 2026-10-05
+
+Eleven more keyless adapters, each checked live on 2026-10-05 and covered by a
+committed fixture:
+
+- `postcode-lookup` reads one postcode from postcodes.io, default SW1A 1AA.
+- `explore-education-statistics` reads the Department for Education's most
+  recent statistics releases.
+- `london-datastore` reads the Greater London Authority's dataset catalogue.
+- `tna-discovery` searches The National Archives' Discovery catalogue.
+- `ukhsa-dashboard` reads new HIV diagnoses in England from the UKHSA data
+  dashboard.
+- `nomis` reads the ONS Nomis SDMX dataset catalogue.
+- `fingertips-indicators` reads public health indicator metadata from OHID's
+  Fingertips service.
+- `find-a-tender` reads the Cabinet Office's most recent procurement notices.
+- `tfl-line-status` reads the live status of every Tube line.
+- `public-health-scotland` reads the Public Health Scotland dataset catalogue.
+- `nhsbsa-ckan` reads the NHS Business Services Authority dataset catalogue.
+
+The full endpoint list, exact curl commands, and licences are in
+`docs/CONNECTOR_DISCOVERY.md`.
 
 ### Adapter examples
 

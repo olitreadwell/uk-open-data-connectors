@@ -1,0 +1,1789 @@
+{
+  "uri": "https://www.find-tender.service.gov.uk/api/1.0/ocdsReleasePackages?limit=10&updatedTo=2026-10-05T10:54:49",
+  "version": "1.1",
+  "extensions": [
+    "https://standard.open-contracting.org/profiles/eu/latest/en/extension.json",
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_amendment_rationale_classifications_extension/master/extension.json",
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_budget_breakdown_extension/master/extension.json",
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_contract_completion_extension/master/extension.json",
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_documentation_extension/master/extension.json",
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_pagination_extension/master/extension.json",
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_suitability_extension/master/extension.json",
+    "https://raw.githubusercontent.com/portaledcahn/ocds_Links_extension/main/extension.json",
+    "https://raw.githubusercontent.com/cabinetoffice/ocds_uk_extension/main/extension.json",
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_performance_failures_extension/master/extension.json"
+  ],
+  "publishedDate": "2026-10-05T10:53:20+01:00",
+  "publisher": {
+    "name": "Cabinet Office",
+    "scheme": "GB-GOR",
+    "uid": "D2",
+    "uri": "https://www.gov.uk/government/organisations/cabinet-office"
+  },
+  "license": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+  "publicationPolicy": "https://www.gov.uk/government/publications/open-contracting",
+  "releases": [
+    {
+      "id": "093691-2026",
+      "tag": ["award", "contract"],
+      "date": "2026-10-05T10:53:20+01:00",
+      "initiationType": "tender",
+      "ocid": "ocds-h6vhtk-061392",
+      "parties": [
+        {
+          "name": "Velindre University NHS Trust",
+          "id": "GB-PPON-PXWV-6492-CGMN",
+          "identifier": {
+            "scheme": "GB-PPON",
+            "id": "PXWV-6492-CGMN"
+          },
+          "address": {
+            "streetAddress": "Unit 2 Charnwood Court, Parc Nantgarw",
+            "locality": "Cardiff",
+            "postalCode": "CF15 7QZ",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKL15"
+          },
+          "contactPoint": {
+            "name": "Connor Lloyd",
+            "email": "connor.lloyd@wales.nhs.uk",
+            "telephone": "+44 2921501054"
+          },
+          "roles": ["buyer"],
+          "details": {
+            "url": "http://nwssp.nhs.wales/ourservices/procurement-services/",
+            "classifications": [
+              {
+                "scheme": "UK_CA_TYPE",
+                "id": "publicAuthoritySubCentralGovernment",
+                "description": "Public authority - sub-central government"
+              },
+              {
+                "scheme": "UK_CA_DEVOLVED_REGULATIONS",
+                "id": "GB-WLS",
+                "description": "Welsh devolved regulations apply"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Pearl Scan",
+          "id": "GB-COH-04637136",
+          "identifier": {
+            "scheme": "GB-COH",
+            "id": "04637136"
+          },
+          "address": {
+            "streetAddress": "41 Carnarvon Street",
+            "locality": "Manchester",
+            "postalCode": "M3 1EZ",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKD33"
+          },
+          "contactPoint": {
+            "email": "dan.johnson@pearl-scan.co.uk"
+          },
+          "roles": ["supplier"],
+          "details": {
+            "scale": "sme",
+            "vcse": false,
+            "publicServiceMissionOrganization": false,
+            "shelteredWorkshop": false
+          }
+        }
+      ],
+      "buyer": {
+        "id": "GB-PPON-PXWV-6492-CGMN",
+        "name": "Velindre University NHS Trust"
+      },
+      "tender": {
+        "id": "WBS-FTS-59249",
+        "legalBasis": {
+          "id": "2023/54",
+          "scheme": "UKPGA",
+          "uri": "https://www.legislation.gov.uk/ukpga/2023/54/contents"
+        },
+        "title": "WBS-FTS-59249-Provision of a Scanning and Archiving Service for Welsh Blood Service",
+        "description": "The Welsh Blood Service (WBS) has a requirement to retain access to documents or document images over extended periods of up to 40 years. The current provision involves scanning images into a cloud-based system held by the archiving company and scanning onto CD-ROMs as a back-up. WBS staff with appropriate authority can access the system to check any documents as and when necessary for the area/department where they work.\nThe Welsh Blood Service manages a large number of paper and electronic records. Some records must be kept accessible for a period of up to 40 years.\nWBS records include special category data; therefore, state-of-the-art cyber security is a paramount requirement.\nIt is a requirement to retain Welsh Blood Service records for a period in line with VUNHST Records Policy (further information can be found within the Invitation to Tender Document).\nThe Welsh Blood service requires a system and service where paper records can be held in secure digital format and be readily accessible by authorised members of staff.\nThe contractor is expected to transport, scan and digitise, store and destroy records after authorisation an approximation of 78,000 files a year.",
+        "status": "complete",
+        "procurementMethod": "open",
+        "procurementMethodDetails": "Open procedure",
+        "lots": [
+          {
+            "id": "1",
+            "status": "complete"
+          }
+        ]
+      },
+      "bids": {
+        "statistics": [
+          {
+            "id": "1",
+            "measure": "bids",
+            "value": 1,
+            "relatedLot": "1"
+          },
+          {
+            "id": "2",
+            "measure": "finalStageBids",
+            "value": 1,
+            "relatedLot": "1"
+          },
+          {
+            "id": "3",
+            "measure": "smeFinalStageBids",
+            "value": 1,
+            "relatedLot": "1"
+          },
+          {
+            "id": "4",
+            "measure": "vcseFinalStageBids",
+            "value": 0,
+            "relatedLot": "1"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "1",
+          "title": "WBS-FTS-59249-Provision of a Scanning and Archiving Service for Welsh Blood Service",
+          "status": "pending",
+          "date": "2026-10-02T00:00:00+01:00",
+          "value": {
+            "amountGross": 53926.99,
+            "amount": 44939.16,
+            "currency": "GBP"
+          },
+          "mainProcurementCategory": "services",
+          "aboveThreshold": true,
+          "suppliers": [
+            {
+              "id": "GB-COH-04637136",
+              "name": "Pearl Scan"
+            }
+          ],
+          "items": [
+            {
+              "id": "1",
+              "additionalClassifications": [
+                {
+                  "scheme": "CPV",
+                  "id": "79995100",
+                  "description": "Archiving services"
+                }
+              ],
+              "deliveryAddresses": [
+                {
+                  "region": "UKL",
+                  "country": "GB",
+                  "countryName": "United Kingdom"
+                }
+              ],
+              "relatedLot": "1"
+            }
+          ],
+          "standstillPeriod": {
+            "endDate": "2026-10-14T23:59:59+01:00"
+          },
+          "contractPeriod": {
+            "startDate": "2026-11-01T00:00:00+00:00",
+            "endDate": "2027-10-31T23:59:59+00:00",
+            "maxExtentDate": "2029-10-31T23:59:59+00:00"
+          },
+          "hasRenewal": true,
+          "renewal": {
+            "description": "Two optional 12-month extensions.\nInitial term: 01/11/2026 - 31/10/2027\nExtension 1: 01/11/2027 - 31/10/2028\nExtension 2: 01/11/2028 - 31/10/2029"
+          },
+          "relatedLots": ["1"],
+          "documents": [
+            {
+              "id": "093691-2026",
+              "documentType": "awardNotice",
+              "noticeType": "UK6",
+              "description": "Contract award notice on Find a Tender",
+              "url": "https://www.find-tender.service.gov.uk/Notice/093691-2026",
+              "datePublished": "2026-10-05T10:53:20+01:00",
+              "format": "text/html"
+            }
+          ],
+          "assessmentSummariesDateSent": "2026-10-02T00:00:00+01:00",
+          "milestones": [
+            {
+              "id": "1",
+              "type": "futureSignatureDate",
+              "dueDate": "2026-10-23T23:59:59+01:00",
+              "status": "scheduled"
+            }
+          ]
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "ocid": "ocds-h6vhtk-07807c",
+      "buyerID": [],
+      "id": "093690-2026",
+      "tag": ["award", "contract"],
+      "date": "2026-10-05T10:50:38+01:00",
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Derbyshire County Council",
+          "id": "GB-PPON-PWZQ-2162-JJQL",
+          "identifier": {
+            "scheme": "GB-PPON",
+            "id": "PWZQ-2162-JJQL"
+          },
+          "address": {
+            "streetAddress": "County Hall",
+            "locality": "Matlock",
+            "postalCode": "DE4 3AG",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKF13"
+          },
+          "contactPoint": {
+            "email": "Countyprocurementcompliance.team@derbyshire.gov.uk"
+          },
+          "roles": ["buyer"],
+          "details": {
+            "url": "https://www.derbyshire.gov.uk/home.aspx",
+            "classifications": [
+              {
+                "scheme": "UK_CA_TYPE",
+                "id": "publicAuthoritySubCentralGovernment",
+                "description": "Public authority - sub-central government"
+              }
+            ]
+          }
+        },
+        {
+          "name": "CBC COMPUTER SYSTEMS LIMITED",
+          "id": "GB-COH-01973600",
+          "identifier": {
+            "scheme": "GB-COH",
+            "id": "01973600"
+          },
+          "additionalIdentifiers": [
+            {
+              "scheme": "GB-PPON",
+              "id": "PZHY-2227-XRMJ"
+            }
+          ],
+          "address": {
+            "streetAddress": "1 Manton Street",
+            "locality": "Sheffield",
+            "postalCode": "S2 4BA",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKE32"
+          },
+          "contactPoint": {
+            "email": "lgoodwin@cbccomputers.com"
+          },
+          "roles": ["supplier"],
+          "details": {
+            "url": "http://www.cbccomputers.com",
+            "scale": "sme",
+            "vcse": false
+          }
+        }
+      ],
+      "buyer": {
+        "id": "GB-PPON-PWZQ-2162-JJQL",
+        "name": "Derbyshire County Council"
+      },
+      "tender": {
+        "id": "ocds-h6vhtk-07807c",
+        "legalBasis": {
+          "id": "2023/54",
+          "scheme": "UKPGA",
+          "uri": "https://www.legislation.gov.uk/ukpga/2023/54/contents"
+        },
+        "title": "Laptops for Children not in Educational Setting",
+        "description": "The purchase of a bank of laptops that can be issued to children/young people who require access to education outside of a school setting.",
+        "status": "complete",
+        "procurementMethodDetails": "Below threshold - unknown",
+        "lots": [
+          {
+            "id": "1",
+            "status": "complete",
+            "description": null
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "1",
+          "status": "active",
+          "mainProcurementCategory": "goods",
+          "suppliers": [
+            {
+              "id": "GB-COH-01973600",
+              "name": "CBC COMPUTER SYSTEMS LIMITED"
+            }
+          ],
+          "items": [
+            {
+              "id": "1",
+              "additionalClassifications": [
+                {
+                  "scheme": "CPV",
+                  "id": "30213100",
+                  "description": "Portable computers"
+                }
+              ],
+              "deliveryAddresses": [
+                {
+                  "region": "UKF1",
+                  "country": "GB",
+                  "countryName": "United Kingdom"
+                }
+              ],
+              "relatedLot": "1"
+            }
+          ],
+          "relatedLots": ["1"]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "1",
+          "awardID": "1",
+          "status": "active",
+          "period": {
+            "startDate": "2026-10-01T00:00:00+01:00",
+            "endDate": "2027-09-30T23:59:59+01:00"
+          },
+          "value": {
+            "amountGross": 67140,
+            "amount": 55950,
+            "currency": "GBP"
+          },
+          "aboveThreshold": false,
+          "dateSigned": "2026-09-30T00:00:00+01:00",
+          "statusDetails": null,
+          "documents": [
+            {
+              "id": "093690-2026",
+              "documentType": "contractNotice",
+              "noticeType": "UK7",
+              "description": "Contract details notice on Find a Tender",
+              "url": "https://www.find-tender.service.gov.uk/Notice/093690-2026",
+              "datePublished": "2026-10-05T10:50:38+01:00",
+              "format": "text/html"
+            }
+          ]
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "ocid": "ocds-h6vhtk-07807b",
+      "id": "093689-2026",
+      "tag": ["award", "contract"],
+      "date": "2026-10-05T10:49:08+01:00",
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "DEPARTMENT FOR ENVIRONMENT, FOOD AND RURAL AFFAIRS",
+          "id": "GB-PPON-PNBD-3289-CDGX",
+          "identifier": {
+            "scheme": "GB-PPON",
+            "id": "PNBD-3289-CDGX"
+          },
+          "address": {
+            "streetAddress": "Seacole Building, 2 Marsham Street",
+            "locality": "London",
+            "postalCode": "SW1P 4DF",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKI32"
+          },
+          "contactPoint": {
+            "name": "pROCUREMENT",
+            "email": "procurement@defra.gov.uk",
+            "telephone": "03459335577"
+          },
+          "roles": ["buyer"],
+          "details": {
+            "url": "https://defra-family.force.com/s/Welcome",
+            "classifications": [
+              {
+                "scheme": "UK_CA_TYPE",
+                "id": "publicAuthorityCentralGovernment",
+                "description": "Public authority - central government"
+              }
+            ]
+          }
+        }
+      ],
+      "buyer": {
+        "id": "GB-PPON-PNBD-3289-CDGX",
+        "name": "DEPARTMENT FOR ENVIRONMENT, FOOD AND RURAL AFFAIRS"
+      },
+      "tender": {
+        "id": "P-40993",
+        "legalBasis": {
+          "id": "2023/54",
+          "scheme": "UKPGA",
+          "uri": "https://www.legislation.gov.uk/ukpga/2023/54/contents"
+        },
+        "title": "•\tProcurement of Esri ArcGIS training for the NCEA programme",
+        "description": "• This training will equip NCEA programme staff with the skills and confidence to use Geographic Information Systems (GIS) more effectively when working with environmental data. By developing capability in the visualisation, management, integration, and analysis of spatial datasets, participants will be able to make better use of both NCEA-funded data and wider environmental datasets. This will improve the efficiency and consistency of geospatial analysis across the programme, strengthen evidence-based decision-making, and support the wider use and value of environmental data across the Defra Group.",
+        "status": "complete",
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Below threshold - without competition",
+        "lots": [
+          {
+            "id": "1",
+            "status": "complete",
+            "suitability": {
+              "sme": true,
+              "vcse": true
+            }
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "1",
+          "title": "•\tProcurement of Esri ArcGIS training for the NCEA programme",
+          "status": "pending",
+          "value": {
+            "amountGross": 15504.0,
+            "amount": 12920.0,
+            "currency": "GBP"
+          },
+          "mainProcurementCategory": "services",
+          "aboveThreshold": false,
+          "items": [
+            {
+              "id": "1",
+              "additionalClassifications": [
+                {
+                  "scheme": "CPV",
+                  "id": "80000000",
+                  "description": "Education and training services"
+                }
+              ],
+              "relatedLot": "1"
+            }
+          ],
+          "contractPeriod": {
+            "startDate": "2026-11-09T00:00:00Z",
+            "endDate": "2027-03-31T23:59:59+01:00"
+          },
+          "relatedLots": ["1"],
+          "documents": [
+            {
+              "id": "093689-2026",
+              "documentType": "awardNotice",
+              "noticeType": "UK5",
+              "description": "Transparency notice on Find a Tender",
+              "url": "https://www.find-tender.service.gov.uk/Notice/093689-2026",
+              "datePublished": "2026-10-05T10:49:08+01:00",
+              "format": "text/html"
+            }
+          ],
+          "milestones": [
+            {
+              "id": "1",
+              "type": "futureSignatureDate",
+              "dueDate": "2026-10-05T23:59:59+01:00",
+              "status": "scheduled"
+            }
+          ]
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "buyerID": [],
+      "id": "093688-2026",
+      "tag": ["award", "contract"],
+      "date": "2026-10-05T10:46:55+01:00",
+      "initiationType": "tender",
+      "ocid": "ocds-h6vhtk-077a35",
+      "parties": [
+        {
+          "name": "Tonbridge and Malling Borough Council",
+          "id": "GB-PPON-PBNB-2692-VQCJ",
+          "identifier": {
+            "scheme": "GB-PPON",
+            "id": "PBNB-2692-VQCJ"
+          },
+          "address": {
+            "streetAddress": "Gibson Building, Gibson Drive, Kings Hill",
+            "locality": "West Malling",
+            "postalCode": "ME19 4LZ",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKJ46"
+          },
+          "contactPoint": {
+            "name": "Dan Hutchins",
+            "email": "procurement@tunbridgewells.gov.uk",
+            "telephone": "01892554126"
+          },
+          "roles": ["buyer"],
+          "details": {
+            "classifications": [
+              {
+                "scheme": "UK_CA_TYPE",
+                "id": "publicAuthoritySubCentralGovernment",
+                "description": "Public authority - sub-central government"
+              }
+            ]
+          }
+        },
+        {
+          "name": "South East Training Network Limited",
+          "id": "GB-PPON-PPVX-9547-MYLT",
+          "identifier": {
+            "scheme": "GB-PPON",
+            "id": "PPVX-9547-MYLT"
+          },
+          "address": {
+            "streetAddress": "228 Dyke Road",
+            "locality": "Brighton",
+            "postalCode": "BN1 5AE",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKJ21"
+          },
+          "contactPoint": {
+            "name": "Anthony Walton",
+            "email": "tony@southeasttraining.uk"
+          },
+          "roles": ["supplier"],
+          "details": {
+            "scale": "sme",
+            "vcse": false
+          }
+        }
+      ],
+      "buyer": {
+        "id": "GB-PPON-PBNB-2692-VQCJ",
+        "name": "Tonbridge and Malling Borough Council"
+      },
+      "tender": {
+        "id": "ocds-h6vhtk-077a35",
+        "legalBasis": {
+          "id": "2023/54",
+          "scheme": "UKPGA",
+          "uri": "https://www.legislation.gov.uk/ukpga/2023/54/contents"
+        },
+        "title": "Request for Quotation  For Leadership & Management Development Masterclasses",
+        "description": "Tonbridge & Malling Borough Council (TMBC) is seeking to appoint a suitably qualified and experienced provider to design and deliver bespoke leadership development masterclasses as part of its wider Leadership and Management Development Programme.",
+        "status": "complete",
+        "procurementMethod": "limited",
+        "procurementMethodDetails": "Below threshold - limited competition",
+        "specialRegime": ["concession"],
+        "lots": [
+          {
+            "id": "1",
+            "status": "complete",
+            "description": null
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "1",
+          "status": "active",
+          "mainProcurementCategory": "services",
+          "suppliers": [
+            {
+              "id": "GB-PPON-PPVX-9547-MYLT",
+              "name": "South East Training Network Limited"
+            }
+          ],
+          "items": [
+            {
+              "id": "1",
+              "additionalClassifications": [
+                {
+                  "scheme": "CPV",
+                  "id": "80500000",
+                  "description": "Training services"
+                }
+              ],
+              "relatedLot": "1"
+            }
+          ],
+          "relatedLots": ["1"]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "1",
+          "awardID": "1",
+          "status": "active",
+          "period": {
+            "startDate": "2026-09-28T00:00:00+01:00",
+            "endDate": "2027-09-27T23:59:59+01:00",
+            "maxExtentDate": "2028-09-27T23:59:59+01:00"
+          },
+          "hasRenewal": true,
+          "renewal": {
+            "description": "The Council intends to award a contract for an initial term of one (1) year, with the option to extend for up to one (1) additional one year periods, subject to satisfactory performance and ongoing business need."
+          },
+          "value": {
+            "amountGross": 19800.0,
+            "amount": 16500.0,
+            "currency": "GBP"
+          },
+          "aboveThreshold": false,
+          "dateSigned": "2026-09-27T00:00:00+01:00",
+          "statusDetails": null,
+          "documents": [
+            {
+              "id": "093688-2026",
+              "documentType": "contractNotice",
+              "noticeType": "UK7",
+              "description": "Contract details notice on Find a Tender",
+              "url": "https://www.find-tender.service.gov.uk/Notice/093688-2026",
+              "datePublished": "2026-10-05T10:46:55+01:00",
+              "format": "text/html"
+            }
+          ]
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "id": "093687-2026",
+      "tag": ["tenderUpdate"],
+      "date": "2026-10-05T10:46:41+01:00",
+      "initiationType": "tender",
+      "ocid": "ocds-h6vhtk-052485",
+      "parties": [
+        {
+          "name": "Essex County Council",
+          "id": "GB-PPON-PWVM-4844-NRQH",
+          "identifier": {
+            "scheme": "GB-PPON",
+            "id": "PWVM-4844-NRQH"
+          },
+          "address": {
+            "streetAddress": "County Hall, Market Road",
+            "locality": "Chelmsford",
+            "postalCode": "CM1 1QH",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKH36"
+          },
+          "contactPoint": {
+            "email": "wasteservice.procurement@essex.gov.uk"
+          },
+          "roles": ["buyer"],
+          "details": {
+            "classifications": [
+              {
+                "scheme": "UK_CA_TYPE",
+                "id": "publicAuthoritySubCentralGovernment",
+                "description": "Public authority - sub-central government"
+              }
+            ]
+          }
+        }
+      ],
+      "buyer": {
+        "id": "GB-PPON-PWVM-4844-NRQH",
+        "name": "Essex County Council"
+      },
+      "tender": {
+        "id": "C002PA",
+        "legalBasis": {
+          "id": "2023/54",
+          "scheme": "UKPGA",
+          "uri": "https://www.legislation.gov.uk/ukpga/2023/54/contents"
+        },
+        "title": "Waste Service Mobile Plant",
+        "description": "Essex is a large county with almost 1.5 million residents generating approximately 700,000 tonnes of local authority collected waste per annum. As the statutory Waste Disposal Authority for Essex, Essex County Council (the Authority) is responsible for providing a range of infrastructure and arrangements for the management of waste.\nThe Authority operate 21 Recycling Centres for Household Waste (RCHW) and 5 Waste Transfer Stations (WTS), and work closely with the 12 borough, city and district councils who are the Waste Collection Authorities (WCA) within the county of Essex.\nBrief Overview of the Requirement:\nThe Authority requires a number of machines to operate their WTSs and RCHWs. This tender is to procure hire, including repair and maintenance, of the following machines lotted as follows:\nLot 1: 4 Loading Shovels (20 Tonne) to be used at the Waste Transfer Stations.\nLot 2: 3 Materials Handlers (20 Tonne) to be used at the Waste Transfer Stations.\nLot 3: 12 Materials Handlers (16 Tonne) to be used at the RCHWs.",
+        "status": "active",
+        "items": [
+          {
+            "id": "1",
+            "additionalClassifications": [
+              {
+                "scheme": "CPV",
+                "id": "42400000",
+                "description": "Lifting and handling equipment and parts"
+              },
+              {
+                "scheme": "CPV",
+                "id": "43000000",
+                "description": "Machinery for mining, quarrying, construction equipment"
+              },
+              {
+                "scheme": "CPV",
+                "id": "50000000",
+                "description": "Repair and maintenance services"
+              }
+            ],
+            "deliveryAddresses": [
+              {
+                "region": "UKH3",
+                "country": "GB",
+                "countryName": "United Kingdom"
+              }
+            ],
+            "relatedLot": "1"
+          },
+          {
+            "id": "2",
+            "additionalClassifications": [
+              {
+                "scheme": "CPV",
+                "id": "42400000",
+                "description": "Lifting and handling equipment and parts"
+              },
+              {
+                "scheme": "CPV",
+                "id": "43000000",
+                "description": "Machinery for mining, quarrying, construction equipment"
+              },
+              {
+                "scheme": "CPV",
+                "id": "50000000",
+                "description": "Repair and maintenance services"
+              }
+            ],
+            "deliveryAddresses": [
+              {
+                "region": "UKH3",
+                "country": "GB",
+                "countryName": "United Kingdom"
+              }
+            ],
+            "relatedLot": "2"
+          },
+          {
+            "id": "3",
+            "additionalClassifications": [
+              {
+                "scheme": "CPV",
+                "id": "42400000",
+                "description": "Lifting and handling equipment and parts"
+              },
+              {
+                "scheme": "CPV",
+                "id": "43000000",
+                "description": "Machinery for mining, quarrying, construction equipment"
+              },
+              {
+                "scheme": "CPV",
+                "id": "50000000",
+                "description": "Repair and maintenance services"
+              }
+            ],
+            "deliveryAddresses": [
+              {
+                "region": "UKH3",
+                "country": "GB",
+                "countryName": "United Kingdom"
+              }
+            ],
+            "relatedLot": "3"
+          }
+        ],
+        "value": {
+          "amountGross": 5304000,
+          "amount": 4420000,
+          "currency": "GBP"
+        },
+        "procurementMethod": "open",
+        "procurementMethodDetails": "Open procedure",
+        "mainProcurementCategory": "goods",
+        "additionalProcurementCategories": ["services"],
+        "aboveThreshold": true,
+        "submissionMethodDetails": "Site Visits:\nThe Authority will be hosting site visits for prospective bidders to see the working environment of the machines, these will take place on the 9th of October 2026 at a Waste Transfer Station and an Recycling Centre for Household Waste in the centre of Essex. Further details on the timing, location and how to book are available on Open.\nDocuments and Submission:\nThe full tender pack can be found on https://open-uk.org/ Suppliers can register for Open for free and tenders must be submitted via the Open portal.",
+        "submissionTerms": {
+          "electronicSubmissionPolicy": "allowed",
+          "languages": ["en"]
+        },
+        "tenderPeriod": {
+          "endDate": "2026-10-27T12:00:00Z"
+        },
+        "awardPeriod": {
+          "endDate": "2026-11-30T23:59:59Z"
+        },
+        "lots": [
+          {
+            "id": "1",
+            "title": "Loading Shovels",
+            "description": "Hire and repair and maintenance of 4 Loading Shovels (20 Tonne) for moving waste material at Waste Transfer Station sites in Essex.",
+            "status": "active",
+            "value": {
+              "amountGross": 1260000,
+              "amount": 1050000,
+              "currency": "GBP"
+            },
+            "awardCriteria": {
+              "criteria": [
+                {
+                  "type": "price",
+                  "name": "Price",
+                  "numbers": [
+                    {
+                      "number": 70,
+                      "weight": "percentageExact"
+                    }
+                  ]
+                },
+                {
+                  "type": "quality",
+                  "name": "Quality",
+                  "numbers": [
+                    {
+                      "number": 30,
+                      "weight": "percentageExact"
+                    }
+                  ]
+                }
+              ]
+            },
+            "selectionCriteria": {
+              "criteria": [
+                {
+                  "type": "economic",
+                  "description": "1) Financial Capacity\nECC has a bespoke 'Financial Assessment Form' spreadsheet, which uses the organisation's financial ratios to categorise financial risk levels. For Bidder's whose completed 'Financial Assessment Form' returns a 'high' or 'very high' risk level, the Authority requires a Parent Company Guarantee, bank bond, performance bond, or equivalent, upon the Authority's request and to the Authority's satisfaction, in order to meet the financial capacity conditions.\n2) Required Insurance\nThe Bidder will be required to have in place prior to the Service Commencement Date (1st April 2027) the following levels of insurance: Employer's Liability Insurance £5 million; Public Liability Insurance £10 million.\n3) Modern Slavery\nRelevant commercial organisations subject to the requirements of the Modern Slavery Act 2015 will need to confirm they are fully compliant with this legislation by Service Commencement Date.\n4) Equality and Diversity\nBidders that have been had an investigation of unlawful discrimination upheld by an Employment Tribunal, an Employment Appeal Tribunal, the Equality and Human Rights Commission, or any other court or equivalent body, will need to provide evidence that they have implemented adequate remedial actions to prevent similar unlawful discrimination recurring, to the Authority's satisfaction.\n5) Environmental Management\nBidders that have been convicted of breaching environmental legislation, or had any notice served upon it, in the last three years by an environmental regulator or authority, will need to provide evidence that they have implemented adequate remedial actions to prevent similar breaches recurring, to the Authority's satisfaction.\n6) Health and Safety\nBidders are required to have a Health and Safety Policy that complies with current legislative requirements."
+                }
+              ]
+            },
+            "suitability": {
+              "sme": true
+            },
+            "contractPeriod": {
+              "startDate": "2027-04-01T00:00:00+01:00",
+              "endDate": "2032-03-31T23:59:59+01:00"
+            }
+          },
+          {
+            "id": "2",
+            "title": "Materials Handlers (WTS)",
+            "description": "Hire and repair and maintenance of 3 Materials Handlers (20 Tonne) for moving waste material at Waste Transfer Station sites in Essex.",
+            "status": "active",
+            "value": {
+              "amountGross": 864000,
+              "amount": 720000,
+              "currency": "GBP"
+            },
+            "awardCriteria": {
+              "criteria": [
+                {
+                  "type": "price",
+                  "name": "Price",
+                  "numbers": [
+                    {
+                      "number": 70,
+                      "weight": "percentageExact"
+                    }
+                  ]
+                },
+                {
+                  "type": "quality",
+                  "name": "Quality",
+                  "numbers": [
+                    {
+                      "number": 30,
+                      "weight": "percentageExact"
+                    }
+                  ]
+                }
+              ]
+            },
+            "selectionCriteria": {
+              "criteria": [
+                {
+                  "type": "economic",
+                  "description": "1) Financial Capacity\nECC has a bespoke 'Financial Assessment Form' spreadsheet, which uses the organisation's financial ratios to categorise financial risk levels. For Bidder's whose completed 'Financial Assessment Form' returns a 'high' or 'very high' risk level, the Authority requires a Parent Company Guarantee, bank bond, performance bond, or equivalent, upon the Authority's request and to the Authority's satisfaction, in order to meet the financial capacity conditions.\n2) Required Insurance\nThe Bidder will be required to have in place prior to the Service Commencement Date (1st April 2027) the following levels of insurance: Employer's Liability Insurance £5 million; Public Liability Insurance £10 million.\n3) Modern Slavery\nRelevant commercial organisations subject to the requirements of the Modern Slavery Act 2015 will need to confirm they are fully compliant with this legislation by Service Commencement Date.\n4) Equality and Diversity\nBidders that have been had an investigation of unlawful discrimination upheld by an Employment Tribunal, an Employment Appeal Tribunal, the Equality and Human Rights Commission, or any other court or equivalent body, will need to provide evidence that they have implemented adequate remedial actions to prevent similar unlawful discrimination recurring, to the Authority's satisfaction.\n5) Environmental Management\nBidders that have been convicted of breaching environmental legislation, or had any notice served upon it, in the last three years by an environmental regulator or authority, will need to provide evidence that they have implemented adequate remedial actions to prevent similar breaches recurring, to the Authority's satisfaction.\n6) Health and Safety\nBidders are required to have a Health and Safety Policy that complies with current legislative requirements."
+                }
+              ]
+            },
+            "suitability": {
+              "sme": true
+            },
+            "contractPeriod": {
+              "startDate": "2027-04-01T00:00:00+01:00",
+              "endDate": "2032-03-31T23:59:59+01:00"
+            }
+          },
+          {
+            "id": "3",
+            "title": "Materials Handlers (RCHWs)",
+            "description": "Hire and repair and maintenance of 12 Materials Handlers (16 Tonne) for moving waste material at Recycling Centres for Household Waste sites in Essex.",
+            "status": "active",
+            "value": {
+              "amountGross": 3180000,
+              "amount": 2650000,
+              "currency": "GBP"
+            },
+            "awardCriteria": {
+              "criteria": [
+                {
+                  "type": "price",
+                  "name": "Price",
+                  "numbers": [
+                    {
+                      "number": 70,
+                      "weight": "percentageExact"
+                    }
+                  ]
+                },
+                {
+                  "type": "quality",
+                  "name": "Quality",
+                  "numbers": [
+                    {
+                      "number": 30,
+                      "weight": "percentageExact"
+                    }
+                  ]
+                }
+              ]
+            },
+            "selectionCriteria": {
+              "criteria": [
+                {
+                  "type": "economic",
+                  "description": "1) Financial Capacity\nECC has a bespoke 'Financial Assessment Form' spreadsheet, which uses the organisation's financial ratios to categorise financial risk levels. For Bidder's whose completed 'Financial Assessment Form' returns a 'high' or 'very high' risk level, the Authority requires a Parent Company Guarantee, bank bond, performance bond, or equivalent, upon the Authority's request and to the Authority's satisfaction, in order to meet the financial capacity conditions.\n2) Required Insurance\nThe Bidder will be required to have in place prior to the Service Commencement Date (1st April 2027) the following levels of insurance: Employer's Liability Insurance £5 million; Public Liability Insurance £10 million.\n3) Modern Slavery\nRelevant commercial organisations subject to the requirements of the Modern Slavery Act 2015 will need to confirm they are fully compliant with this legislation by Service Commencement Date.\n4) Equality and Diversity\nBidders that have been had an investigation of unlawful discrimination upheld by an Employment Tribunal, an Employment Appeal Tribunal, the Equality and Human Rights Commission, or any other court or equivalent body, will need to provide evidence that they have implemented adequate remedial actions to prevent similar unlawful discrimination recurring, to the Authority's satisfaction.\n5) Environmental Management\nBidders that have been convicted of breaching environmental legislation, or had any notice served upon it, in the last three years by an environmental regulator or authority, will need to provide evidence that they have implemented adequate remedial actions to prevent similar breaches recurring, to the Authority's satisfaction.\n6) Health and Safety\nBidders are required to have a Health and Safety Policy that complies with current legislative requirements."
+                }
+              ]
+            },
+            "suitability": {
+              "sme": true
+            },
+            "contractPeriod": {
+              "startDate": "2027-04-01T00:00:00+01:00",
+              "endDate": "2032-03-31T23:59:59+01:00"
+            }
+          }
+        ],
+        "documents": [
+          {
+            "id": "conflictOfInterest",
+            "documentType": "conflictOfInterest",
+            "description": "Not published"
+          },
+          {
+            "id": "A-23558",
+            "documentType": "biddingDocuments",
+            "description": "Open Tender Submission Guide, this guide explains how to access the tender on Open.",
+            "url": "https://www.find-tender.service.gov.uk/Notice/Attachment/A-23558",
+            "format": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          },
+          {
+            "id": "093687-2026",
+            "documentType": "tenderNotice",
+            "noticeType": "UK4",
+            "description": "Tender notice on Find a Tender",
+            "url": "https://www.find-tender.service.gov.uk/Notice/093687-2026",
+            "datePublished": "2026-10-05T10:46:41+01:00",
+            "format": "text/html"
+          }
+        ],
+        "hasRecurrence": true,
+        "recurrence": {
+          "dates": [
+            {
+              "startDate": "2031-08-01T23:59:59+01:00"
+            }
+          ]
+        },
+        "riskDetails": "Local Government Reorganisation (LGR) - Impacts may include, but are not limited to, modifications such as a transfer of the legal entity you currently contract with, significant increases and/or decreases in the value/volume of goods/services/works required due to the change in size/scope of the Contracting Authority, and/or changes to the scope of the nature of goods/services/works required. Although any contract scope changes should broadly relate to the nature of the existing scope, new goods/services/works of a related nature may be required that were not previously included\nContractor Liquidation - Impacts may include but are not limited to the Authority would not being able to operate RCHW and WTS sites to move waste on site. The Authority may need to transfer the contract to another supplier to ensure the requirements of the contract are upheld.\nSupply Chain Failure - Impacts may include but are not limited to: the Authority not being able to operate RCHW and WTS sites to move waste on site. The Authority may require alternative machine provision.",
+        "amendments": [
+          {
+            "description": "Document section edited to add a guidance document on accessing the tender on Open.",
+            "id": "093687-2026"
+          }
+        ]
+      },
+      "language": "en"
+    },
+    {
+      "ocid": "ocds-h6vhtk-07807a",
+      "buyerID": [],
+      "id": "093686-2026",
+      "tag": ["award", "contract"],
+      "date": "2026-10-05T10:44:41+01:00",
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Middlesbrough Council",
+          "id": "GB-PPON-PLJH-5252-HJDM",
+          "identifier": {
+            "scheme": "GB-PPON",
+            "id": "PLJH-5252-HJDM"
+          },
+          "address": {
+            "streetAddress": "PO Box 500",
+            "locality": "Middlesbrough",
+            "postalCode": "TS1 9FT",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKC12"
+          },
+          "contactPoint": {
+            "email": "procurement@middlesbrough.gov.uk"
+          },
+          "roles": ["buyer"],
+          "details": {
+            "url": "http://www.middlesbrough.gov.uk",
+            "classifications": [
+              {
+                "scheme": "UK_CA_TYPE",
+                "id": "publicAuthoritySubCentralGovernment",
+                "description": "Public authority - sub-central government"
+              }
+            ]
+          }
+        },
+        {
+          "name": "EDABLE ARCHITECTURE LTD.",
+          "id": "GB-COH-09402488",
+          "identifier": {
+            "scheme": "GB-COH",
+            "id": "09402488"
+          },
+          "additionalIdentifiers": [
+            {
+              "scheme": "GB-PPON",
+              "id": "PYXB-7687-VWHG"
+            }
+          ],
+          "address": {
+            "streetAddress": "The Kings Head",
+            "locality": "Blyth",
+            "postalCode": "NE24 3AE",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKC21"
+          },
+          "contactPoint": {
+            "email": "mags@edablearchitecture.co.uk"
+          },
+          "roles": ["supplier"],
+          "details": {
+            "url": "http://www.edablearchitecture.co.uk",
+            "scale": "sme",
+            "vcse": false
+          }
+        }
+      ],
+      "buyer": {
+        "id": "GB-PPON-PLJH-5252-HJDM",
+        "name": "Middlesbrough Council"
+      },
+      "tender": {
+        "id": "ECC055",
+        "legalBasis": {
+          "id": "2023/54",
+          "scheme": "UKPGA",
+          "uri": "https://www.legislation.gov.uk/ukpga/2023/54/contents"
+        },
+        "title": "ECC055 - Middlesbrough Theatre",
+        "description": "The awarded supplier will provide professional and niche architectural services during the planning of and execution of an extension to the Middlesbrough Theatre building. The extension is to be a modular building extension and the awarded supplier specialise in this form of building extension works and materials and have significant experience in projects of this nature.",
+        "status": "complete",
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Below threshold - without competition",
+        "lots": [
+          {
+            "id": "1",
+            "status": "complete",
+            "description": null
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "1",
+          "status": "active",
+          "mainProcurementCategory": "services",
+          "suppliers": [
+            {
+              "id": "GB-COH-09402488",
+              "name": "EDABLE ARCHITECTURE LTD."
+            }
+          ],
+          "items": [
+            {
+              "id": "1",
+              "additionalClassifications": [
+                {
+                  "scheme": "CPV",
+                  "id": "71000000",
+                  "description": "Architectural, construction, engineering and inspection services"
+                }
+              ],
+              "deliveryAddresses": [
+                {
+                  "region": "UKC12",
+                  "country": "GB",
+                  "countryName": "United Kingdom"
+                }
+              ],
+              "relatedLot": "1"
+            }
+          ],
+          "relatedLots": ["1"]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "1",
+          "awardID": "1",
+          "status": "active",
+          "period": {
+            "startDate": "2026-09-24T00:00:00+01:00",
+            "endDate": "2027-09-14T23:59:59+01:00"
+          },
+          "value": {
+            "amountGross": 38896.0,
+            "amount": 32413.33,
+            "currency": "GBP"
+          },
+          "aboveThreshold": false,
+          "dateSigned": "2026-09-24T00:00:00+01:00",
+          "statusDetails": null,
+          "documents": [
+            {
+              "id": "093686-2026",
+              "documentType": "contractNotice",
+              "noticeType": "UK7",
+              "description": "Contract details notice on Find a Tender",
+              "url": "https://www.find-tender.service.gov.uk/Notice/093686-2026",
+              "datePublished": "2026-10-05T10:44:41+01:00",
+              "format": "text/html"
+            }
+          ]
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "buyerID": [],
+      "id": "093685-2026",
+      "tag": ["award", "contract"],
+      "date": "2026-10-05T10:43:12+01:00",
+      "initiationType": "tender",
+      "ocid": "ocds-h6vhtk-06dee6",
+      "parties": [
+        {
+          "name": "DIAMOND LIGHT SOURCE LIMITED",
+          "id": "GB-COH-04375679",
+          "identifier": {
+            "scheme": "GB-COH",
+            "id": "04375679"
+          },
+          "additionalIdentifiers": [
+            {
+              "scheme": "GB-PPON",
+              "id": "PNGG-3778-PWBM"
+            }
+          ],
+          "address": {
+            "streetAddress": "Diamond House",
+            "locality": "Didcot",
+            "postalCode": "OX11 0DE",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKJ14"
+          },
+          "contactPoint": {
+            "email": "procurement@diamond.ac.uk"
+          },
+          "roles": ["buyer"],
+          "details": {
+            "classifications": [
+              {
+                "scheme": "UK_CA_TYPE",
+                "id": "publicAuthorityCentralGovernment",
+                "description": "Public authority - central government"
+              }
+            ]
+          }
+        },
+        {
+          "name": "NCF Engineering Ltd (T/A Ferrositi)",
+          "id": "GB-COH-7971121",
+          "identifier": {
+            "scheme": "GB-COH",
+            "id": "7971121"
+          },
+          "additionalIdentifiers": [
+            {
+              "scheme": "GB-PPON",
+              "id": "PGCD-6489-DNRT"
+            }
+          ],
+          "address": {
+            "streetAddress": "Unit C2 Liddington Industrial Estate",
+            "locality": "Cheltenham",
+            "postalCode": "GL53 0DL",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKK13"
+          },
+          "contactPoint": {
+            "email": "sales@ferrositi.com"
+          },
+          "roles": ["supplier"],
+          "details": {
+            "url": "http://www.ferrositi.com",
+            "scale": "sme",
+            "vcse": false,
+            "publicServiceMissionOrganization": false,
+            "shelteredWorkshop": false
+          }
+        }
+      ],
+      "buyer": {
+        "id": "GB-COH-04375679",
+        "name": "DIAMOND LIGHT SOURCE LIMITED"
+      },
+      "tender": {
+        "id": "9005760",
+        "legalBasis": {
+          "id": "2023/54",
+          "scheme": "UKPGA",
+          "uri": "https://www.legislation.gov.uk/ukpga/2023/54/contents"
+        },
+        "title": "9005760 - Supply of Arc Vessel Support Components for Diamond-II",
+        "description": "Located on the Harwell Science & Innovation Campus in Oxfordshire, Diamond Light Source (DLS) is a leading-edge facility for science, engineering and innovation. DLS allows researchers from academia and industry to investigate the structure and behaviour of the world around us at the atomic and molecular level. To continue delivering the world changing science that Diamond enables, the facility is being upgraded to Diamond-II, a co ordinated programme of development that combines a major machine upgrade with new instruments and complementary improvements to optics, detectors, sample environment\nand delivery capabilities, and computing, as well as integrated and correlative methods. This will be transformative in speed and spatial resolution and will offer users streamlined\naccess to enhanced instruments for life and physical sciences.\nThe scope of the contract is to manufacture various vessel support fabrications, assemblies and machined components to DLS designs as detailed in the specification.\nAll assemblies should be delivered fully assembled and set to their mid travel where applicable.\nCompleted components are to be delivered to Diamond Light Source.\nDLS will supply detailed manufacturing drawings and models with the specification. These specify geometry, materials, machining, stress relieving and any coatings required.\nSuppliers are invited to make recommendations to modify the designs to improve performance, cost or delivery in their tender submission.\nThe contract for this includes:\n• Contract management\n• Purchase of all materials.\n• Manufacture of the components according to the table specified in specification\n• All jigs and tooling required for manufacture\n• Cleaning and protecting\n• Quality assurance documentation\n• Delivery\n• Packing",
+        "status": "complete",
+        "procurementMethod": "open",
+        "procurementMethodDetails": "Open procedure",
+        "coveredBy": ["GPA"],
+        "lots": [
+          {
+            "id": "1",
+            "status": "complete",
+            "description": null
+          }
+        ],
+        "documents": [
+          {
+            "id": "conflictOfInterest",
+            "documentType": "conflictOfInterest",
+            "description": "Not published"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "1",
+          "status": "active",
+          "mainProcurementCategory": "goods",
+          "suppliers": [
+            {
+              "id": "GB-COH-7971121",
+              "name": "NCF Engineering Ltd (T/A Ferrositi)"
+            }
+          ],
+          "items": [
+            {
+              "id": "1",
+              "additionalClassifications": [
+                {
+                  "scheme": "CPV",
+                  "id": "44400000",
+                  "description": "Miscellaneous fabricated products and related items"
+                }
+              ],
+              "deliveryAddresses": [
+                {
+                  "region": "UKJ14",
+                  "country": "GB",
+                  "countryName": "United Kingdom"
+                }
+              ],
+              "relatedLot": "1"
+            }
+          ],
+          "relatedLots": ["1"]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "1",
+          "awardID": "1",
+          "title": "9005760 - Supply of Arc Vessel Support Components for Diamond-II",
+          "status": "active",
+          "period": {
+            "startDate": "2026-09-23T00:00:00+01:00",
+            "endDate": "2028-02-21T23:59:59Z"
+          },
+          "value": {
+            "amountGross": 724446.0,
+            "amount": 603705.0,
+            "currency": "GBP"
+          },
+          "aboveThreshold": true,
+          "dateSigned": "2026-09-23T00:00:00+01:00",
+          "noAgreedMetricsRationale": "Contract value is below £5 million.",
+          "statusDetails": null,
+          "documents": [
+            {
+              "id": "093685-2026",
+              "documentType": "contractNotice",
+              "noticeType": "UK7",
+              "description": "Contract details notice on Find a Tender",
+              "url": "https://www.find-tender.service.gov.uk/Notice/093685-2026",
+              "datePublished": "2026-10-05T10:43:12+01:00",
+              "format": "text/html"
+            }
+          ]
+        }
+      ],
+      "language": "en"
+    },
+    {
+      "ocid": "ocds-h6vhtk-078079",
+      "id": "093684-2026",
+      "tag": ["tender"],
+      "date": "2026-10-05T10:42:07+01:00",
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Cardiff University",
+          "id": "GB-PPON-PHVT-4343-HWYR",
+          "identifier": {
+            "scheme": "GB-PPON",
+            "id": "PHVT-4343-HWYR"
+          },
+          "address": {
+            "streetAddress": "Procurement Services",
+            "locality": "Cardiff",
+            "postalCode": "CF24 4HQ",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKL22"
+          },
+          "contactPoint": {
+            "email": "rower4@cardiff.ac.uk"
+          },
+          "roles": ["buyer"],
+          "details": {
+            "url": "http://www.cardiff.ac.uk/business/why-work-with-us/for-suppliers",
+            "classifications": [
+              {
+                "scheme": "UK_CA_TYPE",
+                "id": "publicAuthoritySubCentralGovernment",
+                "description": "Public authority - sub-central government"
+              },
+              {
+                "scheme": "UK_CA_DEVOLVED_REGULATIONS",
+                "id": "GB-WLS",
+                "description": "Welsh devolved regulations apply"
+              }
+            ]
+          }
+        }
+      ],
+      "buyer": {
+        "id": "GB-PPON-PHVT-4343-HWYR",
+        "name": "Cardiff University"
+      },
+      "tender": {
+        "id": "ocds-h6vhtk-078079",
+        "legalBasis": {
+          "id": "2023/54",
+          "scheme": "UKPGA",
+          "uri": "https://www.legislation.gov.uk/ukpga/2023/54/contents"
+        },
+        "title": "Uncrewed Ocean Surface Vehicle (USV)",
+        "description": "The School of Physical, Chemical and Environmental Sciences (PACES) seeks to procure a modern uncrewed surface vehicle (USV) to support teaching, research and innovation in marine science, hydrographic surveying and marine robotics. \nThe platform will significantly enhance practical field teaching by providing students with access to contemporary autonomous survey technology that reflects current industry practice. The acquisition aligns with the strategic direction of UK marine science, where autonomous systems are increasingly central to national marine research infrastructure and offshore operations. It will provide students with experience of the technologies and operational workflows that are now expected across the marine sector, improving graduate employability and strengthening links with industry. \nThe proposed system will expand the University's field teaching capability by increasing the number and diversity of environments in which practical survey exercises can be undertaken. In addition to coastal waters, the platform should be suitable for deployment in ports, harbours, estuaries, inland waters and sheltered bays, creating greater flexibility for undergraduate teaching and postgraduate research. \nIts portability will also enable deployment during residential field courses and support independent student projects and dissertations, providing more authentic, hands-on learning opportunities throughout the academic year while improving accessibility and inclusivity by allowing students to participate in advanced survey operations without requiring access to crewed survey vessels. To maximise operational flexibility, the USV should be readily transportable by a small team and capable of deployment without specialist lifting equipment.\nThe platform must therefore be person-portable and of modular construction, enabling it to fit within the rear of a standard SUV or pickup vehicle for transportation between field sites. \nThe system should be designed for low maintenance and provide a minimum operational endurance of seven hours on a single battery charge, allowing uninterrupted operation throughout a full teaching or survey day. Hot-swappable battery carriages would be highly desired. \nThe School requires a platform capable of both remote operation from shore and teleconnected operation, providing safe and effective survey capability without personnel entering the water. The system should support the creation and execution of pre-programmed navigation tracks and permit real-time editing of survey parameters and data acquisition whilst underway. Compatibility with the University's existing NORBIT multibeam sonar system is considered very highly desirable/near-essential, allowing integration with existing survey equipment and reducing additional capital expenditure. Safety, environmental sustainability and regulatory compliance are fundamental requirements. \nThe platform should incorporate situational awareness and collision avoidance capabilities to support safe autonomous operations. It must produce zero direct emissions during operation, generate minimal underwater and airborne noise, and avoid pollution of the operating environment. To facilitate straightforward regulatory compliance and minimise operational burden, the vessel should have an overall length of less than 2.5 metres, enabling operation within the scope of the exemptions outlined in MGN 702(M) Amendment 1. \nLastly, we would consider an autocast sound-velocity profiler winch highly desirable, and the ability to add/remove other sensors ad hoc, cheaply, and with ease of compatibility as a strong basis for choosing the final vessel.    ",
+        "status": "active",
+        "items": [
+          {
+            "id": "1",
+            "additionalClassifications": [
+              {
+                "scheme": "CPV",
+                "id": "38290000",
+                "description": "Surveying, hydrographic, oceanographic and hydrological instruments and appliances"
+              },
+              {
+                "scheme": "CPV",
+                "id": "34513550",
+                "description": "Survey vessels"
+              }
+            ],
+            "deliveryAddresses": [
+              {
+                "region": "UKL22",
+                "country": "GB",
+                "countryName": "United Kingdom"
+              }
+            ],
+            "relatedLot": "1"
+          }
+        ],
+        "value": {
+          "amountGross": 100000.0,
+          "amount": 100000.0,
+          "currency": "GBP"
+        },
+        "procurementMethod": "open",
+        "procurementMethodDetails": "Below threshold - open competition",
+        "mainProcurementCategory": "goods",
+        "aboveThreshold": false,
+        "submissionMethodDetails": "Please join the E-Tender via the below InTend link. Here you will be able to access the Tender pack, Submit Clarifications, and Submit your bids. \nhttps://supplier.in-tend.co.uk/cardiffuniversity/home",
+        "submissionTerms": {
+          "electronicSubmissionPolicy": "allowed"
+        },
+        "tenderPeriod": {
+          "endDate": "2026-10-23T12:00:00+01:00"
+        },
+        "enquiryPeriod": {
+          "endDate": "2026-10-16T16:00:00+01:00"
+        },
+        "lots": [
+          {
+            "id": "1",
+            "status": "active",
+            "value": {
+              "amountGross": 100000.0,
+              "amount": 100000.0,
+              "currency": "GBP"
+            },
+            "awardCriteria": {
+              "criteria": [
+                {
+                  "type": "price",
+                  "name": "Price",
+                  "numbers": [
+                    {
+                      "number": 60.0,
+                      "weight": "percentageExact"
+                    }
+                  ]
+                },
+                {
+                  "type": "quality",
+                  "name": "Quality",
+                  "numbers": [
+                    {
+                      "number": 30.0,
+                      "weight": "percentageExact"
+                    }
+                  ]
+                },
+                {
+                  "type": "quality",
+                  "name": "ESG",
+                  "numbers": [
+                    {
+                      "number": 10.0,
+                      "weight": "percentageExact"
+                    }
+                  ]
+                }
+              ]
+            },
+            "suitability": {
+              "sme": true
+            },
+            "contractPeriod": {
+              "startDate": "2026-12-07T00:00:00+00:00",
+              "endDate": "2027-06-07T23:59:59+01:00"
+            },
+            "description": null
+          }
+        ],
+        "documents": [
+          {
+            "id": "093684-2026",
+            "documentType": "tenderNotice",
+            "noticeType": "UK4",
+            "description": "Tender notice on Find a Tender",
+            "url": "https://www.find-tender.service.gov.uk/Notice/093684-2026",
+            "datePublished": "2026-10-05T10:42:07+01:00",
+            "format": "text/html"
+          }
+        ]
+      },
+      "language": "en"
+    },
+    {
+      "ocid": "ocds-h6vhtk-078078",
+      "id": "093683-2026",
+      "date": "2026-10-05T10:41:58+01:00",
+      "tag": ["award", "contract"],
+      "description": "This is a Provider Selection Regime (PSR) intention to award notice. The awarding of this contract is subject to the Health Care Services (Provider Selection Regime) Regulations 2023. For the avoidance of doubt, the provisions of the Public Contracts Regulations 2015 do not apply to this award. The standstill period begins on the day after the publication of this notice. Representations by providers must be made to decision makers before midnight at the end of the 8th working day, 15 October 2026. <br/><br/>For avoidance of doubt, please note that Section V.2.1.1 of this Notice (Conclusion date), this date reflects the commencement of the standstill period. This contract has not yet formally been awarded; this Notice serves as an intention to award under the PSR.",
+      "initiationType": "tender",
+      "tender": {
+        "id": "C9250",
+        "legalBasis": {
+          "id": "32014L0024",
+          "scheme": "CELEX"
+        },
+        "title": "Perinatal Services",
+        "status": "complete",
+        "classification": {
+          "scheme": "CPV",
+          "id": "85323000",
+          "description": "Community health services"
+        },
+        "mainProcurementCategory": "services",
+        "description": "This is an intention to award notice pursuant to The Health Care Services (Provider Selection Regime) Regulations 2023 (the 'Regulations'), in accordance with Regulation 9, under Direct Award Process C. Therefore, the notice sets out the contracting authority's intention to directly award a contract to the existing provider up to 30 months for its provision for Perinatal Services, subject to completion of the 8 working day standstill period.<br/><br/>This requirement has been procured in line with said Regulations, following due diligence which has included an evaluation under the requisite Basic Selection Criteria and Key Criteria.",
+        "lots": [
+          {
+            "id": "1",
+            "description": "As part of London Borough of Enfield Start for Life Programme, the service is to provide perinatal support for parents and caregivers from pre-birth up to age 2 which includes but not limited to 1-to-1 perinatal coaching, crisis outreach, wellbeing workshops, peer support groups. The service models are designed to strengthen support for families experiencing mild-to-moderate perinatal mental health difficulties. Additional information: The existing provider is satisfying the original contract and will likely satisfy the proposed contract to a sufficient standard.",
+            "awardCriteria": {
+              "criteria": [
+                {
+                  "name": "the existing provider is satisfying the original contract and will likely satisfy the proposed contract to a sufficient standard.",
+                  "type": "cost",
+                  "description": "100%"
+                }
+              ]
+            },
+            "hasOptions": false,
+            "status": "cancelled"
+          }
+        ],
+        "items": [
+          {
+            "id": "1",
+            "deliveryAddresses": [
+              {
+                "region": "UKI5"
+              }
+            ],
+            "deliveryLocation": {
+              "description": "Enfield"
+            },
+            "relatedLot": "1"
+          }
+        ],
+        "procurementMethod": "limited",
+        "procurementMethodDetails": "Award procedure without prior publication of a call for competition",
+        "procurementMethodRationaleClassifications": [
+          {
+            "scheme": "TED_PT_AWARD_CONTRACT_WITHOUT_CALL",
+            "id": "D_OUTSIDE_SCOPE",
+            "description": "The procurement falls outside the scope of application of the directive"
+          }
+        ],
+        "procurementMethodRationale": "The procurement falls outside the scope of application of the regulations.<br/><br/>This is a Provider Selection Regime (PSR) intention to award notice. The awarding of this contract is subject to the Health Care Services (Provider Selection Regime) Regulations 2023. For the avoidance of doubt, the provisions of the Public Contracts Regulations 2015 do not apply to this award. The standstill period begins on the day after the publication of this notice. Representations before midnight at the end of the 8th working day, i.e. 15 October 2026. This contract has not yet formally been awarded; this Notice serves as an intention to award under the PSR."
+      },
+      "awards": [
+        {
+          "id": "093683-2026-1",
+          "relatedLots": ["1"],
+          "status": "active",
+          "suppliers": [
+            {
+              "id": "GB-FTS-187301",
+              "name": "MIND in Enfield and Barnet"
+            }
+          ]
+        }
+      ],
+      "parties": [
+        {
+          "name": "London Borough of Enfield",
+          "id": "GB-FTS-11983",
+          "identifier": {
+            "legalName": "London Borough of Enfield"
+          },
+          "address": {
+            "streetAddress": "Civic Centre, Silver Street",
+            "locality": "Enfield",
+            "region": "UK",
+            "postalCode": "EN1 3XA",
+            "countryName": "United Kingdom"
+          },
+          "contactPoint": {
+            "name": "Procurement Services",
+            "email": "procurement.support@enfield.gov.uk"
+          },
+          "roles": ["buyer", "reviewBody"],
+          "details": {
+            "url": "https://www.enfield.gov.uk",
+            "buyerProfile": "https://www.enfield.gov.uk",
+            "classifications": [
+              {
+                "scheme": "TED_CA_TYPE",
+                "id": "REGIONAL_AUTHORITY",
+                "description": "Regional or local authority"
+              },
+              {
+                "scheme": "COFOG",
+                "id": "01",
+                "description": "General public services"
+              }
+            ]
+          },
+          "additionalContactPoints": [
+            {
+              "email": "procurement.support@enfield.gov.uk"
+            }
+          ]
+        },
+        {
+          "name": "MIND in Enfield and Barnet",
+          "id": "GB-FTS-187301",
+          "identifier": {
+            "legalName": "MIND in Enfield and Barnet"
+          },
+          "address": {
+            "streetAddress": "275 Fore Street",
+            "locality": "London",
+            "region": "UKI54",
+            "postalCode": "N9 0PD",
+            "countryName": "United Kingdom"
+          },
+          "roles": ["supplier"],
+          "details": {
+            "scale": "large"
+          }
+        }
+      ],
+      "buyer": {
+        "id": "GB-FTS-11983",
+        "name": "London Borough of Enfield"
+      },
+      "contracts": [
+        {
+          "id": "093683-2026-1",
+          "awardID": "093683-2026-1",
+          "status": "active",
+          "value": {
+            "amount": 824540.46,
+            "currency": "GBP"
+          },
+          "dateSigned": "2026-10-02T00:00:00+01:00"
+        }
+      ],
+      "bids": {
+        "statistics": [
+          {
+            "id": "1",
+            "measure": "bids",
+            "relatedLot": "1",
+            "value": 1
+          }
+        ]
+      },
+      "language": "en"
+    },
+    {
+      "buyerID": [],
+      "id": "093682-2026",
+      "tag": ["contractAmendment"],
+      "date": "2026-10-05T10:40:20+01:00",
+      "initiationType": "tender",
+      "ocid": "ocds-h6vhtk-0774fa",
+      "parties": [
+        {
+          "name": "UK Research and Innovation",
+          "id": "GB-PPON-PDQJ-7126-JDHG",
+          "identifier": {
+            "scheme": "GB-PPON",
+            "id": "PDQJ-7126-JDHG"
+          },
+          "address": {
+            "streetAddress": "Polaris House, North Star Avenue",
+            "locality": "Swindon",
+            "postalCode": "SN2 1FL",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKK14"
+          },
+          "contactPoint": {
+            "email": "commercial@ukri.org"
+          },
+          "roles": ["buyer"],
+          "details": {
+            "classifications": [
+              {
+                "scheme": "UK_CA_TYPE",
+                "id": "publicAuthorityCentralGovernment",
+                "description": "Public authority - central government"
+              }
+            ]
+          }
+        },
+        {
+          "name": "UK Shared Business Services Ltd",
+          "id": "GB-PPON-PMPN-7535-GNTG",
+          "identifier": {
+            "scheme": "GB-PPON",
+            "id": "PMPN-7535-GNTG"
+          },
+          "address": {
+            "streetAddress": "Polaris House, North Star Avenue",
+            "locality": "Swindon",
+            "postalCode": "SN2 1FF",
+            "country": "GB",
+            "countryName": "United Kingdom",
+            "region": "UKK14"
+          },
+          "contactPoint": {
+            "email": "DDATPROCUREMENT@uksbs.co.uk"
+          },
+          "roles": ["procuringEntity", "processContactPoint"],
+          "roleDetails": "Shared Service Provider"
+        }
+      ],
+      "buyer": {
+        "id": "GB-PPON-PDQJ-7126-JDHG",
+        "name": "UK Research and Innovation"
+      },
+      "tender": {
+        "id": "ocds-h6vhtk-0774fa",
+        "legalBasis": {
+          "id": "2023/54",
+          "scheme": "UKPGA",
+          "uri": "https://www.legislation.gov.uk/ukpga/2023/54/contents"
+        },
+        "title": "DDaT26325 - Field Service Attendance and Hardware Upgrade"
+      },
+      "contracts": [
+        {
+          "id": "1",
+          "awardID": "1",
+          "amendments": [
+            {
+              "date": "2026-09-28T00:00:00+01:00",
+              "id": "093682-2026"
+            }
+          ],
+          "statusDetails": null,
+          "documents": [
+            {
+              "id": "093682-2026",
+              "documentType": "contractNotice",
+              "noticeType": "UK10",
+              "description": "Contract change notice on Find a Tender",
+              "url": "https://www.find-tender.service.gov.uk/Notice/093682-2026",
+              "datePublished": "2026-10-05T10:40:20+01:00",
+              "format": "text/html"
+            }
+          ],
+          "period": {
+            "startDate": "2026-09-28T00:00:00+01:00"
+          },
+          "value": {
+            "amountGross": 36479.4,
+            "amount": 30399.5,
+            "currency": "EUR"
+          },
+          "aboveThreshold": false
+        }
+      ],
+      "language": "en"
+    }
+  ],
+  "links": {
+    "next": "https://www.find-tender.service.gov.uk/api/1.0/ocdsReleasePackages?limit=10&updatedTo=2026-10-05T10:54:49&cursor=dXBkYXRlZFRvPTIwMjYtMTAtMDVUMTA6NTQ6NDl8bmV4dEN1cnNvcj03NDYxODY="
+  }
+}

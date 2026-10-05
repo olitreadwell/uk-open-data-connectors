@@ -19,6 +19,17 @@ builds work offline.
 | `police-crimes`            | Home Office police.uk               | none | Street-level crime within a mile of a point, counted by crime type and outcome |
 | `carbon-intensity`         | National Energy System Operator     | none | Half-hourly carbon intensity for Great Britain, with the window's cleanest and dirtiest half hours |
 | `parliament-seats`         | UK Parliament Members API           | none | Seats each party holds in the Commons, with the members counted behind them |
+| `postcode-lookup`          | postcodes.io (ONS and OS data)      | none | One postcode's country, region, wards, and coordinates |
+| `explore-education-statistics` | Department for Education       | none | The most recent statistics releases, with their publish stamps |
+| `london-datastore`         | Greater London Authority            | none | Every dataset on the London Datastore |
+| `tna-discovery`            | The National Archives               | none | Catalogue records matching a search, with the total hit count |
+| `ukhsa-dashboard`          | UK Health Security Agency           | none | Metric points for new HIV diagnoses in England |
+| `nomis`                    | ONS Nomis                           | none | SDMX dataset definitions, with maintenance status and keywords |
+| `fingertips-indicators`    | Office for Health Improvement and Disparities | none | Public health indicator metadata, with unit, type, and data source |
+| `find-a-tender`            | Cabinet Office                      | none | Recent procurement notices as OCDS 1.1 releases |
+| `tfl-line-status`          | Transport for London                | none | Live status of every Tube line, with disruption reasons |
+| `public-health-scotland`   | Public Health Scotland              | none | Every dataset on the Public Health Scotland CKAN portal |
+| `nhsbsa-ckan`              | NHS Business Services Authority     | none | Every dataset on the NHSBSA CKAN portal |
 
 The flood-monitoring adapters use `environment.data.gov.uk` under the Open
 Government Licence v3:
@@ -88,6 +99,16 @@ under the Open Parliament Licence v3.0:
 <https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/>.
 The call needs a house and a date, so the adapter asks for the caller's own
 date rather than a fixed one.
+
+Eleven more keyless adapters landed on 2026-10-05: `postcode-lookup` reads
+one postcode from postcodes.io, `explore-education-statistics` reads the
+Department for Education's most recent releases, `london-datastore` and
+`public-health-scotland` and `nhsbsa-ckan` read CKAN catalogues, `tna-discovery`
+searches The National Archives catalogue, `ukhsa-dashboard` reads UKHSA metric
+points, `nomis` reads the ONS Nomis SDMX catalogue, `fingertips-indicators`
+reads OHID indicator metadata, `find-a-tender` reads OCDS procurement notices,
+and `tfl-line-status` reads live Tube status. Endpoints, exact curl commands,
+capture date, and licences are in `docs/CONNECTOR_DISCOVERY.md`.
 
 Note on sources that look obvious but are not usable: `api.ons.gov.uk` was
 retired on 2024-11-25 and now answers every request with a decommission notice.

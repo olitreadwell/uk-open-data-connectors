@@ -1,5 +1,6 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
+import { UK_DATA_SOURCES } from '@uk-open-data-connectors/uk-sources';
 import { describe, expect, it, vi } from 'vitest';
 
 import { createUkOpenDataMcpServer } from './ukOpenDataMcpServer.js';
@@ -35,7 +36,7 @@ describe('createUkOpenDataMcpServer', () => {
     const result = await client.callTool({ name: 'list_sources', arguments: {} });
 
     const sources = JSON.parse(firstText(result)) as { id: string }[];
-    expect(sources.length).toBe(11);
+    expect(sources).toHaveLength(UK_DATA_SOURCES.length);
     expect(sources.every((source) => source.id.length > 0)).toBe(true);
   });
 

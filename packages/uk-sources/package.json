@@ -1,6 +1,6 @@
 {
   "name": "@uk-open-data-connectors/uk-sources",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "type": "module",
   "main": "./dist/index.js",
@@ -42,5 +42,13 @@
   "publishConfig": {
     "access": "public"
   },
-  "description": "Uniform TypeScript adapters for UK public data sources"
+  "description": "Uniform TypeScript adapters for UK public data sources",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olitreadwell/uk-open-data-connectors.git"
+  },
+  "homepage": "https://github.com/olitreadwell/uk-open-data-connectors#readme",
+  "bugs": {
+    "url": "https://github.com/olitreadwell/uk-open-data-connectors/issues"
+  }
 }

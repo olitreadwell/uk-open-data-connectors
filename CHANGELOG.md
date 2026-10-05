@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- `packages/uk-sources` 0.1.1: eleven new keyless adapters, each checked live on
+  2026-10-05 with a committed fixture, unit test, and registry entry:
+  `postcode-lookup`, `explore-education-statistics`, `london-datastore`,
+  `tna-discovery`, `ukhsa-dashboard`, `nomis`, `fingertips-indicators`,
+  `find-a-tender`, `tfl-line-status`, `public-health-scotland`, and
+  `nhsbsa-ckan`. The root and `uk-sources` versions move to 0.1.1, still in the
+  0.1.x range that `uk-mcp` depends on.
 - `parliament-seats`: the UK Parliament Members API state of the parties in the
   Commons and the Lords, with the seats each party holds and the members
   counted behind them (Open Parliament Licence v3.0).

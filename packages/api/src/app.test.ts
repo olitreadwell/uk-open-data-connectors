@@ -5,6 +5,7 @@ import {
   fetchFloodStations,
   fetchOnsDatasets,
   probeUkDataSource,
+  UK_DATA_SOURCES,
 } from '@uk-open-data-connectors/uk-sources';
 import type {
   FloodReading,
@@ -132,19 +133,7 @@ describe('createConnectorsApp', () => {
       auth: string;
       description: string;
     }>;
-    expect(sources.map((source) => source.id)).toEqual([
-      'flood-stations',
-      'flood-readings',
-      'ons-datasets',
-      'food-hygiene-authorities',
-      'tfl-bike-points',
-      'planning-datasets',
-      'ancient-woodland',
-      'bank-rate',
-      'police-crimes',
-      'carbon-intensity',
-      'parliament-seats',
-    ]);
+    expect(sources.map((source) => source.id)).toEqual(UK_DATA_SOURCES.map((source) => source.id));
     for (const source of sources) {
       expect(source.name.length).toBeGreaterThan(0);
       expect(source.auth).toBe('none');

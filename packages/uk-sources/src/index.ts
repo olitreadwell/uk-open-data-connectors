@@ -57,8 +57,41 @@ export type {
   CarbonIntensityPeriod,
   CarbonIntensityWindow,
 } from './carbonIntensity.js';
+/** Department for Education Explore Education Statistics publications (keyless). */
+export {
+  buildExploreEducationPublicationsUrl,
+  EXPLORE_EDUCATION_PUBLICATIONS_PAGE_SIZE,
+  EXPLORE_EDUCATION_PUBLICATIONS_URL,
+  EXPLORE_EDUCATION_STATISTICS_SOURCE_ID,
+  exploreEducationStatisticsAdapter,
+  fetchExploreEducationPublications,
+  parseExploreEducationPublications,
+  summarizeExploreEducationPublications,
+} from './exploreEducationStatistics.js';
+/** Explore Education Statistics types. */
+export type {
+  ExploreEducationPublication,
+  ExploreEducationPublicationsPage,
+  ExploreEducationPublicationsSummary,
+} from './exploreEducationStatistics.js';
 /** Errors shared by every UK source adapter. */
 export { UkSourceApiError, UkSourceError, UkSourceParseError } from './errors.js';
+/** Fingertips public health indicator metadata, published by OHID (keyless). */
+export {
+  buildFingertipsIndicatorUrl,
+  DEFAULT_FINGERTIPS_INDICATOR_IDS,
+  fetchFingertipsIndicators,
+  FINGERTIPS_INDICATOR_METADATA_URL,
+  FINGERTIPS_INDICATORS_SOURCE_ID,
+  fingertipsIndicatorsAdapter,
+  parseFingertipsIndicators,
+  summarizeFingertipsIndicators,
+} from './fingertipsIndicators.js';
+/** Fingertips indicator types. */
+export type {
+  FingertipsIndicatorMetadata,
+  FingertipsIndicatorsSummary,
+} from './fingertipsIndicators.js';
 /** Environment Agency flood-monitoring stations and readings (keyless). */
 export {
   DEFAULT_FLOOD_STATION_REFERENCE,
@@ -90,6 +123,43 @@ export {
 } from './foodHygiene.js';
 /** Food hygiene register types. */
 export type { FoodHygieneAuthority, FoodHygieneScheme, FoodHygieneSummary } from './foodHygiene.js';
+/** London Datastore catalogue, published by the Greater London Authority (keyless). */
+export {
+  fetchLondonDatastorePackages,
+  LONDON_DATASTORE_PACKAGE_LIST_URL,
+  LONDON_DATASTORE_SOURCE_ID,
+  londonDatastoreAdapter,
+  parseLondonDatastorePackages,
+  summarizeLondonDatastorePackages,
+} from './londonDatastore.js';
+/** London Datastore types. */
+export type { LondonDatastorePackage, LondonDatastoreSummary } from './londonDatastore.js';
+/** NHS Business Services Authority open data catalogue (keyless). */
+export {
+  fetchNhsbsaCkanPackages,
+  NHSBSA_CKAN_PACKAGE_LIST_URL,
+  NHSBSA_CKAN_SOURCE_ID,
+  nhsbsaCkanAdapter,
+  parseNhsbsaCkanPackages,
+  summarizeNhsbsaCkanPackages,
+} from './nhsbsaCkan.js';
+/** NHSBSA catalogue types. */
+export type { NhsbsaCkanSummary, NhsbsaDataset } from './nhsbsaCkan.js';
+/** Nomis SDMX dataset catalogue, run by the ONS (keyless). */
+export {
+  fetchNomisDatasetDefinitions,
+  NOMIS_DATASET_DEFINITIONS_URL,
+  NOMIS_KEYWORDS_ANNOTATION,
+  NOMIS_LAST_UPDATED_ANNOTATION,
+  NOMIS_SOURCE_ID,
+  NOMIS_STATUS_ANNOTATION,
+  NOMIS_UNITS_ANNOTATION,
+  nomisAdapter,
+  parseNomisDatasetDefinitions,
+  summarizeNomisDatasetDefinitions,
+} from './nomis.js';
+/** Nomis catalogue types. */
+export type { NomisCatalogSummary, NomisDatasetDefinition, NomisStatusCount } from './nomis.js';
 /** Office for National Statistics dataset catalogue (keyless). */
 export {
   fetchOnsDatasets,
@@ -162,6 +232,32 @@ export type {
   PoliceMonthCount,
   PoliceOutcomeCount,
 } from './policeCrimes.js';
+/** postcodes.io single postcode lookup (keyless, third-party service, OGL data). */
+export {
+  buildPostcodeLookupUrl,
+  DEFAULT_POSTCODE_QUERY,
+  fetchPostcodeLookup,
+  parsePostcodeLookup,
+  POSTCODE_LOOKUP_SOURCE_ID,
+  POSTCODES_IO_BASE_URL,
+  postcodeLookupAdapter,
+} from './postcodeLookup.js';
+/** Postcode lookup types. */
+export type { PostcodeLookupRecord } from './postcodeLookup.js';
+/** Public Health Scotland open data catalogue (keyless). */
+export {
+  fetchPublicHealthScotlandDatasets,
+  PUBLIC_HEALTH_SCOTLAND_PACKAGE_LIST_URL,
+  PUBLIC_HEALTH_SCOTLAND_SOURCE_ID,
+  parsePublicHealthScotlandDatasets,
+  publicHealthScotlandAdapter,
+  summarizePublicHealthScotlandDatasets,
+} from './publicHealthScotland.js';
+/** Public Health Scotland catalogue types. */
+export type {
+  PublicHealthScotlandDataset,
+  PublicHealthScotlandSummary,
+} from './publicHealthScotland.js';
 /** Transport for London Santander Cycles docking stations (keyless). */
 export {
   DEFAULT_LARGEST_STATION_LIMIT,
@@ -173,6 +269,50 @@ export {
 } from './tflBikePoints.js';
 /** Docking station types. */
 export type { DockingStation, DockingStationSummary } from './tflBikePoints.js';
+/** Transport for London Tube line status (keyless). */
+export {
+  fetchTflLineStatuses,
+  parseTflLineStatuses,
+  summarizeTflLineStatuses,
+  TFL_LINE_STATUS_GOOD_SERVICE_SEVERITY,
+  TFL_LINE_STATUS_SOURCE_ID,
+  TFL_LINE_STATUS_URL,
+  tflLineStatusAdapter,
+} from './tflLineStatus.js';
+/** Tube line status types. */
+export type { TflLineStatus, TflLineStatusSummary } from './tflLineStatus.js';
+/** The National Archives Discovery catalogue search (keyless). */
+export {
+  buildTnaDiscoverySearchUrl,
+  DEFAULT_TNA_DISCOVERY_QUERY,
+  fetchTnaDiscoveryRecords,
+  parseTnaDiscoveryRecords,
+  summarizeTnaDiscoverySearch,
+  TNA_DISCOVERY_ACCEPT_HEADER,
+  TNA_DISCOVERY_SEARCH_URL,
+  TNA_DISCOVERY_SOURCE_ID,
+  tnaDiscoveryAdapter,
+} from './tnaDiscovery.js';
+/** Discovery search types. */
+export type {
+  TnaDiscoveryRecord,
+  TnaDiscoverySearchResult,
+  TnaDiscoverySearchSummary,
+} from './tnaDiscovery.js';
+/** UK Health Security Agency data dashboard metric points (keyless). */
+export {
+  buildUkhsaMetricUrl,
+  fetchUkhsaMetricPoints,
+  parseUkhsaMetricPoints,
+  summarizeUkhsaMetricPoints,
+  UKHSA_DASHBOARD_API_BASE_URL,
+  UKHSA_DASHBOARD_METRIC_PATH,
+  UKHSA_DASHBOARD_PAGE_SIZE,
+  UKHSA_DASHBOARD_SOURCE_ID,
+  ukhsaDashboardAdapter,
+} from './ukhsaDashboard.js';
+/** UKHSA dashboard types. */
+export type { UkhsaMetricPage, UkhsaMetricPoint, UkhsaMetricSummary } from './ukhsaDashboard.js';
 /** The uniform adapter registry and probe helpers. */
 export {
   UK_DATA_SOURCES,

@@ -43,7 +43,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
       return jsonResponse(readFixtureJson('food-hygiene-authorities.json'));
     }
     if (new URL(target).hostname === 'api.tfl.gov.uk') {
-      return jsonResponse(readFixtureJson('tfl-bike-points.json'));
+      return new URL(target).pathname.startsWith('/Line/')
+        ? jsonResponse(readFixtureJson('tfl-line-status-2026-10-05.json'))
+        : jsonResponse(readFixtureJson('tfl-bike-points.json'));
     }
     if (new URL(target).hostname === 'www.planning.data.gov.uk') {
       return jsonResponse(readFixtureJson('planning-datasets.json'));
@@ -62,6 +64,36 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     }
     if (new URL(target).hostname === 'data.police.uk') {
       return jsonResponse(policeResponse(new URL(target)));
+    }
+    if (new URL(target).hostname === 'api.postcodes.io') {
+      return jsonResponse(readFixtureJson('postcode-lookup-2026-10-05.json'));
+    }
+    if (new URL(target).hostname === 'api.education.gov.uk') {
+      return jsonResponse(readFixtureJson('explore-education-statistics-2026-10-05.json'));
+    }
+    if (new URL(target).hostname === 'data.london.gov.uk') {
+      return jsonResponse(readFixtureJson('london-datastore-2026-10-05.json'));
+    }
+    if (new URL(target).hostname === 'discovery.nationalarchives.gov.uk') {
+      return jsonResponse(readFixtureJson('tna-discovery-2026-10-05.json'));
+    }
+    if (new URL(target).hostname === 'api.ukhsa-dashboard.data.gov.uk') {
+      return jsonResponse(readFixtureJson('ukhsa-dashboard-2026-10-05.json'));
+    }
+    if (new URL(target).hostname === 'www.nomisweb.co.uk') {
+      return jsonResponse(readFixtureJson('nomis-2026-10-05.json'));
+    }
+    if (new URL(target).hostname === 'fingertips.phe.org.uk') {
+      return jsonResponse(readFixtureJson('fingertips-indicators-2026-10-05.json'));
+    }
+    if (new URL(target).hostname === 'www.find-tender.service.gov.uk') {
+      return jsonResponse(readFixtureJson('find-a-tender-2026-10-05.json'));
+    }
+    if (new URL(target).hostname === 'www.opendata.nhs.scot') {
+      return jsonResponse(readFixtureJson('public-health-scotland-2026-10-05.json'));
+    }
+    if (new URL(target).hostname === 'opendata.nhsbsa.net') {
+      return jsonResponse(readFixtureJson('nhsbsa-ckan-2026-10-05.json'));
     }
     if (target.includes('/readings')) {
       return jsonResponse(readFixtureJson('flood-station-readings.json'));
@@ -124,6 +156,17 @@ describe('registry', () => {
       'police-crimes',
       'carbon-intensity',
       'parliament-seats',
+      'postcode-lookup',
+      'explore-education-statistics',
+      'london-datastore',
+      'tna-discovery',
+      'ukhsa-dashboard',
+      'nomis',
+      'fingertips-indicators',
+      'find-a-tender',
+      'tfl-line-status',
+      'public-health-scotland',
+      'nhsbsa-ckan',
     ]);
   });
 
@@ -138,6 +181,19 @@ describe('registry', () => {
     expect(getUkDataSource('police-crimes')?.name).toContain('Home Office');
     expect(getUkDataSource('carbon-intensity')?.name).toContain('National Energy System Operator');
     expect(getUkDataSource('parliament-seats')?.name).toContain('UK Parliament');
+    expect(getUkDataSource('postcode-lookup')?.name).toContain('postcodes.io');
+    expect(getUkDataSource('explore-education-statistics')?.name).toContain(
+      'Department for Education'
+    );
+    expect(getUkDataSource('london-datastore')?.name).toContain('London Datastore');
+    expect(getUkDataSource('tna-discovery')?.name).toContain('National Archives');
+    expect(getUkDataSource('ukhsa-dashboard')?.name).toContain('UK Health Security Agency');
+    expect(getUkDataSource('nomis')?.name).toContain('Nomis');
+    expect(getUkDataSource('fingertips-indicators')?.name).toContain('Fingertips');
+    expect(getUkDataSource('find-a-tender')?.name).toContain('Find a Tender');
+    expect(getUkDataSource('tfl-line-status')?.name).toContain('Transport for London');
+    expect(getUkDataSource('public-health-scotland')?.name).toContain('Public Health Scotland');
+    expect(getUkDataSource('nhsbsa-ckan')?.name).toContain('NHS Business Services Authority');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 
