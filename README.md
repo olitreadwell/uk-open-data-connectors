@@ -8,9 +8,12 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 | Package | What it is |
 | ------- | ---------- |
-| [`@uk-open-data-connectors/uk-sources`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources) | Uniform adapters for UK public data sources. Twenty-two so far: the Environment Agency flood-monitoring station list and readings, the ONS dataset catalogue, the FSA food hygiene registers, Transport for London's cycle hire docking stations and Tube line status, the Planning Data platform's dataset catalogue, Natural England's ancient woodland layer, the Bank of England's daily Bank Rate, Home Office police.uk recorded crime, the National Energy System Operator's half-hourly carbon intensity, the UK Parliament state of the parties, postcodes.io postcode lookup, Department for Education statistics releases, the London Datastore, The National Archives Discovery catalogue, the UKHSA data dashboard, the Nomis catalogue, Fingertips public health indicators, Find a Tender procurement notices, the Public Health Scotland catalogue, and the NHSBSA catalogue, all keyless with live probes and offline fixtures |
-| `@uk-open-data-connectors/connectors-api` | HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP |
-| `@uk-open-data-connectors/connectors-cli` | `ukdata` command line tool that prints JSON to stdout, so any language can shell out to it |
+| [`@uk-open-data-connectors/uk-sources`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources) | Uniform adapters for 22 UK public data sources. All keyless, with live probes and offline fixtures. |
+| [`@uk-open-data-connectors/uk-mcp`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-mcp) | MCP server that exposes the connectors to Claude, ChatGPT, and other MCP clients. |
+| [`@uk-open-data-connectors/connectors-cli`](https://www.npmjs.com/package/@uk-open-data-connectors/connectors-cli) | `ukdata` command line tool that prints JSON to stdout, so any language can shell out to it. |
+| `@uk-open-data-connectors/connectors-api` | Private. HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP. |
+| `@uk-open-data-connectors/config-eslint` | Private. Shared ESLint config for the packages in this repo. |
+| `@uk-open-data-connectors/config-typescript` | Private. Shared TypeScript compiler config for the packages in this repo. |
 | `python/` (`nzdata` on PyPI) | Python port carried over from the NZ origin. Still NZ sources, see Language ports |
 | `ruby/` (`nzdata` gem) | Ruby port carried over from the NZ origin. Still NZ sources, see Language ports |
 

@@ -6,7 +6,7 @@ An MCP server that gives Claude, ChatGPT, and other MCP clients access to 22 UK 
 
 - Runs a Model Context Protocol (MCP) server over the UK connector library.
 - Lists every source, probes each one live, and fetches one source by id.
-- Adds one tool for each named function in `uk-sources`.
+- Adds 13 tools, one for each named fetch function in `uk-sources`.
 - Speaks stdio, so Claude Code and Claude Desktop can start it directly.
 - Needs no keys, because every UK source is keyless.
 
@@ -19,7 +19,7 @@ npm install @uk-open-data-connectors/uk-mcp
 ## Quick start
 
 ```sh
-npx -y @uk-open-data-connectors/uk-mcp
+npx -y --package @uk-open-data-connectors/uk-mcp uk-open-data-mcp
 ```
 
 The server speaks stdio and waits for an MCP client.
@@ -49,7 +49,7 @@ The server speaks stdio and waits for an MCP client.
 
 - `probe_sources` matters more than it looks. Every adapter falls back to a committed fixture when the upstream API is slow, so a build never fails on a flaky government host. A number can be months old without anyone noticing. Probe first when freshness matters.
 - The server speaks stdio. A remote client, such as a ChatGPT connector, needs a tunnel in front of the local process.
-- Add it to Claude Code with `claude mcp add uk-open-data -- npx -y @uk-open-data-connectors/uk-mcp`.
+- Add it to Claude Code with `claude mcp add uk-open-data -- npx -y --package @uk-open-data-connectors/uk-mcp uk-open-data-mcp`.
 - For Claude Desktop, add the same command to `claude_desktop_config.json`.
 - `uk_flood_station_readings` takes `stationReference` and `limit`. The limit is 1 to 1000 and defaults to 96. The station defaults to `1029TH`.
 - `uk_flood_stations` takes a `limit` of 1 to 1000. The default is 25.

@@ -8,7 +8,7 @@ Uniform TypeScript adapters for 22 UK public data sources, for JavaScript and Ty
 - Gives every adapter the same shape: a live fetch, a strict parse, and a committed fixture fallback.
 - Lets you build and test offline, because each adapter falls back to a fixture when the live call fails.
 - Exposes a registry (`UK_DATA_SOURCES`) and probe helpers (`probeUkDataSource`, `probeAllUkDataSources`).
-- Needs no API keys. One adapter takes an optional app key.
+- Needs no API keys, because every UK source is keyless.
 
 ## Install
 
@@ -34,7 +34,7 @@ console.log(summary.latest?.value, summary.trend);
 | `flood-readings` | Environment Agency | none | Recent water levels for one station, newest first. |
 | `ons-datasets` | Office for National Statistics (ONS) | none | The dataset catalogue, with state and last-updated stamp. |
 | `food-hygiene-authorities` | Food Standards Agency (FSA) | none | Every local authority food hygiene register, with its establishment count. |
-| `tfl-bike-points` | Transport for London (TfL) | optional app key | Every Santander Cycles docking station, with docking points and docked bikes. |
+| `tfl-bike-points` | Transport for London (TfL) | none | Every Santander Cycles docking station, with docking points and docked bikes. |
 | `planning-datasets` | Planning Data platform (MHCLG) | none | Every dataset, with the records published behind it. |
 | `ancient-woodland` | Natural England | none | Ancient woodland polygons for England, counted by type and size. |
 | `bank-rate` | Bank of England | none | The daily official Bank Rate, one reading per business day since 1975. |
@@ -49,9 +49,11 @@ console.log(summary.latest?.value, summary.trend);
 | `nomis` | ONS Nomis | none | SDMX dataset definitions, with maintenance status and keywords. |
 | `fingertips-indicators` | Office for Health Improvement and Disparities (OHID) | none | Public health indicator metadata, with unit, type, and data source. |
 | `find-a-tender` | Cabinet Office | none | Recent procurement notices as OCDS 1.1 releases. |
-| `tfl-line-status` | Transport for London (TfL) | optional app key | Live status of every Tube line, with disruption reasons. |
+| `tfl-line-status` | Transport for London (TfL) | none | Live status of every Tube line, with disruption reasons. |
 | `public-health-scotland` | Public Health Scotland | none | Every dataset on the Public Health Scotland CKAN portal. |
 | `nhsbsa-ckan` | NHS Business Services Authority (NHSBSA) | none | Every dataset on the NHSBSA CKAN portal. |
+
+The `auth` field is `none` for every adapter.
 
 ## Notes and limits
 
@@ -82,7 +84,7 @@ console.log(summary.latest?.value, summary.trend);
 
 ## Data sources and licences
 
-This package reads 22 sources from UK public bodies and one third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts carry the Open Parliament Licence v3.0.
+This package reads 22 sources. Most come from UK public bodies. The postcode lookup comes from postcodes.io, a third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts carry the Open Parliament Licence v3.0.
 
 | Adapter | Publisher | Source URL | Data licence |
 | ------- | --------- | ---------- | ------------ |
