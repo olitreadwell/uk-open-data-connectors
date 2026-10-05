@@ -1,227 +1,120 @@
 # @uk-open-data-connectors/uk-sources
 
-Uniform TypeScript adapters for UK public data sources. Every adapter has the
-same shape: a live fetch, a strict parse, and a committed fixture fallback so
-builds work offline.
+Uniform TypeScript adapters for 22 UK public data sources, for JavaScript and TypeScript developers.
 
-## Adapters
+## What this package does
 
-| id                         | Source                              | Auth | What it does                                                 |
-| -------------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| `flood-stations`           | Environment Agency flood-monitoring | none | Monitoring stations with river and catchment                 |
-| `flood-readings`           | Environment Agency flood-monitoring | none | Recent water levels for one station, newest first            |
-| `ons-datasets`             | ONS beta API dataset catalogue      | none | Every dataset the ONS lists, with its state and stamp        |
-| `food-hygiene-authorities` | Food Standards Agency food hygiene  | none | Every local authority register, with its establishment count |
-| `tfl-bike-points`          | Transport for London cycle hire     | none | Every Santander Cycles docking station, with docking points and docked bikes |
-| `planning-datasets`        | Planning Data platform (MHCLG)      | none | Every planning dataset, with the records published behind it |
-| `ancient-woodland`         | Natural England ancient woodland    | none | Ancient woodland polygons for England, counted by type and size |
-| `bank-rate`                | Bank of England Bank Rate           | none | The daily official Bank Rate, one reading per business day since 1975 |
-| `police-crimes`            | Home Office police.uk               | none | Street-level crime within a mile of a point, counted by crime type and outcome |
-| `carbon-intensity`         | National Energy System Operator     | none | Half-hourly carbon intensity for Great Britain, with the window's cleanest and dirtiest half hours |
-| `parliament-seats`         | UK Parliament Members API           | none | Seats each party holds in the Commons, with the members counted behind them |
-| `postcode-lookup`          | postcodes.io (ONS and OS data)      | none | One postcode's country, region, wards, and coordinates |
-| `explore-education-statistics` | Department for Education       | none | The most recent statistics releases, with their publish stamps |
-| `london-datastore`         | Greater London Authority            | none | Every dataset on the London Datastore |
-| `tna-discovery`            | The National Archives               | none | Catalogue records matching a search, with the total hit count |
-| `ukhsa-dashboard`          | UK Health Security Agency           | none | Metric points for new HIV diagnoses in England |
-| `nomis`                    | ONS Nomis                           | none | SDMX dataset definitions, with maintenance status and keywords |
-| `fingertips-indicators`    | Office for Health Improvement and Disparities | none | Public health indicator metadata, with unit, type, and data source |
-| `find-a-tender`            | Cabinet Office                      | none | Recent procurement notices as OCDS 1.1 releases |
-| `tfl-line-status`          | Transport for London                | none | Live status of every Tube line, with disruption reasons |
-| `public-health-scotland`   | Public Health Scotland              | none | Every dataset on the Public Health Scotland CKAN portal |
-| `nhsbsa-ckan`              | NHS Business Services Authority     | none | Every dataset on the NHSBSA CKAN portal |
+- Ships one adapter for each of 22 UK public data sources.
+- Gives every adapter the same shape: a live fetch, a strict parse, and a committed fixture fallback.
+- Lets you build and test offline, because each adapter falls back to a fixture when the live call fails.
+- Exposes a registry (`UK_DATA_SOURCES`) and probe helpers (`probeUkDataSource`, `probeAllUkDataSources`).
+- Needs no API keys. One adapter takes an optional app key.
 
-The flood-monitoring adapters use `environment.data.gov.uk` under the Open
-Government Licence v3:
-<https://environment.data.gov.uk/flood-monitoring/doc/reference>
+## Install
 
-The ONS adapter uses the beta API behind the ONS website rebuild,
-<https://api.beta.ons.gov.uk/v1/datasets>, also keyless and under the Open
-Government Licence v3.
+```sh
+npm install @uk-open-data-connectors/uk-sources
+```
 
-The food hygiene adapter uses the FSA Food Hygiene Rating Scheme API,
-<https://api.ratings.food.gov.uk/Authorities/basic>, also keyless and under the
-Open Government Licence v3. It answers only with the version header the FSA
-asks for, `x-api-version: 2`; without it the endpoint returns HTTP 404.
-
-The Planning Data platform adapter uses the dataset catalogue behind
-<https://www.planning.data.gov.uk/dataset>, <https://www.planning.data.gov.uk/dataset.json>,
-which answers without a key under the Open Government Licence v3. The file
-lists datasets alongside the platform's pipeline configuration and provenance
-tables, so the adapter keeps the entries whose `realm` is `dataset`.
-
-The ancient woodland adapter uses Natural England's Ancient Woodland (England)
-layer on the Defra ArcGIS estate,
-<https://services.arcgis.com/JJzESW51TqeY9uat/arcgis/rest/services/Ancient_Woodland_England/FeatureServer/0>,
-which answers without a key under the Open Government Licence v3. The layer
-carries more than fifty thousand polygons, past ArcGIS's page size, so the
-adapter reads the counts from the service's own statistics queries instead of
-downloading the features.
-
-The Bank Rate adapter uses the Bank of England's Interactive Statistical
-Database (IADB),
-<https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp>,
-which answers without a key. The daily series, `IUDBEDR`, starts on 2 January
-1975; asking for an earlier start returns the database's error page instead of
-a CSV, so the adapter starts there. The Bank's published terms place
-reproduction of Database data under the Open Government Licence v3:
-<https://www.bankofengland.co.uk/legal>.
-
-The recorded crime adapter uses the Home Office police.uk API,
-<https://data.police.uk/api/crimes-street/all-crime>, which answers without a
-key under the Open Government Licence v3. It holds the last 36 months of
-street-level crime from the 44 forces of England, Wales and Northern Ireland,
-so nothing here covers Scotland. A call takes a point and returns everything
-within a mile of it, which is why the adapter counts around one point rather
-than a boundary, and it asks for one month at a time to stay inside the API's
-limit of 15 requests a second.
-
-The docking station adapter uses TfL's Unified API,
-<https://api.tfl.gov.uk/BikePoint>, which answers without a key. TfL asks for
-an app key above the free rate limit, so `fetchTflBikePoints` takes an optional
-key and sends it as the `app_key` query parameter. The data is published as TfL
-Open Data: <https://tfl.gov.uk/info-for/open-data-users/>.
-
-The carbon intensity adapter uses the National Energy System Operator's Carbon
-Intensity API, <https://api.carbonintensity.org.uk/intensity>, which answers
-without a key. It is the official half-hourly series for Great Britain, with a
-reading and a grade for every half hour, and the API's own terms place the data
-under the Creative Commons Attribution 4.0 licence:
-<https://terms.carbonintensity.org.uk/>. The API refuses a range longer than 31
-days, so the adapter reads whole days and asks for a window that ends at the
-start of today, which keeps every reading in it a settled one.
-
-The Parliament seat adapter uses the UK Parliament Members API,
-<https://members-api.parliament.uk/api/Parties/StateOfTheParties>, which
-answers without a key. It is the current state of the parties in each house,
-with the seats a party holds and the members counted behind them, published
-under the Open Parliament Licence v3.0:
-<https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/>.
-The call needs a house and a date, so the adapter asks for the caller's own
-date rather than a fixed one.
-
-Eleven more keyless adapters landed on 2026-10-05: `postcode-lookup` reads
-one postcode from postcodes.io, `explore-education-statistics` reads the
-Department for Education's most recent releases, `london-datastore` and
-`public-health-scotland` and `nhsbsa-ckan` read CKAN catalogues, `tna-discovery`
-searches The National Archives catalogue, `ukhsa-dashboard` reads UKHSA metric
-points, `nomis` reads the ONS Nomis SDMX catalogue, `fingertips-indicators`
-reads OHID indicator metadata, `find-a-tender` reads OCDS procurement notices,
-and `tfl-line-status` reads live Tube status. Endpoints, exact curl commands,
-capture date, and licences are in `docs/CONNECTOR_DISCOVERY.md`.
-
-Note on sources that look obvious but are not usable: `api.ons.gov.uk` was
-retired on 2024-11-25 and now answers every request with a decommission notice.
-The beta API at `api.beta.ons.gov.uk/v1` replaced it for dataset metadata,
-editions, versions, and observations.
-
-## Usage
+## Quick start
 
 ```ts
 import { fetchFloodStationReadings, summarizeFloodReadings } from '@uk-open-data-connectors/uk-sources';
-import { fetchOnsDatasets, summarizeOnsDatasets } from '@uk-open-data-connectors/uk-sources';
-import { fetchFoodHygieneAuthorities, summarizeFoodHygieneAuthorities } from '@uk-open-data-connectors/uk-sources';
-import { fetchTflBikePoints, summarizeTflBikePoints } from '@uk-open-data-connectors/uk-sources';
-import { fetchPlanningDatasets, summarizePlanningDatasets } from '@uk-open-data-connectors/uk-sources';
-import { fetchAncientWoodlandProfile } from '@uk-open-data-connectors/uk-sources';
-import { fetchBankRateObservations, summarizeBankRateSeries } from '@uk-open-data-connectors/uk-sources';
-import { fetchPoliceCrimeSummary } from '@uk-open-data-connectors/uk-sources';
-import { fetchCarbonIntensityWindow } from '@uk-open-data-connectors/uk-sources';
-import { fetchParliamentSeats } from '@uk-open-data-connectors/uk-sources';
 
 const readings = await fetchFloodStationReadings('1029TH', { limit: 96 });
 const summary = summarizeFloodReadings(readings);
 console.log(summary.latest?.value, summary.trend);
-
-const catalogue = summarizeOnsDatasets(await fetchOnsDatasets());
-console.log(catalogue.datasetCount, catalogue.yearCounts);
-
-const registers = summarizeFoodHygieneAuthorities(await fetchFoodHygieneAuthorities());
-console.log(registers.authorityCount, registers.establishmentCount);
-
-const docks = summarizeTflBikePoints(await fetchTflBikePoints());
-console.log(docks.stationCount, docks.dockCount, docks.largestStations[0]?.name);
-
-const planning = summarizePlanningDatasets(await fetchPlanningDatasets());
-console.log(planning.datasetCount, planning.entityCount, planning.emptyDatasetCount);
-
-const woodland = await fetchAncientWoodlandProfile();
-console.log(woodland.recordCount, woodland.totalHectares, woodland.sizeBands[0]?.recordCount);
-
-const intensity = await fetchCarbonIntensityWindow();
-console.log(intensity.periodCount, intensity.averageIntensity, intensity.lowestPeriod.intensity);
-
-const seats = await fetchParliamentSeats();
-console.log(seats.seatCount, seats.partyCount, seats.largestParty.party.name);
 ```
 
-## UK Parliament seats
+## Adapters
 
-`fetchParliamentSeats` reads the state of the parties in the House of Commons
-and returns the seat counts a page can print.
+| id | Source | Auth | What it does |
+| --- | ------ | ---- | ------------ |
+| `flood-stations` | Environment Agency | none | Monitoring stations with their river, catchment, and measures. |
+| `flood-readings` | Environment Agency | none | Recent water levels for one station, newest first. |
+| `ons-datasets` | Office for National Statistics (ONS) | none | The dataset catalogue, with state and last-updated stamp. |
+| `food-hygiene-authorities` | Food Standards Agency (FSA) | none | Every local authority food hygiene register, with its establishment count. |
+| `tfl-bike-points` | Transport for London (TfL) | optional app key | Every Santander Cycles docking station, with docking points and docked bikes. |
+| `planning-datasets` | Planning Data platform (MHCLG) | none | Every dataset, with the records published behind it. |
+| `ancient-woodland` | Natural England | none | Ancient woodland polygons for England, counted by type and size. |
+| `bank-rate` | Bank of England | none | The daily official Bank Rate, one reading per business day since 1975. |
+| `police-crimes` | Home Office police.uk | none | Street-level crime within a mile of a point, counted by type and outcome. |
+| `carbon-intensity` | National Energy System Operator (NESO) | none | Half-hourly carbon intensity for Great Britain, with the cleanest and dirtiest half hours. |
+| `parliament-seats` | UK Parliament | none | Seats each party holds in the Commons, with the members counted behind them. |
+| `postcode-lookup` | postcodes.io (ONS and Ordnance Survey data) | none | One postcode's country, region, wards, and coordinates. |
+| `explore-education-statistics` | Department for Education (DfE) | none | The most recent statistics releases, with their publish stamps. |
+| `london-datastore` | Greater London Authority (GLA) | none | Every dataset on the London Datastore. |
+| `tna-discovery` | The National Archives | none | Catalogue records matching a search, with the total hit count. |
+| `ukhsa-dashboard` | UK Health Security Agency (UKHSA) | none | Annual counts of new HIV diagnoses in England. |
+| `nomis` | ONS Nomis | none | SDMX dataset definitions, with maintenance status and keywords. |
+| `fingertips-indicators` | Office for Health Improvement and Disparities (OHID) | none | Public health indicator metadata, with unit, type, and data source. |
+| `find-a-tender` | Cabinet Office | none | Recent procurement notices as OCDS 1.1 releases. |
+| `tfl-line-status` | Transport for London (TfL) | optional app key | Live status of every Tube line, with disruption reasons. |
+| `public-health-scotland` | Public Health Scotland | none | Every dataset on the Public Health Scotland CKAN portal. |
+| `nhsbsa-ckan` | NHS Business Services Authority (NHSBSA) | none | Every dataset on the NHSBSA CKAN portal. |
 
-```ts
-import { fetchParliamentSeats } from '@uk-open-data-connectors/uk-sources';
+## Notes and limits
 
-const seats = await fetchParliamentSeats();
-// { seatCount: 650, partyCount: 18, majorityThreshold: 326, ... }
-console.log(seats.largestParty.party.name, seats.largestParty.seatCount);
-```
+- All 22 adapters are keyless. `fetchTflBikePoints` and `fetchTflLineStatuses` take an optional `apiKey`, sent as the `app_key` query parameter.
+- Each adapter falls back to a committed fixture when the live call fails. A returned value can be stale. Call `probeUkDataSource` before you quote a number.
+- The fixtures in `src/fixtures` are real snapshots from the live APIs. The newer files carry their capture date in the filename.
+- Tests never reach the network unless `RUN_SMOKE=1` is set. The smoke test hits the real endpoints and needs no keys.
+- `api.ons.gov.uk` was retired on 2024-11-25. Every path answers HTTP 200 with a plain-text decommission notice, so a naive health check reads it as healthy. The `ons-datasets` adapter uses `api.beta.ons.gov.uk/v1` instead.
+- `data.gov.uk/api/3/action/...` redirects to an HTML landing page. The CKAN API is no longer at that path.
+- The FSA endpoint answers only with the `x-api-version: 2` header. Without it the endpoint returns HTTP 404. The adapter sends the header.
+- The Planning Data file lists datasets and pipeline tables. The adapter keeps the entries whose `realm` is `dataset`.
+- The ancient woodland layer holds more than 50,000 polygons, past the ArcGIS page size. The adapter reads the service statistics queries instead of the features.
+- The Bank Rate daily series is `IUDBEDR` and starts on 2 January 1975. An earlier start returns the database error page instead of a CSV.
+- police.uk holds the last 36 months of street-level crime from the 44 forces of England, Wales, and Northern Ireland. Police Scotland publishes elsewhere, so nothing here covers Scotland.
+- A police.uk street-level call covers everything within a mile of a point. The adapter cannot ask for a smaller radius. It asks one month at a time, inside the API limit of 15 requests per second.
+- The carbon intensity API refuses a range longer than 31 days. The adapter reads whole days and asks for a window that ends at the start of today.
+- The Parliament call takes a house (1 for the Commons, 2 for the Lords) and a date. The response does not echo the date or the house back.
+- A vacant seat appears as its own party, named `Vacant`, with one seat and no members behind it. The summary keeps it in `seats` and reports the gap per row as `unallocatedSeatCount`.
+- `backgroundColour` and `foregroundColour` are null for some parties, including the Speaker. A chart needs its own fallback colour.
+- The Parliament call can be slow. A request in this repo timed out after 25 seconds, and the next one answered in two.
+- The Nomis catalogue returns 1,617 dataset definitions in about 5.4 MB of JSON. The committed fixture keeps the first 25 definitions. The adapter reads the whole live catalogue.
+- The Public Health Scotland portal is occasionally flaky. Calls can answer 200, answer 504, or reset the connection. The adapter has no retry, so a smoke run can fail on this source now and then.
+- The London Datastore call answers a 307 redirect. Node's `fetch` follows it, so the adapter keeps the documented path.
+- The Discovery adapter sends `Accept: application/json`, because the API documents the header.
+- `postcode-lookup` reads from postcodes.io, a third-party service. It is not a government API, though it serves ONS and Ordnance Survey postcode data under the Open Government Licence v3.
+- Only the Find a Tender `license` field, the NHSBSA `OGL-UK-3.0` metadata, and the Public Health Scotland `uk-ogl` metadata were read directly from the service. The other licences come from the publishers' standard terms.
+- The eleven adapters added on 2026-10-05 were probed live on that day.
 
-The payload is validated with this schema before anything is counted:
+## Data sources and licences
 
-```ts
-const PARLIAMENT_PARTY_SCHEMA = z.object({
-  id: z.number().int(),
-  name: z.string().nullable(),
-  abbreviation: z.string().nullable(),
-  backgroundColour: z.string().nullable(),
-  foregroundColour: z.string().nullable(),
-  isIndependentParty: z.boolean(),
-});
+This package reads 22 sources from UK public bodies and one third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts carry the Open Parliament Licence v3.0.
 
-const PARLIAMENT_SEAT_COUNT_SCHEMA = z.object({
-  male: z.number().int().nonnegative().nullable(),
-  female: z.number().int().nonnegative().nullable(),
-  nonBinary: z.number().int().nonnegative().nullable(),
-  total: z.number().int(),
-  party: PARLIAMENT_PARTY_SCHEMA.nullable(),
-});
+| Adapter | Publisher | Source URL | Data licence |
+| ------- | --------- | ---------- | ------------ |
+| `flood-stations` | Environment Agency | <https://environment.data.gov.uk/flood-monitoring/id/stations> | Open Government Licence v3 |
+| `flood-readings` | Environment Agency | <https://environment.data.gov.uk/flood-monitoring/id/stations/{reference}/readings> | Open Government Licence v3 |
+| `ons-datasets` | Office for National Statistics | <https://api.beta.ons.gov.uk/v1/datasets> | Open Government Licence v3 |
+| `food-hygiene-authorities` | Food Standards Agency | <https://api.ratings.food.gov.uk/Authorities/basic> | Open Government Licence v3 |
+| `tfl-bike-points` | Transport for London | <https://api.tfl.gov.uk/BikePoint> | TfL Open Data |
+| `planning-datasets` | MHCLG Planning Data platform | <https://www.planning.data.gov.uk/dataset.json> | Open Government Licence v3 |
+| `ancient-woodland` | Natural England | <https://services.arcgis.com/JJzESW51TqeY9uat/arcgis/rest/services/Ancient_Woodland_England/FeatureServer/0/query> | Open Government Licence v3 |
+| `bank-rate` | Bank of England | <https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp> | Open Government Licence v3 under the Bank's terms |
+| `police-crimes` | Home Office police.uk | <https://data.police.uk/api/crimes-street/all-crime> | Open Government Licence v3 |
+| `carbon-intensity` | National Energy System Operator | <https://api.carbonintensity.org.uk/intensity> | Creative Commons Attribution 4.0 |
+| `parliament-seats` | UK Parliament | <https://members-api.parliament.uk/api/Parties/StateOfTheParties> | Open Parliament Licence v3.0 |
+| `postcode-lookup` | postcodes.io (ONS and Ordnance Survey data) | <https://api.postcodes.io/postcodes/SW1A1AA> | Open Government Licence v3 |
+| `explore-education-statistics` | Department for Education | <https://api.education.gov.uk/statistics/v1/publications> | Open Government Licence v3 |
+| `london-datastore` | Greater London Authority | <https://data.london.gov.uk/api/3/action/package_list> | Open Government Licence v3 by default, individual datasets can differ |
+| `tna-discovery` | The National Archives | <https://discovery.nationalarchives.gov.uk/API/search/records> | Open Government Licence v3 |
+| `ukhsa-dashboard` | UK Health Security Agency | <https://api.ukhsa-dashboard.data.gov.uk/themes/infectious_disease/sub_themes/bloodborne/topics/HIV/geography_types/Nation/geographies/England/metrics/HIV_cases_newDiagnoses> | Open Government Licence v3 |
+| `nomis` | ONS Nomis | <https://www.nomisweb.co.uk/api/v01/dataset/def.sdmx.json> | Open Government Licence v3 |
+| `fingertips-indicators` | Office for Health Improvement and Disparities | <https://fingertips.phe.org.uk/api/indicator_metadata/by_indicator_id> | Open Government Licence v3 |
+| `find-a-tender` | Cabinet Office | <https://www.find-tender.service.gov.uk/api/1.0/ocdsReleasePackages> | Open Government Licence v3 |
+| `tfl-line-status` | Transport for London | <https://api.tfl.gov.uk/Line/Mode/tube/Status> | TfL Open Data |
+| `public-health-scotland` | Public Health Scotland | <https://www.opendata.nhs.scot/api/3/action/package_list> | Open Government Licence v3, the portal reports `uk-ogl` |
+| `nhsbsa-ckan` | NHS Business Services Authority | <https://opendata.nhsbsa.net/api/3/action/package_list> | Open Government Licence v3, the portal reports `OGL-UK-3.0` |
 
-const PARLIAMENT_RESPONSE_SCHEMA = z.object({
-  items: z.array(z.object({ value: PARLIAMENT_SEAT_COUNT_SCHEMA.nullable() })).nullable(),
-});
-```
+## Package licence
 
-The public surface also carries `buildParliamentSeatsUrl(house, forDate)` for
-a specific house and date, `formatParliamentQueryDate(date)` for the
-`YYYY-MM-DD` the path takes, and `parseParliamentSeats(payload)` /
-`summarizeParliamentPartySeats(seats)` for parsing a payload or a list of
-parties on its own. `PARLIAMENT_COMMONS_HOUSE` is 1 and
-`PARLIAMENT_LORDS_HOUSE` is 2.
+MIT. See LICENSE.
 
-Quirks worth knowing before you build on this:
+## Links
 
-- A vacant seat appears as its own party, named `Vacant`, with one seat and
-  no members behind it. The summary keeps it in `seats` and reports the gap
-  per row as `unallocatedSeatCount`, so `male + female + nonBinary` can sit
-  below `seatCount`.
-- `backgroundColour` and `foregroundColour` are null for a few parties,
-  including the Speaker, so a chart needs its own fallback colour rather than
-  reading the field straight.
-- The house is a path segment, not a query parameter: 1 is the Commons and 2
-  is the Lords, and the same call returns peers for house 2.
-- The call can be slow. One request here timed out at 25 seconds and the next
-  answered in two, so give it a generous timeout and keep a committed fixture
-  fallback.
-- The date is part of the call, so a page that wants "today" has to send its
-  own date; the response does not echo the date or the house back.
-
-## Tests
-
-Unit tests run against the committed fixtures in `src/fixtures`, offline.
-
-```bash
-npm run test --workspace @uk-open-data-connectors/uk-sources
-npm run test:smoke --workspace @uk-open-data-connectors/uk-sources   # hits the live APIs
-```
+- npm: <https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources>
+- source: <https://github.com/olitreadwell/uk-open-data-connectors/tree/main/packages/uk-sources>
+- docs: [Connector discovery](../../docs/CONNECTOR_DISCOVERY.md)

@@ -47,6 +47,7 @@
     "access": "public"
   },
   "description": "MCP server exposing the UK open data connector library to Claude and ChatGPT",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/olitreadwell/uk-open-data-connectors.git"
