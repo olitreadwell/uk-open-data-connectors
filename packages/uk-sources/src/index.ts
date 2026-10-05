@@ -76,6 +76,23 @@ export type {
 } from './exploreEducationStatistics.js';
 /** Errors shared by every UK source adapter. */
 export { UkSourceApiError, UkSourceError, UkSourceParseError } from './errors.js';
+/** Find a Tender procurement notices, published by the Crown Commercial Service (keyless). */
+export {
+  FIND_A_TENDER_RELEASE_LIMIT,
+  FIND_A_TENDER_RELEASE_PACKAGES_URL,
+  FIND_A_TENDER_SOURCE_ID,
+  fetchFindATenderReleases,
+  findATenderAdapter,
+  parseFindATenderReleases,
+  summarizeFindATenderReleases,
+} from './findATender.js';
+/** Find a Tender types. */
+export type {
+  FindATenderRelease,
+  FindATenderReleasePage,
+  FindATenderStatusCount,
+  FindATenderSummary,
+} from './findATender.js';
 /** Fingertips public health indicator metadata, published by OHID (keyless). */
 export {
   buildFingertipsIndicatorUrl,
