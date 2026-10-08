@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -123,10 +124,7 @@ export async function fetchPlanningDatasets(
   options: { fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<PlanningDataset[]> {
   const { fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(PLANNING_DATASETS_URL);
-  if (!response.ok) {
-    throw new UkSourceApiError('planning-datasets', `HTTP ${response.status} listing datasets`);
-  }
+  const response = await httpGet('planning-datasets', PLANNING_DATASETS_URL, { fetchImpl });
   return parsePlanningDatasets(await response.json());
 }
 

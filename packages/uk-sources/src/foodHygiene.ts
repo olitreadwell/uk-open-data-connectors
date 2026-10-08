@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -139,12 +140,10 @@ export async function fetchFoodHygieneAuthorities(
   options: { fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<FoodHygieneAuthority[]> {
   const { fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(FSA_AUTHORITIES_URL, {
+  const response = await httpGet('fsa-food-hygiene', FSA_AUTHORITIES_URL, {
+    fetchImpl,
     headers: { [FSA_API_VERSION_HEADER]: FSA_API_VERSION },
   });
-  if (!response.ok) {
-    throw new UkSourceApiError('fsa-food-hygiene', `HTTP ${response.status} listing registers`);
-  }
   return parseFoodHygieneAuthorities(await response.json());
 }
 

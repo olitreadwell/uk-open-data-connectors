@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -63,10 +64,7 @@ export async function fetchNhsbsaCkanPackages(
   options: { fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<NhsbsaDataset[]> {
   const { fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(NHSBSA_CKAN_PACKAGE_LIST_URL);
-  if (!response.ok) {
-    throw new UkSourceApiError('nhsbsa-ckan', `HTTP ${response.status} listing packages`);
-  }
+  const response = await httpGet('nhsbsa-ckan', NHSBSA_CKAN_PACKAGE_LIST_URL, { fetchImpl });
   return parseNhsbsaCkanPackages(await response.json());
 }
 

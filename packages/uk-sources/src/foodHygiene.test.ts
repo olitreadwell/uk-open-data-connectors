@@ -132,9 +132,12 @@ describe('fetchFoodHygieneAuthorities', () => {
     );
     const registers = await fetchFoodHygieneAuthorities({ fetchImpl });
     expect(registers).toHaveLength(363);
-    expect(fetchImpl).toHaveBeenCalledWith(FSA_AUTHORITIES_URL, {
-      headers: { [FSA_API_VERSION_HEADER]: FSA_API_VERSION },
-    });
+    expect(fetchImpl).toHaveBeenCalledWith(
+      FSA_AUTHORITIES_URL,
+      expect.objectContaining({
+        headers: expect.objectContaining({ [FSA_API_VERSION_HEADER]: FSA_API_VERSION }),
+      })
+    );
   });
 
   it('throws an API error when the endpoint refuses the call', async () => {

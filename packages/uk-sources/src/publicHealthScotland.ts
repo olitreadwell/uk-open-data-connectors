@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -66,13 +67,11 @@ export async function fetchPublicHealthScotlandDatasets(
   options: { fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<PublicHealthScotlandDataset[]> {
   const { fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(PUBLIC_HEALTH_SCOTLAND_PACKAGE_LIST_URL);
-  if (!response.ok) {
-    throw new UkSourceApiError(
-      'public-health-scotland',
-      `HTTP ${response.status} listing packages`
-    );
-  }
+  const response = await httpGet(
+    'public-health-scotland',
+    PUBLIC_HEALTH_SCOTLAND_PACKAGE_LIST_URL,
+    { fetchImpl }
+  );
   return parsePublicHealthScotlandDatasets(await response.json());
 }
 

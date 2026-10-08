@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -148,10 +149,11 @@ export async function fetchFindATenderReleases(
   options: { limit?: number; fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<FindATenderReleasePage> {
   const { limit = FIND_A_TENDER_RELEASE_LIMIT, fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(`${FIND_A_TENDER_RELEASE_PACKAGES_URL}?limit=${limit}`);
-  if (!response.ok) {
-    throw new UkSourceApiError('find-a-tender', `HTTP ${response.status} listing releases`);
-  }
+  const response = await httpGet(
+    'find-a-tender',
+    `${FIND_A_TENDER_RELEASE_PACKAGES_URL}?limit=${limit}`,
+    { fetchImpl }
+  );
   return parseFindATenderReleases(await response.json());
 }
 

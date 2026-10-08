@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -262,10 +263,10 @@ export async function fetchParliamentSeats(
   const forDate = options.forDate ?? formatParliamentQueryDate(options.now ?? new Date());
   const fetchImpl = options.fetchImpl ?? globalThis.fetch;
   const url = buildParliamentSeatsUrl(house, forDate);
-  const response = await fetchImpl(url, { headers: { accept: 'application/json' } });
-  if (!response.ok) {
-    throw new UkSourceApiError(PARLIAMENT_SEATS_SOURCE_ID, `HTTP ${response.status} from ${url}`);
-  }
+  const response = await httpGet(PARLIAMENT_SEATS_SOURCE_ID, url, {
+    fetchImpl,
+    headers: { accept: 'application/json' },
+  });
   return parseParliamentSeats(await response.json());
 }
 

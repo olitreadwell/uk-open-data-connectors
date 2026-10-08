@@ -155,7 +155,9 @@ describe('fetchParliamentSeats', () => {
     const summary = await fetchParliamentSeats({ forDate: '2026-10-01', fetchImpl });
     expect(fetchImpl).toHaveBeenCalledWith(
       `${PARLIAMENT_MEMBERS_API_BASE_URL}/Parties/StateOfTheParties/1/2026-10-01`,
-      expect.objectContaining({ headers: { accept: 'application/json' } })
+      expect.objectContaining({
+        headers: expect.objectContaining({ accept: 'application/json' }),
+      })
     );
     expect(summary.seatCount).toBe(521);
     expect(summary.largestParty.party.name).toBe('Labour');

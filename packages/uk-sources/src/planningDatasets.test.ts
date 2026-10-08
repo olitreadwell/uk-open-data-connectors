@@ -126,7 +126,7 @@ describe('fetchPlanningDatasets', () => {
       async () => new Response(JSON.stringify({ datasets: [dataset()] }), { status: 200 })
     );
     const datasets = await fetchPlanningDatasets({ fetchImpl });
-    expect(fetchImpl).toHaveBeenCalledWith(PLANNING_DATASETS_URL);
+    expect(fetchImpl).toHaveBeenCalledWith(PLANNING_DATASETS_URL, expect.anything());
     expect(datasets).toHaveLength(1);
   });
 

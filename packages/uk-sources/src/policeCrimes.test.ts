@@ -304,7 +304,7 @@ describe('fetchPoliceCrimeSummary', () => {
         monthCount: 1,
         fetchImpl: fetchImpl as unknown as typeof globalThis.fetch,
       })
-    ).rejects.toThrow(/HTTP 500 listing the crime types/);
+    ).rejects.toThrow(/HTTP 500/);
   });
 });
 

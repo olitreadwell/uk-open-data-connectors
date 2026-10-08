@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -307,13 +308,7 @@ async function queryArcgisStatistics(
   url.searchParams.set('returnGeometry', 'false');
   url.searchParams.set('f', 'json');
 
-  const response = await fetchImpl(url);
-  if (!response.ok) {
-    throw new UkSourceApiError(
-      ANCIENT_WOODLAND_SOURCE_ID,
-      `HTTP ${response.status} querying the ancient woodland layer`
-    );
-  }
+  const response = await httpGet(ANCIENT_WOODLAND_SOURCE_ID, url, { fetchImpl });
   const payload: unknown = await response.json();
   const arcgisError = ARCGIS_ERROR_SCHEMA.safeParse(payload);
   if (arcgisError.success) {

@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -162,10 +163,7 @@ export async function fetchNomisDatasetDefinitions(
   options: { fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<NomisDatasetDefinition[]> {
   const { fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(NOMIS_DATASET_DEFINITIONS_URL);
-  if (!response.ok) {
-    throw new UkSourceApiError('nomis', `HTTP ${response.status} listing dataset definitions`);
-  }
+  const response = await httpGet('nomis', NOMIS_DATASET_DEFINITIONS_URL, { fetchImpl });
   return parseNomisDatasetDefinitions(await response.json());
 }
 

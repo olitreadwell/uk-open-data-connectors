@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -99,10 +100,9 @@ export async function fetchPostcodeLookup(
   options: { fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<PostcodeLookupRecord> {
   const { fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(buildPostcodeLookupUrl(postcode));
-  if (!response.ok) {
-    throw new UkSourceApiError('postcode-lookup', `HTTP ${response.status} looking up ${postcode}`);
-  }
+  const response = await httpGet('postcode-lookup', buildPostcodeLookupUrl(postcode), {
+    fetchImpl,
+  });
   return parsePostcodeLookup(await response.json());
 }
 

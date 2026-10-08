@@ -161,7 +161,7 @@ describe('fetchTflBikePoints', () => {
     );
     const stations = await fetchTflBikePoints({ fetchImpl });
     expect(stations).toHaveLength(6);
-    expect(fetchImpl).toHaveBeenCalledWith(TFL_BIKE_POINTS_URL);
+    expect(fetchImpl).toHaveBeenCalledWith(TFL_BIKE_POINTS_URL, expect.anything());
   });
 
   it('sends the app key as a query parameter when one is given', async () => {
@@ -169,7 +169,18 @@ describe('fetchTflBikePoints', () => {
       async () => new Response(JSON.stringify(BIKE_POINTS_FIXTURE), { status: 200 })
     );
     await fetchTflBikePoints({ apiKey: 'abc 123', fetchImpl });
-    expect(fetchImpl).toHaveBeenCalledWith(`${TFL_BIKE_POINTS_URL}?app_key=abc%20123`);
+    expect(fetchImpl).toHaveBeenCalledWith(
+      `${TFL_BIKE_POINTS_URL}?app_key=abc%20123`,
+      expect.anything()
+    );
+  });
+
+  it('ignores an app key that is set but empty', async () => {
+    const fetchImpl = vi.fn(
+      async () => new Response(JSON.stringify(BIKE_POINTS_FIXTURE), { status: 200 })
+    );
+    await fetchTflBikePoints({ apiKey: '   ', fetchImpl });
+    expect(fetchImpl).toHaveBeenCalledWith(TFL_BIKE_POINTS_URL, expect.anything());
   });
 
   it('throws an API error when the endpoint refuses the call', async () => {

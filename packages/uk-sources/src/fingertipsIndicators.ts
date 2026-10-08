@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -116,10 +117,11 @@ export async function fetchFingertipsIndicators(
   options: { indicatorIds?: number[]; fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<FingertipsIndicatorMetadata[]> {
   const { indicatorIds = DEFAULT_FINGERTIPS_INDICATOR_IDS, fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(buildFingertipsIndicatorUrl(indicatorIds));
-  if (!response.ok) {
-    throw new UkSourceApiError('fingertips-indicators', `HTTP ${response.status} reading metadata`);
-  }
+  const response = await httpGet(
+    'fingertips-indicators',
+    buildFingertipsIndicatorUrl(indicatorIds),
+    { fetchImpl }
+  );
   return parseFingertipsIndicators(await response.json());
 }
 

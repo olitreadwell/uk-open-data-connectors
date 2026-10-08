@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -127,12 +128,10 @@ export async function fetchTnaDiscoveryRecords(
   options: { query?: string; fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<TnaDiscoverySearchResult> {
   const { query = DEFAULT_TNA_DISCOVERY_QUERY, fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(buildTnaDiscoverySearchUrl(query), {
+  const response = await httpGet('tna-discovery', buildTnaDiscoverySearchUrl(query), {
+    fetchImpl,
     headers: { Accept: TNA_DISCOVERY_ACCEPT_HEADER },
   });
-  if (!response.ok) {
-    throw new UkSourceApiError('tna-discovery', `HTTP ${response.status} searching records`);
-  }
   return parseTnaDiscoveryRecords(await response.json());
 }
 

@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -69,10 +70,9 @@ export async function fetchLondonDatastorePackages(
   options: { fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<LondonDatastorePackage[]> {
   const { fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(LONDON_DATASTORE_PACKAGE_LIST_URL);
-  if (!response.ok) {
-    throw new UkSourceApiError('london-datastore', `HTTP ${response.status} listing packages`);
-  }
+  const response = await httpGet('london-datastore', LONDON_DATASTORE_PACKAGE_LIST_URL, {
+    fetchImpl,
+  });
   return parseLondonDatastorePackages(await response.json());
 }
 

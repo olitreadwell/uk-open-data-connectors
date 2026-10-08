@@ -1,4 +1,5 @@
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureText } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -303,10 +304,7 @@ export async function fetchBankRateObservations(
 ): Promise<BankRateObservation[]> {
   const { fetchImpl = globalThis.fetch, now = new Date() } = options;
   const url = buildBankRateCsvUrl(formatBankRateQueryDate(now));
-  const response = await fetchImpl(url);
-  if (!response.ok) {
-    throw new UkSourceApiError(BANK_RATE_SOURCE_ID, `HTTP ${response.status} reading Bank Rate`);
-  }
+  const response = await httpGet(BANK_RATE_SOURCE_ID, url, { fetchImpl });
   return parseBankRateCsv(await response.text());
 }
 

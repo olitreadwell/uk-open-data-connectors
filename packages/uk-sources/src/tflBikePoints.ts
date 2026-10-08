@@ -1,6 +1,8 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { normalizeSourceApiKey } from './apiKey.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -179,18 +181,13 @@ export function summarizeTflBikePoints(
 export async function fetchTflBikePoints(
   options: { apiKey?: string; fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<DockingStation[]> {
-  const { apiKey, fetchImpl = globalThis.fetch } = options;
+  const { apiKey: rawApiKey, fetchImpl = globalThis.fetch } = options;
+  const apiKey = normalizeSourceApiKey(rawApiKey);
   const url =
     apiKey === undefined
       ? TFL_BIKE_POINTS_URL
       : `${TFL_BIKE_POINTS_URL}?app_key=${encodeURIComponent(apiKey)}`;
-  const response = await fetchImpl(url);
-  if (!response.ok) {
-    throw new UkSourceApiError(
-      'tfl-bike-points',
-      `HTTP ${response.status} listing docking stations`
-    );
-  }
+  const response = await httpGet('tfl-bike-points', url, { fetchImpl });
   return parseTflBikePoints(await response.json());
 }
 

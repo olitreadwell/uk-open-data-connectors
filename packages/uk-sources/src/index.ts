@@ -76,6 +76,8 @@ export type {
 } from './exploreEducationStatistics.js';
 /** Errors shared by every UK source adapter. */
 export { UkSourceApiError, UkSourceError, UkSourceParseError } from './errors.js';
+/** API error detail type. */
+export type { UkSourceApiErrorDetails } from './errors.js';
 /** Find a Tender procurement notices, published by the Crown Commercial Service (keyless). */
 export {
   FIND_A_TENDER_RELEASE_LIMIT,
@@ -339,3 +341,10 @@ export {
 } from './registry.js';
 /** Shared adapter contract types. */
 export type { UkDataAdapter, UkFetchOptions, UkSourceAuth, UkSourceProbe } from './types.js';
+
+/** API key normalization shared by adapters, the API, and the CLI. */
+export { normalizeSourceApiKey } from './apiKey.js';
+/** The shared HTTP layer every adapter fetch goes through. */
+export { httpGet, USER_AGENT, DEFAULT_TIMEOUT_MS } from './http.js';
+/** Shared HTTP layer types. */
+export type { HttpGetOptions } from './http.js';

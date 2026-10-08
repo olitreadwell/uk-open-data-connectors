@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -180,12 +181,11 @@ export async function fetchFloodStations(
   options: { limit?: number; fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<FloodStation[]> {
   const { limit = 25, fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(
-    `https://environment.data.gov.uk/flood-monitoring/id/stations?_limit=${limit}`
+  const response = await httpGet(
+    'flood-monitoring',
+    `https://environment.data.gov.uk/flood-monitoring/id/stations?_limit=${limit}`,
+    { fetchImpl }
   );
-  if (!response.ok) {
-    throw new UkSourceApiError('flood-monitoring', `HTTP ${response.status} listing stations`);
-  }
   return parseFloodStations(await response.json());
 }
 
@@ -201,10 +201,7 @@ export async function fetchFloodStationReadings(
   const url =
     `https://environment.data.gov.uk/flood-monitoring/id/stations/${stationReference}` +
     `/readings?_limit=${limit}&_sorted`;
-  const response = await fetchImpl(url);
-  if (!response.ok) {
-    throw new UkSourceApiError('flood-monitoring', `HTTP ${response.status} reading station`);
-  }
+  const response = await httpGet('flood-monitoring', url, { fetchImpl });
   return parseFloodReadings(await response.json());
 }
 

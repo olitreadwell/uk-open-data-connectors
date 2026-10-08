@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -178,10 +179,7 @@ export async function fetchUkhsaMetricPoints(
   options: { pageSize?: number; fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<UkhsaMetricPage> {
   const { pageSize = UKHSA_DASHBOARD_PAGE_SIZE, fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(buildUkhsaMetricUrl(pageSize));
-  if (!response.ok) {
-    throw new UkSourceApiError('ukhsa-dashboard', `HTTP ${response.status} reading metric points`);
-  }
+  const response = await httpGet('ukhsa-dashboard', buildUkhsaMetricUrl(pageSize), { fetchImpl });
   return parseUkhsaMetricPoints(await response.json());
 }
 

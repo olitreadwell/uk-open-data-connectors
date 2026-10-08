@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -138,10 +139,11 @@ export async function fetchOnsDatasets(
   options: { limit?: number; fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<OnsDatasetRecord[]> {
   const { limit = ONS_DATASETS_LIMIT, fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(`https://api.beta.ons.gov.uk/v1/datasets?limit=${limit}`);
-  if (!response.ok) {
-    throw new UkSourceApiError('ons-datasets', `HTTP ${response.status} listing datasets`);
-  }
+  const response = await httpGet(
+    'ons-datasets',
+    `https://api.beta.ons.gov.uk/v1/datasets?limit=${limit}`,
+    { fetchImpl }
+  );
   return parseOnsDatasets(await response.json());
 }
 

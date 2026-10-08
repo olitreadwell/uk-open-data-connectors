@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -306,13 +307,7 @@ export async function fetchPoliceCrimeMonths(
   options: { fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<string[]> {
   const { fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(POLICE_STREET_DATES_URL);
-  if (!response.ok) {
-    throw new UkSourceApiError(
-      POLICE_CRIMES_SOURCE_ID,
-      `HTTP ${response.status} listing the published months`
-    );
-  }
+  const response = await httpGet(POLICE_CRIMES_SOURCE_ID, POLICE_STREET_DATES_URL, { fetchImpl });
   const parsed = POLICE_DATES_SCHEMA.safeParse(await response.json());
   if (!parsed.success) {
     throw new UkSourceParseError(POLICE_CRIMES_SOURCE_ID, parsed.error.message);
@@ -336,13 +331,9 @@ export async function fetchPoliceCrimeCategories(
   options: { fetchImpl?: typeof globalThis.fetch } = {}
 ): Promise<unknown> {
   const { fetchImpl = globalThis.fetch } = options;
-  const response = await fetchImpl(POLICE_CRIME_CATEGORIES_URL);
-  if (!response.ok) {
-    throw new UkSourceApiError(
-      POLICE_CRIMES_SOURCE_ID,
-      `HTTP ${response.status} listing the crime types`
-    );
-  }
+  const response = await httpGet(POLICE_CRIMES_SOURCE_ID, POLICE_CRIME_CATEGORIES_URL, {
+    fetchImpl,
+  });
   return response.json();
 }
 

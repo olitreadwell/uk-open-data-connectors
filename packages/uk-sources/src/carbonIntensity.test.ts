@@ -200,7 +200,9 @@ describe('fetchCarbonIntensityWindow', () => {
     });
     expect(fetchImpl).toHaveBeenCalledWith(
       `${CARBON_INTENSITY_RANGE_URL}/2026-09-01T00:00Z/2026-09-02T00:00Z`,
-      { headers: { accept: 'application/json' } }
+      expect.objectContaining({
+        headers: expect.objectContaining({ accept: 'application/json' }),
+      })
     );
     expect(window.periodCount).toBe(2);
     expect(window.firstPeriodFrom).toBe('2026-09-01T00:00Z');

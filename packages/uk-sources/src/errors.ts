@@ -6,15 +6,26 @@ export class UkSourceError extends Error {
   }
 }
 
+/** Extra detail carried by an API error. */
+export interface UkSourceApiErrorDetails extends ErrorOptions {
+  /** HTTP status code, when the failure arrived as a response. */
+  status?: number | undefined;
+  /** Whether retrying the same request could succeed. */
+  retryable?: boolean | undefined;
+}
+
 /** The remote API rejected the request (HTTP error or bad payload). */
 export class UkSourceApiError extends UkSourceError {
-  constructor(
-    public readonly source: string,
-    message: string,
-    options?: ErrorOptions
-  ) {
-    super(`${source}: ${message}`, options);
+  /** HTTP status code, when the failure arrived as a response. */
+  readonly status: number | undefined;
+  /** Whether retrying the same request could succeed. */
+  readonly retryable: boolean;
+
+  constructor(source: string, message: string, details: UkSourceApiErrorDetails = {}) {
+    super(`${source}: ${message}`, details);
     this.name = 'UkSourceApiError';
+    this.status = details.status;
+    this.retryable = details.retryable ?? false;
   }
 }
 

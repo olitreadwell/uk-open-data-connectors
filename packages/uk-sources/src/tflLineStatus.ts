@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
-import { UkSourceApiError, UkSourceParseError } from './errors.js';
+import { UkSourceParseError } from './errors.js';
+import { httpGet } from './http.js';
 import { readFixtureJson } from './fixtures.js';
 import type { UkDataAdapter } from './types.js';
 
@@ -112,10 +113,7 @@ export async function fetchTflLineStatuses(
     apiKey === undefined
       ? TFL_LINE_STATUS_URL
       : `${TFL_LINE_STATUS_URL}?app_key=${encodeURIComponent(apiKey)}`;
-  const response = await fetchImpl(url);
-  if (!response.ok) {
-    throw new UkSourceApiError('tfl-line-status', `HTTP ${response.status} reading line status`);
-  }
+  const response = await httpGet('tfl-line-status', url, { fetchImpl });
   return parseTflLineStatuses(await response.json());
 }
 
