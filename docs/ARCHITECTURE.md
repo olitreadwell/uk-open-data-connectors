@@ -36,6 +36,14 @@ Every adapter speaks one interface (`UkDataAdapter`). It knows how to:
 The HTTP API and the CLI call the same adapters. They never call the
 endpoints directly. This is what "one design" means.
 
+Live fetches go through the shared helper in
+`packages/uk-sources/src/http.ts`. It sets one `User-Agent`
+(`uk-open-data-connectors (Language=TypeScript)`), aborts after 30 seconds, and
+marks HTTP 429, HTTP 5xx and network failures as `retryable` on the thrown
+`UkSourceApiError`, with the HTTP status attached. Adapters pass their own
+headers (the FSA API version header, the Discovery `Accept` header) and the
+helper merges them.
+
 Registered adapters:
 
 | id | Source | What it returns |
@@ -99,6 +107,9 @@ opt-in smoke tests.
 
 - `README.md` - quickstart and commands
 - `docs/ARCHITECTURE.md` - this file
+- `docs/CONNECTOR_DISCOVERY.md` - what has been checked live, and the sources that did not work
 - `docs/SECURITY.md` - keys, audits, and the security checklist
 - `docs/GLOSSARY.md` - plain-language terms
 - `docs/RELEASING.md` - how versions and tags work
+- `docs/AGENT_CONTEXT.md` - handoff context for an agent working in this repo
+- `COUNTRY.md` - adapter status and what is not usable

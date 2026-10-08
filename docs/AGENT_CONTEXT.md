@@ -29,6 +29,9 @@ npm workspaces, one package per concern.
 - Adapters live in `packages/uk-sources/src/*.ts` next to their tests, with
   committed fixtures in `packages/uk-sources/src/fixtures/`. New fixtures are
   dated in their filenames.
+- Every fetch goes through `httpGet` in `packages/uk-sources/src/http.ts`: one
+  `User-Agent`, a 30 second timeout, and `retryable` set on HTTP 429, HTTP 5xx
+  and network failures. A caller-supplied `User-Agent` replaces the default.
 - `npm run check` is green. The Nomis fixture is a documented trim of the
   1,617-definition live catalogue; the adapter reads the whole live response.
 
@@ -55,8 +58,10 @@ cd ruby && bundle exec rake check
 
 ## Conventions
 
-- Adapters live in `packages/uk-sources`
+- Adapters live in `packages/uk-sources`, and fetches go through `httpGet`
 - HTTP wrapper is `packages/api`, CLI is `packages/cli`
+- `normalizeSourceApiKey` trims an optional key, so a key set to an empty
+  string is treated as unset
 - Every UK source is keyless. Any future key is read from env only,
   server-side, and the API and CLI never accept keys from callers
 - Tests never hit the network unless `RUN_SMOKE=1` is set

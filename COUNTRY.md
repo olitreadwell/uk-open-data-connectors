@@ -43,6 +43,10 @@ the UK adapters in `packages/uk-sources`.
 - [x] Port the API and CLI exposure for the UK adapters
 - [ ] Port the Python and Ruby packages to UK sources (they still cover NZ)
 - [x] Add more UK sources, each verified live before commit (eleven added on 2026-10-05)
+- [x] Shared HTTP layer (`httpGet`): one User-Agent, 30 second timeout,
+      `retryable` on 429, 5xx and network failures
+- [ ] Return licence and attribution metadata per record, instead of leaving
+      the publisher's page as the only source
 
 See `docs/ARCHITECTURE.md` for the one-design contract and
 `docs/CONNECTOR_DISCOVERY.md` for what has been checked.

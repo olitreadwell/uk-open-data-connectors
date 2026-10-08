@@ -124,3 +124,36 @@ What was verified live on 2026-10-05, and what was not:
 | ------ | ----- | --- |
 | `api.ons.gov.uk` | RETIRED | Retired on 2024-11-25. Every path answers with a plain-text decommission notice while still returning HTTP 200, so a naive health check reads it as healthy. Use `api.beta.ons.gov.uk/v1` instead. |
 | `data.gov.uk/api/3/action/...` | REDIRECT | Redirects to an HTML landing page, so the CKAN API is not at that path any more. |
+
+## Licences and attribution
+
+The MIT licence in this repo covers the code, not the data. Most of the
+publishers here release under the Open Government Licence v3, which asks for
+attribution. The exceptions are listed in the table.
+
+| Adapter | Publisher | Licence |
+| --- | --- | --- |
+| `flood-stations`, `flood-readings` | Environment Agency | Open Government Licence v3 |
+| `ons-datasets` | Office for National Statistics | Open Government Licence v3 |
+| `food-hygiene-authorities` | Food Standards Agency | Open Government Licence v3 |
+| `tfl-bike-points`, `tfl-line-status` | Transport for London | TfL Open Data, the operator's own terms |
+| `planning-datasets` | Planning Data, MHCLG | Open Government Licence v3 |
+| `ancient-woodland` | Natural England | Open Government Licence v3 |
+| `bank-rate` | Bank of England | Check the Bank's statistics terms; the Bank publishes most series under the Open Government Licence v3 |
+| `police-crimes` | Home Office police.uk | Open Government Licence v3 |
+| `carbon-intensity` | National Energy System Operator | Creative Commons Attribution 4.0, under the operator's own terms |
+| `parliament-seats` | UK Parliament | Open Parliament Licence v3 |
+| `postcode-lookup` | postcodes.io, a third party | Serves Open Government Licence postcode data from the ONS and Ordnance Survey |
+| `explore-education-statistics` | Department for Education | Open Government Licence v3 |
+| `london-datastore` | Greater London Authority | Open Government Licence v3 |
+| `tna-discovery` | The National Archives | Open Government Licence v3 |
+| `ukhsa-dashboard` | UK Health Security Agency | Open Government Licence v3 |
+| `nomis` | Office for National Statistics | Open Government Licence v3 |
+| `fingertips-indicators` | Office for Health Improvement and Disparities | Open Government Licence v3 |
+| `find-a-tender` | Cabinet Office | Open Government Licence v3 |
+| `public-health-scotland` | Public Health Scotland | Open Government Licence v3 |
+| `nhsbsa-ckan` | NHS Business Services Authority | Open Government Licence v3 |
+
+No adapter returns licence metadata today, so the list is a starting point, not
+a substitute for the publisher's page. When you republish, credit the
+publisher, not this library.

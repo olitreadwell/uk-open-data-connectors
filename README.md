@@ -28,6 +28,13 @@ Parliament Licence v3. The postcode lookup goes through postcodes.io, a third
 party that serves Open Government Licence postcode data from the ONS and
 Ordnance Survey.
 
+Every adapter sends the same `User-Agent`
+(`uk-open-data-connectors (Language=TypeScript)`), waits at most 30 seconds for
+a response, and marks rate-limited (HTTP 429), server-error (HTTP 5xx) and
+network failures as `retryable` on the thrown `UkSourceApiError`. The shared
+`httpGet` helper in `packages/uk-sources/src/http.ts` does this for all 22
+adapters.
+
 | id | Source | Keyless? | Example command |
 | --- | ------ | -------- | --------------- |
 | `flood-stations` | Environment Agency flood-monitoring stations, with river and catchment | Yes | `npx tsx packages/cli/src/cli.ts probe flood-stations` |
@@ -239,9 +246,18 @@ docker run -p 8787:8787 uk-connectors
 ## Documentation
 
 - `docs/ARCHITECTURE.md` - how the pieces fit together, in plain language
+- `docs/CONNECTOR_DISCOVERY.md` - every adapter, the live check behind it, and the sources that did not work
 - `docs/SECURITY.md` - key handling and the security checklist
 - `docs/GLOSSARY.md` - plain-language definitions of every term
 - `docs/RELEASING.md` - how versions, tags, and publishing work
+- `docs/AGENT_CONTEXT.md` - handoff context for an agent working in this repo
+- `docs/faq.md` - keys, licences, fixtures, and how to add a source
+- `docs/contact.md` - how to report a bug, a dead source, or a security problem
+- `COUNTRY.md` - adapter status table and the sources that are not usable
+
+The other files under `docs/` come from the shared project template
+(`olitreadwell/template`) and describe the template's own gates. For this repo,
+the API contract lives at `GET /openapi.json` and `/docs`.
 
 ## Contributing
 
