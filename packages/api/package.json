@@ -30,7 +30,7 @@
     "@uk-open-data-connectors/uk-sources": "*",
     "@sentry/node": "10.75.3",
     "hono": "4.13.9",
-    "zod": "3.25.76"
+    "zod": "4.6.5"
   },
   "devDependencies": {
     "@uk-open-data-connectors/config-eslint": "*",
