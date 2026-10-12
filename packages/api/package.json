@@ -29,7 +29,7 @@
     "@hono/zod-validator": "0.9.1",
     "@uk-open-data-connectors/uk-sources": "*",
     "@sentry/node": "10.75.3",
-    "hono": "4.13.9",
+    "hono": "4.13.13",
     "zod": "3.25.76"
   },
   "devDependencies": {
