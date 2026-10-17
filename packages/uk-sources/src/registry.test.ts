@@ -95,6 +95,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     if (new URL(target).hostname === 'opendata.nhsbsa.net') {
       return jsonResponse(readFixtureJson('nhsbsa-ckan-2026-10-05.json'));
     }
+    if (new URL(target).hostname === 'api.neso.energy') {
+      return jsonResponse(readFixtureJson('neso-generation-mix-2026-10-18.json'));
+    }
     if (target.includes('/readings')) {
       return jsonResponse(readFixtureJson('flood-station-readings.json'));
     }
@@ -167,6 +170,7 @@ describe('registry', () => {
       'tfl-line-status',
       'public-health-scotland',
       'nhsbsa-ckan',
+      'neso-generation-mix',
     ]);
   });
 

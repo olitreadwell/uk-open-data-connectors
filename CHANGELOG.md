@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- `neso-generation-mix`: half-hourly Great Britain generation by fuel from the
+  National Energy System Operator's open data portal, with the fuel shares,
+  the cleanest and dirtiest half hours, and the low-carbon share of a week of
+  readings. Keyless, checked live on 2026-10-18 (NESO Open Data Licence).
 - `packages/uk-sources` 0.1.1: eleven new keyless adapters, each checked live on
   2026-10-05 with a committed fixture, unit test, and registry entry:
   `postcode-lookup`, `explore-education-statistics`, `london-datastore`,

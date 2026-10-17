@@ -20,6 +20,7 @@ probed again that day.
 | `food-hygiene-authorities` | Food Standards Agency | `https://api.ratings.food.gov.uk/Authorities/basic` | Yes |
 | `london-datastore` | Greater London Authority | `https://data.london.gov.uk/api/3/action/package_list` | Yes |
 | `nhsbsa-ckan` | NHS Business Services Authority | `https://opendata.nhsbsa.net/api/3/action/package_list` | Yes |
+| `neso-generation-mix` | National Energy System Operator | `https://api.neso.energy/api/3/action/datastore_search?resource_id={resource}&sort=DATETIME+desc&limit={halfHours}` | Yes |
 | `nomis` | ONS Nomis | `https://www.nomisweb.co.uk/api/v01/dataset/def.sdmx.json` | Yes |
 | `ons-datasets` | ONS beta API | `https://api.beta.ons.gov.uk/v1/datasets` | Yes |
 | `parliament-seats` | UK Parliament | `https://members-api.parliament.uk/api/Parties/StateOfTheParties/{house}` | Yes |
@@ -35,6 +36,39 @@ probed again that day.
 Adapters keep a committed fixture in `packages/uk-sources/src/fixtures/` so
 tests run offline, plus a smoke test gated on `RUN_SMOKE=1` that hits the
 live endpoint.
+
+## Added 2026-10-18
+
+One keyless adapter, for the National Energy System Operator's open data
+portal. The portal moved house: candidates list
+`https://data.nationalgrideso.com/`, a domain that no longer resolves now the
+GB system operator trades as NESO. The same CKAN API answers at
+`https://api.neso.energy/`, which is what the adapter reads. The request below
+returned HTTP 200 with JSON on 2026-10-18.
+
+```sh
+UA='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
+
+# neso-generation-mix: the newest week of the Historic GB Generation Mix
+# resource, newest half hour first
+curl -sSL -H "User-Agent: $UA" \
+  'https://api.neso.energy/api/3/action/datastore_search?resource_id=f93d1835-75bc-43e5-84ad-12472b180a98&sort=DATETIME%20desc&limit=336'
+```
+
+| Adapter | Fixture | Licence |
+| --- | --- | --- |
+| `neso-generation-mix` | `neso-generation-mix-2026-10-18.json` (336 half hours, 10 October 16:30 to 17 October 16:00) | The NESO Open Data Licence. The portal's package metadata reports `license_id: ESO` and points at <https://www.neso.energy/data-portal/ngeso-open-licence>. |
+
+What was verified live on 2026-10-18, and what was not:
+
+- The datastore search answered HTTP 200 with JSON and no key, and the
+  resource held 311,937 half hours back to 2009.
+- The newest week held no missing half hours, which is the window the adapter
+  reads by default.
+- `https://data.nationalgrideso.com/` did not resolve at all. Nothing here
+  was checked against the retired domain.
+- The portal also serves a CSV of each resource. The adapter reads the
+  datastore instead, so one request can sort and window the series.
 
 ## Added 2026-10-05
 
@@ -153,6 +187,7 @@ attribution. The exceptions are listed in the table.
 | `find-a-tender` | Cabinet Office | Open Government Licence v3 |
 | `public-health-scotland` | Public Health Scotland | Open Government Licence v3 |
 | `nhsbsa-ckan` | NHS Business Services Authority | Open Government Licence v3 |
+| `neso-generation-mix` | National Energy System Operator | The NESO Open Data Licence, the portal reports `ESO` for every package on it |
 
 No adapter returns licence metadata today, so the list is a starting point, not
 a substitute for the publisher's page. When you republish, credit the

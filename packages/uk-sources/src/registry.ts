@@ -7,6 +7,7 @@ import { fingertipsIndicatorsAdapter } from './fingertipsIndicators.js';
 import { floodReadingsAdapter, floodStationsAdapter } from './floodMonitoring.js';
 import { foodHygieneAuthoritiesAdapter } from './foodHygiene.js';
 import { londonDatastoreAdapter } from './londonDatastore.js';
+import { nesoGenerationMixAdapter } from './nesoGenerationMix.js';
 import { nhsbsaCkanAdapter } from './nhsbsaCkan.js';
 import { nomisAdapter } from './nomis.js';
 import { onsDatasetsAdapter } from './onsDatasets.js';
@@ -45,6 +46,7 @@ export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [
   tflLineStatusAdapter,
   publicHealthScotlandAdapter,
   nhsbsaCkanAdapter,
+  nesoGenerationMixAdapter,
 ];
 
 /** Looks up a source adapter by id. */
