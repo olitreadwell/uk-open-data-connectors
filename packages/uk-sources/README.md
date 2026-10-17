@@ -52,12 +52,13 @@ console.log(summary.latest?.value, summary.trend);
 | `tfl-line-status` | Transport for London (TfL) | none | Live status of every Tube line, with disruption reasons. |
 | `public-health-scotland` | Public Health Scotland | none | Every dataset on the Public Health Scotland CKAN portal. |
 | `nhsbsa-ckan` | NHS Business Services Authority (NHSBSA) | none | Every dataset on the NHSBSA CKAN portal. |
+| `neso-generation-mix` | National Energy System Operator (NESO) | none | Half-hourly Great Britain generation by fuel, with the cleanest and dirtiest half hours. |
 
 The `auth` field is `none` for every adapter.
 
 ## Notes and limits
 
-- All 22 adapters are keyless. `fetchTflBikePoints` and `fetchTflLineStatuses` take an optional `apiKey`, sent as the `app_key` query parameter.
+- All 23 adapters are keyless. `fetchTflBikePoints` and `fetchTflLineStatuses` take an optional `apiKey`, sent as the `app_key` query parameter.
 - Each adapter falls back to a committed fixture when the live call fails. A returned value can be stale. Call `probeUkDataSource` before you quote a number.
 - The fixtures in `src/fixtures` are real snapshots from the live APIs. The newer files carry their capture date in the filename.
 - Tests never reach the network unless `RUN_SMOKE=1` is set. The smoke test hits the real endpoints and needs no keys.
@@ -110,6 +111,7 @@ This package reads 22 sources. Most come from UK public bodies. The postcode loo
 | `tfl-line-status` | Transport for London | <https://api.tfl.gov.uk/Line/Mode/tube/Status> | TfL Open Data |
 | `public-health-scotland` | Public Health Scotland | <https://www.opendata.nhs.scot/api/3/action/package_list> | Open Government Licence v3, the portal reports `uk-ogl` |
 | `nhsbsa-ckan` | NHS Business Services Authority | <https://opendata.nhsbsa.net/api/3/action/package_list> | Open Government Licence v3, the portal reports `OGL-UK-3.0` |
+| `neso-generation-mix` | National Energy System Operator | <https://api.neso.energy/api/3/action/datastore_search> | The NESO Open Data Licence, the portal reports `ESO` |
 
 ## Package licence
 

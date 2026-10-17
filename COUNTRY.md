@@ -29,6 +29,7 @@ the UK adapters in `packages/uk-sources`.
 | Cabinet Office Find a Tender | `find-a-tender` | Done, verified live 2026-10-05 |
 | Public Health Scotland open data catalogue | `public-health-scotland` | Done, verified live 2026-10-05 |
 | NHS Business Services Authority catalogue | `nhsbsa-ckan` | Done, verified live 2026-10-05 |
+| National Energy System Operator generation mix (NESO data portal) | `neso-generation-mix` | Done, verified live 2026-10-18 |
 | data.gov.uk | - | Not usable: the CKAN path redirects to an HTML landing page |
 | Companies House | - | Pending, needs a key |
 | HM Land Registry | - | Pending |

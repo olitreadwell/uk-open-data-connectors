@@ -59,6 +59,7 @@ adapters.
 | `tfl-line-status` | Live status of every London Underground line | Yes | `npx tsx packages/cli/src/cli.ts probe tfl-line-status` |
 | `public-health-scotland` | Public Health Scotland open data catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe public-health-scotland` |
 | `nhsbsa-ckan` | NHS Business Services Authority open data catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe nhsbsa-ckan` |
+| `neso-generation-mix` | National Energy System Operator half-hourly generation by fuel, from the NESO data portal | Yes | `npx tsx packages/cli/src/cli.ts probe neso-generation-mix` |
 
 Sources that look obvious for a UK repo and are not usable as they stand:
 
@@ -121,6 +122,9 @@ committed fixture:
 - `tfl-line-status` reads the live status of every Tube line.
 - `public-health-scotland` reads the Public Health Scotland dataset catalogue.
 - `nhsbsa-ckan` reads the NHS Business Services Authority dataset catalogue.
+- `neso-generation-mix` reads the National Energy System Operator's
+  half-hourly generation mix: output by fuel, and the cleanest and dirtiest
+  half hours in the window.
 
 The full endpoint list, exact curl commands, and licences are in
 `docs/CONNECTOR_DISCOVERY.md`.
