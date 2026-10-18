@@ -70,7 +70,7 @@ The `auth` field is `none` for every adapter.
 - The Bank Rate daily series is `IUDBEDR` and starts on 2 January 1975. An earlier start returns the database error page instead of a CSV.
 - police.uk holds the last 36 months of street-level crime from the 44 forces of England, Wales, and Northern Ireland. Police Scotland publishes elsewhere, so nothing here covers Scotland.
 - A police.uk street-level call covers everything within a mile of a point. The adapter cannot ask for a smaller radius. It asks one month at a time, inside the API limit of 15 requests per second.
-- The carbon intensity API refuses a range longer than 31 days. The adapter reads whole days and asks for a window that ends at the start of today.
+- The carbon intensity API refuses a range longer than 31 days. The adapter reads whole days and asks for a window that ends at the start of yesterday, so the newest half hour, which the API settles after a short lag, stays out of the window.
 - The Parliament call takes a house (1 for the Commons, 2 for the Lords) and a date. The response does not echo the date or the house back.
 - A vacant seat appears as its own party, named `Vacant`, with one seat and no members behind it. The summary keeps it in `seats` and reports the gap per row as `unallocatedSeatCount`.
 - `backgroundColour` and `foregroundColour` are null for some parties, including the Speaker. A chart needs its own fallback colour.

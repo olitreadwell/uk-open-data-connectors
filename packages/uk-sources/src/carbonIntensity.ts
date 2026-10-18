@@ -130,7 +130,10 @@ export function formatCarbonIntensityInstant(date: Date): string {
 
 /**
  * Works out the window a build reads: whole UTC days, ending at the start of
- * today, so every reading in it is settled rather than a forecast.
+ * yesterday, so every reading in it is settled rather than a forecast. The API
+ * fills in actual readings for the newest half hours after a short lag, so a
+ * window ending at today's start can still hold null actuals just after
+ * midnight UTC.
  *
  * @param options - how many days, and the clock to measure back from
  * @returns the window's start and end as ISO instants
@@ -153,7 +156,8 @@ export function resolveCarbonIntensityWindow(options: { windowDays?: number; now
     );
   }
   const now = options.now ?? new Date();
-  const to = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  const to = new Date(today.getTime() - MILLISECONDS_PER_DAY);
   const from = new Date(to.getTime() - windowDays * MILLISECONDS_PER_DAY);
   return { from: formatCarbonIntensityInstant(from), to: formatCarbonIntensityInstant(to) };
 }

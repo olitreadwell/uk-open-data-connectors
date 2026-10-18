@@ -54,10 +54,10 @@ function jsonResponse(payload: unknown): Response {
 }
 
 describe('resolveCarbonIntensityWindow', () => {
-  it('ends the default window at the start of today UTC', () => {
+  it('ends the default window at the start of yesterday UTC', () => {
     expect(resolveCarbonIntensityWindow({ now: new Date('2026-09-29T21:41:00Z') })).toEqual({
-      from: '2026-08-30T00:00Z',
-      to: '2026-09-29T00:00Z',
+      from: '2026-08-29T00:00Z',
+      to: '2026-09-28T00:00Z',
     });
   });
 
@@ -195,7 +195,7 @@ describe('fetchCarbonIntensityWindow', () => {
     const fetchImpl = vi.fn(async () => jsonResponse(payload));
     const window = await fetchCarbonIntensityWindow({
       windowDays: 1,
-      now: new Date('2026-09-02T09:00:00Z'),
+      now: new Date('2026-09-03T09:00:00Z'),
       fetchImpl,
     });
     expect(fetchImpl).toHaveBeenCalledWith(
@@ -236,12 +236,12 @@ describe('carbonIntensityAdapter', () => {
   });
 
   it('reads live through the supplied fetch implementation', async () => {
-    // The default window ends at the start of today, so the committed snapshot
-    // loses a reading for every day the wall clock moves past it. Pin the clock
-    // to the day the snapshot was captured, so this test measures the adapter
-    // rather than the calendar.
+    // The default window ends at the start of yesterday, so the committed
+    // snapshot loses a reading for every day the wall clock moves past it. Pin
+    // the clock to the day after the snapshot was captured, so this test
+    // measures the adapter rather than the calendar.
     vi.useFakeTimers({ toFake: ['Date'] });
-    vi.setSystemTime(new Date('2026-09-29T12:00:00Z'));
+    vi.setSystemTime(new Date('2026-09-30T12:00:00Z'));
     try {
       const fetchImpl = vi.fn(async () => jsonResponse(readFixtureJson('carbon-intensity.json')));
       const window = await carbonIntensityAdapter.fetchLive({ fetchImpl });

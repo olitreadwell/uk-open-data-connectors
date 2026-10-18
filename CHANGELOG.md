@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- `carbon-intensity`: the default window now ends at the start of yesterday
+  rather than today. The API fills in actual readings for the newest half hours
+  after a short lag, so a window ending at today's start could hold null
+  actuals just after midnight UTC.
 - `neso-generation-mix`: half-hourly Great Britain generation by fuel from the
   National Energy System Operator's open data portal, with the fuel shares,
   the cleanest and dirtiest half hours, and the low-carbon share of a week of

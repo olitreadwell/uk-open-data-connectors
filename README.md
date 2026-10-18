@@ -95,7 +95,9 @@ The Carbon Intensity API at `api.carbonintensity.org.uk` answers keyless and
 backs `carbon-intensity`. It is the official half-hourly series for Great
 Britain, with a reading for every half hour and a grade for each one. A range
 is read in one call, and the API refuses a range longer than 31 days, so the
-adapter asks for 30 complete days ending at the start of today.
+adapter asks for 30 complete days ending at the start of yesterday. That keeps
+the newest half hour, which the API settles after a short lag, out of the
+window.
 
 The Members API at `members-api.parliament.uk` answers keyless and backs
 `parliament-seats`. Its state-of-the-parties call takes a house (1 for the
