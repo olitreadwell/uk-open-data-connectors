@@ -24,22 +24,22 @@
     "clean:all": "rm -rf tsconfig.tsbuildinfo coverage node_modules"
   },
   "dependencies": {
-    "@hono/node-server": "2.1.4",
-    "@hono/swagger-ui": "0.6.1",
+    "@hono/node-server": "2.1.5",
+    "@hono/swagger-ui": "0.6.2",
     "@hono/zod-validator": "0.9.1",
     "@uk-open-data-connectors/uk-sources": "*",
-    "@sentry/node": "10.75.3",
-    "hono": "4.13.13",
-    "zod": "3.25.76"
+    "@sentry/node": "11.9.0",
+    "hono": "4.13.14",
+    "zod": "4.6.7"
   },
   "devDependencies": {
     "@uk-open-data-connectors/config-eslint": "*",
     "@uk-open-data-connectors/config-typescript": "*",
-    "@types/node": "22.20.5",
+    "@types/node": "26.6.5",
     "eslint": "9.39.5",
     "tsx": "4.23.15",
     "typescript": "6.0.3",
-    "vitest": "5.0.3"
+    "vitest": "5.0.5"
   },
   "repository": {
     "type": "git",
