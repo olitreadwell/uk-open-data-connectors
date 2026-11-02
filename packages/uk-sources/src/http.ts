@@ -26,7 +26,17 @@ export interface HttpGetOptions {
   headers?: Record<string, string> | undefined;
   /** Overrides {@link DEFAULT_TIMEOUT_MS}. */
   timeoutMs?: number | undefined;
+  /** Retries after a retryable failure, before the error is thrown. */
+  retries?: number | undefined;
+  /** Base delay between retries, doubled after each refusal. */
+  retryDelayMs?: number | undefined;
 }
+
+/** Retries are opt-in so existing adapters keep one attempt per call. */
+const DEFAULT_RETRIES = 0;
+
+/** Base delay for adapters that do opt in. */
+const DEFAULT_RETRY_DELAY_MS = 1_000;
 
 /**
  * Builds the request headers, letting a caller replace the User-Agent.
@@ -68,6 +78,36 @@ export async function httpGet(
   source: string,
   url: string | URL,
   options: HttpGetOptions = {}
+): Promise<Response> {
+  const attempts = Math.max(0, options.retries ?? DEFAULT_RETRIES) + 1;
+  const retryDelayMs = options.retryDelayMs ?? DEFAULT_RETRY_DELAY_MS;
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    try {
+      return await httpGetOnce(source, url, options);
+    } catch (error) {
+      const retryable = error instanceof UkSourceApiError && error.retryable;
+      if (!retryable || attempt === attempts - 1) {
+        throw error;
+      }
+      await new Promise((resolve) => setTimeout(resolve, retryDelayMs * 2 ** attempt));
+    }
+  }
+  throw new Error(`${source}: retry loop ended without a response`);
+}
+
+/**
+ * Issues one GET through the shared HTTP layer.
+ *
+ * @param source - Source name used in the error message, e.g. "flood-monitoring".
+ * @param url - Absolute URL or URL object to fetch.
+ * @param options - Fetch override, extra headers, and timeout.
+ * @returns The response, already checked for a successful status.
+ * @throws {UkSourceApiError} On a non-2xx status, an abort, or a network error.
+ */
+async function httpGetOnce(
+  source: string,
+  url: string | URL,
+  options: HttpGetOptions
 ): Promise<Response> {
   const doFetch = options.fetchImpl ?? globalThis.fetch;
   const timeoutMs = options.timeoutMs ?? DEFAULT_TIMEOUT_MS;

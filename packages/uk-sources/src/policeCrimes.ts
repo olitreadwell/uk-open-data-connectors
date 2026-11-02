@@ -34,6 +34,12 @@ export const POLICE_STREET_CRIMES_RADIUS_MILES = 1;
 /** How many published months the summary covers by default. */
 export const DEFAULT_POLICE_CRIME_MONTH_COUNT = 12;
 
+/** Attempts one month makes when the API answers 429, including the first. */
+export const POLICE_CRIME_MONTH_ATTEMPTS = 3;
+
+/** Base delay between month attempts, doubled after each refusal. */
+export const POLICE_CRIME_MONTH_RETRY_DELAY_MS = 1_000;
+
 /** The point the story counts around, and the name the page gives it. */
 export const DEFAULT_POLICE_CRIME_LOCATION = {
   label: 'Leeds city centre',
@@ -345,14 +351,25 @@ async function fetchPoliceStreetCrimeRecords(options: {
   fetchImpl: typeof globalThis.fetch;
 }): Promise<unknown> {
   const url = buildPoliceStreetCrimesUrl(options);
-  const response = await options.fetchImpl(url);
-  if (!response.ok) {
+  try {
+    const response = await httpGet(POLICE_CRIMES_SOURCE_ID, url, {
+      fetchImpl: options.fetchImpl,
+      retries: POLICE_CRIME_MONTH_ATTEMPTS - 1,
+      retryDelayMs: POLICE_CRIME_MONTH_RETRY_DELAY_MS,
+    });
+    return await response.json();
+  } catch (error) {
+    const prefix = `${POLICE_CRIMES_SOURCE_ID}: `;
+    const raw = error instanceof Error ? error.message : String(error);
+    const message = raw.startsWith(prefix) ? raw.slice(prefix.length) : raw;
     throw new UkSourceApiError(
       POLICE_CRIMES_SOURCE_ID,
-      `HTTP ${response.status} reading ${options.month}`
+      `${message} reading ${options.month}`,
+      error instanceof UkSourceApiError
+        ? { retryable: error.retryable, status: error.status }
+        : undefined
     );
   }
-  return response.json();
 }
 
 /**

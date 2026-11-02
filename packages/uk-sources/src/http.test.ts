@@ -67,6 +67,51 @@ describe('httpGet', () => {
     expect((failure as UkSourceApiError).retryable).toBe(true);
   });
 
+  it('retries a 429 and returns the next successful response', async () => {
+    let calls = 0;
+    const impl: typeof globalThis.fetch = async () => {
+      calls += 1;
+      return new Response(calls === 1 ? 'slow down' : 'ok', {
+        status: calls === 1 ? 429 : 200,
+      });
+    };
+    const response = await httpGet('Test source', URL_UNDER_TEST, {
+      fetchImpl: impl,
+      retries: 1,
+      retryDelayMs: 0,
+    });
+    expect(await response.text()).toBe('ok');
+    expect(calls).toBe(2);
+  });
+
+  it('stops after the retry budget is spent', async () => {
+    let calls = 0;
+    const impl: typeof globalThis.fetch = async () => {
+      calls += 1;
+      return new Response('slow down', { status: 429 });
+    };
+    const failure = await httpGet('Test source', URL_UNDER_TEST, {
+      fetchImpl: impl,
+      retries: 2,
+      retryDelayMs: 0,
+    }).catch((error: unknown) => error);
+    expect(failure).toBeInstanceOf(UkSourceApiError);
+    expect((failure as UkSourceApiError).status).toBe(429);
+    expect(calls).toBe(3);
+  });
+
+  it('does not retry a failure that is not retryable', async () => {
+    let calls = 0;
+    const impl: typeof globalThis.fetch = async () => {
+      calls += 1;
+      return new Response('gone', { status: 404 });
+    };
+    await expect(
+      httpGet('Test source', URL_UNDER_TEST, { fetchImpl: impl, retries: 2, retryDelayMs: 0 })
+    ).rejects.toThrow(/HTTP 404/);
+    expect(calls).toBe(1);
+  });
+
   it('reports a 503 as retryable', async () => {
     const { impl } = recordingFetch(() => new Response('later', { status: 503 }));
     const failure = await httpGet('Test source', URL_UNDER_TEST, { fetchImpl: impl }).catch(

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.4 (2026-11-03)
+
+- `police-crimes`: retry a month that answers HTTP 429 with exponential
+  backoff, so a production build reads live data instead of falling back to
+  the committed snapshot when the free API rate-limits the build runner.
+- `httpGet`: callers can opt into retries for retryable failures. Adapters
+  that do not ask for them keep one attempt.
+
 ## 0.1.3 (2026-11-03)
 
 - Fix the ArcGIS statistics schema for Zod 4 and update the transitive

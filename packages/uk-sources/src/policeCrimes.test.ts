@@ -268,6 +268,32 @@ describe('fetchPoliceCrimeSummary', () => {
     expect(summary.recordCount).toBe(2);
   });
 
+  it('retries a month that is rate limited, then keeps the live data', async () => {
+    let crimeCalls = 0;
+    const fetchImpl = vi.fn(async (input: string | URL | Request) => {
+      const target =
+        typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
+      const url = new URL(target);
+      if (url.pathname.endsWith('/crimes-street-dates')) {
+        return jsonResponse([{ date: '2026-07' }]);
+      }
+      if (url.pathname.endsWith('/crime-categories')) {
+        return jsonResponse(TEST_CATEGORIES);
+      }
+      crimeCalls += 1;
+      if (crimeCalls === 1) {
+        return jsonResponse({}, 429);
+      }
+      return jsonResponse([crimeRecord('2026-07', 'shoplifting')]);
+    });
+    const summary = await fetchPoliceCrimeSummary({
+      monthCount: 1,
+      fetchImpl: fetchImpl as unknown as typeof globalThis.fetch,
+    });
+    expect(crimeCalls).toBe(2);
+    expect(summary.recordCount).toBe(1);
+  });
+
   it('throws when a month in the window cannot be read', async () => {
     const fetchImpl = vi.fn(async (input: string | URL | Request) => {
       const url = new URL(
