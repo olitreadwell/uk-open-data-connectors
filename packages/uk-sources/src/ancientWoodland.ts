@@ -141,7 +141,7 @@ export interface AncientWoodlandResponses {
 }
 
 const ARCGIS_STATISTICS_RESPONSE_SCHEMA = z.object({
-  features: z.array(z.object({ attributes: z.record(z.unknown()) })),
+  features: z.array(z.object({ attributes: z.record(z.string(), z.unknown()) })),
 });
 
 const ANCIENT_WOODLAND_RESPONSES_SCHEMA = z.object({

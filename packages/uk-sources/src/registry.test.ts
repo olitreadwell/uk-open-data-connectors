@@ -23,6 +23,29 @@ function jsonResponse(payload: unknown): Response {
   return new Response(JSON.stringify(payload), { status: 200 });
 }
 
+/** Shifts the committed carbon intensity fixture onto the window the adapter asked for. */
+function carbonIntensityResponse(url: URL): unknown {
+  const fixture = readFixtureJson('carbon-intensity.json') as {
+    data: { from: string; to: string; intensity: unknown }[];
+  };
+  const window = /\/intensity\/([^/]+)\/([^/]+)$/.exec(url.pathname);
+  if (window === null) {
+    return fixture;
+  }
+  const start = Date.parse(window[1] ?? '');
+  const fixtureStart = Date.parse(fixture.data[0]?.from ?? '');
+  const shift = start - fixtureStart;
+  const format = (instant: string): string =>
+    `${new Date(Date.parse(instant) + shift).toISOString().slice(0, 16)}Z`;
+  return {
+    data: fixture.data.map((entry) => ({
+      ...entry,
+      from: format(entry.from),
+      to: format(entry.to),
+    })),
+  };
+}
+
 function firstSource(): UkDataAdapter<unknown> {
   const source = UK_DATA_SOURCES[0];
   if (source === undefined) {
@@ -57,7 +80,7 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
       return jsonResponse(ancientWoodlandResponse(new URL(target)));
     }
     if (new URL(target).hostname === 'api.carbonintensity.org.uk') {
-      return jsonResponse(readFixtureJson('carbon-intensity.json'));
+      return jsonResponse(carbonIntensityResponse(new URL(target)));
     }
     if (new URL(target).hostname === 'members-api.parliament.uk') {
       return jsonResponse(readFixtureJson('parliament-seats.json'));

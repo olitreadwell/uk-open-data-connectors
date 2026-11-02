@@ -1,6 +1,11 @@
 # Changelog
 
-## Unreleased
+## 0.1.3 (2026-11-03)
+
+- Fix the ArcGIS statistics schema for Zod 4 and update the transitive
+  body-parser package to clear the high audit finding.
+- Keep the registry's live probe suite stable as time moves the carbon
+  intensity window past its committed fixture.
 
 - `carbon-intensity`: the default window now ends at the start of yesterday
   rather than today. The API fills in actual readings for the newest half hours
