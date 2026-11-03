@@ -81,7 +81,23 @@ describe('fetchTflLineStatuses', () => {
 
   it('throws an API error on a non-ok response', async () => {
     const fetchImpl = vi.fn(async () => new Response('down', { status: 429 }));
-    await expect(fetchTflLineStatuses({ fetchImpl })).rejects.toThrow(UkSourceApiError);
+    await expect(fetchTflLineStatuses({ fetchImpl, retryDelayMs: 0 })).rejects.toThrow(
+      UkSourceApiError
+    );
+    expect(fetchImpl).toHaveBeenCalledTimes(3);
+  });
+
+  it('retries a 503 and returns the next successful response', async () => {
+    let calls = 0;
+    const fetchImpl = vi.fn(async () => {
+      calls += 1;
+      return calls === 1
+        ? new Response('later', { status: 503 })
+        : new Response(JSON.stringify(LINE_STATUS_FIXTURE));
+    });
+    const lines = await fetchTflLineStatuses({ fetchImpl, retryDelayMs: 0 });
+    expect(lines).toHaveLength(11);
+    expect(calls).toBe(2);
   });
 });
 

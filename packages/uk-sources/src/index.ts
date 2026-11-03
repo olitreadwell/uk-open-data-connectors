@@ -318,6 +318,8 @@ export {
   parseTflLineStatuses,
   summarizeTflLineStatuses,
   TFL_LINE_STATUS_GOOD_SERVICE_SEVERITY,
+  TFL_LINE_STATUS_MAX_ATTEMPTS,
+  TFL_LINE_STATUS_RETRY_DELAY_MS,
   TFL_LINE_STATUS_SOURCE_ID,
   TFL_LINE_STATUS_URL,
   tflLineStatusAdapter,

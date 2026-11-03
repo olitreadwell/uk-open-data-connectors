@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5 (2026-11-03)
+
+- `tfl-line-status`: retry retryable failures (HTTP 429 and 5xx) with
+  exponential backoff, so a transient TfL 503 does not fail a live smoke run.
+
 ## 0.1.4 (2026-11-03)
 
 - `police-crimes`: retry a month that answers HTTP 429 with exponential

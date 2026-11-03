@@ -12,6 +12,12 @@ import type { UkDataAdapter } from './types.js';
  */
 export const TFL_LINE_STATUS_SOURCE_ID = 'tfl-line-status';
 
+/** Attempts one status request makes on a retryable failure, including the first. */
+export const TFL_LINE_STATUS_MAX_ATTEMPTS = 3;
+
+/** Base delay between status attempts, doubled after each refusal. */
+export const TFL_LINE_STATUS_RETRY_DELAY_MS = 1_000;
+
 /** The Tube line status endpoint, covering every Tube line at once. */
 export const TFL_LINE_STATUS_URL = 'https://api.tfl.gov.uk/Line/Mode/tube/Status';
 
@@ -106,14 +112,22 @@ export function summarizeTflLineStatuses(lines: TflLineStatus[]): TflLineStatusS
  * @returns the line statuses the endpoint returns
  */
 export async function fetchTflLineStatuses(
-  options: { apiKey?: string; fetchImpl?: typeof globalThis.fetch } = {}
+  options: {
+    apiKey?: string;
+    fetchImpl?: typeof globalThis.fetch;
+    retryDelayMs?: number;
+  } = {}
 ): Promise<TflLineStatus[]> {
   const { apiKey, fetchImpl = globalThis.fetch } = options;
   const url =
     apiKey === undefined
       ? TFL_LINE_STATUS_URL
       : `${TFL_LINE_STATUS_URL}?app_key=${encodeURIComponent(apiKey)}`;
-  const response = await httpGet('tfl-line-status', url, { fetchImpl });
+  const response = await httpGet('tfl-line-status', url, {
+    fetchImpl,
+    retries: TFL_LINE_STATUS_MAX_ATTEMPTS - 1,
+    retryDelayMs: options.retryDelayMs ?? TFL_LINE_STATUS_RETRY_DELAY_MS,
+  });
   return parseTflLineStatuses(await response.json());
 }
 
