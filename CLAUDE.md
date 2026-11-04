@@ -1,3 +1,5 @@
+Read `CODING_STANDARDS.md` and `AGENTS.md` before changing behaviour.
+
 # CLAUDE.md
 
 Stack notes for this repo. `AGENTS.md` holds the conventions and quality

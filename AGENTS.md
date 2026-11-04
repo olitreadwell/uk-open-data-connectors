@@ -1,5 +1,12 @@
 # Agent instructions
 
+<!-- coding-standards:begin -->
+Project coding rules: `CODING_STANDARDS.md`. Global baseline:
+`~/.agents/standards/CODING_STANDARDS.md`. Read both before changing
+behaviour.
+<!-- coding-standards:end -->
+
+
 TypeScript connectors for UK public data, with Python and Ruby ports that
 still track the New Zealand connectors they came from. npm workspaces, one
 package per concern. Read `docs/ARCHITECTURE.md` for the plain-language map,
