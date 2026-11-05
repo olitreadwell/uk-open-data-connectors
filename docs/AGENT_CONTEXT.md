@@ -6,11 +6,9 @@ the full map.
 
 ## What this repo is
 
-TypeScript connectors for UK public data. One design, three languages:
-`packages/uk-sources` is the source of truth for the adapters, `packages/api`
-exposes them over HTTP, and `packages/cli` exposes them as `ukdata`. The
-Python and Ruby ports still cover the New Zealand connectors they were
-ported from.
+TypeScript connectors for UK public data. `packages/uk-sources` is the source
+of truth for the adapters, `packages/api` exposes them over HTTP, and
+`packages/cli` exposes them as `ukdata`.
 
 npm workspaces, one package per concern.
 
@@ -38,14 +36,15 @@ npm workspaces, one package per concern.
   transient failures; the others make one attempt per call.
 - `npm run check` is green. The Nomis fixture is a documented trim of the
   1,617-definition live catalogue; the adapter reads the whole live response.
+- The NZ Python and Ruby copies were removed on 2026-11-05. The MCP server
+  now exposes a named tool for every library query, and `probe_sources`
+  only probes the ids it is given.
 
 ## Commands
 
 ```sh
 npm run check          # format + lint + type-check + tests with coverage
 npm run test:smoke     # live tests against real APIs (needs RUN_SMOKE=1)
-cd python && .venv/bin/ruff check src tests && .venv/bin/mypy && .venv/bin/pytest
-cd ruby && bundle exec rake check
 ```
 
 ## Quality gates
@@ -55,8 +54,6 @@ cd ruby && bundle exec rake check
 - Every exported function has an explicit return type
 - Every export has a doc comment above it
 - 60% coverage threshold per package, enforced by `npm run check`
-- Python: `ruff` + `mypy` + pytest coverage gate, deps pinned in `uv.lock`
-- Ruby: `rubocop` + SimpleCov gate via `bundle exec rake check`
 - Never fabricate a data source, a stat, or a "this worked" claim
 - Fixtures are real snapshots from the live APIs, dated in their filenames
 

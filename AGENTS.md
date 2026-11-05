@@ -7,9 +7,8 @@ behaviour.
 <!-- coding-standards:end -->
 
 
-TypeScript connectors for UK public data, with Python and Ruby ports that
-still track the New Zealand connectors they came from. npm workspaces, one
-package per concern. Read `docs/ARCHITECTURE.md` for the plain-language map,
+TypeScript connectors for UK public data. npm workspaces, one package per
+concern. Read `docs/ARCHITECTURE.md` for the plain-language map,
 `docs/GLOSSARY.md` for terms.
 
 ## Repo map
@@ -19,8 +18,6 @@ package per concern. Read `docs/ARCHITECTURE.md` for the plain-language map,
 - `packages/api` - HTTP wrapper (Hono), OpenAPI spec, Swagger UI
 - `packages/cli` - `ukdata` command line tool
 - `packages/config-eslint`, `packages/config-typescript` - shared config
-- `python/` - Python port of the NZ connectors (`nzdata` on PyPI)
-- `ruby/` - Ruby port of the NZ connectors (`nzdata` gem)
 - `docs/` - architecture, security, glossary, releasing
 
 ## Commands
@@ -28,12 +25,9 @@ package per concern. Read `docs/ARCHITECTURE.md` for the plain-language map,
 ```sh
 npm run check          # format + lint + type-check + tests with coverage
 npm run test:smoke     # live tests against real APIs (needs RUN_SMOKE=1)
-cd python && .venv/bin/ruff check src tests && .venv/bin/mypy && .venv/bin/pytest
-cd ruby && bundle exec rake check
 ```
 
-Run `npm run check` before finishing any TypeScript change. Python and
-Ruby changes run their own gates.
+Run `npm run check` before finishing any change.
 
 ## Quality gates
 
@@ -42,8 +36,6 @@ Ruby changes run their own gates.
 - Every exported function has an explicit return type
 - Every export has a doc comment above it
 - 60% coverage threshold per package, enforced by `npm run check`
-- Python: `ruff` + `mypy` + pytest coverage gate, deps pinned in `uv.lock`
-- Ruby: `rubocop` + SimpleCov gate via `bundle exec rake check`
 - Never fabricate a data source, a stat, or a "this worked" claim
 - Fixtures are real snapshots from the live APIs, dated in their filenames
 
@@ -60,8 +52,10 @@ Ruby changes run their own gates.
   (`getUkDataSource`, not `get`)
 - Pick one spelling per concept and use it everywhere (`dataflowId`, not
   `dataset` in one place and `flow` in another)
-- The Python and Ruby ports are still the NZ ones. Say so in any change
-  that touches the shared design, or port them.
+- There are no Python or Ruby ports in this repo. Earlier NZ copies were
+  removed on 2026-11-05 because they fetched NZ data and would have
+  published as `nzdata`. A future port needs UK adapters and its own
+  package name before it can ship.
 
 ## Docs for humans and agents
 

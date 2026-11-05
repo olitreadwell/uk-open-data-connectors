@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Remove the NZ Python and Ruby copies and their publishing workflows. The repo is TypeScript only.
+- MCP: add named tools for every registered source and probe only the source ids a caller asks for.
+- Sources: reject a NextBus agency without a route and an NWS coordinate with only one of latitude and longitude.
+
 ## 0.1.5 (2026-11-03)
 
 - `tfl-line-status`: retry retryable failures (HTTP 429 and 5xx) with

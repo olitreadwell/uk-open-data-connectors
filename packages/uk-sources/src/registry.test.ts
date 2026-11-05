@@ -249,4 +249,22 @@ describe('registry', () => {
     expect(probes).toHaveLength(UK_DATA_SOURCES.length);
     expect(probes.every((probe) => probe.ok)).toBe(true);
   });
+
+  it('probes only the requested sources', async () => {
+    const fetchImpl = fixtureFetchImpl();
+
+    const probes = await probeAllUkDataSources({ ids: ['ons-datasets'], fetchImpl });
+
+    expect(probes.map((probe) => probe.id)).toEqual(['ons-datasets']);
+    expect(fetchImpl).toHaveBeenCalledTimes(1);
+  });
+
+  it('returns no probes for an explicit empty id list', async () => {
+    const fetchImpl = vi.fn();
+
+    const probes = await probeAllUkDataSources({ ids: [], fetchImpl });
+
+    expect(probes).toEqual([]);
+    expect(fetchImpl).not.toHaveBeenCalled();
+  });
 });

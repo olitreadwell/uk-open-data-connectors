@@ -90,8 +90,8 @@ Plain-language definitions. Terms used in this repo, in alphabetical order.
 
 - **Probe** - a live test that checks whether a source answers and parses.
 
-- **Port** - a copy of the same design in another language (Python, Ruby).
-  In this repo the ports still cover the NZ connectors.
+- **Port** - a copy of the same design in another language. This repo has no
+  language port; use the HTTP API or the CLI from another language.
 
 ## R
 

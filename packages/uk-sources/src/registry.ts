@@ -84,20 +84,24 @@ export async function probeUkDataSource<T>(
   }
 }
 
-/** Probes every registered source in parallel, with optional per-source keys. */
+/** Probes the requested sources in parallel, with optional per-source keys. */
 export async function probeAllUkDataSources(options?: {
   apiKey?: string;
   apiKeys?: Record<string, string>;
   fetchImpl?: typeof globalThis.fetch;
+  ids?: string[];
 }): Promise<UkSourceProbe[]> {
-  const { apiKey, apiKeys, fetchImpl } = options ?? {};
+  const { apiKey, apiKeys, fetchImpl, ids } = options ?? {};
+  const wanted = ids === undefined ? undefined : new Set(ids);
   return Promise.all(
-    UK_DATA_SOURCES.map((source) => {
-      const key = apiKeys?.[source.id] ?? apiKey;
-      return probeUkDataSource(source, {
-        ...(key === undefined ? {} : { apiKey: key }),
-        ...(fetchImpl === undefined ? {} : { fetchImpl }),
-      });
-    })
+    UK_DATA_SOURCES.filter((source) => wanted === undefined || wanted.has(source.id)).map(
+      (source) => {
+        const key = apiKeys?.[source.id] ?? apiKey;
+        return probeUkDataSource(source, {
+          ...(key === undefined ? {} : { apiKey: key }),
+          ...(fetchImpl === undefined ? {} : { fetchImpl }),
+        });
+      }
+    )
   );
 }

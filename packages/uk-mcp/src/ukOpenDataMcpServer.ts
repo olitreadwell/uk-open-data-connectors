@@ -2,16 +2,28 @@ import {
   fetchAncientWoodlandProfile,
   fetchBankRateObservations,
   fetchCarbonIntensityWindow,
+  fetchExploreEducationPublications,
+  fetchFindATenderReleases,
+  fetchFingertipsIndicators,
   fetchFloodStationReadings,
   fetchFloodStations,
   fetchFoodHygieneAuthorities,
+  fetchLondonDatastorePackages,
+  fetchNesoGenerationMixWindow,
+  fetchNhsbsaCkanPackages,
+  fetchNomisDatasetDefinitions,
   fetchOnsDatasets,
   fetchParliamentSeats,
   fetchPlanningDatasets,
   fetchPoliceCrimeCategories,
   fetchPoliceCrimeMonths,
   fetchPoliceCrimeSummary,
+  fetchPostcodeLookup,
+  fetchPublicHealthScotlandDatasets,
   fetchTflBikePoints,
+  fetchTflLineStatuses,
+  fetchTnaDiscoveryRecords,
+  fetchUkhsaMetricPoints,
   getUkDataSource,
   probeAllUkDataSources,
   UK_DATA_SOURCES,
@@ -20,12 +32,13 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
 import { createSourceMcpServer, type SourceQueryTool } from './createSourceMcpServer.js';
+import { readPackageVersion } from './packageVersion.js';
 
 /** What this server calls itself in the MCP handshake. */
 export const UK_MCP_SERVER_NAME = 'uk-open-data';
 
-/** Version reported in the MCP handshake. Kept in step with package.json. */
-export const UK_MCP_SERVER_VERSION = '0.1.0';
+/** Version reported in the MCP handshake, read from package.json. */
+export const UK_MCP_SERVER_VERSION = readPackageVersion();
 
 /** The named-function tools the UK library can answer. */
 const UK_QUERY_TOOLS: SourceQueryTool[] = [
@@ -187,6 +200,159 @@ const UK_QUERY_TOOLS: SourceQueryTool[] = [
     run: async (args) =>
       fetchTflBikePoints(typeof args.apiKey === 'string' ? { apiKey: args.apiKey } : {}),
   },
+  {
+    name: 'uk_neso_generation_mix',
+    title: 'NESO generation mix',
+    description:
+      'Half-hourly electricity generation by fuel for the GB grid, with each fuel share. Keyless.',
+    inputSchema: {
+      halfHours: z
+        .number()
+        .int()
+        .min(1)
+        .max(3360)
+        .optional()
+        .describe('How many half-hour periods to read. Defaults to 336, or seven days.'),
+      resourceId: z.string().optional().describe('NESO datastore resource id override.'),
+    },
+    run: async (args) => {
+      const halfHours = typeof args.halfHours === 'number' ? args.halfHours : undefined;
+      const resourceId = typeof args.resourceId === 'string' ? args.resourceId : undefined;
+      return fetchNesoGenerationMixWindow({
+        ...(halfHours === undefined ? {} : { halfHours }),
+        ...(resourceId === undefined ? {} : { resourceId }),
+      });
+    },
+  },
+  {
+    name: 'uk_tfl_line_status',
+    title: 'TfL line status',
+    description: 'Current status of every London Underground (Tube) service. Keyless.',
+    inputSchema: {
+      apiKey: z.string().optional().describe('TfL app key, for a higher rate limit.'),
+    },
+    run: async (args) =>
+      fetchTflLineStatuses(typeof args.apiKey === 'string' ? { apiKey: args.apiKey } : {}),
+  },
+  {
+    name: 'uk_postcode_lookup',
+    title: 'Postcode lookup',
+    description:
+      'Resolves a UK postcode to its coordinates, administrative areas, and constituency. Keyless.',
+    inputSchema: {
+      postcode: z.string().optional().describe('UK postcode. Defaults to SW1A 1AA.'),
+    },
+    run: async (args) =>
+      fetchPostcodeLookup(
+        typeof args.postcode === 'string' && args.postcode.length > 0 ? args.postcode : undefined
+      ),
+  },
+  {
+    name: 'uk_nomis_datasets',
+    title: 'Nomis dataset catalogue',
+    description: 'Every dataset definition in the Nomis SDMX catalogue. Keyless.',
+    inputSchema: {},
+    run: async () => fetchNomisDatasetDefinitions(),
+  },
+  {
+    name: 'uk_tna_discovery',
+    title: 'The National Archives Discovery search',
+    description:
+      'Searches The National Archives Discovery catalogue and returns record metadata. Keyless.',
+    inputSchema: {
+      query: z.string().optional().describe('Search terms. Defaults to a broad catalogue query.'),
+    },
+    run: async (args) => {
+      const query = typeof args.query === 'string' ? args.query : undefined;
+      return fetchTnaDiscoveryRecords(query === undefined ? {} : { query });
+    },
+  },
+  {
+    name: 'uk_ukhsa_metrics',
+    title: 'UKHSA dashboard metrics',
+    description:
+      'One page of metric points from the UK Health Security Agency data dashboard. Keyless.',
+    inputSchema: {
+      pageSize: z.number().int().min(1).max(365).optional().describe('Point cap.'),
+    },
+    run: async (args) => {
+      const pageSize = typeof args.pageSize === 'number' ? args.pageSize : undefined;
+      return fetchUkhsaMetricPoints(pageSize === undefined ? {} : { pageSize });
+    },
+  },
+  {
+    name: 'uk_london_datastore',
+    title: 'London Datastore catalogue',
+    description: 'Every package in the London Datastore catalogue. Keyless.',
+    inputSchema: {},
+    run: async () => fetchLondonDatastorePackages(),
+  },
+  {
+    name: 'uk_nhsbsa_catalogue',
+    title: 'NHSBSA open data catalogue',
+    description: 'Every dataset in the NHS Business Services Authority CKAN catalogue. Keyless.',
+    inputSchema: {},
+    run: async () => fetchNhsbsaCkanPackages(),
+  },
+  {
+    name: 'uk_public_health_scotland',
+    title: 'Public Health Scotland catalogue',
+    description: 'Every dataset in the Public Health Scotland open data catalogue. Keyless.',
+    inputSchema: {},
+    run: async () => fetchPublicHealthScotlandDatasets(),
+  },
+  {
+    name: 'uk_find_a_tender',
+    title: 'Find a Tender notices',
+    description:
+      'Recent procurement releases from Find a Tender, the UK public procurement service. Keyless.',
+    inputSchema: {
+      limit: z.number().int().min(1).max(100).optional().describe('Release cap.'),
+    },
+    run: async (args) => {
+      const limit = typeof args.limit === 'number' ? args.limit : undefined;
+      return fetchFindATenderReleases(limit === undefined ? {} : { limit });
+    },
+  },
+  {
+    name: 'uk_fingertips_indicators',
+    title: 'Fingertips indicators',
+    description:
+      'Public health indicator metadata from OHID Fingertips. Keyless. Pass indicatorIds to read specific indicators.',
+    inputSchema: {
+      indicatorIds: z
+        .array(z.number().int())
+        .min(1)
+        .optional()
+        .describe('Fingertips indicator ids. Defaults to a small starter set.'),
+    },
+    run: async (args) => {
+      const indicatorIds = Array.isArray(args.indicatorIds)
+        ? args.indicatorIds.filter((id): id is number => typeof id === 'number')
+        : undefined;
+      return fetchFingertipsIndicators(
+        indicatorIds === undefined || indicatorIds.length === 0 ? {} : { indicatorIds }
+      );
+    },
+  },
+  {
+    name: 'uk_explore_education',
+    title: 'Explore Education Statistics publications',
+    description:
+      'One page of Department for Education publications from Explore Education Statistics. Keyless.',
+    inputSchema: {
+      page: z.number().int().min(1).optional().describe('Page number, starting at 1.'),
+      pageSize: z.number().int().min(1).max(100).optional().describe('Page size.'),
+    },
+    run: async (args) => {
+      const page = typeof args.page === 'number' ? args.page : undefined;
+      const pageSize = typeof args.pageSize === 'number' ? args.pageSize : undefined;
+      return fetchExploreEducationPublications({
+        ...(page === undefined ? {} : { page }),
+        ...(pageSize === undefined ? {} : { pageSize }),
+      });
+    },
+  },
 ];
 
 /** Drops undefined values so `exactOptionalPropertyTypes` stays satisfied. */
@@ -204,7 +370,7 @@ function dropUndefined(args: Record<string, unknown>): {
 }
 
 /**
- * Builds the UK MCP server: the 23 keyless UK sources, plus 13 named query
+ * Builds the UK MCP server: the 23 keyless UK sources, plus 25 named query
  * tools.
  *
  * @returns an MCP server ready to connect to a transport
@@ -221,18 +387,15 @@ export function createUkOpenDataMcpServer(): McpServer {
         description: source.description,
       })),
     probeSources: async (ids) => {
-      const probes = await probeAllUkDataSources();
-      const wanted = ids === undefined || ids.length === 0 ? undefined : new Set(ids);
-      return probes
-        .filter((probe) => wanted === undefined || wanted.has(probe.id))
-        .map((probe) => ({
-          id: probe.id,
-          name: probe.name,
-          auth: probe.auth,
-          ok: probe.ok,
-          status: probe.status,
-          ...(probe.sample === undefined ? {} : { sample: probe.sample }),
-        }));
+      const probes = await probeAllUkDataSources(ids === undefined ? {} : { ids });
+      return probes.map((probe) => ({
+        id: probe.id,
+        name: probe.name,
+        auth: probe.auth,
+        ok: probe.ok,
+        status: probe.status,
+        ...(probe.sample === undefined ? {} : { sample: probe.sample }),
+      }));
     },
     fetchSource: async (id, options) => {
       const adapter = getUkDataSource(id);

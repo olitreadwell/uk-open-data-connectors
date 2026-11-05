@@ -41,7 +41,7 @@ npx -y --package @uk-open-data-connectors/connectors-cli ukdata sources
 - `flood-readings` defaults to station `1029TH`.
 - `--limit` must be a positive whole number.
 - The short flags are `-l` for `--limit`, `-s` for `--station`, and `-h` for `--help`.
-- The tool falls back to a committed fixture when the live call fails, because the library does. Run `ukdata probe <id>` to check freshness.
+- The tool exits with an error when the live call fails. It does not fall back to a fixture. Run `ukdata probe <id>` to check freshness.
 - Every UK source is keyless. The CLI never accepts a key from a caller.
 - The bin is `ukdata`. The package builds with `tsc -p tsconfig.build.json` into `dist`.
 

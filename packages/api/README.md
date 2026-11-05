@@ -49,7 +49,7 @@ curl 'http://localhost:8787/api/sources'
 - The rate limit is 60 requests per minute per IP. Set `RATE_LIMIT_MAX` and `RATE_LIMIT_WINDOW_MS` to change it.
 - Sentry is off unless `SENTRY_DSN` is set.
 - Errors are JSON. An unknown route answers `{"error":"not_found"}` with 404. An unhandled error answers `{"error":"internal_error"}` with 500.
-- The API reads the `uk-sources` adapters. A failed live call falls back to a committed fixture, so a number can be stale.
+- The API reads the `uk-sources` adapters. A failed live call returns an error; it does not fall back to a fixture.
 - The package is private. It is not published to npm.
 
 ## Data sources and licences

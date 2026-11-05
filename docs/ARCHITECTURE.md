@@ -5,15 +5,9 @@ Plain-language map of this repo. If you are new here, start with
 
 ## What this repo is
 
-One design, three languages, with the TypeScript side covering UK sources.
+One design, one language.
 
 - TypeScript: the source of truth. UK adapters, HTTP API, CLI.
-- Python: a port of the New Zealand connectors (`python/`, package name
-  `nzdata`).
-- Ruby: a port of the New Zealand connectors (`ruby/`, gem name `nzdata`).
-
-The TypeScript packages describe UK public data. The ports are older and
-still describe NZ public data; porting them is separate work.
 
 ## The pieces
 
@@ -23,8 +17,6 @@ still describe NZ public data; porting them is separate work.
 | HTTP API | `packages/api` | Exposes the connectors over HTTP |
 | CLI | `packages/cli` | Exposes the connectors on the command line |
 | Config packages | `packages/config-eslint`, `packages/config-typescript` | Shared lint and TypeScript settings |
-| Python port | `python/` | NZ adapters in Python |
-| Ruby port | `ruby/` | NZ adapters in Ruby |
 
 ## How a request flows
 
@@ -75,7 +67,7 @@ Every UK source works without an API key. Keys are read from the environment
 only. The API and CLI never accept keys from callers, and keys are never
 committed to the repo.
 
-## Fixtures instead of the live network
+## Tests use fixtures
 
 Tests never touch the network unless you set `RUN_SMOKE=1`.
 
@@ -95,15 +87,11 @@ Why: tests run fast, offline, and give the same answer on every machine.
 | Live smoke tests | `*.test.ts` gated on `RUN_SMOKE=1` | opt-in, or nightly CI |
 | Contract test | `packages/api/src/openapi.contract.test.ts` | `npm run check` |
 
-The Python and Ruby ports mirror this with their own fixture-based tests and
-opt-in smoke tests.
-
 ## Where quality gates live
 
-- Coverage threshold 60% per package: `vitest.config.ts` (TypeScript),
-  `pyproject.toml` (Python), `spec_helper.rb` (Ruby)
-- Lint: ESLint (TypeScript), `ruff` (Python), `rubocop` (Ruby)
-- Type check: `tsc` (TypeScript), `mypy` (Python)
+- Coverage threshold 60% per package: `vitest.config.ts`
+- Lint: ESLint
+- Type check: `tsc`
 - CI: `.github/workflows/ci.yml`, `.github/workflows/smoke.yml`
 
 ## Documentation index

@@ -19,7 +19,7 @@ Rules that apply to any source that needs a key later:
 | Check | Command | What it finds |
 | --- | --- | --- |
 | npm audit | `npm audit --audit-level=high` | Known npm vulnerabilities |
-| CodeQL | CI workflow | Security patterns in all three languages |
+| CodeQL | CI workflow | Security patterns in the TypeScript packages |
 | Lint | `npm run lint` | Suspicious code patterns |
 
 CI blocks on critical and high npm audit findings. CodeQL runs on every

@@ -21,4 +21,5 @@ gates; this file covers the toolchain.
   at `/docs`.
 - The Dockerfile builds the API image, listens on port 8787, and checks
   `/health`.
-- `python/` and `ruby/` are the NZ ports. UK changes stay in `packages/`.
+- UK changes stay in `packages/`. The earlier NZ Python and Ruby copies
+  were removed on 2026-11-05.

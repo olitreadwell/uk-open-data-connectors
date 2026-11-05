@@ -45,10 +45,9 @@ the caller.
 ## Can I use this from Python, R, or Julia?
 
 Yes, two ways. Run the HTTP API (`npm run dev:api`) and call
-`GET /api/sources/:id/probe`, or run the CLI and read JSON from stdout. There
-is also a Python port and a Ruby port in `python/` and `ruby/`, neither
-published yet, and both still implement the New Zealand connectors rather
-than the UK ones.
+`GET /api/sources/:id/data`, or run the CLI and read JSON from stdout. The
+earlier Python and Ruby copies were removed on 2026-11-05 because they still
+implemented the New Zealand connectors and would have published as `nzdata`.
 
 ## How do I add a source?
 

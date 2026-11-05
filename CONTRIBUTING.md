@@ -8,17 +8,14 @@ unclear, open an issue and ask.
 
 ## Repo map
 
-One design, three languages.
+One design, one language.
 
 - `packages/` - the TypeScript source of truth. This is where the UK
   adapters, the HTTP API, and the CLI live.
-- `python/` - a Python port of the NZ connectors (package name `nzdata`).
-- `ruby/` - a Ruby port of the NZ connectors (gem name `nzdata`).
 
 A new UK source lands in `packages/uk-sources` and is exposed by the API
-and the CLI. The Python and Ruby ports still mirror the New Zealand
-connectors they were ported from. See `docs/ARCHITECTURE.md` for the full
-map and `docs/GLOSSARY.md` for terms.
+and the CLI. There is no Python or Ruby port. See `docs/ARCHITECTURE.md`
+for the full map and `docs/GLOSSARY.md` for terms.
 
 ## Set up your machine
 
@@ -28,18 +25,6 @@ map and `docs/GLOSSARY.md` for terms.
    `nvm`, run `nvm use` first.
 2. Run `npm ci` to install dependencies. This installs the exact
    versions from `package-lock.json`.
-
-### Python (NZ port, carried over)
-
-1. Install [uv](https://docs.astral.sh/uv/).
-2. Run `cd python && uv sync`. This creates `.venv/` and installs the
-   pinned dependencies from `uv.lock`.
-
-### Ruby (NZ port, carried over)
-
-1. Install Ruby and [Bundler](https://bundler.io/).
-2. Run `cd ruby && bundle install`. This installs the pinned
-   dependencies from `Gemfile.lock`.
 
 ## Quality gates
 
@@ -53,18 +38,6 @@ npm run check
 ```
 
 `npm run check` runs format, lint, type-check, and tests with coverage.
-
-### Python (NZ port)
-
-```sh
-cd python && .venv/bin/ruff check src tests && .venv/bin/mypy && .venv/bin/pytest
-```
-
-### Ruby (NZ port)
-
-```sh
-cd ruby && bundle exec rake check
-```
 
 ### Rules that apply everywhere
 
@@ -104,9 +77,8 @@ Example: `docs/contributing_guide/8`.
   per commit.
 - Use Conventional Commits for messages. Examples: `feat:`, `fix:`,
   `docs:`, `chore:`.
-- A UK-facing change lands in TypeScript. The Python and Ruby ports still
-  track the NZ connectors, so they are updated only when the shared design
-  changes.
+- Every change lands in TypeScript. There is no other language port to keep
+  in step.
 - Run the quality gates above before you push.
 - Open the PR with `gh pr create`. Describe what changed and why.
 
@@ -121,18 +93,5 @@ TypeScript:
 npm run test:smoke
 ```
 
-Python:
-
-```sh
-cd python && RUN_SMOKE=1 .venv/bin/pytest tests/test_smoke.py
-```
-
-Ruby:
-
-```sh
-cd ruby && RUN_SMOKE=1 bundle exec rake check
-```
-
 Every UK source is keyless, so the TypeScript smoke tests need no
-environment variables. The Python and Ruby smoke tests still probe NZ APIs
-and read their keys from the environment.
+environment variables.

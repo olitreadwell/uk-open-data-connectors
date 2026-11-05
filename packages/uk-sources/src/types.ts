@@ -9,7 +9,8 @@ export interface UkFetchOptions {
 
 /**
  * One UK data source behind a uniform interface: a live fetch, a strict
- * parse, and a committed fixture fallback so builds work offline.
+ * parse, and a committed fixture for tests. A live fetch never falls back
+ * to the fixture.
  */
 export interface UkDataAdapter<T> {
   readonly id: string;

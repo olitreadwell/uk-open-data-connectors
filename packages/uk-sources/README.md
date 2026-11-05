@@ -5,8 +5,8 @@ Uniform TypeScript adapters for 23 UK public data sources, for JavaScript and Ty
 ## What this package does
 
 - Ships one adapter for each of 23 UK public data sources.
-- Gives every adapter the same shape: a live fetch, a strict parse, and a committed fixture fallback.
-- Lets you build and test offline, because each adapter falls back to a fixture when the live call fails.
+- Gives every adapter the same shape: a live fetch, a strict parse, and a committed fixture for tests.
+- Lets you build and test offline, because tests read the fixtures directly.
 - Exposes a registry (`UK_DATA_SOURCES`) and probe helpers (`probeUkDataSource`, `probeAllUkDataSources`).
 - Needs no API keys, because every UK source is keyless.
 
@@ -59,7 +59,7 @@ The `auth` field is `none` for every adapter.
 ## Notes and limits
 
 - All 23 adapters are keyless. `fetchTflBikePoints` and `fetchTflLineStatuses` take an optional `apiKey`, sent as the `app_key` query parameter.
-- Each adapter falls back to a committed fixture when the live call fails. A returned value can be stale. Call `probeUkDataSource` before you quote a number.
+- A live fetch throws when the API fails. Fixtures are read only through `loadFixture`, so a stale snapshot never appears silently. Call `probeUkDataSource` before you quote a number.
 - The fixtures in `src/fixtures` are real snapshots from the live APIs. The newer files carry their capture date in the filename.
 - Tests never reach the network unless `RUN_SMOKE=1` is set. The smoke test hits the real endpoints and needs no keys.
 - `api.ons.gov.uk` was retired on 2024-11-25. Every path answers HTTP 200 with a plain-text decommission notice, so a naive health check reads it as healthy. The `ons-datasets` adapter uses `api.beta.ons.gov.uk/v1` instead.

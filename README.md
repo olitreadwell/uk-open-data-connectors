@@ -14,8 +14,6 @@ Every connector is keyless today. There are no API keys to request and no secret
 | `@uk-open-data-connectors/connectors-api` | Private. HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP. |
 | `@uk-open-data-connectors/config-eslint` | Private. Shared ESLint config for the packages in this repo. |
 | `@uk-open-data-connectors/config-typescript` | Private. Shared TypeScript compiler config for the packages in this repo. |
-| `python/` (`nzdata` on PyPI) | Python port carried over from the NZ origin. Still NZ sources, see Language ports |
-| `ruby/` (`nzdata` gem) | Ruby port carried over from the NZ origin. Still NZ sources, see Language ports |
 
 
 ## Connectors
@@ -236,13 +234,14 @@ npm run test:smoke     # live smoke tests against the real APIs
 
 Unit tests use committed fixture snapshots pulled from the live APIs, so they run offline. Smoke tests are opt-in via `RUN_SMOKE=1`, need no keys, and hit the real endpoints.
 
-## Language ports
+## Other languages
 
-`python/` and `ruby/` are the Python and Ruby ports carried over from the NZ
-origin of this repo. They still implement the NZ `nzdata` surface, and they
-are not UK connectors yet. Both keep their own quality gates in CI (`ruff` +
-`mypy` + pytest for Python, `rubocop` + SimpleCov for Ruby). See each
-directory's README for quickstarts and publishing steps.
+The repo has no Python or Ruby port. Earlier copies were carried over from
+the New Zealand origin, still fetched NZ data, and would have published as
+the `nzdata` package. They were removed on 2026-11-05.
+
+Use the HTTP API or the `ukdata` CLI from Python, R, Julia, or any other
+language. Both print or serve JSON.
 
 ## Run the API in Docker
 

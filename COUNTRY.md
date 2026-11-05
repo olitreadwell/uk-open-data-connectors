@@ -1,8 +1,8 @@
 # UK Open Data Connectors
 
 This repo was scaffolded from `nz-open-data-connectors`. The TypeScript side
-is now UK-only: the NZ adapter packages are gone, and the API and CLI serve
-the UK adapters in `packages/uk-sources`.
+is now UK-only: the NZ adapter packages are gone, the API and CLI serve the UK
+adapters in `packages/uk-sources`, and there is no Python or Ruby port.
 
 ## Adapters
 
@@ -42,7 +42,7 @@ the UK adapters in `packages/uk-sources`.
 - [x] Remove the NZ adapter packages and rewire the API and CLI
 - [x] Point the root `build` script at the packages that exist
 - [x] Port the API and CLI exposure for the UK adapters
-- [ ] Port the Python and Ruby packages to UK sources (they still cover NZ)
+- [x] Remove the NZ Python and Ruby copies (2026-11-05)
 - [x] Add more UK sources, each verified live before commit (eleven added on 2026-10-05)
 - [x] Shared HTTP layer (`httpGet`): one User-Agent, 30 second timeout,
       `retryable` on 429, 5xx and network failures
