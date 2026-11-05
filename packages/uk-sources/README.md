@@ -80,7 +80,7 @@ The `auth` field is `none` for every adapter.
 - The London Datastore call answers a 307 redirect. Node's `fetch` follows it, so the adapter keeps the documented path.
 - The Discovery adapter sends `Accept: application/json`, because the API documents the header.
 - `postcode-lookup` reads from postcodes.io, a third-party service. It is not a government API, though it serves ONS and Ordnance Survey postcode data under the Open Government Licence v3.
-- Only the Find a Tender `license` field, the NHSBSA `OGL-UK-3.0` metadata, and the Public Health Scotland `uk-ogl` metadata were read directly from the service. The other licences come from the publishers' standard terms.
+- Only the Find a Tender `license` field and the NESO `ESO`, NHSBSA `OGL-UK-3.0`, and Public Health Scotland `uk-ogl` package metadata were read directly from the service. The other licences come from the publishers' standard terms.
 - The eleven adapters added on 2026-10-05 were probed live on that day.
 
 ## Data sources and licences

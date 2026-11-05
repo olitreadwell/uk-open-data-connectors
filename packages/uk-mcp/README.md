@@ -6,7 +6,7 @@ An MCP server that gives Claude, ChatGPT, and other MCP clients access to 23 UK 
 
 - Runs a Model Context Protocol (MCP) server over the UK connector library.
 - Lists every source, probes each one live, and fetches one source by id.
-- Adds 13 tools, one for each named fetch function in `uk-sources`.
+- Adds 13 named query tools, plus `list_sources`, `probe_sources`, and `fetch_source`.
 - Speaks stdio, so Claude Code and Claude Desktop can start it directly.
 - Needs no keys, because every UK source is keyless.
 

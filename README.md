@@ -29,12 +29,15 @@ Licence. The postcode lookup goes through postcodes.io, a third party that
 serves Open Government Licence postcode data from the ONS and Ordnance
 Survey.
 
-Every adapter sends the same `User-Agent`
+Twenty-two of the 23 adapters use the shared `httpGet` helper in
+`packages/uk-sources/src/http.ts`. It sends the same `User-Agent`
 (`uk-open-data-connectors (Language=TypeScript)`), waits at most 30 seconds for
 a response, and marks rate-limited (HTTP 429), server-error (HTTP 5xx) and
-network failures as `retryable` on the thrown `UkSourceApiError`. The shared
-`httpGet` helper in `packages/uk-sources/src/http.ts` does this for all 23
-adapters.
+network failures as `retryable` on the thrown `UkSourceApiError`. The carbon
+intensity adapter is the exception: it calls `fetch` directly, so it sends no
+shared `User-Agent`, has no timeout, and its HTTP errors are not marked
+`retryable`. The helper retries only when an adapter asks. The TfL line status
+adapter and the police street crime month calls do.
 
 | id | Source | Keyless? | Example command |
 | --- | ------ | -------- | --------------- |

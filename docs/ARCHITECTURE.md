@@ -36,13 +36,16 @@ Every adapter speaks one interface (`UkDataAdapter`). It knows how to:
 The HTTP API and the CLI call the same adapters. They never call the
 endpoints directly. This is what "one design" means.
 
-Live fetches go through the shared helper in
+Twenty-two of the 23 adapters fetch through the shared helper in
 `packages/uk-sources/src/http.ts`. It sets one `User-Agent`
 (`uk-open-data-connectors (Language=TypeScript)`), aborts after 30 seconds, and
 marks HTTP 429, HTTP 5xx and network failures as `retryable` on the thrown
 `UkSourceApiError`, with the HTTP status attached. Adapters pass their own
 headers (the FSA API version header, the Discovery `Accept` header) and the
-helper merges them.
+helper merges them. The carbon intensity adapter calls `fetch` directly, so it
+has no shared `User-Agent`, timeout, or `retryable` flag. The TfL line status
+adapter and the police street crime month calls ask the helper to retry
+transient failures.
 
 Registered adapters:
 

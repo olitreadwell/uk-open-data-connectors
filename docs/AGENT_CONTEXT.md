@@ -29,9 +29,13 @@ npm workspaces, one package per concern.
 - Adapters live in `packages/uk-sources/src/*.ts` next to their tests, with
   committed fixtures in `packages/uk-sources/src/fixtures/`. New fixtures are
   dated in their filenames.
-- Every fetch goes through `httpGet` in `packages/uk-sources/src/http.ts`: one
-  `User-Agent`, a 30 second timeout, and `retryable` set on HTTP 429, HTTP 5xx
-  and network failures. A caller-supplied `User-Agent` replaces the default.
+- Twenty-two of the 23 adapters fetch through `httpGet` in
+  `packages/uk-sources/src/http.ts`: one `User-Agent`, a 30 second timeout, and
+  `retryable` set on HTTP 429, HTTP 5xx and network failures. A caller-supplied
+  `User-Agent` replaces the default. The carbon intensity adapter calls `fetch`
+  directly, with no shared `User-Agent`, timeout, or `retryable` signal. The
+  TfL line status adapter and the police street crime month calls retry
+  transient failures; the others make one attempt per call.
 - `npm run check` is green. The Nomis fixture is a documented trim of the
   1,617-definition live catalogue; the adapter reads the whole live response.
 
@@ -58,7 +62,8 @@ cd ruby && bundle exec rake check
 
 ## Conventions
 
-- Adapters live in `packages/uk-sources`, and fetches go through `httpGet`
+- Adapters live in `packages/uk-sources`, and fetches use `httpGet` unless a
+  source needs its own transport
 - HTTP wrapper is `packages/api`, CLI is `packages/cli`
 - `normalizeSourceApiKey` trims an optional key, so a key set to an empty
   string is treated as unset

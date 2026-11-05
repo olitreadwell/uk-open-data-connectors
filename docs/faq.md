@@ -32,11 +32,15 @@ smoke run is what catches it.
 
 ## Will calling the API get me blocked?
 
-Every adapter sends a descriptive `User-Agent`
+Every adapter except carbon intensity uses the shared `httpGet` helper, which
+sends a descriptive `User-Agent`
 (`uk-open-data-connectors (Language=TypeScript)`), waits at most 30 seconds,
 and marks HTTP 429, HTTP 5xx and network failures as `retryable` on the thrown
-`UkSourceApiError`. Nothing retries automatically, so the caller decides the
-backoff.
+`UkSourceApiError`. The carbon intensity adapter calls `fetch` directly, so it
+sends no shared `User-Agent`, has no timeout, and its HTTP errors are not marked
+`retryable`. The TfL line status adapter and the police street crime month calls
+retry transient failures automatically; the other calls leave the backoff to
+the caller.
 
 ## Can I use this from Python, R, or Julia?
 

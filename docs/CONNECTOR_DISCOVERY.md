@@ -150,7 +150,8 @@ What was verified live on 2026-10-05, and what was not:
 - Licences come from the publishers' standard terms. Only Find a Tender's
   `license` field, the NHSBSA `OGL-UK-3.0` package metadata, and the Public
   Health Scotland `uk-ogl` package metadata were read directly from the
-  service. The other licences were not read from the API that day.
+  service on 2026-10-05. The NESO `ESO` package metadata was read on
+  2026-10-18. The other licences were not read from the API on those dates.
 
 ## Ruled out
 

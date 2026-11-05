@@ -204,8 +204,8 @@ function dropUndefined(args: Record<string, unknown>): {
 }
 
 /**
- * Builds the UK MCP server: the 23 keyless UK sources, plus one tool per named
- * function in the connector library.
+ * Builds the UK MCP server: the 23 keyless UK sources, plus 13 named query
+ * tools.
  *
  * @returns an MCP server ready to connect to a transport
  */
