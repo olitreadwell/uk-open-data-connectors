@@ -56,7 +56,7 @@ curl 'http://localhost:8787/api/sources'
 
 This package reads the adapters in `@uk-open-data-connectors/uk-sources`. That package lists every publisher, source URL, and data licence, see [the uk-sources README](../uk-sources/README.md#data-sources-and-licences).
 
-Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts carry the Open Parliament Licence v3.0.
+Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts carry the Open Parliament Licence v3.0. The NESO generation mix carries the NESO Open Data Licence.
 
 ## Package licence
 

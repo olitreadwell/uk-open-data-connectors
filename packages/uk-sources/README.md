@@ -1,10 +1,10 @@
 # @uk-open-data-connectors/uk-sources
 
-Uniform TypeScript adapters for 22 UK public data sources, for JavaScript and TypeScript developers.
+Uniform TypeScript adapters for 23 UK public data sources, for JavaScript and TypeScript developers.
 
 ## What this package does
 
-- Ships one adapter for each of 22 UK public data sources.
+- Ships one adapter for each of 23 UK public data sources.
 - Gives every adapter the same shape: a live fetch, a strict parse, and a committed fixture fallback.
 - Lets you build and test offline, because each adapter falls back to a fixture when the live call fails.
 - Exposes a registry (`UK_DATA_SOURCES`) and probe helpers (`probeUkDataSource`, `probeAllUkDataSources`).
@@ -85,7 +85,7 @@ The `auth` field is `none` for every adapter.
 
 ## Data sources and licences
 
-This package reads 22 sources. Most come from UK public bodies. The postcode lookup comes from postcodes.io, a third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts carry the Open Parliament Licence v3.0.
+This package reads 23 sources. Most come from UK public bodies. The postcode lookup comes from postcodes.io, a third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts carry the Open Parliament Licence v3.0. The NESO generation mix carries the NESO Open Data Licence.
 
 | Adapter | Publisher | Source URL | Data licence |
 | ------- | --------- | ---------- | ------------ |

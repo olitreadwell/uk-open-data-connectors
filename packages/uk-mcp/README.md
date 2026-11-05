@@ -1,6 +1,6 @@
 # @uk-open-data-connectors/uk-mcp
 
-An MCP server that gives Claude, ChatGPT, and other MCP clients access to 22 UK open data sources.
+An MCP server that gives Claude, ChatGPT, and other MCP clients access to 23 UK open data sources.
 
 ## What this package does
 
@@ -64,7 +64,7 @@ The server speaks stdio and waits for an MCP client.
 
 This package reads the adapters in `@uk-open-data-connectors/uk-sources`. That package lists every publisher, source URL, and data licence, see [the uk-sources README](../uk-sources/README.md#data-sources-and-licences).
 
-Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts carry the Open Parliament Licence v3.0. The postcode lookup uses postcodes.io, a third-party service that serves ONS and Ordnance Survey data.
+Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts carry the Open Parliament Licence v3.0. The NESO generation mix carries the NESO Open Data Licence. The postcode lookup uses postcodes.io, a third-party service that serves ONS and Ordnance Survey data.
 
 ## Package licence
 

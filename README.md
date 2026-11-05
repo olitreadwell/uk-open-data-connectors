@@ -8,7 +8,7 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 | Package | What it is |
 | ------- | ---------- |
-| [`@uk-open-data-connectors/uk-sources`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources) | Uniform adapters for 22 UK public data sources. All keyless, with live probes and offline fixtures. |
+| [`@uk-open-data-connectors/uk-sources`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources) | Uniform adapters for 23 UK public data sources. All keyless, with live probes and offline fixtures. |
 | [`@uk-open-data-connectors/uk-mcp`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-mcp) | MCP server that exposes the connectors to Claude, ChatGPT, and other MCP clients. |
 | [`@uk-open-data-connectors/connectors-cli`](https://www.npmjs.com/package/@uk-open-data-connectors/connectors-cli) | `ukdata` command line tool that prints JSON to stdout, so any language can shell out to it. |
 | `@uk-open-data-connectors/connectors-api` | Private. HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP. |
@@ -20,19 +20,20 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 ## Connectors
 
-Twenty-two adapters in `@uk-open-data-connectors/uk-sources`, all keyless.
+Twenty-three adapters in `@uk-open-data-connectors/uk-sources`, all keyless.
 Most carry Open Government Licence v3 data; the two TfL adapters carry TfL
 Open Data, the carbon intensity series is Creative Commons Attribution 4.0
 under the operator's own terms, and the Parliament seat counts carry the Open
-Parliament Licence v3. The postcode lookup goes through postcodes.io, a third
-party that serves Open Government Licence postcode data from the ONS and
-Ordnance Survey.
+Parliament Licence v3. The NESO generation mix carries the NESO Open Data
+Licence. The postcode lookup goes through postcodes.io, a third party that
+serves Open Government Licence postcode data from the ONS and Ordnance
+Survey.
 
 Every adapter sends the same `User-Agent`
 (`uk-open-data-connectors (Language=TypeScript)`), waits at most 30 seconds for
 a response, and marks rate-limited (HTTP 429), server-error (HTTP 5xx) and
 network failures as `retryable` on the thrown `UkSourceApiError`. The shared
-`httpGet` helper in `packages/uk-sources/src/http.ts` does this for all 22
+`httpGet` helper in `packages/uk-sources/src/http.ts` does this for all 23
 adapters.
 
 | id | Source | Keyless? | Example command |
@@ -105,10 +106,10 @@ Commons, 2 for the Lords) and a date, and returns each party with the seats it
 holds and the members counted behind them. Parliament publishes the data under
 the Open Parliament Licence v3.0.
 
-### Added 2026-10-05
+### Added 2026-10-05 and 2026-10-18
 
-Eleven more keyless adapters, each checked live on 2026-10-05 and covered by a
-committed fixture:
+Twelve more keyless adapters, each checked live on 2026-10-05 or 2026-10-18
+and covered by a committed fixture:
 
 - `postcode-lookup` reads one postcode from postcodes.io, default SW1A 1AA.
 - `explore-education-statistics` reads the Department for Education's most

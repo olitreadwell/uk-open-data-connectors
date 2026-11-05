@@ -16,10 +16,11 @@ The MIT licence here covers the code, not the data. Most of the data carries
 the Open Government Licence v3, which asks for attribution. The two TfL
 adapters carry TfL Open Data, the carbon intensity series is Creative Commons
 Attribution 4.0, and the Parliament seat counts carry the Open Parliament
-Licence v3. The postcode lookup goes through postcodes.io, a third party that
-serves Open Government Licence data from the ONS and Ordnance Survey. Check
-the publisher's page before you republish, and credit the publisher rather
-than this library.
+Licence v3. The NESO generation mix carries the NESO Open Data Licence. The
+postcode lookup goes through postcodes.io, a third party that serves Open
+Government Licence data from the ONS and Ordnance Survey. Check the
+publisher's page before you republish, and credit the publisher rather than
+this library.
 
 ## Why do the tests use fixtures instead of the live APIs?
 
