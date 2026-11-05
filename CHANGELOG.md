@@ -3,8 +3,7 @@
 ## Unreleased
 
 - Remove the NZ Python and Ruby copies and their publishing workflows. The repo is TypeScript only.
-- MCP: add named tools for every registered source and probe only the source ids a caller asks for.
-- Sources: reject a NextBus agency without a route and an NWS coordinate with only one of latitude and longitude.
+- MCP: add named tools for every registered source, probe only the source ids a caller asks for, and reject unknown ids.
 - `data-gov-uk-ckan`: search the Data.gov.uk CKAN catalogue for UK public
   datasets, with publisher, licence, resource count, and tags. Keyless, checked
   live on 2026-11-05.

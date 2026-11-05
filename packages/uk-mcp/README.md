@@ -29,7 +29,7 @@ The server speaks stdio and waits for an MCP client.
 | Tool | What it does |
 | ---- | ------------ |
 | `list_sources` | Every source, with the id the other tools take. |
-| `probe_sources` | Live fetch against each requested source, so you know a number is real and not a stale fixture. |
+| `probe_sources` | Live fetch against each requested source, so you know the answer is live data. |
 | `fetch_source` | One source through its adapter. Takes an optional `apiKey`. |
 | `uk_ancient_woodland` | Ancient woodland in England, by type and size band. |
 | `uk_bank_rate` | The Bank of England Bank Rate, daily since 1975. |

@@ -264,6 +264,15 @@ describe('registry', () => {
     expect(fetchImpl).toHaveBeenCalledTimes(1);
   });
 
+  it('rejects an unknown id before probing', async () => {
+    const fetchImpl = vi.fn();
+
+    await expect(probeAllUkDataSources({ ids: ['not-a-source'], fetchImpl })).rejects.toThrow(
+      'Unknown UK source id "not-a-source"'
+    );
+    expect(fetchImpl).not.toHaveBeenCalled();
+  });
+
   it('returns no probes for an explicit empty id list', async () => {
     const fetchImpl = vi.fn();
 

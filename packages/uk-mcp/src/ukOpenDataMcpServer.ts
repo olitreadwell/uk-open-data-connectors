@@ -84,7 +84,7 @@ const UK_QUERY_TOOLS: SourceQueryTool[] = [
     },
     run: async (args) =>
       fetchFloodStationReadings(
-        typeof args.stationReference === 'string' ? args.stationReference : undefined,
+        stringOrUndefined(args.stationReference),
         typeof args.limit === 'number' ? { limit: args.limit } : {}
       ),
   },
@@ -129,7 +129,7 @@ const UK_QUERY_TOOLS: SourceQueryTool[] = [
     },
     run: async (args) => {
       const house = typeof args.house === 'number' ? args.house : undefined;
-      const forDate = typeof args.forDate === 'string' ? args.forDate : undefined;
+      const forDate = stringOrUndefined(args.forDate);
       return fetchParliamentSeats({
         ...(house === undefined ? {} : { house }),
         ...(forDate === undefined ? {} : { forDate }),
@@ -197,8 +197,10 @@ const UK_QUERY_TOOLS: SourceQueryTool[] = [
     inputSchema: {
       apiKey: z.string().optional().describe('TfL app key, for a higher rate limit.'),
     },
-    run: async (args) =>
-      fetchTflBikePoints(typeof args.apiKey === 'string' ? { apiKey: args.apiKey } : {}),
+    run: async (args) => {
+      const apiKey = stringOrUndefined(args.apiKey);
+      return fetchTflBikePoints(apiKey === undefined ? {} : { apiKey });
+    },
   },
   {
     name: 'uk_neso_generation_mix',
@@ -217,7 +219,7 @@ const UK_QUERY_TOOLS: SourceQueryTool[] = [
     },
     run: async (args) => {
       const halfHours = typeof args.halfHours === 'number' ? args.halfHours : undefined;
-      const resourceId = typeof args.resourceId === 'string' ? args.resourceId : undefined;
+      const resourceId = stringOrUndefined(args.resourceId);
       return fetchNesoGenerationMixWindow({
         ...(halfHours === undefined ? {} : { halfHours }),
         ...(resourceId === undefined ? {} : { resourceId }),
@@ -231,8 +233,10 @@ const UK_QUERY_TOOLS: SourceQueryTool[] = [
     inputSchema: {
       apiKey: z.string().optional().describe('TfL app key, for a higher rate limit.'),
     },
-    run: async (args) =>
-      fetchTflLineStatuses(typeof args.apiKey === 'string' ? { apiKey: args.apiKey } : {}),
+    run: async (args) => {
+      const apiKey = stringOrUndefined(args.apiKey);
+      return fetchTflLineStatuses(apiKey === undefined ? {} : { apiKey });
+    },
   },
   {
     name: 'uk_postcode_lookup',
@@ -242,10 +246,7 @@ const UK_QUERY_TOOLS: SourceQueryTool[] = [
     inputSchema: {
       postcode: z.string().optional().describe('UK postcode. Defaults to SW1A 1AA.'),
     },
-    run: async (args) =>
-      fetchPostcodeLookup(
-        typeof args.postcode === 'string' && args.postcode.length > 0 ? args.postcode : undefined
-      ),
+    run: async (args) => fetchPostcodeLookup(stringOrUndefined(args.postcode)),
   },
   {
     name: 'uk_nomis_datasets',
@@ -260,10 +261,10 @@ const UK_QUERY_TOOLS: SourceQueryTool[] = [
     description:
       'Searches The National Archives Discovery catalogue and returns record metadata. Keyless.',
     inputSchema: {
-      query: z.string().optional().describe('Search terms. Defaults to a broad catalogue query.'),
+      query: z.string().optional().describe('Search terms. Defaults to "test".'),
     },
     run: async (args) => {
-      const query = typeof args.query === 'string' ? args.query : undefined;
+      const query = stringOrUndefined(args.query);
       return fetchTnaDiscoveryRecords(query === undefined ? {} : { query });
     },
   },
@@ -355,17 +356,26 @@ const UK_QUERY_TOOLS: SourceQueryTool[] = [
   },
 ];
 
+/** Narrows an unknown tool argument to a non-blank string. */
+function stringOrUndefined(value: unknown): string | undefined {
+  if (typeof value !== 'string') return undefined;
+  const trimmed = value.trim();
+  return trimmed.length === 0 ? undefined : trimmed;
+}
+
 /** Drops undefined values so `exactOptionalPropertyTypes` stays satisfied. */
 function dropUndefined(args: Record<string, unknown>): {
   windowDays?: number;
   from?: string;
   to?: string;
 } {
-  const { windowDays, from, to } = args;
+  const { windowDays } = args;
+  const from = stringOrUndefined(args.from);
+  const to = stringOrUndefined(args.to);
   return {
     ...(typeof windowDays === 'number' ? { windowDays } : {}),
-    ...(typeof from === 'string' ? { from } : {}),
-    ...(typeof to === 'string' ? { to } : {}),
+    ...(from === undefined ? {} : { from }),
+    ...(to === undefined ? {} : { to }),
   };
 }
 

@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { UK_DATA_SOURCES } from '@uk-open-data-connectors/uk-sources';
 import { describe, expect, it, vi } from 'vitest';
 
-import { createUkOpenDataMcpServer, UK_MCP_SERVER_VERSION } from './ukOpenDataMcpServer.js';
+import { createUkOpenDataMcpServer } from './ukOpenDataMcpServer.js';
 
 /** Connects a client to a server over the in-memory transport pair. */
 async function connectClient(
@@ -23,11 +23,12 @@ function firstText(result: unknown): string {
 }
 
 describe('createUkOpenDataMcpServer', () => {
-  it('reports the package.json version in the handshake', () => {
+  it('reports the package.json version in the handshake', async () => {
     const manifest = JSON.parse(
       readFileSync(new URL('../package.json', import.meta.url), 'utf8')
     ) as { version: string };
-    expect(UK_MCP_SERVER_VERSION).toBe(manifest.version);
+    const client = await connectClient(createUkOpenDataMcpServer());
+    expect(client.getServerVersion()?.version).toBe(manifest.version);
   });
 
   it('advertises the country query tool', async () => {
@@ -76,7 +77,7 @@ describe('createUkOpenDataMcpServer', () => {
     ]);
   });
 
-  it('probes only the requested source ids', async () => {
+  it('rejects an unknown source id', async () => {
     const client = await connectClient(createUkOpenDataMcpServer());
 
     const result = await client.callTool({
@@ -84,7 +85,8 @@ describe('createUkOpenDataMcpServer', () => {
       arguments: { ids: ['not-a-source'] },
     });
 
-    expect(JSON.parse(firstText(result))).toEqual([]);
+    expect((result as { isError?: boolean }).isError).toBe(true);
+    expect(firstText(result)).toContain('not-a-source');
   });
 
   it('lists every source in the country registry', async () => {
@@ -97,14 +99,16 @@ describe('createUkOpenDataMcpServer', () => {
     expect(sources.every((source) => source.id.length > 0)).toBe(true);
   });
 
-  it('defaults postcode lookup to SW1A 1AA', async () => {
+  it('defaults postcode lookup when the postcode is missing or blank', async () => {
     const fetchImpl = vi.fn().mockResolvedValue(new Response('down', { status: 500 }));
     vi.stubGlobal('fetch', fetchImpl);
     const client = await connectClient(createUkOpenDataMcpServer());
 
     await client.callTool({ name: 'uk_postcode_lookup', arguments: {} });
-    const url = new URL(String(fetchImpl.mock.calls[0]?.[0]));
-    expect(url.pathname).toBe('/postcodes/SW1A1AA');
+    expect(new URL(String(fetchImpl.mock.calls[0]?.[0])).pathname).toBe('/postcodes/SW1A1AA');
+
+    await client.callTool({ name: 'uk_postcode_lookup', arguments: { postcode: '   ' } });
+    expect(new URL(String(fetchImpl.mock.calls[1]?.[0])).pathname).toBe('/postcodes/SW1A1AA');
 
     vi.unstubAllGlobals();
   });
@@ -169,7 +173,21 @@ describe('every advertised tool', () => {
       const argumentSets = [REQUIRED_ARGS[tool.name] ?? {}, FULL_ARGS[tool.name] ?? {}];
       for (const args of argumentSets) {
         const result = await client.callTool({ name: tool.name, arguments: args });
+        const isError = (result as { isError?: boolean }).isError === true;
         expect((result as { content?: unknown }).content, tool.name).toBeDefined();
+        if (tool.name === 'list_sources') {
+          expect(isError, tool.name).toBe(false);
+        } else if (tool.name === 'probe_sources') {
+          expect(isError, tool.name).toBe(false);
+          const probes = JSON.parse(firstText(result)) as { ok: boolean }[];
+          expect(probes.length, tool.name).toBeGreaterThan(0);
+          expect(
+            probes.every((probe) => !probe.ok),
+            tool.name
+          ).toBe(true);
+        } else {
+          expect(isError, tool.name).toBe(true);
+        }
       }
     }
 
