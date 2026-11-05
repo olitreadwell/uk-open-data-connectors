@@ -1,10 +1,10 @@
 # @uk-open-data-connectors/uk-sources
 
-Uniform TypeScript adapters for 23 UK public data sources, for JavaScript and TypeScript developers.
+Uniform TypeScript adapters for 24 UK public data sources, for JavaScript and TypeScript developers.
 
 ## What this package does
 
-- Ships one adapter for each of 23 UK public data sources.
+- Ships one adapter for each of 24 UK public data sources.
 - Gives every adapter the same shape: a live fetch, a strict parse, and a committed fixture for tests.
 - Lets you build and test offline, because tests read the fixtures directly.
 - Exposes a registry (`UK_DATA_SOURCES`) and probe helpers (`probeUkDataSource`, `probeAllUkDataSources`).
@@ -53,17 +53,18 @@ console.log(summary.latest?.value, summary.trend);
 | `public-health-scotland` | Public Health Scotland | none | Every dataset on the Public Health Scotland CKAN portal. |
 | `nhsbsa-ckan` | NHS Business Services Authority (NHSBSA) | none | Every dataset on the NHSBSA CKAN portal. |
 | `neso-generation-mix` | National Energy System Operator (NESO) | none | Half-hourly Great Britain generation by fuel, with the cleanest and dirtiest half hours. |
+| `data-gov-uk-ckan` | Data.gov.uk (Government Digital Service) | none | A keyword search page from the UK government open data catalogue, with publisher, licence, and resource count. |
 
 The `auth` field is `none` for every adapter.
 
 ## Notes and limits
 
-- All 23 adapters are keyless. `fetchTflBikePoints` and `fetchTflLineStatuses` take an optional `apiKey`, sent as the `app_key` query parameter.
+- All 24 adapters are keyless. `fetchTflBikePoints` and `fetchTflLineStatuses` take an optional `apiKey`, sent as the `app_key` query parameter.
 - A live fetch throws when the API fails. Fixtures are read only through `loadFixture`, so a stale snapshot never appears silently. Call `probeUkDataSource` before you quote a number.
 - The fixtures in `src/fixtures` are real snapshots from the live APIs. The newer files carry their capture date in the filename.
 - Tests never reach the network unless `RUN_SMOKE=1` is set. The smoke test hits the real endpoints and needs no keys.
 - `api.ons.gov.uk` was retired on 2024-11-25. Every path answers HTTP 200 with a plain-text decommission notice, so a naive health check reads it as healthy. The `ons-datasets` adapter uses `api.beta.ons.gov.uk/v1` instead.
-- `data.gov.uk/api/3/action/...` redirects to an HTML landing page. The CKAN API is no longer at that path.
+- The Data.gov.uk endpoint on `www.data.gov.uk` redirects to `ckan.publishing.service.gov.uk`, and Node's `fetch` follows it. The adapter reads `package_search` and exposes each dataset's `license_id` as `licenceId`, with blank values as `null`.
 - The FSA endpoint answers only with the `x-api-version: 2` header. Without it the endpoint returns HTTP 404. The adapter sends the header.
 - The Planning Data file lists datasets and pipeline tables. The adapter keeps the entries whose `realm` is `dataset`.
 - The ancient woodland layer holds more than 50,000 polygons, past the ArcGIS page size. The adapter reads the service statistics queries instead of the features.
@@ -80,12 +81,13 @@ The `auth` field is `none` for every adapter.
 - The London Datastore call answers a 307 redirect. Node's `fetch` follows it, so the adapter keeps the documented path.
 - The Discovery adapter sends `Accept: application/json`, because the API documents the header.
 - `postcode-lookup` reads from postcodes.io, a third-party service. It is not a government API, though it serves ONS and Ordnance Survey postcode data under the Open Government Licence v3.
-- Only the Find a Tender `license` field and the NESO `ESO`, NHSBSA `OGL-UK-3.0`, and Public Health Scotland `uk-ogl` package metadata were read directly from the service. The other licences come from the publishers' standard terms.
+- Only the Find a Tender `license` field and the Data.gov.uk, NESO `ESO`, NHSBSA `OGL-UK-3.0`, and Public Health Scotland `uk-ogl` package metadata were read directly from the service. The other licences come from the publishers' standard terms.
 - The eleven adapters added on 2026-10-05 were probed live on that day.
+- The Data.gov.uk adapter was probed live on 2026-11-05.
 
 ## Data sources and licences
 
-This package reads 23 sources. Most come from UK public bodies. The postcode lookup comes from postcodes.io, a third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts carry the Open Parliament Licence v3.0. The NESO generation mix carries the NESO Open Data Licence.
+This package reads 24 sources. Most come from UK public bodies. The postcode lookup comes from postcodes.io, a third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts carry the Open Parliament Licence v3.0. The NESO generation mix carries the NESO Open Data Licence. Data.gov.uk licences vary by dataset.
 
 | Adapter | Publisher | Source URL | Data licence |
 | ------- | --------- | ---------- | ------------ |
@@ -112,6 +114,7 @@ This package reads 23 sources. Most come from UK public bodies. The postcode loo
 | `public-health-scotland` | Public Health Scotland | <https://www.opendata.nhs.scot/api/3/action/package_list> | Open Government Licence v3, the portal reports `uk-ogl` |
 | `nhsbsa-ckan` | NHS Business Services Authority | <https://opendata.nhsbsa.net/api/3/action/package_list> | Open Government Licence v3, the portal reports `OGL-UK-3.0` |
 | `neso-generation-mix` | National Energy System Operator | <https://api.neso.energy/api/3/action/datastore_search> | The NESO Open Data Licence, the portal reports `ESO` |
+| `data-gov-uk-ckan` | Data.gov.uk (Government Digital Service) | <https://www.data.gov.uk/api/3/action/package_search> | Varies by dataset, the package metadata reports `license_id` |
 
 ## Package licence
 

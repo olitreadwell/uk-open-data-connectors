@@ -28,7 +28,7 @@ Every adapter speaks one interface (`UkDataAdapter`). It knows how to:
 The HTTP API and the CLI call the same adapters. They never call the
 endpoints directly. This is what "one design" means.
 
-Twenty-two of the 23 adapters fetch through the shared helper in
+Twenty-three of the 24 adapters fetch through the shared helper in
 `packages/uk-sources/src/http.ts`. It sets one `User-Agent`
 (`uk-open-data-connectors (Language=TypeScript)`), aborts after 30 seconds, and
 marks HTTP 429, HTTP 5xx and network failures as `retryable` on the thrown
@@ -46,6 +46,7 @@ Registered adapters:
 | `flood-stations` | Environment Agency flood-monitoring | Monitoring stations, with river and catchment |
 | `flood-readings` | Environment Agency flood-monitoring | Recent water levels for one station, newest first |
 | `ons-datasets` | ONS beta API dataset catalogue | Dataset records, with state, stamp, and national-statistic flag |
+| `data-gov-uk-ckan` | Data.gov.uk CKAN catalogue | A search page of datasets, with publisher, licence, and resource count |
 
 ## Summaries built into the adapters
 

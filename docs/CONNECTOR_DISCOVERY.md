@@ -12,6 +12,7 @@ probed again that day.
 | `ancient-woodland` | Natural England | `https://services.arcgis.com/JJzESW51TqeY9uat/arcgis/rest/services/Ancient_Woodland_England/FeatureServer/0/query` | Yes |
 | `bank-rate` | Bank of England | `https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp` | Yes |
 | `carbon-intensity` | National Energy System Operator | `https://api.carbonintensity.org.uk/intensity/{from}/{to}` | Yes |
+| `data-gov-uk-ckan` | Government Digital Service | `https://www.data.gov.uk/api/3/action/package_search?q={query}&rows={limit}` | Yes |
 | `explore-education-statistics` | Department for Education | `https://api.education.gov.uk/statistics/v1/publications` | Yes |
 | `find-a-tender` | Cabinet Office | `https://www.find-tender.service.gov.uk/api/1.0/ocdsReleasePackages` | Yes |
 | `fingertips-indicators` | Office for Health Improvement and Disparities | `https://fingertips.phe.org.uk/api/indicator_metadata/by_indicator_id` | Yes |
@@ -36,6 +37,37 @@ probed again that day.
 Adapters keep a committed fixture in `packages/uk-sources/src/fixtures/` so
 tests run offline, plus a smoke test gated on `RUN_SMOKE=1` that hits the
 live endpoint.
+
+## Added 2026-11-05
+
+One keyless adapter, for the Data.gov.uk CKAN catalogue. The candidate URL
+`https://data.gov.uk/api/3/action/package_search` answers with a redirect
+chain to `https://ckan.publishing.service.gov.uk/`, which serves the JSON API.
+The request below returned HTTP 200 with JSON on 2026-11-05.
+
+```sh
+UA='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
+
+# data-gov-uk-ckan: a catalogue search for flood datasets
+curl -sSL -H "User-Agent: $UA" \
+  'https://www.data.gov.uk/api/3/action/package_search?q=flood&rows=2'
+```
+
+| Adapter | Fixture | Licence |
+| --- | --- | --- |
+| `data-gov-uk-ckan` | `data-gov-uk-ckan-2026-11-05.json` (the first 2 of 3,875 matches for "flood") | Varies by dataset. The first package reports `uk-ogl`; the second has no `license_id`, which the adapter returns as `null`. |
+
+What was verified live on 2026-11-05, and what was not:
+
+- The `package_search` call answered HTTP 200 with JSON and no key.
+- A search with no query reported 59,912 packages in the catalogue.
+- The search for "flood" reported 3,875 matches.
+- Package metadata carried the title, organisation, licence id, resource
+  count, modification stamp, and tags the adapter returns.
+- The adapter was probed through its own live fetch after the fixture was
+  captured. It returned the same two package names.
+- The redirect chain was not treated as a stable contract. The adapter keeps
+  the documented Data.gov.uk path and lets `fetch` follow redirects.
 
 ## Added 2026-10-18
 
@@ -158,7 +190,6 @@ What was verified live on 2026-10-05, and what was not:
 | Source | State | Why |
 | ------ | ----- | --- |
 | `api.ons.gov.uk` | RETIRED | Retired on 2024-11-25. Every path answers with a plain-text decommission notice while still returning HTTP 200, so a naive health check reads it as healthy. Use `api.beta.ons.gov.uk/v1` instead. |
-| `data.gov.uk/api/3/action/...` | REDIRECT | Redirects to an HTML landing page, so the CKAN API is not at that path any more. |
 
 ## Licences and attribution
 
@@ -189,7 +220,9 @@ attribution. The exceptions are listed in the table.
 | `public-health-scotland` | Public Health Scotland | Open Government Licence v3 |
 | `nhsbsa-ckan` | NHS Business Services Authority | Open Government Licence v3 |
 | `neso-generation-mix` | National Energy System Operator | The NESO Open Data Licence, the portal reports `ESO` for every package on it |
+| `data-gov-uk-ckan` | Government Digital Service | Varies by dataset. The package metadata reports each `license_id`, and blank values become `null`. |
 
-No adapter returns licence metadata today, so the list is a starting point, not
-a substitute for the publisher's page. When you republish, credit the
-publisher, not this library.
+Most adapters do not return licence metadata today. The `data-gov-uk-ckan`
+adapter returns each package's `licenseId`, but that is not a substitute for
+the publisher's page. When you republish, credit the publisher, not this
+library.

@@ -121,6 +121,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     if (new URL(target).hostname === 'api.neso.energy') {
       return jsonResponse(readFixtureJson('neso-generation-mix-2026-10-18.json'));
     }
+    if (new URL(target).hostname === 'www.data.gov.uk') {
+      return jsonResponse(readFixtureJson('data-gov-uk-ckan-2026-11-05.json'));
+    }
     if (target.includes('/readings')) {
       return jsonResponse(readFixtureJson('flood-station-readings.json'));
     }
@@ -194,6 +197,7 @@ describe('registry', () => {
       'public-health-scotland',
       'nhsbsa-ckan',
       'neso-generation-mix',
+      'data-gov-uk-ckan',
     ]);
   });
 
@@ -221,6 +225,7 @@ describe('registry', () => {
     expect(getUkDataSource('tfl-line-status')?.name).toContain('Transport for London');
     expect(getUkDataSource('public-health-scotland')?.name).toContain('Public Health Scotland');
     expect(getUkDataSource('nhsbsa-ckan')?.name).toContain('NHS Business Services Authority');
+    expect(getUkDataSource('data-gov-uk-ckan')?.name).toContain('Data.gov.uk');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 

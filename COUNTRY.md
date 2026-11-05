@@ -30,7 +30,7 @@ adapters in `packages/uk-sources`, and there is no Python or Ruby port.
 | Public Health Scotland open data catalogue | `public-health-scotland` | Done, verified live 2026-10-05 |
 | NHS Business Services Authority catalogue | `nhsbsa-ckan` | Done, verified live 2026-10-05 |
 | National Energy System Operator generation mix (NESO data portal) | `neso-generation-mix` | Done, verified live 2026-10-18 |
-| data.gov.uk | - | Not usable: the CKAN path redirects to an HTML landing page |
+| Data.gov.uk CKAN catalogue | `data-gov-uk-ckan` | Done, verified live 2026-11-05 |
 | Companies House | - | Pending, needs a key |
 | HM Land Registry | - | Pending |
 | Met Office DataPoint | - | Pending, needs a key |

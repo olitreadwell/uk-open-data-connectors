@@ -8,7 +8,7 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 | Package | What it is |
 | ------- | ---------- |
-| [`@uk-open-data-connectors/uk-sources`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources) | Uniform adapters for 23 UK public data sources. All keyless, with live probes and offline fixtures. |
+| [`@uk-open-data-connectors/uk-sources`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources) | Uniform adapters for 24 UK public data sources. All keyless, with live probes and offline fixtures. |
 | [`@uk-open-data-connectors/uk-mcp`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-mcp) | MCP server that exposes the connectors to Claude, ChatGPT, and other MCP clients. |
 | [`@uk-open-data-connectors/connectors-cli`](https://www.npmjs.com/package/@uk-open-data-connectors/connectors-cli) | `ukdata` command line tool that prints JSON to stdout, so any language can shell out to it. |
 | `@uk-open-data-connectors/connectors-api` | Private. HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP. |
@@ -18,16 +18,17 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 ## Connectors
 
-Twenty-three adapters in `@uk-open-data-connectors/uk-sources`, all keyless.
+Twenty-four adapters in `@uk-open-data-connectors/uk-sources`, all keyless.
 Most carry Open Government Licence v3 data; the two TfL adapters carry TfL
 Open Data, the carbon intensity series is Creative Commons Attribution 4.0
 under the operator's own terms, and the Parliament seat counts carry the Open
 Parliament Licence v3. The NESO generation mix carries the NESO Open Data
 Licence. The postcode lookup goes through postcodes.io, a third party that
 serves Open Government Licence postcode data from the ONS and Ordnance
-Survey.
+Survey. Data.gov.uk packages carry their own licence identifiers and can
+differ.
 
-Twenty-two of the 23 adapters use the shared `httpGet` helper in
+Twenty-three of the 24 adapters use the shared `httpGet` helper in
 `packages/uk-sources/src/http.ts`. It sends the same `User-Agent`
 (`uk-open-data-connectors (Language=TypeScript)`), waits at most 30 seconds for
 a response, and marks rate-limited (HTTP 429), server-error (HTTP 5xx) and
@@ -62,19 +63,22 @@ adapter and the police street crime month calls do.
 | `public-health-scotland` | Public Health Scotland open data catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe public-health-scotland` |
 | `nhsbsa-ckan` | NHS Business Services Authority open data catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe nhsbsa-ckan` |
 | `neso-generation-mix` | National Energy System Operator half-hourly generation by fuel, from the NESO data portal | Yes | `npx tsx packages/cli/src/cli.ts probe neso-generation-mix` |
+| `data-gov-uk-ckan` | Data.gov.uk CKAN catalogue, searchable by keyword | Yes | `npx tsx packages/cli/src/cli.ts probe data-gov-uk-ckan` |
 
-Sources that look obvious for a UK repo and are not usable as they stand:
+A source that looks obvious for a UK repo and is not usable as it stands:
 
 - `api.ons.gov.uk` was retired on 2024-11-25. Every path now answers with a
   plain-text decommission notice, so an entry that still points at it returns
   HTTP 200 while serving nothing usable.
-- `data.gov.uk/api/3/action/...` redirects to an HTML landing page, so the
-  CKAN API is no longer at that path.
-
 The live ONS beta API at `api.beta.ons.gov.uk/v1` answers with JSON and backs
 the `ons-datasets` adapter. The FSA Food Hygiene Rating Scheme API at
 `api.ratings.food.gov.uk` answers keyless as long as the call carries the
 `x-api-version: 2` header, and backs `food-hygiene-authorities`.
+
+The Data.gov.uk CKAN API at `www.data.gov.uk/api/3/action` redirects to
+`ckan.publishing.service.gov.uk`, which answers keyless JSON. The
+`package_search` call backs `data-gov-uk-ckan`. Each package has its own
+licence identifier, so the adapter reports it per dataset.
 
 The TfL Unified API at `api.tfl.gov.uk` answers keyless too, and backs
 `tfl-bike-points`. TfL asks for an app key above the free rate limit, so the
@@ -107,10 +111,10 @@ Commons, 2 for the Lords) and a date, and returns each party with the seats it
 holds and the members counted behind them. Parliament publishes the data under
 the Open Parliament Licence v3.0.
 
-### Added 2026-10-05 and 2026-10-18
+### Added 2026-10-05 onward
 
-Twelve more keyless adapters, each checked live on 2026-10-05 or 2026-10-18
-and covered by a committed fixture:
+Thirteen more keyless adapters, each checked live on 2026-10-05, 2026-10-18 or
+2026-11-05 and covered by a committed fixture:
 
 - `postcode-lookup` reads one postcode from postcodes.io, default SW1A 1AA.
 - `explore-education-statistics` reads the Department for Education's most
@@ -129,6 +133,8 @@ and covered by a committed fixture:
 - `neso-generation-mix` reads the National Energy System Operator's
   half-hourly generation mix: output by fuel, and the cleanest and dirtiest
   half hours in the window.
+- `data-gov-uk-ckan` searches the UK government open data catalogue hosted on
+  Data.gov.uk, including each dataset's publisher, licence, and resource count.
 
 The full endpoint list, exact curl commands, and licences are in
 `docs/CONNECTOR_DISCOVERY.md`.

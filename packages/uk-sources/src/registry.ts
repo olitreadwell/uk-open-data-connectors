@@ -1,6 +1,7 @@
 import { ancientWoodlandAdapter } from './ancientWoodland.js';
 import { bankRateAdapter } from './bankRate.js';
 import { carbonIntensityAdapter } from './carbonIntensity.js';
+import { dataGovUkCkanAdapter } from './dataGovUkCkan.js';
 import { exploreEducationStatisticsAdapter } from './exploreEducationStatistics.js';
 import { findATenderAdapter } from './findATender.js';
 import { fingertipsIndicatorsAdapter } from './fingertipsIndicators.js';
@@ -47,6 +48,7 @@ export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [
   publicHealthScotlandAdapter,
   nhsbsaCkanAdapter,
   nesoGenerationMixAdapter,
+  dataGovUkCkanAdapter,
 ];
 
 /** Looks up a source adapter by id. */

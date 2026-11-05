@@ -15,7 +15,7 @@ npm workspaces, one package per concern.
 ## Current state
 
 - `main` is the integration branch. Pull requests target `main`.
-- Twenty-three UK adapters, all keyless. Eleven shipped earlier (Environment
+- Twenty-four UK adapters, all keyless. Eleven shipped earlier (Environment
   Agency flood-monitoring, ONS dataset catalogue, FSA food hygiene, TfL cycle
   hire, Planning Data, Natural England ancient woodland, Bank of England Bank
   Rate, police.uk crime, carbon intensity, Parliament seats). Eleven more
@@ -23,11 +23,12 @@ npm workspaces, one package per concern.
   `london-datastore`, `tna-discovery`, `ukhsa-dashboard`, `nomis`,
   `fingertips-indicators`, `find-a-tender`, `tfl-line-status`,
   `public-health-scotland`, and `nhsbsa-ckan`, plus `neso-generation-mix` on
-  2026-10-18. Licences and endpoints are in `docs/CONNECTOR_DISCOVERY.md`.
+  2026-10-18, and `data-gov-uk-ckan` on 2026-11-05. Licences and endpoints are
+  in `docs/CONNECTOR_DISCOVERY.md`.
 - Adapters live in `packages/uk-sources/src/*.ts` next to their tests, with
   committed fixtures in `packages/uk-sources/src/fixtures/`. New fixtures are
   dated in their filenames.
-- Twenty-two of the 23 adapters fetch through `httpGet` in
+- Twenty-three of the 24 adapters fetch through `httpGet` in
   `packages/uk-sources/src/http.ts`: one `User-Agent`, a 30 second timeout, and
   `retryable` set on HTTP 429, HTTP 5xx and network failures. A caller-supplied
   `User-Agent` replaces the default. The carbon intensity adapter calls `fetch`
@@ -81,10 +82,9 @@ npm run test:smoke     # live tests against real APIs (needs RUN_SMOKE=1)
    repo. That script matches the package name this repo used before the scope
    rename, so the daily loop cannot vendor this package until the script is
    updated for the `@uk-open-data-connectors` scope.
-2. Two sources are still not usable as they stand: `api.ons.gov.uk` (retired
-   2024-11-25) and the CKAN API path on `data.gov.uk`. The Public Health
-   Scotland portal is occasionally flaky (504 or reset), so the nightly smoke
-   run can fail on it now and then.
+2. `api.ons.gov.uk` is still not usable as it stands. It retired on 2024-11-25.
+   The Public Health Scotland portal is occasionally flaky (504 or reset), so
+   the nightly smoke run can fail on it now and then.
 3. Watch the nightly smoke workflow after any adapter change.
 4. TS versioning is manual (no changesets); documented in `docs/RELEASING.md`.
 

@@ -57,6 +57,24 @@ export type {
   CarbonIntensityPeriod,
   CarbonIntensityWindow,
 } from './carbonIntensity.js';
+/** Data.gov.uk CKAN catalogue, the UK government open data index (keyless). */
+export {
+  buildDataGovUkPackageSearchUrl,
+  DATA_GOV_UK_CKAN_SOURCE_ID,
+  DATA_GOV_UK_PACKAGE_SEARCH_LIMIT,
+  DATA_GOV_UK_PACKAGE_SEARCH_URL,
+  dataGovUkCkanAdapter,
+  fetchDataGovUkPackages,
+  parseDataGovUkPackages,
+  summarizeDataGovUkPackages,
+} from './dataGovUkCkan.js';
+/** Data.gov.uk catalogue types. */
+export type {
+  DataGovUkDataset,
+  DataGovUkLicenceCount,
+  DataGovUkPackagePage,
+  DataGovUkPackageSummary,
+} from './dataGovUkCkan.js';
 /** Department for Education Explore Education Statistics publications (keyless). */
 export {
   buildExploreEducationPublicationsUrl,
