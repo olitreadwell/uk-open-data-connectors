@@ -228,11 +228,11 @@ attribution. The exceptions are listed in the table.
 
 | Adapter | Publisher | Licence |
 | --- | --- | --- |
-| `flood-stations`, `flood-readings` | Environment Agency | Open Government Licence v3 |
+| `flood-stations`, `flood-readings` | Environment Agency | Open Government Licence v3, returned as `licence` with `publisher` on every record |
 | `ons-datasets` | Office for National Statistics | Open Government Licence v3 |
 | `food-hygiene-authorities` | Food Standards Agency | Open Government Licence v3 |
 | `tfl-bike-points`, `tfl-line-status` | Transport for London | TfL Open Data, the operator's own terms |
-| `planning-datasets` | Planning Data, MHCLG | Open Government Licence v3 |
+| `planning-datasets` | Planning Data, MHCLG | Open Government Licence v3, returned as `licence` with the source `attribution` on every dataset |
 | `ancient-woodland` | Natural England | Open Government Licence v3 |
 | `bank-rate` | Bank of England | Check the Bank's statistics terms; the Bank publishes most series under the Open Government Licence v3 |
 | `police-crimes` | Home Office police.uk | Open Government Licence v3 |
@@ -245,14 +245,20 @@ attribution. The exceptions are listed in the table.
 | `ukhsa-dashboard` | UK Health Security Agency | Open Government Licence v3 |
 | `nomis` | Office for National Statistics | Open Government Licence v3 |
 | `fingertips-indicators` | Office for Health Improvement and Disparities | Open Government Licence v3 |
-| `find-a-tender` | Cabinet Office | Open Government Licence v3 |
+| `find-a-tender` | Cabinet Office | Open Government Licence v3, returned as `licence` with `publisher` on every release |
 | `public-health-scotland` | Public Health Scotland | Open Government Licence v3 |
 | `nhsbsa-ckan` | NHS Business Services Authority | Open Government Licence v3 |
 | `neso-generation-mix` | National Energy System Operator | The NESO Open Data Licence, the portal reports `ESO` for every package on it |
-| `data-gov-uk-ckan` | Government Digital Service | Varies by dataset. The package metadata reports each `license_id`, and blank values become `null`. |
+| `data-gov-uk-ckan` | Government Digital Service | Varies by dataset. The adapter returns each package's `licenceId`, `licenceTitle`, `licenceUrl` and `publisher`, and blank licence values become `null`. |
 | `gov-uk-content` | Government Digital Service | Open Government Licence v3 |
 
-Most adapters do not return licence metadata today. The `data-gov-uk-ckan`
-adapter returns each package's `licenseId`, but that is not a substitute for
-the publisher's page. When you republish, credit the publisher, not this
-library.
+Five adapters return source-supplied licence and attribution metadata per
+record. `flood-stations` and `flood-readings` copy `meta.publisher` and
+`meta.licence` onto each record. `find-a-tender` copies the package publisher
+and `license` onto each release. `planning-datasets` returns the source
+`attribution` and `licence`. `data-gov-uk-ckan` returns `publisher`,
+`licenceId`, `licenceTitle` and `licenceUrl` for each dataset.
+
+The other adapters do not return licence metadata, because their endpoints do
+not carry it per record. Check the publisher's page before you reuse their
+data. When you republish, credit the publisher, not this library.

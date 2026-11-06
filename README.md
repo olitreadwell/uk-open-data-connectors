@@ -26,7 +26,11 @@ Parliament Licence v3. The NESO generation mix carries the NESO Open Data
 Licence. The postcode lookup goes through postcodes.io, a third party that
 serves Open Government Licence postcode data from the ONS and Ordnance
 Survey. Data.gov.uk packages carry their own licence identifiers and can
-differ. GOV.UK content carries the Open Government Licence v3.
+differ. GOV.UK content carries the Open Government Licence v3. Five adapters
+copy the licence and attribution values their source supplies onto each
+record: `flood-stations`, `flood-readings`, `planning-datasets`,
+`find-a-tender` and `data-gov-uk-ckan`. The other adapters leave the publisher's
+page as the source for those terms.
 
 Twenty-four of the 25 adapters use the shared `httpGet` helper in
 `packages/uk-sources/src/http.ts`. It sends the same `User-Agent`
@@ -79,7 +83,8 @@ the `ons-datasets` adapter. The FSA Food Hygiene Rating Scheme API at
 The Data.gov.uk CKAN API at `www.data.gov.uk/api/3/action` redirects to
 `ckan.publishing.service.gov.uk`, which answers keyless JSON. The
 `package_search` call backs `data-gov-uk-ckan`. Each package has its own
-licence identifier, so the adapter reports it per dataset.
+licence identifier, title, URL and publisher, so the adapter reports them per
+dataset.
 
 The TfL Unified API at `api.tfl.gov.uk` answers keyless too, and backs
 `tfl-bike-points`. TfL asks for an app key above the free rate limit, so the

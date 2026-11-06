@@ -35,6 +35,8 @@ describe('parsePlanningDatasets', () => {
     expect(datasets[0]?.dataset).toBe('title-boundary');
     expect(datasets[0]?.entityCount).toBe(22740586);
     expect(datasets[0]?.themes).toEqual(['administrative', 'housing']);
+    expect(datasets[0]?.attribution).toBe('inspire-index-polygon');
+    expect(datasets[0]?.licence).toBe('ogl3');
   });
 
   it('keeps datasets and drops the pipeline tables the same file lists', () => {
@@ -63,6 +65,7 @@ describe('parsePlanningDatasets', () => {
       typology: '',
       phase: '',
       licence: '',
+      attribution: '',
     });
   });
 

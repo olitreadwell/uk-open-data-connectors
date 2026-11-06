@@ -35,6 +35,10 @@ describe('parseFindATenderReleases', () => {
     expect(first?.procurementMethod).toBe('open');
     expect(first?.buyerName).toBe('Velindre University NHS Trust');
     expect(first?.tenderTitle.length).toBeGreaterThan(0);
+    expect(first?.publisher).toBe('Cabinet Office');
+    expect(first?.licence).toBe(
+      'http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/'
+    );
   });
 
   it('turns an absent tender into empty fields', () => {
@@ -51,6 +55,8 @@ describe('parseFindATenderReleases', () => {
       procurementMethod: '',
       buyerName: '',
       tenderValueAmount: null,
+      publisher: '',
+      licence: '',
     });
   });
 

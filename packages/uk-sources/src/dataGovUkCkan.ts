@@ -29,6 +29,10 @@ export interface DataGovUkDataset {
   publisher: string | null;
   /** Licence identifier from the package metadata, or null when unset. */
   licenceId: string | null;
+  /** Human-readable licence title from the package metadata, or null when unset. */
+  licenceTitle: string | null;
+  /** Licence URL from the package metadata, or null when unset. */
+  licenceUrl: string | null;
   resourceCount: number;
   /** When CKAN last changed the package metadata. */
   modifiedAt: string | null;
@@ -59,6 +63,8 @@ const DATA_GOV_UK_DATASET_SCHEMA = z.object({
   name: z.string().min(1),
   title: z.string(),
   license_id: z.string().nullable().optional(),
+  license_title: z.string().nullable().optional(),
+  license_url: z.string().nullable().optional(),
   metadata_modified: z.string().nullable().optional(),
   num_resources: z.number().int().nonnegative(),
   organization: z
@@ -131,6 +137,8 @@ export function parseDataGovUkPackages(payload: unknown): DataGovUkPackagePage {
       title: dataset.title,
       publisher: normalizeOptionalText(dataset.organization?.title),
       licenceId: normalizeOptionalText(dataset.license_id),
+      licenceTitle: normalizeOptionalText(dataset.license_title),
+      licenceUrl: normalizeOptionalText(dataset.license_url),
       resourceCount: dataset.num_resources,
       modifiedAt: dataset.metadata_modified ?? null,
       tags: dataset.tags?.map((tag) => tag.name) ?? [],

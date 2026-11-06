@@ -34,6 +34,8 @@ const STATION: FloodStation = {
   label: 'Bourton Dickler',
   riverName: 'River Dikler',
   catchmentName: 'Cotswolds',
+  publisher: 'Environment Agency',
+  licence: 'http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
   latitude: 51.873,
   longitude: -1.771,
   measures: [],
@@ -44,12 +46,16 @@ const READING_AT_0900: FloodReading = {
     'http://environment.data.gov.uk/flood-monitoring/id/measures/1029TH-level-stage-i-15_min-m',
   dateTime: '2026-09-23T09:00:00Z',
   value: 0.19,
+  publisher: 'Environment Agency',
+  licence: 'http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
 };
 
 const READING_AT_0915: FloodReading = {
   measureId: READING_AT_0900.measureId,
   dateTime: '2026-09-23T09:15:00Z',
   value: 0.24,
+  publisher: 'Environment Agency',
+  licence: 'http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
 };
 
 const DATASET: OnsDatasetRecord = {

@@ -33,6 +33,8 @@ describe('parseDataGovUkPackages', () => {
       title: 'York Flood Alleviation Scheme (FAS) Flood Cells',
       publisher: 'Environment Agency',
       licenceId: 'uk-ogl',
+      licenceTitle: 'UK Open Government Licence (OGL)',
+      licenceUrl: 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
       resourceCount: 3,
       modifiedAt: '2020-09-29T14:11:54.471758',
       tags: ['OpenData', 'York', 'defence', 'flood', 'flood control', 'flood protection'],
@@ -41,6 +43,8 @@ describe('parseDataGovUkPackages', () => {
       name: 'flooding2',
       publisher: 'Calderdale Metropolitan Borough Council',
       licenceId: null,
+      licenceTitle: null,
+      licenceUrl: null,
       resourceCount: 7,
       tags: [],
     });
@@ -68,6 +72,8 @@ describe('parseDataGovUkPackages', () => {
     expect(page.datasets[0]).toMatchObject({
       publisher: null,
       licenceId: null,
+      licenceTitle: null,
+      licenceUrl: null,
       modifiedAt: null,
       tags: [],
     });
