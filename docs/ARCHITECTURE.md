@@ -25,6 +25,11 @@ Every adapter speaks one interface (`UkDataAdapter`). It knows how to:
 2. fetch live data (`fetchLive`)
 3. parse the response into plain objects
 
+Records carry the source-supplied licence and attribution fields when the
+response provides them. `flood-stations`, `flood-readings`, `planning-datasets`,
+`find-a-tender` and `data-gov-uk-ckan` return those fields today. The other
+adapters leave the publisher's page as the source for those terms.
+
 The HTTP API and the CLI call the same adapters. They never call the
 endpoints directly. This is what "one design" means.
 

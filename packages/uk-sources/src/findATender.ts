@@ -36,6 +36,10 @@ export interface FindATenderRelease {
   buyerName: string;
   /** The tender value amount, or null when the release leaves it out. */
   tenderValueAmount: number | null;
+  /** Publishing organisation the release package names, or "" when unset. */
+  publisher: string;
+  /** Licence URL the release package names, or "" when unset. */
+  licence: string;
 }
 
 /** One page of OCDS releases plus the package metadata around them. */
@@ -82,6 +86,8 @@ const FIND_A_TENDER_RELEASE_PACKAGE_SCHEMA = z.object({
   uri: z.string(),
   version: z.string(),
   publishedDate: z.string(),
+  publisher: z.object({ name: z.string().nullable().optional() }).nullable().optional(),
+  license: z.string().nullable().optional(),
   releases: z.array(FIND_A_TENDER_RELEASE_SCHEMA),
 });
 
@@ -96,6 +102,8 @@ export function parseFindATenderReleases(payload: unknown): FindATenderReleasePa
   if (!parsed.success) {
     throw new UkSourceParseError('find-a-tender', parsed.error.message);
   }
+  const publisher = parsed.data.publisher?.name?.trim() ?? '';
+  const licence = parsed.data.license?.trim() ?? '';
   return {
     uri: parsed.data.uri,
     version: parsed.data.version,
@@ -110,6 +118,8 @@ export function parseFindATenderReleases(payload: unknown): FindATenderReleasePa
       procurementMethod: release.tender?.procurementMethod ?? '',
       buyerName: release.buyer?.name ?? '',
       tenderValueAmount: release.tender?.value?.amount ?? null,
+      publisher,
+      licence,
     })),
   };
 }

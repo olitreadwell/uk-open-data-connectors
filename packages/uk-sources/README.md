@@ -65,7 +65,7 @@ The `auth` field is `none` for every adapter.
 - The fixtures in `src/fixtures` are real snapshots from the live APIs. The newer files carry their capture date in the filename.
 - Tests never reach the network unless `RUN_SMOKE=1` is set. The smoke test hits the real endpoints and needs no keys.
 - `api.ons.gov.uk` was retired on 2024-11-25. Every path answers HTTP 200 with a plain-text decommission notice, so a naive health check reads it as healthy. The `ons-datasets` adapter uses `api.beta.ons.gov.uk/v1` instead.
-- The Data.gov.uk endpoint on `www.data.gov.uk` redirects to `ckan.publishing.service.gov.uk`, and Node's `fetch` follows it. The adapter reads `package_search` and exposes each dataset's `license_id` as `licenceId`, with blank values as `null`.
+- The Data.gov.uk endpoint on `www.data.gov.uk` redirects to `ckan.publishing.service.gov.uk`, and Node's `fetch` follows it. The adapter reads `package_search` and exposes each dataset's `license_id`, `license_title` and `license_url` as `licenceId`, `licenceTitle` and `licenceUrl`, with blank values as `null`. The dataset publisher is returned as `publisher`.
 - The FSA endpoint answers only with the `x-api-version: 2` header. Without it the endpoint returns HTTP 404. The adapter sends the header.
 - The Planning Data file lists datasets and pipeline tables. The adapter keeps the entries whose `realm` is `dataset`.
 - The ancient woodland layer holds more than 50,000 polygons, past the ArcGIS page size. The adapter reads the service statistics queries instead of the features.
@@ -81,6 +81,8 @@ The `auth` field is `none` for every adapter.
 - The Public Health Scotland portal is occasionally flaky. Calls can answer 200, answer 504, or reset the connection. The adapter has no retry, so a smoke run can fail on this source now and then.
 - The London Datastore call answers a 307 redirect. Node's `fetch` follows it, so the adapter keeps the documented path.
 - The Discovery adapter sends `Accept: application/json`, because the API documents the header.
+- `flood-stations` and `flood-readings` copy the response `meta.publisher` and `meta.licence` onto every record. `find-a-tender` copies the package `publisher.name` and `license` onto every release. `planning-datasets` returns the source `attribution` and `licence` values. `data-gov-uk-ckan` returns `publisher`, `licenceId`, `licenceTitle` and `licenceUrl` for each dataset.
+- The other adapters do not return licence metadata, because their endpoints do not carry it per record. Check the publisher's page before reuse.
 - `postcode-lookup` reads from postcodes.io, a third-party service. It is not a government API, though it serves ONS and Ordnance Survey postcode data under the Open Government Licence v3.
 - Only the Find a Tender `license` field and the Data.gov.uk, NESO `ESO`, NHSBSA `OGL-UK-3.0`, and Public Health Scotland `uk-ogl` package metadata were read directly from the service. The other licences come from the publishers' standard terms.
 - The eleven adapters added on 2026-10-05 were probed live on that day.
@@ -91,7 +93,7 @@ The `auth` field is `none` for every adapter.
 
 ## Data sources and licences
 
-This package reads 25 sources. Most come from UK public bodies. The postcode lookup comes from postcodes.io, a third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts carry the Open Parliament Licence v3.0. The NESO generation mix carries the NESO Open Data Licence. Data.gov.uk licences vary by dataset. GOV.UK content carries the Open Government Licence v3.
+This package reads 25 sources. Most come from UK public bodies. The postcode lookup comes from postcodes.io, a third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts carry the Open Parliament Licence v3.0. The NESO generation mix carries the NESO Open Data Licence. Data.gov.uk licences vary by dataset. GOV.UK content carries the Open Government Licence v3. Five adapters copy the licence and attribution values their source supplies onto each record. The other adapters do not, because their endpoints do not carry per-record licence fields.
 
 | Adapter | Publisher | Source URL | Data licence |
 | ------- | --------- | ---------- | ------------ |

@@ -34,6 +34,8 @@ export interface PlanningDataset {
   typology: string;
   phase: string;
   licence: string;
+  /** Source-supplied attribution slug for the dataset, or "" when unset. */
+  attribution: string;
 }
 
 /** Rolled-up shape of the platform's dataset list. */
@@ -59,6 +61,7 @@ const PLANNING_DATASET_SCHEMA = z.object({
   typology: z.string().optional(),
   phase: z.string().optional(),
   licence: z.string().optional(),
+  attribution: z.string().optional(),
 });
 
 const PLANNING_DATASETS_RESPONSE_SCHEMA = z.object({
@@ -86,6 +89,7 @@ export function parsePlanningDatasets(payload: unknown): PlanningDataset[] {
       typology: entry.typology ?? '',
       phase: entry.phase ?? '',
       licence: entry.licence ?? '',
+      attribution: entry.attribution ?? '',
     }));
 }
 

@@ -22,6 +22,10 @@ export interface FloodStation {
   label: string;
   riverName: string;
   catchmentName: string;
+  /** Publishing organisation the response names in its metadata. */
+  publisher: string;
+  /** Licence URL the response names in its metadata. */
+  licence: string;
   /** Null for the handful of groundwater stations that publish no coordinates. */
   latitude: number | null;
   /** Null for the handful of groundwater stations that publish no coordinates. */
@@ -34,6 +38,10 @@ export interface FloodReading {
   measureId: string;
   dateTime: string;
   value: number;
+  /** Publishing organisation the response names in its metadata. */
+  publisher: string;
+  /** Licence URL the response names in its metadata. */
+  licence: string;
 }
 
 /** Rolled-up facts about a run of readings. */
@@ -68,6 +76,13 @@ const FLOOD_MEASURE_SCHEMA = z.object({
 // array, so both shapes have to be accepted.
 const FLOOD_TEXT_SCHEMA = z.union([z.string(), z.array(z.string())]);
 
+const FLOOD_RESPONSE_META_SCHEMA = z
+  .object({
+    publisher: FLOOD_TEXT_SCHEMA.optional(),
+    licence: FLOOD_TEXT_SCHEMA.optional(),
+  })
+  .optional();
+
 const FLOOD_STATION_SCHEMA = z.object({
   '@id': z.string(),
   notation: z.string(),
@@ -88,6 +103,7 @@ function readFloodText(value: string | string[] | undefined): string {
 }
 
 const FLOOD_STATIONS_RESPONSE_SCHEMA = z.object({
+  meta: FLOOD_RESPONSE_META_SCHEMA,
   items: z.array(FLOOD_STATION_SCHEMA),
 });
 
@@ -99,6 +115,7 @@ const FLOOD_READING_SCHEMA = z.object({
 });
 
 const FLOOD_READINGS_RESPONSE_SCHEMA = z.object({
+  meta: FLOOD_RESPONSE_META_SCHEMA,
   items: z.array(FLOOD_READING_SCHEMA),
 });
 
@@ -108,12 +125,16 @@ export function parseFloodStations(payload: unknown): FloodStation[] {
   if (!parsed.success) {
     throw new UkSourceParseError('flood-monitoring', parsed.error.message);
   }
+  const publisher = readFloodText(parsed.data.meta?.publisher);
+  const licence = readFloodText(parsed.data.meta?.licence);
   return parsed.data.items.map((station) => ({
     id: station['@id'],
     notation: station.notation,
     label: readFloodText(station.label),
     riverName: readFloodText(station.riverName),
     catchmentName: readFloodText(station.catchmentName),
+    publisher,
+    licence,
     latitude: station.lat ?? null,
     longitude: station.long ?? null,
     measures: (station.measures ?? []).map((measure) => ({
@@ -133,10 +154,14 @@ export function parseFloodReadings(payload: unknown): FloodReading[] {
   if (!parsed.success) {
     throw new UkSourceParseError('flood-monitoring', parsed.error.message);
   }
+  const publisher = readFloodText(parsed.data.meta?.publisher);
+  const licence = readFloodText(parsed.data.meta?.licence);
   return parsed.data.items.map((reading) => ({
     measureId: reading.measure,
     dateTime: reading.dateTime,
     value: reading.value,
+    publisher,
+    licence,
   }));
 }
 

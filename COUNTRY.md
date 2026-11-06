@@ -47,8 +47,13 @@ adapters in `packages/uk-sources`, and there is no Python or Ruby port.
 - [x] Add more UK sources, each verified live before commit (eleven added on 2026-10-05)
 - [x] Shared HTTP layer (`httpGet`): one User-Agent, 30 second timeout,
       `retryable` on 429, 5xx and network failures
-- [ ] Return licence and attribution metadata per record, instead of leaving
-      the publisher's page as the only source
+- [x] Return source-supplied licence and attribution metadata per record for
+      `flood-stations`, `flood-readings`, `planning-datasets`,
+      `find-a-tender` and `data-gov-uk-ckan` (2026-11-07)
+- [ ] Add licence and attribution metadata to the remaining adapters where
+      the source supplies it. Most publish terms of use, or package-level
+      terms, instead of per-record metadata, so each source needs its own
+      decision
 
 See `docs/ARCHITECTURE.md` for the one-design contract and
 `docs/CONNECTOR_DISCOVERY.md` for what has been checked.

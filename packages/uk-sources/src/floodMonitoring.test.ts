@@ -29,6 +29,10 @@ describe('parseFloodStations', () => {
     expect(first?.latitude ?? 0).toBeLessThan(61);
     expect(first?.measures.length).toBeGreaterThan(0);
     expect(first?.measures[0]?.parameterName.length).toBeGreaterThan(0);
+    expect(first?.publisher).toBe('Environment Agency');
+    expect(first?.licence).toBe(
+      'http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/'
+    );
   });
 
   it('reads a station whose text fields come back as arrays', () => {
@@ -46,6 +50,8 @@ describe('parseFloodStations', () => {
     });
     expect(stations[0]?.label).toBe('Bourton Dickler / Bourton Dickler (old)');
     expect(stations[0]?.catchmentName).toBe('Cotswolds / Thames');
+    expect(stations[0]?.publisher).toBe('');
+    expect(stations[0]?.licence).toBe('');
   });
 
   it('reads a groundwater station that publishes no coordinates', () => {
@@ -76,6 +82,10 @@ describe('parseFloodReadings', () => {
     expect(first?.dateTime).toMatch(/^\d{4}-\d{2}-\d{2}T/);
     expect(typeof first?.value).toBe('number');
     expect(first?.measureId).toContain('/measures/');
+    expect(first?.publisher).toBe('Environment Agency');
+    expect(first?.licence).toBe(
+      'http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/'
+    );
   });
 
   it('rejects a payload where a value is not a number', () => {
@@ -102,24 +112,30 @@ describe('summarizeFloodReadings', () => {
 
   it('reports rising when the latest reading is above the earliest', () => {
     const summary = summarizeFloodReadings([
-      { measureId: 'm', dateTime: '2026-01-01T00:00:00Z', value: 1 },
-      { measureId: 'm', dateTime: '2026-01-01T01:00:00Z', value: 2 },
+      { measureId: 'm', dateTime: '2026-01-01T00:00:00Z', value: 1, publisher: '', licence: '' },
+      { measureId: 'm', dateTime: '2026-01-01T01:00:00Z', value: 2, publisher: '', licence: '' },
     ]);
     expect(summary.trend).toBe('rising');
   });
 
   it('reports falling when the latest reading is below the earliest', () => {
     const summary = summarizeFloodReadings([
-      { measureId: 'm', dateTime: '2026-01-01T00:00:00Z', value: 2 },
-      { measureId: 'm', dateTime: '2026-01-01T01:00:00Z', value: 1 },
+      { measureId: 'm', dateTime: '2026-01-01T00:00:00Z', value: 2, publisher: '', licence: '' },
+      { measureId: 'm', dateTime: '2026-01-01T01:00:00Z', value: 1, publisher: '', licence: '' },
     ]);
     expect(summary.trend).toBe('falling');
   });
 
   it('reports steady when the level barely moves', () => {
     const summary = summarizeFloodReadings([
-      { measureId: 'm', dateTime: '2026-01-01T00:00:00Z', value: 1 },
-      { measureId: 'm', dateTime: '2026-01-01T01:00:00Z', value: 1.001 },
+      { measureId: 'm', dateTime: '2026-01-01T00:00:00Z', value: 1, publisher: '', licence: '' },
+      {
+        measureId: 'm',
+        dateTime: '2026-01-01T01:00:00Z',
+        value: 1.001,
+        publisher: '',
+        licence: '',
+      },
     ]);
     expect(summary.trend).toBe('steady');
   });
