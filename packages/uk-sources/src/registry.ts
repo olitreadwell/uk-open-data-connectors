@@ -7,6 +7,7 @@ import { findATenderAdapter } from './findATender.js';
 import { fingertipsIndicatorsAdapter } from './fingertipsIndicators.js';
 import { floodReadingsAdapter, floodStationsAdapter } from './floodMonitoring.js';
 import { foodHygieneAuthoritiesAdapter } from './foodHygiene.js';
+import { govUkContentAdapter } from './govUkContent.js';
 import { londonDatastoreAdapter } from './londonDatastore.js';
 import { nesoGenerationMixAdapter } from './nesoGenerationMix.js';
 import { nhsbsaCkanAdapter } from './nhsbsaCkan.js';
@@ -49,6 +50,7 @@ export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [
   nhsbsaCkanAdapter,
   nesoGenerationMixAdapter,
   dataGovUkCkanAdapter,
+  govUkContentAdapter,
 ];
 
 /** Looks up a source adapter by id. */

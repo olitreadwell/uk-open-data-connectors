@@ -160,6 +160,18 @@ export {
 } from './foodHygiene.js';
 /** Food hygiene register types. */
 export type { FoodHygieneAuthority, FoodHygieneScheme, FoodHygieneSummary } from './foodHygiene.js';
+/** GOV.UK Content API pages, with taxons and publishing organisations (keyless). */
+export {
+  buildGovUkContentUrl,
+  DEFAULT_GOV_UK_CONTENT_PATH,
+  fetchGovUkContent,
+  GOV_UK_CONTENT_API_BASE_URL,
+  GOV_UK_CONTENT_SOURCE_ID,
+  govUkContentAdapter,
+  parseGovUkContent,
+} from './govUkContent.js';
+/** GOV.UK content types. */
+export type { GovUkContentLink, GovUkContentRecord } from './govUkContent.js';
 /** London Datastore catalogue, published by the Greater London Authority (keyless). */
 export {
   fetchLondonDatastorePackages,

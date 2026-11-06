@@ -8,7 +8,7 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 | Package | What it is |
 | ------- | ---------- |
-| [`@uk-open-data-connectors/uk-sources`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources) | Uniform adapters for 24 UK public data sources. All keyless, with live probes and offline fixtures. |
+| [`@uk-open-data-connectors/uk-sources`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources) | Uniform adapters for 25 UK public data sources. All keyless, with live probes and offline fixtures. |
 | [`@uk-open-data-connectors/uk-mcp`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-mcp) | MCP server that exposes the connectors to Claude, ChatGPT, and other MCP clients. |
 | [`@uk-open-data-connectors/connectors-cli`](https://www.npmjs.com/package/@uk-open-data-connectors/connectors-cli) | `ukdata` command line tool that prints JSON to stdout, so any language can shell out to it. |
 | `@uk-open-data-connectors/connectors-api` | Private. HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP. |
@@ -18,7 +18,7 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 ## Connectors
 
-Twenty-four adapters in `@uk-open-data-connectors/uk-sources`, all keyless.
+Twenty-five adapters in `@uk-open-data-connectors/uk-sources`, all keyless.
 Most carry Open Government Licence v3 data; the two TfL adapters carry TfL
 Open Data, the carbon intensity series is Creative Commons Attribution 4.0
 under the operator's own terms, and the Parliament seat counts carry the Open
@@ -26,9 +26,9 @@ Parliament Licence v3. The NESO generation mix carries the NESO Open Data
 Licence. The postcode lookup goes through postcodes.io, a third party that
 serves Open Government Licence postcode data from the ONS and Ordnance
 Survey. Data.gov.uk packages carry their own licence identifiers and can
-differ.
+differ. GOV.UK content carries the Open Government Licence v3.
 
-Twenty-three of the 24 adapters use the shared `httpGet` helper in
+Twenty-four of the 25 adapters use the shared `httpGet` helper in
 `packages/uk-sources/src/http.ts`. It sends the same `User-Agent`
 (`uk-open-data-connectors (Language=TypeScript)`), waits at most 30 seconds for
 a response, and marks rate-limited (HTTP 429), server-error (HTTP 5xx) and
@@ -64,6 +64,7 @@ adapter and the police street crime month calls do.
 | `nhsbsa-ckan` | NHS Business Services Authority open data catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe nhsbsa-ckan` |
 | `neso-generation-mix` | National Energy System Operator half-hourly generation by fuel, from the NESO data portal | Yes | `npx tsx packages/cli/src/cli.ts probe neso-generation-mix` |
 | `data-gov-uk-ckan` | Data.gov.uk CKAN catalogue, searchable by keyword | Yes | `npx tsx packages/cli/src/cli.ts probe data-gov-uk-ckan` |
+| `gov-uk-content` | GOV.UK page content, with taxons and publishing organisations | Yes | `npx tsx packages/cli/src/cli.ts probe gov-uk-content` |
 
 A source that looks obvious for a UK repo and is not usable as it stands:
 
@@ -113,8 +114,8 @@ the Open Parliament Licence v3.0.
 
 ### Added 2026-10-05 onward
 
-Thirteen more keyless adapters, each checked live on 2026-10-05, 2026-10-18 or
-2026-11-05 and covered by a committed fixture:
+Fourteen more keyless adapters, each checked live on 2026-10-05, 2026-10-18,
+2026-11-05 or 2026-11-07 and covered by a committed fixture:
 
 - `postcode-lookup` reads one postcode from postcodes.io, default SW1A 1AA.
 - `explore-education-statistics` reads the Department for Education's most
@@ -135,6 +136,9 @@ Thirteen more keyless adapters, each checked live on 2026-10-05, 2026-10-18 or
   half hours in the window.
 - `data-gov-uk-ckan` searches the UK government open data catalogue hosted on
   Data.gov.uk, including each dataset's publisher, licence, and resource count.
+- `gov-uk-content` reads one GOV.UK content item by path, including its taxons,
+  publishing organisations, and dates. It defaults to the "How government
+  works" page.
 
 The full endpoint list, exact curl commands, and licences are in
 `docs/CONNECTOR_DISCOVERY.md`.

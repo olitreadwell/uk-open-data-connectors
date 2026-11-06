@@ -7,6 +7,8 @@
 - `data-gov-uk-ckan`: search the Data.gov.uk CKAN catalogue for UK public
   datasets, with publisher, licence, resource count, and tags. Keyless, checked
   live on 2026-11-05.
+- `gov-uk-content`: read one GOV.UK content item by path, with taxons,
+  publishing organisations, and dates. Keyless, checked live on 2026-11-07.
 
 ## 0.1.5 (2026-11-03)
 

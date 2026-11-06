@@ -31,6 +31,7 @@ adapters in `packages/uk-sources`, and there is no Python or Ruby port.
 | NHS Business Services Authority catalogue | `nhsbsa-ckan` | Done, verified live 2026-10-05 |
 | National Energy System Operator generation mix (NESO data portal) | `neso-generation-mix` | Done, verified live 2026-10-18 |
 | Data.gov.uk CKAN catalogue | `data-gov-uk-ckan` | Done, verified live 2026-11-05 |
+| GOV.UK Content API | `gov-uk-content` | Done, verified live 2026-11-07 |
 | Companies House | - | Pending, needs a key |
 | HM Land Registry | - | Pending |
 | Met Office DataPoint | - | Pending, needs a key |

@@ -19,6 +19,7 @@ probed again that day.
 | `flood-readings` | Environment Agency flood-monitoring | `https://environment.data.gov.uk/flood-monitoring/id/stations/{reference}/readings` | Yes |
 | `flood-stations` | Environment Agency flood-monitoring | `https://environment.data.gov.uk/flood-monitoring/id/stations` | Yes |
 | `food-hygiene-authorities` | Food Standards Agency | `https://api.ratings.food.gov.uk/Authorities/basic` | Yes |
+| `gov-uk-content` | GOV.UK Content API | `https://www.gov.uk/api/content/{path}` | Yes |
 | `london-datastore` | Greater London Authority | `https://data.london.gov.uk/api/3/action/package_list` | Yes |
 | `nhsbsa-ckan` | NHS Business Services Authority | `https://opendata.nhsbsa.net/api/3/action/package_list` | Yes |
 | `neso-generation-mix` | National Energy System Operator | `https://api.neso.energy/api/3/action/datastore_search?resource_id={resource}&sort=DATETIME+desc&limit={halfHours}` | Yes |
@@ -37,6 +38,34 @@ probed again that day.
 Adapters keep a committed fixture in `packages/uk-sources/src/fixtures/` so
 tests run offline, plus a smoke test gated on `RUN_SMOKE=1` that hits the
 live endpoint.
+
+## Added 2026-11-07
+
+One keyless adapter, for the GOV.UK Content API. The API answers one content
+item per path. It has no listing endpoint, so the adapter takes a path and
+defaults to `/government/how-government-works`. The request below returned
+HTTP 200 with JSON on 2026-11-07.
+
+```sh
+# gov-uk-content: the default content item
+curl -sS 'https://www.gov.uk/api/content/government/how-government-works'
+```
+
+| Adapter | Fixture | Licence |
+| --- | --- | --- |
+| `gov-uk-content` | `gov-uk-content-2026-11-07.json` (the "How government works" page) | Open Government Licence v3 |
+
+What was verified live on 2026-11-07, and what was not:
+
+- The content call answered HTTP 200 with JSON and no key.
+- The response carried the content id, base path, title, document type,
+  schema name, locale, phase, and published and updated stamps the adapter
+  returns.
+- The page carried two taxons and one available translation.
+- The adapter was probed through its own live fetch after the fixture was
+  captured. It returned the same title and content id.
+- The API has no search or list endpoint. A caller must already know a GOV.UK
+  path, or read one from the page links.
 
 ## Added 2026-11-05
 
@@ -221,6 +250,7 @@ attribution. The exceptions are listed in the table.
 | `nhsbsa-ckan` | NHS Business Services Authority | Open Government Licence v3 |
 | `neso-generation-mix` | National Energy System Operator | The NESO Open Data Licence, the portal reports `ESO` for every package on it |
 | `data-gov-uk-ckan` | Government Digital Service | Varies by dataset. The package metadata reports each `license_id`, and blank values become `null`. |
+| `gov-uk-content` | Government Digital Service | Open Government Licence v3 |
 
 Most adapters do not return licence metadata today. The `data-gov-uk-ckan`
 adapter returns each package's `licenseId`, but that is not a substitute for

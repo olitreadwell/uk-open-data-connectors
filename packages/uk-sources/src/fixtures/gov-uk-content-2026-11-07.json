@@ -1,0 +1,192 @@
+{
+  "analytics_identifier": null,
+  "base_path": "/government/how-government-works",
+  "content_id": "f56cfe74-8e5c-432d-bfcf-fd2521c5919c",
+  "description": "About the UK system of government. Understand who runs government, and how government is run.",
+  "details": {
+    "department_counts": {
+      "agencies_and_public_bodies": 445,
+      "ministerial_departments": 23,
+      "non_ministerial_departments": 20
+    },
+    "ministerial_role_counts": {
+      "cabinet_ministers": 23,
+      "other_ministers": 101,
+      "prime_minister": 1,
+      "total_ministers": 125
+    },
+    "reshuffle_in_progress": false
+  },
+  "document_type": "how_government_works",
+  "first_published_at": "2016-04-07T14:16:57+01:00",
+  "links": {
+    "available_translations": [
+      {
+        "api_path": "/api/content/government/how-government-works",
+        "api_url": "https://www.gov.uk/api/content/government/how-government-works",
+        "base_path": "/government/how-government-works",
+        "content_id": "f56cfe74-8e5c-432d-bfcf-fd2521c5919c",
+        "document_type": "how_government_works",
+        "links": {},
+        "locale": "en",
+        "public_updated_at": "2026-11-05T15:30:20Z",
+        "schema_name": "how_government_works",
+        "title": "How government works",
+        "web_url": "https://www.gov.uk/government/how-government-works",
+        "withdrawn": false
+      }
+    ],
+    "current_prime_minister": [
+      {
+        "api_path": "/api/content/government/people/andy-burnham",
+        "api_url": "https://www.gov.uk/api/content/government/people/andy-burnham",
+        "base_path": "/government/people/andy-burnham",
+        "content_id": "762a5ae3-c159-4fb4-8f4e-a828e41f77b3",
+        "details": {
+          "image": {
+            "url": "https://assets.publishing.service.gov.uk/media/6a5e0336cb98465566fe39ca/s465_Andy-Burnham-Portrait.jpg"
+          },
+          "privy_counsellor": true
+        },
+        "document_type": "person",
+        "links": {},
+        "locale": "en",
+        "public_updated_at": "2026-07-20T11:15:02Z",
+        "schema_name": "person",
+        "title": "The Rt Hon Andy Burnham MP",
+        "web_url": "https://www.gov.uk/government/people/andy-burnham",
+        "withdrawn": false
+      }
+    ],
+    "mainstream_browse_pages": [
+      {
+        "api_path": "/api/content/browse/citizenship/government",
+        "api_url": "https://www.gov.uk/api/content/browse/citizenship/government",
+        "base_path": "/browse/citizenship/government",
+        "content_id": "abc8dd38-bbb7-40a9-b5a2-4b8a2b0db699",
+        "description": "Petitioning the government, democracy and public information",
+        "document_type": "mainstream_browse_page",
+        "links": {},
+        "locale": "en",
+        "public_updated_at": "2026-09-24T14:41:00Z",
+        "schema_name": "mainstream_browse_page",
+        "title": "Living in the UK, government and democracy",
+        "web_url": "https://www.gov.uk/browse/citizenship/government",
+        "withdrawn": false
+      }
+    ],
+    "taxons": [
+      {
+        "api_path": "/api/content/government/democracy",
+        "api_url": "https://www.gov.uk/api/content/government/democracy",
+        "base_path": "/government/democracy",
+        "content_id": "95d06252-5d75-42fb-9c5c-038ab6b482e4",
+        "details": {
+          "internal_name": "Democracy",
+          "notes_for_editors": "",
+          "visible_to_departmental_editors": false
+        },
+        "document_type": "taxon",
+        "links": {
+          "parent_taxons": [
+            {
+              "api_path": "/api/content/government/all",
+              "api_url": "https://www.gov.uk/api/content/government/all",
+              "base_path": "/government/all",
+              "content_id": "e48ab80a-de80-4e83-bf59-26316856a5f9",
+              "description": "",
+              "details": {
+                "internal_name": "Government",
+                "notes_for_editors": "",
+                "visible_to_departmental_editors": true
+              },
+              "document_type": "taxon",
+              "links": {
+                "root_taxon": [
+                  {
+                    "api_path": "/api/content/",
+                    "api_url": "https://www.gov.uk/api/content/",
+                    "base_path": "/",
+                    "content_id": "f3bbdec2-0e62-4520-a7fd-6ffd5d36e03a",
+                    "document_type": "homepage",
+                    "links": {},
+                    "locale": "en",
+                    "public_updated_at": "2026-02-18T13:00:23Z",
+                    "schema_name": "homepage",
+                    "title": "GOV.UK homepage",
+                    "web_url": "https://www.gov.uk/",
+                    "withdrawn": false
+                  }
+                ]
+              },
+              "locale": "en",
+              "phase": "live",
+              "public_updated_at": "2018-09-16T20:29:39Z",
+              "schema_name": "taxon",
+              "title": "Government",
+              "web_url": "https://www.gov.uk/government/all",
+              "withdrawn": false
+            }
+          ]
+        },
+        "locale": "en",
+        "phase": "live",
+        "public_updated_at": "2018-08-17T15:32:42Z",
+        "schema_name": "taxon",
+        "title": "Democracy",
+        "web_url": "https://www.gov.uk/government/democracy",
+        "withdrawn": false
+      },
+      {
+        "api_path": "/api/content/government/all",
+        "api_url": "https://www.gov.uk/api/content/government/all",
+        "base_path": "/government/all",
+        "content_id": "e48ab80a-de80-4e83-bf59-26316856a5f9",
+        "description": "",
+        "details": {
+          "internal_name": "Government",
+          "notes_for_editors": "",
+          "visible_to_departmental_editors": true
+        },
+        "document_type": "taxon",
+        "links": {
+          "root_taxon": [
+            {
+              "api_path": "/api/content/",
+              "api_url": "https://www.gov.uk/api/content/",
+              "base_path": "/",
+              "content_id": "f3bbdec2-0e62-4520-a7fd-6ffd5d36e03a",
+              "document_type": "homepage",
+              "links": {},
+              "locale": "en",
+              "public_updated_at": "2026-02-18T13:00:23Z",
+              "schema_name": "homepage",
+              "title": "GOV.UK homepage",
+              "web_url": "https://www.gov.uk/",
+              "withdrawn": false
+            }
+          ]
+        },
+        "locale": "en",
+        "phase": "live",
+        "public_updated_at": "2018-09-16T20:29:39Z",
+        "schema_name": "taxon",
+        "title": "Government",
+        "web_url": "https://www.gov.uk/government/all",
+        "withdrawn": false
+      }
+    ]
+  },
+  "locale": "en",
+  "phase": "live",
+  "public_updated_at": "2026-11-05T15:30:20+00:00",
+  "publishing_app": "whitehall",
+  "publishing_request_id": "21-1793892620.230-10.13.21.250-16236",
+  "publishing_scheduled_at": null,
+  "rendering_app": "frontend",
+  "scheduled_publishing_delay_seconds": null,
+  "schema_name": "how_government_works",
+  "title": "How government works",
+  "updated_at": "2026-11-05T15:30:21+00:00",
+  "withdrawn_notice": {}
+}

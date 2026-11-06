@@ -124,6 +124,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     if (new URL(target).hostname === 'www.data.gov.uk') {
       return jsonResponse(readFixtureJson('data-gov-uk-ckan-2026-11-05.json'));
     }
+    if (new URL(target).hostname === 'www.gov.uk') {
+      return jsonResponse(readFixtureJson('gov-uk-content-2026-11-07.json'));
+    }
     if (target.includes('/readings')) {
       return jsonResponse(readFixtureJson('flood-station-readings.json'));
     }
@@ -198,6 +201,7 @@ describe('registry', () => {
       'nhsbsa-ckan',
       'neso-generation-mix',
       'data-gov-uk-ckan',
+      'gov-uk-content',
     ]);
   });
 
@@ -226,6 +230,7 @@ describe('registry', () => {
     expect(getUkDataSource('public-health-scotland')?.name).toContain('Public Health Scotland');
     expect(getUkDataSource('nhsbsa-ckan')?.name).toContain('NHS Business Services Authority');
     expect(getUkDataSource('data-gov-uk-ckan')?.name).toContain('Data.gov.uk');
+    expect(getUkDataSource('gov-uk-content')?.name).toContain('GOV.UK Content API');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 
