@@ -75,6 +75,19 @@ export type {
   DataGovUkPackagePage,
   DataGovUkPackageSummary,
 } from './dataGovUkCkan.js';
+/** Elexon BMRS settlement system prices by settlement day (keyless). */
+export {
+  buildElexonSystemPricesUrl,
+  ELEXON_BMRS_API_BASE_URL,
+  ELEXON_SYSTEM_PRICES_PATH,
+  ELEXON_SYSTEM_PRICES_SOURCE_ID,
+  elexonSystemPricesAdapter,
+  fetchElexonSystemPrices,
+  formatElexonSettlementDate,
+  parseElexonSystemPrices,
+} from './elexonSystemPrices.js';
+/** Elexon system price types. */
+export type { ElexonSystemPriceDay, ElexonSystemPricePeriod } from './elexonSystemPrices.js';
 /** Department for Education Explore Education Statistics publications (keyless). */
 export {
   buildExploreEducationPublicationsUrl,
@@ -374,6 +387,19 @@ export type {
   TnaDiscoverySearchResult,
   TnaDiscoverySearchSummary,
 } from './tnaDiscovery.js';
+/** UK Parliament committees from the Parliament OData API (keyless). */
+export {
+  buildUkParliamentCommitteeUrl,
+  DEFAULT_UK_PARLIAMENT_COMMITTEE_LIMIT,
+  fetchUkParliamentCommittees,
+  parseUkParliamentCommittees,
+  UK_PARLIAMENT_COMMITTEE_ENTITY,
+  UK_PARLIAMENT_COMMITTEE_SOURCE_ID,
+  UK_PARLIAMENT_ODATA_BASE_URL,
+  ukParliamentCommitteesAdapter,
+} from './ukParliamentCommittees.js';
+/** UK Parliament committee types. */
+export type { UkParliamentCommittee, UkParliamentCommitteePage } from './ukParliamentCommittees.js';
 /** UK Health Security Agency data dashboard metric points (keyless). */
 export {
   buildUkhsaMetricUrl,
@@ -388,6 +414,20 @@ export {
 } from './ukhsaDashboard.js';
 /** UKHSA dashboard types. */
 export type { UkhsaMetricPage, UkhsaMetricPoint, UkhsaMetricSummary } from './ukhsaDashboard.js';
+/** UKRI Gateway to Research awards (keyless). */
+export {
+  buildUkriGtrAwardsUrl,
+  DEFAULT_UKRI_GTR_AWARD_PAGE_SIZE,
+  fetchUkriGtrAwards,
+  MAX_UKRI_GTR_AWARD_PAGE_SIZE,
+  parseUkriGtrAwards,
+  UKRI_GTR_API_BASE_URL,
+  UKRI_GTR_AWARDS_PATH,
+  UKRI_GTR_AWARDS_SOURCE_ID,
+  ukriGtrAwardsAdapter,
+} from './ukriGtrAwards.js';
+/** UKRI Gateway to Research types. */
+export type { UkriGtrAward, UkriGtrAwardPage, UkriGtrPersonName } from './ukriGtrAwards.js';
 /** The uniform adapter registry and probe helpers. */
 export {
   UK_DATA_SOURCES,

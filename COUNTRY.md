@@ -32,6 +32,9 @@ adapters in `packages/uk-sources`, and there is no Python or Ruby port.
 | National Energy System Operator generation mix (NESO data portal) | `neso-generation-mix` | Done, verified live 2026-10-18 |
 | Data.gov.uk CKAN catalogue | `data-gov-uk-ckan` | Done, verified live 2026-11-05 |
 | GOV.UK Content API | `gov-uk-content` | Done, verified live 2026-11-07 |
+| UK Parliament committees (OData API) | `uk-parliament-committees` | Done, verified live 2026-11-08 |
+| Elexon BMRS settlement system prices | `elexon-system-prices` | Done, verified live 2026-11-08 |
+| UKRI Gateway to Research awards | `ukri-gtr-awards` | Done, verified live 2026-11-08 |
 | Companies House | - | Pending, needs a key |
 | HM Land Registry | - | Pending |
 | Met Office DataPoint | - | Pending, needs a key |
@@ -45,6 +48,8 @@ adapters in `packages/uk-sources`, and there is no Python or Ruby port.
 - [x] Port the API and CLI exposure for the UK adapters
 - [x] Remove the NZ Python and Ruby copies (2026-11-05)
 - [x] Add more UK sources, each verified live before commit (eleven added on 2026-10-05)
+- [x] Add Parliament committees, Elexon BMRS system prices, and UKRI
+      Gateway to Research awards (three added on 2026-11-08)
 - [x] Shared HTTP layer (`httpGet`): one User-Agent, 30 second timeout,
       `retryable` on 429, 5xx and network failures
 - [x] Return source-supplied licence and attribution metadata per record for

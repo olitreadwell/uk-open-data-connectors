@@ -33,7 +33,7 @@ adapters leave the publisher's page as the source for those terms.
 The HTTP API and the CLI call the same adapters. They never call the
 endpoints directly. This is what "one design" means.
 
-Twenty-four of the 25 adapters fetch through the shared helper in
+Twenty-seven of the 28 adapters fetch through the shared helper in
 `packages/uk-sources/src/http.ts`. It sets one `User-Agent`
 (`uk-open-data-connectors (Language=TypeScript)`), aborts after 30 seconds, and
 marks HTTP 429, HTTP 5xx and network failures as `retryable` on the thrown
@@ -53,6 +53,9 @@ Registered adapters:
 | `ons-datasets` | ONS beta API dataset catalogue | Dataset records, with state, stamp, and national-statistic flag |
 | `data-gov-uk-ckan` | Data.gov.uk CKAN catalogue | A search page of datasets, with publisher, licence, and resource count |
 | `gov-uk-content` | GOV.UK Content API | One GOV.UK page, with taxons, organisations, and dates |
+| `uk-parliament-committees` | UK Parliament OData API | A page of committees, with remit and start and end dates |
+| `elexon-system-prices` | Elexon BMRS Insights Solution | Settlement system prices for one settlement day |
+| `ukri-gtr-awards` | UKRI Gateway to Research | A page of awards, newest start date first |
 
 ## Summaries built into the adapters
 

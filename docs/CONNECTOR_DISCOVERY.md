@@ -34,10 +34,87 @@ probed again that day.
 | `tfl-line-status` | Transport for London | `https://api.tfl.gov.uk/Line/Mode/tube/Status` | Yes |
 | `tna-discovery` | The National Archives | `https://discovery.nationalarchives.gov.uk/API/search/records` | Yes |
 | `ukhsa-dashboard` | UK Health Security Agency | `https://api.ukhsa-dashboard.data.gov.uk/themes/.../metrics/{metric}` | Yes |
+| `uk-parliament-committees` | UK Parliament | `https://api.parliament.uk/odata/ParliamentaryCommittee` | Yes |
+| `elexon-system-prices` | Elexon BMRS Insights Solution | `https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/{settlementDate}` | Yes |
+| `ukri-gtr-awards` | UKRI Gateway to Research | `https://gtr.ukri.org/api/v3/awards` | Yes |
 
 Adapters keep a committed fixture in `packages/uk-sources/src/fixtures/` so
 tests run offline, plus a smoke test gated on `RUN_SMOKE=1` that hits the
 live endpoint.
+
+## Added 2026-11-08
+
+Three keyless adapters, for the UK Parliament OData API, Elexon's Balancing
+Mechanism Reporting Service (BMRS) Insights Solution, and the UKRI Gateway to
+Research (GTR) API. Every request below returned HTTP 200 with JSON and no key
+on 2026-11-08.
+
+```sh
+# uk-parliament-committees: one page of committees, ordered by name
+curl -sS -g -H 'Accept: application/json' \
+  'https://api.parliament.uk/odata/ParliamentaryCommittee?$top=20&$orderby=FormalBodyName'
+
+# elexon-system-prices: settlement system prices for one settlement day
+curl -sS -H 'Accept: application/json' \
+  'https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-11-06'
+
+# ukri-gtr-awards: the newest awards, one page of 20
+curl -sS -H 'Accept: application/json' \
+  'https://gtr.ukri.org/api/v3/awards?size=20&page=1&sortfield=startDate&sortorder=D'
+```
+
+| Adapter | Fixture | Licence |
+| --- | --- | --- |
+| `uk-parliament-committees` | `uk-parliament-committees-2026-11-08.json` (20 committees, 10 with no end date) | Open Parliament Licence v3.0 |
+| `elexon-system-prices` | `elexon-system-prices-2026-11-08.json` (the first 6 of 48 settlement periods for 2026-11-06) | BMRS open data licence |
+| `ukri-gtr-awards` | `ukri-gtr-awards-2026-11-08.json` (the first 3 of 20 awards from the newest-start-date page) | UKRI Gateway to Research terms of use |
+
+Live adapter probes run from the worktree on 2026-11-08:
+
+```sh
+npx tsx packages/cli/src/cli.ts probe uk-parliament-committees
+npx tsx packages/cli/src/cli.ts probe elexon-system-prices
+npx tsx packages/cli/src/cli.ts probe ukri-gtr-awards
+```
+
+Each command returned `"ok": true` and `"status": "ok"`. The Elexon probe
+used the default settlement date of 2026-11-07 and returned dataset
+`DISEBSP`. The GTR probe returned page 1, page size 20, 191,069 awards,
+500 pages, and refresh date 2026-11-02.
+
+What was verified live on 2026-11-08, and what was not:
+
+- The Parliament OData page answered HTTP 200 with JSON and no key. It held 20
+  committees ordered by name, from `Accomodation & Works` to `Consolidation
+  etc. Bills (Joint Committee)`. Ten rows had a null `FormalBodyEndDate`; ten
+  had an end date. The live adapter probe returned `ok`.
+- The OData response does not carry a total count on this request. Adding
+  `$count=true` returned the `$top` value instead of a count, so the adapter
+  does not ask for or report a total.
+- The Elexon system price call answered HTTP 200 with JSON and no key. A call
+  for 2026-11-06 returned dataset `DISEBSP` and 48 settlement periods, from
+  period 1 to period 48. A recheck for 2026-11-07 also returned 48 periods.
+  The live adapter probe used its default of yesterday in UK time and returned
+  settlement date 2026-11-07 with `ok`.
+- BMRS metadata reported one dataset, `DISEBSP`, for the captured response.
+  The adapter returns that dataset id and the core price, imbalance-volume,
+  and accepted-volume fields for each period.
+- The GTR awards page answered HTTP 200 with JSON and no key. It held 20
+  awards, reported 191,069 awards in total across 500 pages, and reported a
+  last data refresh date of 2026-11-02. The live adapter probe returned `ok`
+  with the same totals.
+- The old GTR API path `/api/content/search/project` answered HTTP 404. The
+  current API is `/api/v3`, and its OpenAPI document at
+  <https://gtr.ukri.org/openapi.yaml> answered HTTP 200 on 2026-11-08. The
+  adapter uses `/api/v3/awards`.
+- GTR accepts page sizes from 20 to 100. The adapter asks for 20, newest start
+  date first. The fixture keeps the first 3 awards of that 20-award page; its
+  paging metadata still says 20, because that is what the live response said.
+- The Parliament and GTR APIs did not expose per-record licence fields on
+  these calls. The licences above come from the publishers' pages. Elexon's
+  licence page asks for the attribution `Contains BMRS data © Elexon Limited
+  copyright and database right [year]` with a link to the licence where
+  possible.
 
 ## Added 2026-11-07
 
@@ -251,6 +328,9 @@ attribution. The exceptions are listed in the table.
 | `neso-generation-mix` | National Energy System Operator | The NESO Open Data Licence, the portal reports `ESO` for every package on it |
 | `data-gov-uk-ckan` | Government Digital Service | Varies by dataset. The adapter returns each package's `licenceId`, `licenceTitle`, `licenceUrl` and `publisher`, and blank licence values become `null`. |
 | `gov-uk-content` | Government Digital Service | Open Government Licence v3 |
+| `uk-parliament-committees` | UK Parliament | Open Parliament Licence v3.0 |
+| `elexon-system-prices` | Elexon | BMRS open data licence, with the attribution `Contains BMRS data © Elexon Limited copyright and database right [year]` |
+| `ukri-gtr-awards` | UK Research and Innovation | UKRI Gateway to Research terms of use; the terms page says the service is open and free to use |
 
 Five adapters return source-supplied licence and attribution metadata per
 record. `flood-stations` and `flood-readings` copy `meta.publisher` and

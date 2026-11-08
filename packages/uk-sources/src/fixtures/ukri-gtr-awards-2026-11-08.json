@@ -1,0 +1,98 @@
+{
+  "awardList": [
+    {
+      "awardListItem": {
+        "leadOrgRole": "LEAD_RO",
+        "fundingOrgName": "BBSRC",
+        "endDate": "2028-09-30T00:00:00Z",
+        "leadOrgId": "489de625-3d22-4fbf-bdc9-6a244edeabbd",
+        "fundingOrgLongName": "BBSRC",
+        "leadOrgHref": "https://gtr.ukri.org/api/v3/organisations/489de625-3d22-4fbf-bdc9-6a244edeabbd",
+        "grantRefNumber": "2932165",
+        "uiPath": "/find-research-and-innovation/project/124cef68-f9c9-421e-a25d-036cf2cd4b08",
+        "leadOrgName": "University of Aberdeen",
+        "projectStatus": "Active",
+        "grantCategory": "Studentship",
+        "leadOrgRegion": "Scotland",
+        "leadOrgUiPath": "/find-research-and-innovation/organisation/489de625-3d22-4fbf-bdc9-6a244edeabbd",
+        "id": "124cef68-f9c9-421e-a25d-036cf2cd4b08",
+        "href": "https://gtr.ukri.org/api/v3/awards/124cef68-f9c9-421e-a25d-036cf2cd4b08",
+        "startDate": "2028-09-30T00:00:00Z",
+        "projectTitle": "Does the time of day that exercise is performed influence glycaemic outcomes across different phases of the menstrual cycle?"
+      }
+    },
+    {
+      "awardListItem": {
+        "leadOrgRole": "LEAD_RO",
+        "fundingOrgName": "BBSRC",
+        "endDate": "2028-09-30T00:00:00Z",
+        "leadOrgId": "679431de-17aa-4048-aaa4-5f02e8278161",
+        "fundingOrgLongName": "BBSRC",
+        "leadOrgHref": "https://gtr.ukri.org/api/v3/organisations/679431de-17aa-4048-aaa4-5f02e8278161",
+        "grantRefNumber": "2933475",
+        "uiPath": "/find-research-and-innovation/project/23363aa5-fcaa-4d15-8991-561f1b8a5be1",
+        "leadOrgName": "University of Cambridge",
+        "projectStatus": "Active",
+        "grantCategory": "Studentship",
+        "leadOrgRegion": "East of England",
+        "leadOrgUiPath": "/find-research-and-innovation/organisation/679431de-17aa-4048-aaa4-5f02e8278161",
+        "id": "23363aa5-fcaa-4d15-8991-561f1b8a5be1",
+        "href": "https://gtr.ukri.org/api/v3/awards/23363aa5-fcaa-4d15-8991-561f1b8a5be1",
+        "startDate": "2028-09-30T00:00:00Z",
+        "projectTitle": "Developing new drug modalities to target ERK1/2 signalling"
+      }
+    },
+    {
+      "awardListItem": {
+        "leadOrgRole": "LEAD_RO",
+        "fundingOrgName": "BBSRC",
+        "endDate": "2028-09-30T00:00:00Z",
+        "leadOrgId": "679431de-17aa-4048-aaa4-5f02e8278161",
+        "fundingOrgLongName": "BBSRC",
+        "leadOrgHref": "https://gtr.ukri.org/api/v3/organisations/679431de-17aa-4048-aaa4-5f02e8278161",
+        "grantRefNumber": "2933457",
+        "uiPath": "/find-research-and-innovation/project/2ed4a41d-f0f9-4ae8-8cb7-0ce23c0cde03",
+        "leadOrgName": "University of Cambridge",
+        "projectStatus": "Active",
+        "grantCategory": "Studentship",
+        "leadOrgRegion": "East of England",
+        "leadOrgUiPath": "/find-research-and-innovation/organisation/679431de-17aa-4048-aaa4-5f02e8278161",
+        "id": "2ed4a41d-f0f9-4ae8-8cb7-0ce23c0cde03",
+        "href": "https://gtr.ukri.org/api/v3/awards/2ed4a41d-f0f9-4ae8-8cb7-0ce23c0cde03",
+        "startDate": "2028-09-30T00:00:00Z",
+        "projectTitle": "Improving Cell-Based Immunotherapy"
+      }
+    }
+  ],
+  "paging": {
+    "page": 1,
+    "size": 20,
+    "totalSize": 191069,
+    "totalPages": 500
+  },
+  "totals": [
+    {
+      "entity": "Award",
+      "count": 191069
+    },
+    {
+      "entity": "Publication",
+      "count": 1247652
+    },
+    {
+      "entity": "Person",
+      "count": 170214
+    },
+    {
+      "entity": "Organisation",
+      "count": 103022
+    },
+    {
+      "entity": "Outcome",
+      "count": 1098661
+    }
+  ],
+  "common": {
+    "lastDataRefreshDate": "2026-11-02"
+  }
+}
