@@ -27,13 +27,14 @@ Every adapter speaks one interface (`UkDataAdapter`). It knows how to:
 
 Records carry the source-supplied licence and attribution fields when the
 response provides them. `flood-stations`, `flood-readings`, `planning-datasets`,
-`find-a-tender` and `data-gov-uk-ckan` return those fields today. The other
-adapters leave the publisher's page as the source for those terms.
+`find-a-tender`, `data-gov-uk-ckan`, `ons-geography` and `neso-catalogue` return
+those fields today. The other adapters leave the publisher's page as the source
+for those terms.
 
 The HTTP API and the CLI call the same adapters. They never call the
 endpoints directly. This is what "one design" means.
 
-Twenty-seven of the 28 adapters fetch through the shared helper in
+Thirty-two of the 33 adapters fetch through the shared helper in
 `packages/uk-sources/src/http.ts`. It sets one `User-Agent`
 (`uk-open-data-connectors (Language=TypeScript)`), aborts after 30 seconds, and
 marks HTTP 429, HTTP 5xx and network failures as `retryable` on the thrown
@@ -56,6 +57,11 @@ Registered adapters:
 | `uk-parliament-committees` | UK Parliament OData API | A page of committees, with remit and start and end dates |
 | `elexon-system-prices` | Elexon BMRS Insights Solution | Settlement system prices for one settlement day |
 | `ukri-gtr-awards` | UKRI Gateway to Research | A page of awards, newest start date first |
+| `legislation-search` | legislation.gov.uk | A page of Acts, orders, and regulations |
+| `gazette-notices` | The Gazette | A page of official public record notices |
+| `ons-geography` | ONS Open Geography Portal | A page of boundary and geography datasets |
+| `neso-catalogue` | NESO Data Portal | A page of datasets, with licence and resource counts |
+| `bgs-opengeoscience-wms` | BGS OpenGeoscience | WMS layers, bounds, and coordinate systems |
 
 ## Summaries built into the adapters
 

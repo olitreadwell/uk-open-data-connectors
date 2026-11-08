@@ -1,0 +1,123 @@
+{
+  "help": "https://api.neso.energy/api/3/action/help_show?name=package_search",
+  "success": true,
+  "result": {
+    "count": 131,
+    "sort": "score desc, metadata_modified desc",
+    "facets": {},
+    "results": [
+      {
+        "license_title": "NESO Open Data Licence",
+        "maintainer": "",
+        "relationships_as_object": [],
+        "private": false,
+        "maintainer_email": "",
+        "num_tags": 5,
+        "id": "932245c1-2322-4515-bf5e-ea2093ba1333",
+        "metadata_created": "2019-11-13T07:53:53.901470",
+        "metadata_modified": "2026-11-08T09:30:13.510453",
+        "author": "National Grid Electricity System Operator",
+        "author_email": "",
+        "state": "active",
+        "version": "",
+        "creator_user_id": "91aeb31f-299c-46dc-b289-966044bbfdcd",
+        "type": "dataset",
+        "resources": [
+          {
+            "force": "true",
+            "cache_last_updated": null,
+            "package_id": "932245c1-2322-4515-bf5e-ea2093ba1333",
+            "datastore_active": true,
+            "id": "0b7e84ec-eded-4458-b111-d29ba4508e85",
+            "size": null,
+            "metadata_modified": "2026-11-08T09:30:13.510453",
+            "state": "active",
+            "hash": "",
+            "description": "This dataset displays all upcoming GTMA (Grid Trade Master Agreement) trades due to be delivered. The data is refreshed every ten minutes.",
+            "format": "CSV",
+            "mimetype_inner": null,
+            "url_type": "datastore",
+            "mimetype": null,
+            "cache_url": null,
+            "name": "Upcoming Trades",
+            "created": "2021-05-07T10:19:54.222055",
+            "url": "https://api.neso.energy/datastore/dump/0b7e84ec-eded-4458-b111-d29ba4508e85",
+            "last_modified": "2026-11-08T09:10:11",
+            "position": 0,
+            "revision_id": "6cc1a4ae-80fb-42cb-8e49-a854db950083",
+            "resource_type": null
+          }
+        ],
+        "num_resources": 1,
+        "tags": [
+          {
+            "vocabulary_id": null,
+            "state": "active",
+            "display_name": "Balancing",
+            "id": "0398cefd-1d64-41d9-b4ed-0252b97eef62",
+            "name": "Balancing"
+          },
+          {
+            "vocabulary_id": null,
+            "state": "active",
+            "display_name": "Energy",
+            "id": "70ebd17f-5bec-425c-a837-8d8617ac6104",
+            "name": "Energy"
+          },
+          {
+            "vocabulary_id": null,
+            "state": "active",
+            "display_name": "Subscribable",
+            "id": "fb80a4a5-bda6-4679-9c06-4decec4a0917",
+            "name": "Subscribable"
+          },
+          {
+            "vocabulary_id": null,
+            "state": "active",
+            "display_name": "System",
+            "id": "9ca0a2ec-480d-4ae3-9425-41faed1b0651",
+            "name": "System"
+          },
+          {
+            "vocabulary_id": null,
+            "state": "active",
+            "display_name": "Trades",
+            "id": "6e65b46a-4450-4cc4-88c2-87fd0cc0e603",
+            "name": "Trades"
+          }
+        ],
+        "groups": [],
+        "license_id": "ESO",
+        "relationships_as_subject": [],
+        "organization": {
+          "description": "We trade power exchange, forward energy, and balancing contracts to meet forecast energy needs, in advance of the balancing mechanism.",
+          "created": "2019-10-31T16:54:44.487635",
+          "title": "Trading",
+          "name": "trade-data",
+          "is_organization": true,
+          "state": "active",
+          "image_url": "2024-09-30-082921.286460Trading.svg",
+          "revision_id": "d479bf8d-8b83-43ca-a8cf-3ff5c59bf12a",
+          "type": "organization",
+          "id": "16468228-f545-4fdc-b6d7-31013e5bf568",
+          "approval_status": "approved"
+        },
+        "name": "upcoming-trades",
+        "isopen": false,
+        "url": "",
+        "notes": "This dataset displays all upcoming electricity trades due to be delivered.<br>\r\nTo meet our forecast balancing requirements at minimum cost, we trade energy-related products. The data is refreshed every ten minutes.<br>\r\nThe trade details should be considered provisional and subject to correction in particular following the usual trade confirmation process with the counterparty, and should not therefore be relied upon. We draw your attention to the disclaimers in our <u><font color=rgb(176,74,42)><a href=\"https://trades.nationalgrid.co.uk/terms-and-conditions\">terms and conditions</a></font></u>.<br>",
+        "owner_org": "16468228-f545-4fdc-b6d7-31013e5bf568",
+        "extras": [
+          {
+            "key": "Status",
+            "value": "Live"
+          }
+        ],
+        "license_url": "https://www.neso.energy/data-portal/ngeso-open-licence",
+        "title": "Upcoming trades",
+        "revision_id": "6cc1a4ae-80fb-42cb-8e49-a854db950083"
+      }
+    ],
+    "search_facets": {}
+  }
+}

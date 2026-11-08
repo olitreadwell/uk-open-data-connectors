@@ -34,6 +34,16 @@ export {
 } from './bankRate.js';
 /** Bank Rate types. */
 export type { BankRateObservation, BankRateSpell, BankRateSummary } from './bankRate.js';
+/** British Geological Survey OpenGeoscience WMS capabilities (keyless). */
+export {
+  BGS_WMS_CAPABILITIES_URL,
+  BGS_WMS_SOURCE_ID,
+  bgsWmsAdapter,
+  fetchBgsWmsCapabilities,
+  parseBgsWmsCapabilities,
+} from './bgsWms.js';
+/** BGS WMS types. */
+export type { BgsWmsCapabilities, BgsWmsGeographicBounds, BgsWmsLayer } from './bgsWms.js';
 /** National Energy System Operator half-hourly carbon intensity (keyless). */
 export {
   buildCarbonIntensityWindowUrl,
@@ -142,6 +152,17 @@ export type {
   FingertipsIndicatorMetadata,
   FingertipsIndicatorsSummary,
 } from './fingertipsIndicators.js';
+/** The Gazette notice feed (keyless). */
+export {
+  buildGazetteNoticesUrl,
+  fetchGazetteNotices,
+  GAZETTE_NOTICES_SOURCE_ID,
+  GAZETTE_NOTICES_URL,
+  gazetteNoticesAdapter,
+  parseGazetteNotices,
+} from './gazetteNotices.js';
+/** Gazette notice types. */
+export type { GazetteNotice, GazetteNoticePage } from './gazetteNotices.js';
 /** Environment Agency flood-monitoring stations and readings (keyless). */
 export {
   DEFAULT_FLOOD_STATION_REFERENCE,
@@ -185,6 +206,18 @@ export {
 } from './govUkContent.js';
 /** GOV.UK content types. */
 export type { GovUkContentLink, GovUkContentRecord } from './govUkContent.js';
+/** legislation.gov.uk search feed (keyless). */
+export {
+  buildLegislationSearchUrl,
+  DEFAULT_LEGISLATION_QUERY,
+  fetchLegislationSearch,
+  LEGISLATION_SEARCH_SOURCE_ID,
+  LEGISLATION_SEARCH_URL,
+  legislationSearchAdapter,
+  parseLegislationSearch,
+} from './legislationSearch.js';
+/** legislation.gov.uk search types. */
+export type { LegislationSearchPage, LegislationSearchResult } from './legislationSearch.js';
 /** London Datastore catalogue, published by the Greater London Authority (keyless). */
 export {
   fetchLondonDatastorePackages,
@@ -196,6 +229,18 @@ export {
 } from './londonDatastore.js';
 /** London Datastore types. */
 export type { LondonDatastorePackage, LondonDatastoreSummary } from './londonDatastore.js';
+/** NESO Data Portal catalogue (keyless). */
+export {
+  buildNesoCatalogueUrl,
+  DEFAULT_NESO_CATALOGUE_LIMIT,
+  fetchNesoCatalogue,
+  NESO_CATALOGUE_SEARCH_URL,
+  NESO_CATALOGUE_SOURCE_ID,
+  nesoCatalogueAdapter,
+  parseNesoCatalogue,
+} from './nesoCatalogue.js';
+/** NESO catalogue types. */
+export type { NesoCatalogueDataset, NesoCataloguePage } from './nesoCatalogue.js';
 /** National Energy System Operator half-hourly generation mix (keyless). */
 export {
   buildNesoGenerationMixUrl,
@@ -244,6 +289,18 @@ export {
 } from './nomis.js';
 /** Nomis catalogue types. */
 export type { NomisCatalogSummary, NomisDatasetDefinition, NomisStatusCount } from './nomis.js';
+/** ONS Open Geography Portal search (keyless). */
+export {
+  buildOnsGeographySearchUrl,
+  DEFAULT_ONS_GEOGRAPHY_LIMIT,
+  fetchOnsGeographyDatasets,
+  ONS_GEOGRAPHY_SEARCH_URL,
+  ONS_GEOGRAPHY_SOURCE_ID,
+  onsGeographyAdapter,
+  parseOnsGeographyDatasets,
+} from './onsGeography.js';
+/** ONS geography types. */
+export type { OnsGeographyDataset, OnsGeographyPage } from './onsGeography.js';
 /** Office for National Statistics dataset catalogue (keyless). */
 export {
   fetchOnsDatasets,

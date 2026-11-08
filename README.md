@@ -8,7 +8,7 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 | Package | What it is |
 | ------- | ---------- |
-| [`@uk-open-data-connectors/uk-sources`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources) | Uniform adapters for 28 UK public data sources. All keyless, with live probes and offline fixtures. |
+| [`@uk-open-data-connectors/uk-sources`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources) | Uniform adapters for 33 UK public data sources. All keyless, with live probes and offline fixtures. |
 | [`@uk-open-data-connectors/uk-mcp`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-mcp) | MCP server that exposes the connectors to Claude, ChatGPT, and other MCP clients. |
 | [`@uk-open-data-connectors/connectors-cli`](https://www.npmjs.com/package/@uk-open-data-connectors/connectors-cli) | `ukdata` command line tool that prints JSON to stdout, so any language can shell out to it. |
 | `@uk-open-data-connectors/connectors-api` | Private. HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP. |
@@ -18,21 +18,24 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 ## Connectors
 
-Twenty-eight adapters in `@uk-open-data-connectors/uk-sources`, all keyless.
+Thirty-three adapters in `@uk-open-data-connectors/uk-sources`, all keyless.
 Most carry Open Government Licence v3 data; the two TfL adapters carry TfL
 Open Data, the carbon intensity series is Creative Commons Attribution 4.0
 under the operator's own terms, and the Parliament seat counts carry the Open
-Parliament Licence v3. The NESO generation mix carries the NESO Open Data
-Licence. The postcode lookup goes through postcodes.io, a third party that
+Parliament Licence v3. The NESO generation mix and NESO catalogue carry the
+NESO Open Data Licence. The Gazette carries Crown copyright under the Open
+Government Licence v3.0, except for personal data. BGS OpenGeoscience carries
+the Open Government Licence with a BGS acknowledgement. The postcode lookup
+goes through postcodes.io, a third party that
 serves Open Government Licence postcode data from the ONS and Ordnance
 Survey. Data.gov.uk packages carry their own licence identifiers and can
-differ. GOV.UK content carries the Open Government Licence v3. Five adapters
+differ. GOV.UK content carries the Open Government Licence v3. Seven adapters
 copy the licence and attribution values their source supplies onto each
 record: `flood-stations`, `flood-readings`, `planning-datasets`,
-`find-a-tender` and `data-gov-uk-ckan`. The other adapters leave the publisher's
-page as the source for those terms.
+`find-a-tender`, `data-gov-uk-ckan`, `ons-geography`, and `neso-catalogue`. The
+other adapters leave the publisher's page as the source for those terms.
 
-Twenty-seven of the 28 adapters use the shared `httpGet` helper in
+Thirty-two of the 33 adapters use the shared `httpGet` helper in
 `packages/uk-sources/src/http.ts`. It sends the same `User-Agent`
 (`uk-open-data-connectors (Language=TypeScript)`), waits at most 30 seconds for
 a response, and marks rate-limited (HTTP 429), server-error (HTTP 5xx) and
@@ -72,6 +75,11 @@ adapter and the police street crime month calls do.
 | `uk-parliament-committees` | UK Parliament committees, with remit and start and end dates | Yes | `npx tsx packages/cli/src/cli.ts probe uk-parliament-committees` |
 | `elexon-system-prices` | Elexon BMRS settlement system prices for one settlement day | Yes | `npx tsx packages/cli/src/cli.ts probe elexon-system-prices` |
 | `ukri-gtr-awards` | UKRI Gateway to Research awards, newest start date first | Yes | `npx tsx packages/cli/src/cli.ts probe ukri-gtr-awards` |
+| `legislation-search` | legislation.gov.uk statute book search | Yes | `npx tsx packages/cli/src/cli.ts probe legislation-search` |
+| `gazette-notices` | The Gazette official public record notices | Yes | `npx tsx packages/cli/src/cli.ts probe gazette-notices` |
+| `ons-geography` | ONS Open Geography Portal boundary and geography datasets | Yes | `npx tsx packages/cli/src/cli.ts probe ons-geography` |
+| `neso-catalogue` | NESO Data Portal open data catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe neso-catalogue` |
+| `bgs-opengeoscience-wms` | BGS 1:50,000 digital geology WMS | Yes | `npx tsx packages/cli/src/cli.ts probe bgs-opengeoscience-wms` |
 
 A source that looks obvious for a UK repo and is not usable as it stands:
 
@@ -122,7 +130,7 @@ the Open Parliament Licence v3.0.
 
 ### Added 2026-10-05 onward
 
-Seventeen more keyless adapters, each checked live on 2026-10-05, 2026-10-18,
+Twenty-two more keyless adapters, each checked live on 2026-10-05, 2026-10-18,
 2026-11-05, 2026-11-07 or 2026-11-08 and covered by a committed fixture:
 
 - `postcode-lookup` reads one postcode from postcodes.io, default SW1A 1AA.
@@ -153,6 +161,16 @@ Seventeen more keyless adapters, each checked live on 2026-10-05, 2026-10-18,
   Great Britain settlement day from Elexon's BMRS Insights Solution.
 - `ukri-gtr-awards` reads UKRI-funded research awards from the Gateway to
   Research API, newest start date first, with each award's lead organisation.
+- `legislation-search` searches the legislation.gov.uk Atom feed for Acts,
+  orders, and regulations.
+- `gazette-notices` reads the latest notices from The Gazette's official
+  public record feed.
+- `ons-geography` searches the ONS Open Geography Portal for boundary and
+  geography datasets.
+- `neso-catalogue` reads the NESO Data Portal catalogue, including each
+  package's licence and resource count.
+- `bgs-opengeoscience-wms` reads the BGS 1:50,000 digital geology WMS
+  capabilities, with its layers, bounds, and coordinate systems.
 
 The full endpoint list, exact curl commands, and licences are in
 `docs/CONNECTOR_DISCOVERY.md`.

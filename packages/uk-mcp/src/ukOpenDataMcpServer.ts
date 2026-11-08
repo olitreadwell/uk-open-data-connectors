@@ -380,7 +380,7 @@ function dropUndefined(args: Record<string, unknown>): {
 }
 
 /**
- * Builds the UK MCP server: the 25 keyless UK sources, plus 25 named query
+ * Builds the UK MCP server: the 33 keyless UK sources, plus 25 named query
  * tools.
  *
  * @returns an MCP server ready to connect to a transport

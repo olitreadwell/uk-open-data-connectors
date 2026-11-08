@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xmlns:leg="http://www.legislation.gov.uk/namespaces/legislation" xmlns:ukm="http://www.legislation.gov.uk/namespaces/metadata" xmlns:theme="http://www.legislation.gov.uk/namespaces/theme" xmlns:openSearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:parameters="http://a9.com/-/spec/opensearch/extensions/parameters/1.0/">
+			<id>http://www.legislation.gov.uk/search/data.feed?text=environment</id>
+			<link rel="self" type="application/atom+xml" href="http://www.legislation.gov.uk/search/data.feed?text=environment"/>
+
+			<link rel="alternate" type="text/csv" href="http://www.legislation.gov.uk/search/data.csv?text=environment"/>
+			<updated>2026-11-07T23:59:59Z</updated>
+			<title>Search Results</title>
+			<openSearch:Query role="request" searchTerms="environment" leg:type="all"> </openSearch:Query>
+			<openSearch:itemsPerPage>20</openSearch:itemsPerPage>
+			<openSearch:startIndex>1</openSearch:startIndex>
+			<leg:page>1</leg:page>
+			<leg:morePages>12</leg:morePages>
+			<leg:facets>
+
+								<leg:facetTypes/>
+								<leg:facetYears/>
+								<leg:facetHundreds/>
+
+							</leg:facets>
+			<leg:text><leg:term>environment</leg:term></leg:text>
+
+			<link rel="first" type="application/atom+xml" href="http://www.legislation.gov.uk/search/data.feed?text=environment"/><link rel="next" type="application/atom+xml" href="http://www.legislation.gov.uk/search/data.feed?text=environment&amp;page=2"/><entry>
+			<id>http://www.legislation.gov.uk/id/wsi/2013/755</id>
+			<title type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+						<span xml:lang="en">The Natural Resources Body for Wales (Functions) Order 2013</span> / <span xml:lang="cy">Gorchymyn Corff Adnoddau Naturiol Cymru (Swyddogaethau) 2013</span>
+					</div></title>
+			<link rel="self" href="http://www.legislation.gov.uk/id/wsi/2013/755"/>
+			<link href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31"/>
+			<link rel="alternate" type="application/xml" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/data.xml" title="XML"/><link rel="alternate" type="application/xml" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/welsh/data.xml" hreflang="cy" title="XML - Cymru"/><link rel="alternate" type="application/rdf+xml" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/data.rdf" title="RDF/XML"/><link rel="alternate" type="application/rdf+xml" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/welsh/data.rdf" hreflang="cy" title="RDF/XML - Cymru"/><link rel="alternate" type="application/akn+xml" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/data.akn" title="AKN"/><link rel="alternate" type="application/akn+xml" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/welsh/data.akn" hreflang="cy" title="AKN - Cymru"/><link rel="alternate" type="application/xhtml+xml" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/data.xht" title="HTML snippet"/><link rel="alternate" type="application/xhtml+xml" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/welsh/data.xht" hreflang="cy" title="HTML snippet - Cymru"/><link rel="alternate" type="application/akn+xhtml" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/data.html" title="HTML5"/><link rel="alternate" type="application/akn+xhtml" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/welsh/data.html" hreflang="cy" title="HTML5 - Cymru"/><link rel="alternate" type="text/html" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/data.htm" title="Website (XHTML) Default View"/><link rel="alternate" type="text/html" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/welsh/data.htm" hreflang="cy" title="Website (XHTML) Default View - Cymru"/><link rel="alternate" type="text/csv" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/data.csv" title="CSV"/><link rel="alternate" type="text/csv" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/welsh/data.csv" hreflang="cy" title="CSV - Cymru"/><link rel="alternate" type="application/pdf" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/data.pdf" title="PDF"/><link rel="alternate" type="application/pdf" href="http://www.legislation.gov.uk/wsi/2013/755/2020-12-31/welsh/data.pdf" hreflang="cy" title="PDF - Cymru"/>
+			<link rel="http://purl.org/dc/terms/tableOfContents" type="application/xml" href="http://www.legislation.gov.uk/wsi/2013/755/contents?text=environment" title="Table of Contents"/><link rel="http://purl.org/dc/terms/tableOfContents" type="application/xml" href="http://www.legislation.gov.uk/wsi/2013/755/contents/welsh?text=environment" hreflang="cy" title="Table of Contents - Cymru"/>
+			<author><name/></author>
+			<updated>2026-09-14T20:20:31Z</updated>
+			<published>2013-04-19T13:30:01.373Z</published>
+			<ukm:DocumentMainType Value="WelshStatutoryInstrument"/><ukm:Year Value="2013"/><ukm:Number Value="755"/><ukm:ISBN Value="9780348107357"/><ukm:AlternativeNumber Category="W" Value="90"/><ukm:AlternativeNumber Category="Cy" Value="90"/><ukm:CreationDate Date="2013-03-25"/><ukm:Subject Value="PUBLIC BODIES"/><ukm:Subject Value="ENVIRONMENTAL PROTECTION"/><ukm:Subject Value="FORESTRY"/><ukm:Subject Value="COUNTRYSIDE"/>
+
+
+			<category term="PUBLIC BODIES"/><category term="ENVIRONMENTAL PROTECTION"/><category term="FORESTRY"/><category term="COUNTRYSIDE"/><category term="CYRFF CYHOEDDUS"/><category term="DIOGELU'R AMGYLCHEDD"/><category term="COEDWIGAETH"/><category term="CEFN GWLAD"/>
+			<summary type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+						<p xml:lang="en">The Natural Resources Body for Wales (Establishment) Order 2012 (“the Establishment Order”) established a new statutory body, the Natural Resources Body for Wales (“the Body”) and provided for its purpose, membership, procedure, financial governance and initial functions. This Order makes further provision about the Body, including provision about the modification and transfer of environmental functions to the Body.</p>
+						<p xml:lang="cy">Sefydlodd Gorchymyn Corff Adnoddau Naturiol Cymru (Sefydlu) 2012 (“y Gorchymyn Sefydlu”) gorff statudol newydd, Corff Adnoddau Naturiol Cymru (“y Corff”) gan ddarparu ar gyfer diben, aelodaeth, gweithdrefn, llywodraethiant ariannol a swyddogaethau cychwynnol y Corff. Mae'r Gorchymyn hwn yn gwneud darpariaeth bellach ynglŷn â'r Corff, gan gynnwys darpariaeth ynglŷn ag addasu a throsglwyddo swyddogaethau amgylcheddol iddo.</p>
+					</div></summary>
+		</entry><entry>
+			<id>http://www.legislation.gov.uk/id/ssi/2025/165</id>
+			<title>The Environmental Authorisations (Scotland) Amendment Regulations 2025</title>
+			<link rel="self" href="http://www.legislation.gov.uk/id/ssi/2025/165"/>
+			<link href="http://www.legislation.gov.uk/ssi/2025/165/2026-03-26"/>
+			<link rel="alternate" type="application/xml" href="http://www.legislation.gov.uk/ssi/2025/165/2026-03-26/data.xml" title="XML"/><link rel="alternate" type="application/rdf+xml" href="http://www.legislation.gov.uk/ssi/2025/165/2026-03-26/data.rdf" title="RDF/XML"/><link rel="alternate" type="application/akn+xml" href="http://www.legislation.gov.uk/ssi/2025/165/2026-03-26/data.akn" title="AKN"/><link rel="alternate" type="application/xhtml+xml" href="http://www.legislation.gov.uk/ssi/2025/165/2026-03-26/data.xht" title="HTML snippet"/><link rel="alternate" type="application/akn+xhtml" href="http://www.legislation.gov.uk/ssi/2025/165/2026-03-26/data.html" title="HTML5"/><link rel="alternate" type="text/html" href="http://www.legislation.gov.uk/ssi/2025/165/2026-03-26/data.htm" title="Website (XHTML) Default View"/><link rel="alternate" type="text/csv" href="http://www.legislation.gov.uk/ssi/2025/165/2026-03-26/data.csv" title="CSV"/><link rel="alternate" type="application/pdf" href="http://www.legislation.gov.uk/ssi/2025/165/2026-03-26/data.pdf" title="PDF"/>
+			<link rel="http://purl.org/dc/terms/tableOfContents" type="application/xml" href="http://www.legislation.gov.uk/ssi/2025/165/contents?text=environment" title="Table of Contents"/>
+			<author><name/></author>
+			<updated>2026-06-22T14:27:25Z</updated>
+			<published>2026-06-22T00:00:00Z</published>
+			<ukm:DocumentMainType Value="ScottishStatutoryInstrument"/><ukm:Year Value="2025"/><ukm:Number Value="165"/><ukm:ISBN Value="9780111063125"/><ukm:CreationDate Date="2025-05-27"/><ukm:Subject Value="ENVIRONMENTAL PROTECTION"/><ukm:Subject Value="WASTE"/><ukm:Subject Value="WATER"/>
+
+
+			<category term="ENVIRONMENTAL PROTECTION"/><category term="WASTE"/><category term="WATER"/>
+			<summary>These Regulations amend the Environmental Authorisations (Scotland) Regulations 2018 (the “2018 Regulations”) to bring water, waste and industrial emissions activities into the framework for authorisation of environmental activities provided by the 2018 Regulations, which currently only apply to radioactive substances activities in Scotland.</summary>
+		</entry>
+</feed>

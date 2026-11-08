@@ -119,6 +119,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
       return jsonResponse(readFixtureJson('nhsbsa-ckan-2026-10-05.json'));
     }
     if (new URL(target).hostname === 'api.neso.energy') {
+      if (new URL(target).pathname === '/api/3/action/package_search') {
+        return jsonResponse(readFixtureJson('neso-catalogue-2026-11-08.json'));
+      }
       return jsonResponse(readFixtureJson('neso-generation-mix-2026-10-18.json'));
     }
     if (new URL(target).hostname === 'www.data.gov.uk') {
@@ -135,6 +138,18 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     }
     if (new URL(target).hostname === 'gtr.ukri.org') {
       return jsonResponse(readFixtureJson('ukri-gtr-awards-2026-11-08.json'));
+    }
+    if (new URL(target).hostname === 'www.legislation.gov.uk') {
+      return new Response(readFixtureText('legislation-search-2026-11-08.xml'), { status: 200 });
+    }
+    if (new URL(target).hostname === 'www.thegazette.co.uk') {
+      return jsonResponse(readFixtureJson('gazette-notices-2026-11-08.json'));
+    }
+    if (new URL(target).hostname === 'geoportal.statistics.gov.uk') {
+      return jsonResponse(readFixtureJson('ons-geography-2026-11-08.json'));
+    }
+    if (new URL(target).hostname === 'map.bgs.ac.uk') {
+      return new Response(readFixtureText('bgs-wms-2026-11-08.xml'), { status: 200 });
     }
     if (target.includes('/readings')) {
       return jsonResponse(readFixtureJson('flood-station-readings.json'));
@@ -214,6 +229,11 @@ describe('registry', () => {
       'uk-parliament-committees',
       'elexon-system-prices',
       'ukri-gtr-awards',
+      'legislation-search',
+      'gazette-notices',
+      'ons-geography',
+      'neso-catalogue',
+      'bgs-opengeoscience-wms',
     ]);
   });
 
@@ -246,6 +266,11 @@ describe('registry', () => {
     expect(getUkDataSource('uk-parliament-committees')?.name).toContain('UK Parliament');
     expect(getUkDataSource('elexon-system-prices')?.name).toContain('Elexon');
     expect(getUkDataSource('ukri-gtr-awards')?.name).toContain('UKRI');
+    expect(getUkDataSource('legislation-search')?.name).toContain('legislation.gov.uk');
+    expect(getUkDataSource('gazette-notices')?.name).toContain('Gazette');
+    expect(getUkDataSource('ons-geography')?.name).toContain('ONS Open Geography Portal');
+    expect(getUkDataSource('neso-catalogue')?.name).toContain('NESO Data Portal');
+    expect(getUkDataSource('bgs-opengeoscience-wms')?.name).toContain('BGS');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 

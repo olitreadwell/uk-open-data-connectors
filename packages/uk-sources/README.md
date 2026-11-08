@@ -1,10 +1,10 @@
 # @uk-open-data-connectors/uk-sources
 
-Uniform TypeScript adapters for 28 UK public data sources, for JavaScript and TypeScript developers.
+Uniform TypeScript adapters for 33 UK public data sources, for JavaScript and TypeScript developers.
 
 ## What this package does
 
-- Ships one adapter for each of 28 UK public data sources.
+- Ships one adapter for each of 33 UK public data sources.
 - Gives every adapter the same shape: a live fetch, a strict parse, and a committed fixture for tests.
 - Lets you build and test offline, because tests read the fixtures directly.
 - Exposes a registry (`UK_DATA_SOURCES`) and probe helpers (`probeUkDataSource`, `probeAllUkDataSources`).
@@ -58,12 +58,17 @@ console.log(summary.latest?.value, summary.trend);
 | `uk-parliament-committees` | UK Parliament (OData API) | none | Parliamentary committees, with their remit, start date, and end date. |
 | `elexon-system-prices` | Elexon BMRS Insights Solution | none | Settlement system buy and sell prices for one Great Britain settlement day. |
 | `ukri-gtr-awards` | UKRI Gateway to Research | none | UKRI-funded research awards, newest start date first, with their lead organisation. |
+| `legislation-search` | legislation.gov.uk | none | A page of Acts, orders, and regulations from the statute book search. |
+| `gazette-notices` | The Gazette | none | The latest official public record notices, with notice codes and dates. |
+| `ons-geography` | ONS Open Geography Portal | none | Boundary and geography datasets, with tags, licence text, and download URLs. |
+| `neso-catalogue` | NESO Data Portal | none | The NESO open data catalogue, with licence and resource counts. |
+| `bgs-opengeoscience-wms` | British Geological Survey | none | BGS 1:50,000 digital geology layers, service bounds, and coordinate systems. |
 
 The `auth` field is `none` for every adapter.
 
 ## Notes and limits
 
-- All 28 adapters are keyless. `fetchTflBikePoints` and `fetchTflLineStatuses` take an optional `apiKey`, sent as the `app_key` query parameter.
+- All 33 adapters are keyless. `fetchTflBikePoints` and `fetchTflLineStatuses` take an optional `apiKey`, sent as the `app_key` query parameter.
 - A live fetch throws when the API fails. Fixtures are read only through `loadFixture`, so a stale snapshot never appears silently. Call `probeUkDataSource` before you quote a number.
 - The fixtures in `src/fixtures` are real snapshots from the live APIs. The newer files carry their capture date in the filename.
 - Tests never reach the network unless `RUN_SMOKE=1` is set. The smoke test hits the real endpoints and needs no keys.
@@ -88,6 +93,7 @@ The `auth` field is `none` for every adapter.
 - The other adapters do not return licence metadata, because their endpoints do not carry it per record. Check the publisher's page before reuse.
 - `postcode-lookup` reads from postcodes.io, a third-party service. It is not a government API, though it serves ONS and Ordnance Survey postcode data under the Open Government Licence v3.
 - Only the Find a Tender `license` field and the Data.gov.uk, NESO `ESO`, NHSBSA `OGL-UK-3.0`, and Public Health Scotland `uk-ogl` package metadata were read directly from the service. The other licences come from the publishers' standard terms.
+- `ons-geography` returns the portal's per-record `license` and `licenseInfo` values. `neso-catalogue` returns the CKAN licence id, title, and URL on each package. `legislation-search` and `gazette-notices` leave the publisher's page as the source for their terms.
 - The eleven adapters added on 2026-10-05 were probed live on that day.
 - The Data.gov.uk adapter was probed live on 2026-11-05.
 - The GOV.UK Content API has no listing endpoint. The adapter reads one content
@@ -105,10 +111,16 @@ The `auth` field is `none` for every adapter.
   adapter asks for 20 awards sorted by start date, newest first. The committed
   fixture keeps the first 3 awards from a 20-award page.
 - The Parliament, Elexon, and UKRI adapters were probed live on 2026-11-08.
+- The legislation.gov.uk adapter reads the Atom search feed. The search path redirected to `/all/data.feed` on 2026-11-08, and Node's `fetch` followed it. The feed answers 20 results per page and reports the remaining pages. The committed fixture keeps the first 2 of those 20 results for the default `environment` query.
+- The Gazette's JSON feed answered 10 notices per page on 2026-11-08. The feed reports a `f:total` across the whole archive, not the page size. The committed fixture keeps the first 3 notices from a live page whose total was 4,889,773. The `content` field can end with an ellipsis because the feed shortens long notices.
+- The ONS Open Geography Portal search answered 3,497 matches for an unfiltered page on 2026-11-08. The adapter asks for 20 by default. Paging uses `startindex`; `start` and `f` are rejected as invalid queryables. The committed fixture keeps the first 2 features.
+- The NESO Data Portal catalogue reported 131 packages on 2026-11-08. Every package carries `license_id: ESO`, `license_title: NESO Open Data Licence`, and the licence URL. The committed fixture keeps the first package from the captured page.
+- The BGS WMS capabilities document reports version 1.3.0, the title `BGS 50000 scale digital geology`, and 6 named layers. The fixture keeps the service metadata and layer blocks, and drops per-layer style, metadata, data, legend, and bounding-box blocks to stay within the commit size limit.
+- The legislation.gov.uk, Gazette, ONS geography, NESO catalogue, and BGS WMS adapters were probed live on 2026-11-08.
 
 ## Data sources and licences
 
-This package reads 28 sources. Most come from UK public bodies. The postcode lookup comes from postcodes.io, a third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts and committee listings carry the Open Parliament Licence v3.0. The Elexon system prices carry the BMRS open data licence. The UKRI Gateway to Research terms say the service is open and free to use. The NESO generation mix carries the NESO Open Data Licence. Data.gov.uk licences vary by dataset. GOV.UK content carries the Open Government Licence v3. Five adapters copy the licence and attribution values their source supplies onto each record. The other adapters do not, because their endpoints do not carry per-record licence fields.
+This package reads 33 sources. Most come from UK public bodies. The postcode lookup comes from postcodes.io, a third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts and committee listings carry the Open Parliament Licence v3.0. The Elexon system prices carry the BMRS open data licence. The UKRI Gateway to Research terms say the service is open and free to use. The NESO generation mix and NESO catalogue carry the NESO Open Data Licence. The Gazette carries Crown copyright under the Open Government Licence v3.0, except for personal data. BGS OpenGeoscience carries the Open Government Licence with a BGS acknowledgement. Data.gov.uk licences vary by dataset. GOV.UK content carries the Open Government Licence v3. The ONS geography search reports a licence field and links each dataset to the ONS geography licence page. Seven adapters copy the licence and attribution values their source supplies onto each record. The other adapters do not, because their endpoints do not carry per-record licence fields.
 
 | Adapter | Publisher | Source URL | Data licence |
 | ------- | --------- | ---------- | ------------ |
@@ -140,6 +152,11 @@ This package reads 28 sources. Most come from UK public bodies. The postcode loo
 | `uk-parliament-committees` | UK Parliament | <https://api.parliament.uk/odata/ParliamentaryCommittee> | Open Parliament Licence v3.0 |
 | `elexon-system-prices` | Elexon | <https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/{settlementDate}> | BMRS open data licence, with the attribution `Contains BMRS data © Elexon Limited copyright and database right [year]` |
 | `ukri-gtr-awards` | UK Research and Innovation | <https://gtr.ukri.org/api/v3/awards> | UKRI Gateway to Research terms of use; the GTR terms page says the service is open and free to use |
+| `legislation-search` | legislation.gov.uk | <https://www.legislation.gov.uk/search/data.feed?text=environment> | Open Government Licence v3 |
+| `gazette-notices` | The Gazette (The National Archives) | <https://www.thegazette.co.uk/all-notices/notice/data.json> | Open Government Licence v3.0, except for personal data |
+| `ons-geography` | Office for National Statistics | <https://geoportal.statistics.gov.uk/api/search/v1/collections/all/items?limit=20> | Open Government Licence v3; the search links each dataset to the ONS geography licence page |
+| `neso-catalogue` | National Energy System Operator | <https://api.neso.energy/api/3/action/package_search> | The NESO Open Data Licence, the portal reports `ESO` |
+| `bgs-opengeoscience-wms` | British Geological Survey | <https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?service=WMS&request=GetCapabilities> | Open Government Licence, with the acknowledgement `Contains British Geological Survey materials copyright UKRI [year]` |
 
 ## Package licence
 

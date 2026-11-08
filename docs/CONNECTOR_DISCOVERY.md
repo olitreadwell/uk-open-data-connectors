@@ -37,12 +37,85 @@ probed again that day.
 | `uk-parliament-committees` | UK Parliament | `https://api.parliament.uk/odata/ParliamentaryCommittee` | Yes |
 | `elexon-system-prices` | Elexon BMRS Insights Solution | `https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/{settlementDate}` | Yes |
 | `ukri-gtr-awards` | UKRI Gateway to Research | `https://gtr.ukri.org/api/v3/awards` | Yes |
+| `legislation-search` | legislation.gov.uk | `https://www.legislation.gov.uk/search/data.feed?text={query}` | Yes |
+| `gazette-notices` | The Gazette | `https://www.thegazette.co.uk/all-notices/notice/data.json` | Yes |
+| `ons-geography` | ONS Open Geography Portal | `https://geoportal.statistics.gov.uk/api/search/v1/collections/all/items?limit={limit}` | Yes |
+| `neso-catalogue` | NESO Data Portal | `https://api.neso.energy/api/3/action/package_search?rows={limit}` | Yes |
+| `bgs-opengeoscience-wms` | British Geological Survey | `https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?service=WMS&request=GetCapabilities` | Yes |
 
 Adapters keep a committed fixture in `packages/uk-sources/src/fixtures/` so
 tests run offline, plus a smoke test gated on `RUN_SMOKE=1` that hits the
 live endpoint.
 
 ## Added 2026-11-08
+
+Five keyless adapters, for legislation.gov.uk, The Gazette, the ONS Open
+Geography Portal, the NESO Data Portal catalogue, and the BGS OpenGeoscience
+WMS. Every request below returned HTTP 200 with no key on 2026-11-08.
+
+```sh
+UA='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
+
+# legislation-search: the default search for "environment"
+curl -sSL -H "User-Agent: $UA" \
+  'https://www.legislation.gov.uk/search/data.feed?text=environment'
+
+# gazette-notices: the latest notices across the official public record
+curl -sSL -H "User-Agent: $UA" \
+  'https://www.thegazette.co.uk/all-notices/notice/data.json'
+
+# ons-geography: two geography datasets from the portal search
+curl -sSL -H "User-Agent: $UA" \
+  'https://geoportal.statistics.gov.uk/api/search/v1/collections/all/items?limit=2'
+
+# neso-catalogue: the first two packages in the NESO catalogue
+curl -sSL -H "User-Agent: $UA" \
+  'https://api.neso.energy/api/3/action/package_search?rows=2'
+
+# bgs-opengeoscience-wms: the 1:50,000 digital geology capabilities
+curl -sSL -H "User-Agent: $UA" \
+  'https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?service=WMS&request=GetCapabilities'
+```
+
+| Adapter | Fixture | Licence |
+| --- | --- | --- |
+| `legislation-search` | `legislation-search-2026-11-08.xml` (the first 2 of 20 results for `environment`) | Open Government Licence v3 |
+| `gazette-notices` | `gazette-notices-2026-11-08.json` (the first 3 notices; the feed reported 4,889,773 in total) | Open Government Licence v3.0, except for personal data |
+| `ons-geography` | `ons-geography-2026-11-08.json` (the first 2 of 3,497 matches) | Open Government Licence v3; the search reports `license: custom` and links to the ONS geography licence page |
+| `neso-catalogue` | `neso-catalogue-2026-11-08.json` (the first of 131 packages, `upcoming-trades`) | The NESO Open Data Licence, reported as `ESO` |
+| `bgs-opengeoscience-wms` | `bgs-wms-2026-11-08.xml` (service metadata and 6 layer blocks) | Open Government Licence, with the acknowledgement `Contains British Geological Survey materials copyright UKRI [year]` |
+
+What was verified live on 2026-11-08, and what was not:
+
+- The legislation.gov.uk search answered HTTP 200 with an Atom feed. The
+  response held 20 results, reported 12 more pages, and the first result was
+  `http://www.legislation.gov.uk/id/wsi/2013/755`. The search path redirected
+  to `/all/data.feed`, which Node's `fetch` followed. The fixture keeps the
+  first 2 results.
+- The Gazette JSON feed answered HTTP 200 with 10 notices on page 1 and a
+  `f:total` of 4,889,773. The first notice was notice 5247115. The feed writes
+  its page and total values as strings, and can shorten long `content` values
+  with an ellipsis. The fixture keeps the first 3 notices.
+- The ONS Open Geography Portal search answered HTTP 200 with GeoJSON. It
+  reported 3,497 matches and returned the 2 requested features, with a next
+  link at `startindex=3`. The portal rejected `start` and `f` as invalid
+  queryables; the adapter uses `startindex`. The fixture keeps the first 2
+  features.
+- The NESO catalogue `package_search` answered HTTP 200 with 131 packages. The
+  captured first package was `upcoming-trades`, published by `Trading`, with
+  one resource and `license_id: ESO`. A later probe returned `skip-rates` first,
+  because the package search orders by relevance and modification time, not by
+  a stable name.
+- The BGS WMS capabilities document answered HTTP 200 with WMS 1.3.0 metadata.
+  It carried 6 named layers, including `BGS.50k.Bedrock` and
+  `BGS.50k.Superficial.deposits`, and bounds from -8.344021 to 2.697705
+  longitude and 49.846369 to 60.866269 latitude. The committed fixture drops
+  per-layer style, metadata, data, legend, and bounding-box blocks to stay
+  within the commit size limit.
+- The five adapters were probed through their own live fetch after the
+  fixtures were captured. Each returned `"ok": true` and `"status": "ok"`.
+
+## Added 2026-11-08 (earlier batch)
 
 Three keyless adapters, for the UK Parliament OData API, Elexon's Balancing
 Mechanism Reporting Service (BMRS) Insights Solution, and the UKRI Gateway to
@@ -331,13 +404,20 @@ attribution. The exceptions are listed in the table.
 | `uk-parliament-committees` | UK Parliament | Open Parliament Licence v3.0 |
 | `elexon-system-prices` | Elexon | BMRS open data licence, with the attribution `Contains BMRS data © Elexon Limited copyright and database right [year]` |
 | `ukri-gtr-awards` | UK Research and Innovation | UKRI Gateway to Research terms of use; the terms page says the service is open and free to use |
+| `legislation-search` | legislation.gov.uk | Open Government Licence v3 |
+| `gazette-notices` | The Gazette (The National Archives) | Open Government Licence v3.0, except for personal data |
+| `ons-geography` | Office for National Statistics | Open Government Licence v3; the search returns a licence label and links to the ONS geography licence page |
+| `neso-catalogue` | National Energy System Operator | The NESO Open Data Licence, reported as `ESO` |
+| `bgs-opengeoscience-wms` | British Geological Survey | Open Government Licence, with the acknowledgement `Contains British Geological Survey materials copyright UKRI [year]` |
 
-Five adapters return source-supplied licence and attribution metadata per
+Seven adapters return source-supplied licence and attribution metadata per
 record. `flood-stations` and `flood-readings` copy `meta.publisher` and
 `meta.licence` onto each record. `find-a-tender` copies the package publisher
 and `license` onto each release. `planning-datasets` returns the source
 `attribution` and `licence`. `data-gov-uk-ckan` returns `publisher`,
 `licenceId`, `licenceTitle` and `licenceUrl` for each dataset.
+`neso-catalogue` returns the same four CKAN metadata values on each package.
+`ons-geography` returns the portal's `license` value and its `licenseInfo` text.
 
 The other adapters do not return licence metadata, because their endpoints do
 not carry it per record. Check the publisher's page before you reuse their

@@ -1,5 +1,6 @@
 import { ancientWoodlandAdapter } from './ancientWoodland.js';
 import { bankRateAdapter } from './bankRate.js';
+import { bgsWmsAdapter } from './bgsWms.js';
 import { carbonIntensityAdapter } from './carbonIntensity.js';
 import { dataGovUkCkanAdapter } from './dataGovUkCkan.js';
 import { elexonSystemPricesAdapter } from './elexonSystemPrices.js';
@@ -8,11 +9,15 @@ import { findATenderAdapter } from './findATender.js';
 import { fingertipsIndicatorsAdapter } from './fingertipsIndicators.js';
 import { floodReadingsAdapter, floodStationsAdapter } from './floodMonitoring.js';
 import { foodHygieneAuthoritiesAdapter } from './foodHygiene.js';
+import { gazetteNoticesAdapter } from './gazetteNotices.js';
 import { govUkContentAdapter } from './govUkContent.js';
+import { legislationSearchAdapter } from './legislationSearch.js';
 import { londonDatastoreAdapter } from './londonDatastore.js';
+import { nesoCatalogueAdapter } from './nesoCatalogue.js';
 import { nesoGenerationMixAdapter } from './nesoGenerationMix.js';
 import { nhsbsaCkanAdapter } from './nhsbsaCkan.js';
 import { nomisAdapter } from './nomis.js';
+import { onsGeographyAdapter } from './onsGeography.js';
 import { onsDatasetsAdapter } from './onsDatasets.js';
 import { parliamentSeatsAdapter } from './parliamentSeats.js';
 import { planningDatasetsAdapter } from './planningDatasets.js';
@@ -57,6 +62,11 @@ export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [
   ukParliamentCommitteesAdapter,
   elexonSystemPricesAdapter,
   ukriGtrAwardsAdapter,
+  legislationSearchAdapter,
+  gazetteNoticesAdapter,
+  onsGeographyAdapter,
+  nesoCatalogueAdapter,
+  bgsWmsAdapter,
 ];
 
 /** Looks up a source adapter by id. */

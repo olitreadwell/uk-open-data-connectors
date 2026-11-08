@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<WMS_Capabilities version="1.3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:inspire_vs="http://inspire.ec.europa.eu/schemas/inspire_vs/1.0" xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xmlns="http://www.opengis.net/wms" xsi:schemaLocation="http://www.opengis.net/wms http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/sld_capabilities.xsd http://inspire.ec.europa.eu/schemas/inspire_vs/1.0 http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd">
+	<Service>
+		<Name>WMS</Name>
+		<Title>BGS 50000 scale digital geology</Title>
+		<Abstract>This dataset is designed for 1:50000 scale but can be viewed in this WMS below 1:100000. Separate bedrock geology, superficial deposits, artificial ground, mass movement deposits and geological linear features layers are available in this service. For information about more of the British Geological Survey's maps that are available digitally please visit http://www.bgs.ac.uk/products/digitalmaps/digmapgb.html. These data are delivered under the terms of the Open Government Licence (http://www.nationalarchives.gov.uk/doc/open-government-licence/), subject to the following acknowledgement accompanying the reproduced BGS materials: Contains British Geological Survey materials copyright UKRI [year]. Contact us if you create something new and innovative that could benefit others usingbgsdata@bgs.ac.uk.</Abstract>
+
+		<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://www.bgs.ac.uk/products/digitalmaps/digmapgb_50.html"/>
+		<ContactInformation>
+			<ContactPersonPrimary>
+				<ContactPerson>Garry Baker</ContactPerson>
+				<ContactOrganization>British Geological Survey
+</ContactOrganization>
+			</ContactPersonPrimary>
+			<ContactPosition>Head of BGS Data Centre
+</ContactPosition>
+			<ContactAddress>
+				<AddressType>postal
+</AddressType>
+				<Address>British Geological Survey Environmental Science Centre
+</Address>
+				<City>Keyworth
+</City>
+				<StateOrProvince>Nottingham
+</StateOrProvince>
+				<PostCode>NG12 5GG
+</PostCode>
+				<Country>UK</Country>
+			</ContactAddress>
+			<ContactVoiceTelephone>+44 (0)115 936 3100
+</ContactVoiceTelephone>
+			<ContactFacsimileTelephone>+44 (0)115 936 3200
+</ContactFacsimileTelephone>
+			<ContactElectronicMailAddress>enquiries@bgs.ac.uk
+</ContactElectronicMailAddress>
+		</ContactInformation>
+		<Fees>none</Fees>
+		<AccessConstraints>These data are delivered under the terms of the Open Government Licence (http://www.nationalarchives.gov.uk/doc/open-government-licence/), subject to the following acknowledgement accompanying the reproduced BGS materials: Contains British Geological Survey materials copyright UKRI [year]. Contact us if you create something new and innovative that could benefit others usingbgsdata@bgs.ac.uk.
+</AccessConstraints>
+		<MaxWidth>4096</MaxWidth>
+		<MaxHeight>4096</MaxHeight>
+	</Service>
+	<Capability>
+		<Request>
+			<GetCapabilities>
+				<Format>application/vnd.ogc.wms_xml</Format>
+				<Format>text/xml</Format>
+				<DCPType>
+					<HTTP>
+						<Get>
+							<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WmsServer?"/>
+						</Get>
+					</HTTP>
+				</DCPType>
+			</GetCapabilities>
+			<GetMap>
+				<Format>image/png</Format>
+				<Format>image/png8</Format>
+				<Format>image/png24</Format>
+				<Format>image/png32</Format>
+				<Format>image/bmp</Format>
+				<Format>image/jpeg</Format>
+				<Format>image/tiff</Format>
+				<Format>image/gif</Format>
+				<Format>image/svg+xml</Format>
+				<DCPType>
+					<HTTP>
+						<Get>
+							<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WmsServer?"/>
+						</Get>
+					</HTTP>
+				</DCPType>
+			</GetMap>
+			<GetFeatureInfo>
+				<Format>application/vnd.esri.wms_raw_xml</Format>
+				<Format>application/vnd.esri.wms_featureinfo_xml</Format>
+				<Format>application/vnd.ogc.wms_xml</Format>
+				<Format>application/geo+json</Format>
+				<Format>text/xml</Format>
+				<Format>text/html</Format>
+				<Format>text/plain</Format>
+				<DCPType>
+					<HTTP>
+						<Get>
+							<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WmsServer?"/>
+						</Get>
+					</HTTP>
+				</DCPType>
+			</GetFeatureInfo>
+		</Request>
+		<Exception>
+			<Format>application/vnd.ogc.se_xml</Format>
+			<Format>application/vnd.ogc.se_inimage</Format>
+			<Format>application/vnd.ogc.se_blank</Format>
+			<Format>text/xml</Format>
+			<Format>XML</Format>
+		</Exception>
+
+		<Layer>
+			<Name>BGS.detailed.geology</Name>
+			<Title>BGS detailed geology</Title>
+			<Abstract>BGS detailed geology</Abstract>
+
+			<CRS>CRS:84</CRS>
+			<CRS>EPSG:4326</CRS>
+			<CRS>EPSG:4258</CRS>
+			<CRS>EPSG:27700</CRS>
+			<CRS>EPSG:3857</CRS>
+			<EX_GeographicBoundingBox>
+				<westBoundLongitude>-8.344021</westBoundLongitude>
+				<eastBoundLongitude>2.697705</eastBoundLongitude>
+				<southBoundLatitude>49.846369</southBoundLatitude>
+				<northBoundLatitude>60.866269</northBoundLatitude>
+			</EX_GeographicBoundingBox>
+
+
+
+
+
+			<Layer queryable="1">
+				<Name>BGS.50k.Bedrock</Name>
+				<Title>GBR BGS 1:50k Bedrock</Title>
+				<Abstract>GBR BGS 1:50000 scale bedrock geology layer</Abstract>
+
+				<CRS>CRS:84</CRS>
+				<CRS>EPSG:4326</CRS>
+				<CRS>EPSG:4258</CRS>
+				<CRS>EPSG:27700</CRS>
+				<CRS>EPSG:3857</CRS>
+				<EX_GeographicBoundingBox>
+					<westBoundLongitude>-8.344021</westBoundLongitude>
+					<eastBoundLongitude>2.697705</eastBoundLongitude>
+					<southBoundLatitude>49.846369</southBoundLatitude>
+					<northBoundLatitude>60.866269</northBoundLatitude>
+				</EX_GeographicBoundingBox>
+
+
+
+
+
+
+
+
+				<MaxScaleDenominator>94494.992560</MaxScaleDenominator>
+			</Layer>
+			<Layer queryable="1">
+				<Name>BGS.50k.Superficial.deposits</Name>
+				<Title>GBR BGS 1:50k Superficial deposits</Title>
+				<Abstract>GBR BGS 1:50000 scale superficial deposits layer</Abstract>
+
+				<CRS>CRS:84</CRS>
+				<CRS>EPSG:4326</CRS>
+				<CRS>EPSG:4258</CRS>
+				<CRS>EPSG:27700</CRS>
+				<CRS>EPSG:3857</CRS>
+				<EX_GeographicBoundingBox>
+					<westBoundLongitude>-8.340810</westBoundLongitude>
+					<eastBoundLongitude>2.695319</eastBoundLongitude>
+					<southBoundLatitude>49.848341</southBoundLatitude>
+					<northBoundLatitude>60.849936</northBoundLatitude>
+				</EX_GeographicBoundingBox>
+
+
+
+
+
+
+
+
+				<MaxScaleDenominator>94494.992560</MaxScaleDenominator>
+			</Layer>
+			<Layer queryable="1">
+				<Name>BGS.50k.Artificial.ground</Name>
+				<Title>GBR BGS 1:50k Artificial ground</Title>
+				<Abstract>GBR BGS 1:50000 scale artificial ground layer</Abstract>
+
+				<CRS>CRS:84</CRS>
+				<CRS>EPSG:4326</CRS>
+				<CRS>EPSG:4258</CRS>
+				<CRS>EPSG:27700</CRS>
+				<CRS>EPSG:3857</CRS>
+				<EX_GeographicBoundingBox>
+					<westBoundLongitude>-6.515392</westBoundLongitude>
+					<eastBoundLongitude>2.440972</eastBoundLongitude>
+					<southBoundLatitude>50.075129</southBoundLatitude>
+					<northBoundLatitude>58.991403</northBoundLatitude>
+				</EX_GeographicBoundingBox>
+
+
+
+
+
+
+
+
+				<MaxScaleDenominator>94494.992560</MaxScaleDenominator>
+			</Layer>
+			<Layer queryable="1">
+				<Name>BGS.50k.Mass.movement</Name>
+				<Title>GBR BGS 1:50k Mass movement</Title>
+				<Abstract>GBR BGS 1:50000 scale mass movement deposits layer</Abstract>
+
+				<CRS>CRS:84</CRS>
+				<CRS>EPSG:4326</CRS>
+				<CRS>EPSG:4258</CRS>
+				<CRS>EPSG:27700</CRS>
+				<CRS>EPSG:3857</CRS>
+				<EX_GeographicBoundingBox>
+					<westBoundLongitude>-7.249278</westBoundLongitude>
+					<eastBoundLongitude>2.395704</eastBoundLongitude>
+					<southBoundLatitude>50.117294</southBoundLatitude>
+					<northBoundLatitude>60.849882</northBoundLatitude>
+				</EX_GeographicBoundingBox>
+
+
+
+
+
+
+
+
+				<MaxScaleDenominator>94494.992560</MaxScaleDenominator>
+			</Layer>
+			<Layer queryable="1">
+				<Name>BGS.50k.Linear.features</Name>
+				<Title>GBR BGS 1:50k Linear features</Title>
+				<Abstract>GBR BGS 1:50000 scale geology linear features layer</Abstract>
+
+				<CRS>CRS:84</CRS>
+				<CRS>EPSG:4326</CRS>
+				<CRS>EPSG:4258</CRS>
+				<CRS>EPSG:27700</CRS>
+				<CRS>EPSG:3857</CRS>
+				<EX_GeographicBoundingBox>
+					<westBoundLongitude>-8.323788</westBoundLongitude>
+					<eastBoundLongitude>2.412245</eastBoundLongitude>
+					<southBoundLatitude>49.875187</southBoundLatitude>
+					<northBoundLatitude>60.849945</northBoundLatitude>
+				</EX_GeographicBoundingBox>
+
+
+
+
+
+
+
+
+				<MaxScaleDenominator>94494.992560</MaxScaleDenominator>
+			</Layer>
+		</Layer>
+	</Capability>
+</WMS_Capabilities>

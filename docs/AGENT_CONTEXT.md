@@ -15,7 +15,7 @@ npm workspaces, one package per concern.
 ## Current state
 
 - `main` is the integration branch. Pull requests target `main`.
-- Twenty-eight UK adapters, all keyless. Eleven shipped earlier (Environment
+- Thirty-three UK adapters, all keyless. Eleven shipped earlier (Environment
   Agency flood-monitoring, ONS dataset catalogue, FSA food hygiene, TfL cycle
   hire, Planning Data, Natural England ancient woodland, Bank of England Bank
   Rate, police.uk crime, carbon intensity, Parliament seats). Eleven more
@@ -24,13 +24,15 @@ npm workspaces, one package per concern.
   `fingertips-indicators`, `find-a-tender`, `tfl-line-status`,
   `public-health-scotland`, and `nhsbsa-ckan`, plus `neso-generation-mix` on
   2026-10-18, `data-gov-uk-ckan` on 2026-11-05, `gov-uk-content` on
-  2026-11-07, and `uk-parliament-committees`, `elexon-system-prices` and
-  `ukri-gtr-awards` on 2026-11-08. Licences and endpoints are in
+  2026-11-07, `uk-parliament-committees`, `elexon-system-prices` and
+  `ukri-gtr-awards` on 2026-11-08, plus `legislation-search`,
+  `gazette-notices`, `ons-geography`, `neso-catalogue`, and
+  `bgs-opengeoscience-wms` on the same day. Licences and endpoints are in
   `docs/CONNECTOR_DISCOVERY.md`.
 - Adapters live in `packages/uk-sources/src/*.ts` next to their tests, with
   committed fixtures in `packages/uk-sources/src/fixtures/`. New fixtures are
   dated in their filenames.
-- Twenty-seven of the 28 adapters fetch through `httpGet` in
+- Thirty-two of the 33 adapters fetch through `httpGet` in
   `packages/uk-sources/src/http.ts`: one `User-Agent`, a 30 second timeout, and
   `retryable` set on HTTP 429, HTTP 5xx and network failures. A caller-supplied
   `User-Agent` replaces the default. The carbon intensity adapter calls `fetch`

@@ -1,0 +1,261 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "7d4a6791cfe643f7a23f5141e1f4cc4f",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-6, 56],
+            [2, 56],
+            [2, 49.9],
+            [-6, 49.9],
+            [-6, 56]
+          ]
+        ]
+      },
+      "properties": {
+        "snippet": "Administrative Lookups",
+        "extent": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-6, 56],
+              [2, 56],
+              [2, 49.9],
+              [-6, 49.9],
+              [-6, 56]
+            ]
+          ]
+        },
+        "commentsEnabled": false,
+        "groupDesignations": null,
+        "access": "public",
+        "apiToken2ExpirationDate": -1,
+        "typeKeywords": [
+          "ArcGIS Server",
+          "Data",
+          "Feature Access",
+          "Feature Service",
+          "Metadata",
+          "Service",
+          "Singlelayer",
+          "Table",
+          "Hosted Service"
+        ],
+        "description": "<p style=\"background-color:rgb(255, 255, 255); border-style:solid; border-width:0px; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; margin:0px 0px 1rem; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;\"><span style=\"background-color:rgb(255,255,255); color:rgb(0,0,0); font-family:inherit; font-size:18px;\"><span style=\"border:0px solid currentcolor; box-sizing:border-box; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; line-height:1.5; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;\">This is a lookup file between civil parishes/communities, non-civil parished areas, electoral wards/divisions and local authorities/unitary authorities in England and Wales as at 31st December 2026. &nbsp;(File Size - 3.2 MB)&nbsp;</span></span><br /><span style=\"background-color:rgb(255,255,255); color:rgb(0,0,0); font-family:inherit; font-size:18px;\"><span style=\"border:0px solid currentcolor; box-sizing:border-box; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; line-height:1.5; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;\">Field Names - PARNCP26CD, PARNCP26NM, PARNCP26NMW, WD26CD, WD26NM, WD26NMW, LAD26CD, LAD26NM, LAD26NMW</span></span></p><div style=\"background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; line-height:1.5; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;\"><span style=\"color:rgb(0,0,0); font-family:inherit; font-size:18px;\"><span style=\"border:0px solid currentcolor; box-sizing:border-box; line-height:1.5;\">Field Types - Text, Text, Text, Text, Text, Text, Text, Text, Text,</span></span></div><div style=\"background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; line-height:1.5; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;\"><span style=\"color:rgb(0,0,0); font-family:inherit; font-size:18px;\"><span style=\"border:0px solid currentcolor; box-sizing:border-box; line-height:1.5;\">Field Lengths - 9, 66, 37, 9, 53, 45, 9, 35, 24</span></span></div><div style=\"background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; line-height:1.5; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;\">&nbsp;</div><div style=\"background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; line-height:1.5; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;\"><span style=\"color:rgb(0,0,0); font-family:inherit; font-size:18px;\"><span style=\"border:0px solid currentcolor; box-sizing:border-box; line-height:1.5;\"><strong>File updated to include the following:</strong></span></span></div><div style=\"background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; line-height:1.5; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;\"><span style=\"color:rgb(0,0,0); font-family:inherit; font-size:18px;\"><span style=\"border:0px solid currentcolor; box-sizing:border-box; line-height:1.5;\"><strong>The Wokingham Borough Council (Reorganisation of Community Governance) No.1 Order 2026</strong></span></span></div><div style=\"background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; line-height:1.5; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;\"><span style=\"color:rgb(0,0,0); font-family:inherit; font-size:18px;\"><span style=\"border:0px solid currentcolor; box-sizing:border-box; line-height:1.5;\"><strong>The Gedling Borough Council (Reorganisation of Community Governance) Order 2026</strong></span></span></div><div style=\"background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; line-height:1.5; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;\"><span style=\"color:rgb(0,0,0); font-family:inherit; font-size:18px;\"><span style=\"border:0px solid currentcolor; box-sizing:border-box; line-height:1.5;\"><strong>The North Kesteven (Reorganisation of Community Governance) Order 2011</strong></span></span></div><div style=\"background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; line-height:1.5; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;\"><span style=\"color:rgb(0,0,0); font-family:inherit; font-size:18px;\"><span style=\"border:0px solid currentcolor; box-sizing:border-box; line-height:1.5;\"><strong>The Rushcliffe (Reorganisation of Community Governance) Order 2026</strong></span></span></div>",
+        "licenseInfo": "<p><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.ons.gov.uk/methodology/geography/licences\">https://www.ons.gov.uk/methodology/geography/licences</a></p>",
+        "ownerId": "e679da4fe1c4d6eefb67a107158e628f",
+        "title": "Parish to Ward to Local Authority District (December 2026) Lookup in EW",
+        "type": "Feature Service",
+        "orgId": "ESMARspQHYMw9BZ9",
+        "screenshots": [],
+        "contentStatus": "public_authoritative",
+        "subInfo": 0,
+        "advancedSettings": null,
+        "appCategories": [],
+        "modified": 1793863209000,
+        "avgRating": 0,
+        "id": "7d4a6791cfe643f7a23f5141e1f4cc4f",
+        "categories": ["/Categories/LATEST", "/Categories/ONS Geography Open Data"],
+        "spatialReference": null,
+        "numRatings": 0,
+        "owner": "ONSGeography_data",
+        "accessInformation": "Office for National Statistics",
+        "largeThumbnail": null,
+        "lastViewed": 1793862000000,
+        "thumbnail": "thumbnail/thumbnail.png",
+        "languages": [],
+        "created": 1793862027000,
+        "documentation": null,
+        "banner": null,
+        "classification": null,
+        "url": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/PAR26_WD26_LAD26_EW_LU/FeatureServer",
+        "tags": [
+          "2026",
+          "LUP_ADM",
+          "LUP_PAR_WD_LAD",
+          "LAD",
+          "Communities",
+          "Local Authority Districts",
+          "England and Wales",
+          "PAR",
+          "WD",
+          "Parishes",
+          "Wards",
+          "DEC_2026",
+          "LUP_DEC_2026"
+        ],
+        "numViews": 2,
+        "numComments": 0,
+        "size": 4145152,
+        "listed": false,
+        "scoreCompleteness": 86,
+        "culture": "en-gb",
+        "industries": [],
+        "apiToken1ExpirationDate": -1,
+        "name": null,
+        "guid": null,
+        "proxyFilter": null,
+        "properties": null,
+        "source": "Office for National Statistics",
+        "license": "custom"
+      },
+      "time": null,
+      "links": [
+        {
+          "rel": "self",
+          "type": "application/geo+json",
+          "title": "This document as GeoJSON",
+          "href": "https://geoportal.statistics.gov.uk/api/search/v1/collections/all/items/7d4a6791cfe643f7a23f5141e1f4cc4f"
+        },
+        {
+          "rel": "collection",
+          "type": "application/json",
+          "title": "All",
+          "href": "https://geoportal.statistics.gov.uk/api/search/v1/collections/all"
+        }
+      ]
+    },
+    {
+      "id": "46d178d0a81241a0ae8637b9eddf2378",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-4.987586527508962, 55.81108977340796],
+            [0.7403083600444401, 55.81108977340796],
+            [0.7403083600444401, 50.18444843313745],
+            [-4.987586527508962, 50.18444843313745],
+            [-4.987586527508962, 55.81108977340796]
+          ]
+        ]
+      },
+      "properties": {
+        "snippet": "Boundaries",
+        "extent": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-4.987586527508962, 55.81108977340796],
+              [0.7403083600444401, 55.81108977340796],
+              [0.7403083600444401, 50.18444843313745],
+              [-4.987586527508962, 50.18444843313745],
+              [-4.987586527508962, 55.81108977340796]
+            ]
+          ]
+        },
+        "commentsEnabled": false,
+        "groupDesignations": null,
+        "access": "public",
+        "apiToken2ExpirationDate": -1,
+        "typeKeywords": [
+          "ArcGIS Server",
+          "Data",
+          "Feature Access",
+          "Feature Service",
+          "Metadata",
+          "Service",
+          "Singlelayer",
+          "Hosted Service"
+        ],
+        "description": "<p>This file contains the digital vector boundaries for Combined Authorities, in England, as at December 2025.</p><p>The boundaries available are: (BFC) Full resolution - clipped to the coastline (Mean High Water mark).</p><p>&nbsp;</p><p>Contains both Ordnance Survey and ONS Intellectual Property Rights.</p><div><div>&nbsp;</div><div>REST URL of Feature Access Service – <a target='_blank' href='https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_December_2025_Boundaries_EN_BFC/FeatureServer' rel='nofollow ugc noopener noreferrer'>https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_December_2025_Boundaries_EN_BFC/FeatureServer</a></div><div>&nbsp;</div><div>REST URL of WFS Server – <a target='_blank' href='https://dservices1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/services/Combined_Authorities_(December_2025)_Boundaries_EN_BFC/WFSServer?request=getcapabilities&amp;service=wfs' rel='nofollow ugc noopener noreferrer'>https://dservices1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/services/Combined_Authorities_(December_2025)_Boundaries_EN_BFC/WFSServer?request=getcapabilities&amp;service=wfs</a></div><div>&nbsp;</div><div><span style='background-color:rgb(255,255,255); color:rgb(74,74,74); font-family:&quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px;'><span style='display:inline !important; float:none; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;'>REST URL of MapServer – </span></span><a style='background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(0, 97, 155); font-family:&quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; line-height:1.5; text-align:start; text-indent:0px; text-transform:none; word-spacing:0px;' target='_blank' href='https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_(December_2025)_Boundaries_EN_BFC/MapServer' rel='nofollow ugc noopener noreferrer'><u>https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_(December_2025)_Boundaries_EN_BFC/MapServer</u></a></div></div>",
+        "licenseInfo": "<p><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.ons.gov.uk/methodology/geography/licences\">https://www.ons.gov.uk/methodology/geography/licences</a></p>",
+        "ownerId": "e679da4fe1c4d6eefb67a107158e628f",
+        "title": "Combined Authorities (December 2025) Boundaries EN BFC",
+        "type": "Feature Service",
+        "orgId": "ESMARspQHYMw9BZ9",
+        "screenshots": [],
+        "contentStatus": "public_authoritative",
+        "subInfo": 0,
+        "advancedSettings": null,
+        "appCategories": [],
+        "modified": 1793118801000,
+        "avgRating": 0,
+        "id": "46d178d0a81241a0ae8637b9eddf2378",
+        "categories": [
+          "/Categories/Boundaries - Administrative",
+          "/Categories/ONS Geography Open Data"
+        ],
+        "spatialReference": "27700",
+        "numRatings": 0,
+        "owner": "ONSGeography_data",
+        "accessInformation": "Office for National Statistics",
+        "largeThumbnail": null,
+        "lastViewed": 1793116800000,
+        "thumbnail": "thumbnail/thumbnail.png",
+        "languages": [],
+        "created": 1776968066000,
+        "documentation": null,
+        "banner": null,
+        "classification": null,
+        "url": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Combined_Authorities_December_2025_Boundaries_EN_BFC/FeatureServer",
+        "tags": [
+          "CAUTH",
+          "BDY_CAUTH",
+          "BDY_ADM",
+          "December_2025",
+          "2025",
+          "Combined Authorities",
+          "England",
+          "DEC_2025"
+        ],
+        "numViews": 15870,
+        "numComments": 0,
+        "size": 17727488,
+        "listed": false,
+        "scoreCompleteness": 85,
+        "culture": "en-gb",
+        "industries": [],
+        "apiToken1ExpirationDate": -1,
+        "name": "Combined_Authorities_December_2025_Boundaries_EN_BFC",
+        "guid": null,
+        "proxyFilter": null,
+        "properties": null,
+        "source": "Office for National Statistics",
+        "license": "custom"
+      },
+      "time": null,
+      "links": [
+        {
+          "rel": "self",
+          "type": "application/geo+json",
+          "title": "This document as GeoJSON",
+          "href": "https://geoportal.statistics.gov.uk/api/search/v1/collections/all/items/46d178d0a81241a0ae8637b9eddf2378"
+        },
+        {
+          "rel": "collection",
+          "type": "application/json",
+          "title": "All",
+          "href": "https://geoportal.statistics.gov.uk/api/search/v1/collections/all"
+        }
+      ]
+    }
+  ],
+  "timestamp": "2026-11-08T09:34:31.722Z",
+  "numberMatched": 3497,
+  "numberReturned": 2,
+  "links": [
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "title": "This document as GeoJSON",
+      "href": "https://geoportal.statistics.gov.uk/api/search/v1/collections/all/items"
+    },
+    {
+      "rel": "next",
+      "type": "application/geo+json",
+      "title": "items (next)",
+      "href": "https://geoportal.statistics.gov.uk/api/search/v1/collections/all/items?limit=2&startindex=3"
+    },
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "title": "All",
+      "href": "https://geoportal.statistics.gov.uk/api/search/v1/collections/all"
+    }
+  ]
+}
