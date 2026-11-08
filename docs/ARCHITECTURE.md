@@ -34,7 +34,7 @@ for those terms.
 The HTTP API and the CLI call the same adapters. They never call the
 endpoints directly. This is what "one design" means.
 
-Thirty-two of the 33 adapters fetch through the shared helper in
+Most adapters fetch through the shared helper in
 `packages/uk-sources/src/http.ts`. It sets one `User-Agent`
 (`uk-open-data-connectors (Language=TypeScript)`), aborts after 30 seconds, and
 marks HTTP 429, HTTP 5xx and network failures as `retryable` on the thrown

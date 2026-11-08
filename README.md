@@ -8,7 +8,7 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 | Package | What it is |
 | ------- | ---------- |
-| [`@uk-open-data-connectors/uk-sources`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources) | Uniform adapters for 33 UK public data sources. All keyless, with live probes and offline fixtures. |
+| [`@uk-open-data-connectors/uk-sources`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-sources) | Uniform adapters for UK public data sources. All keyless, with live probes and offline fixtures. |
 | [`@uk-open-data-connectors/uk-mcp`](https://www.npmjs.com/package/@uk-open-data-connectors/uk-mcp) | MCP server that exposes the connectors to Claude, ChatGPT, and other MCP clients. |
 | [`@uk-open-data-connectors/connectors-cli`](https://www.npmjs.com/package/@uk-open-data-connectors/connectors-cli) | `ukdata` command line tool that prints JSON to stdout, so any language can shell out to it. |
 | `@uk-open-data-connectors/connectors-api` | Private. HTTP wrapper with an OpenAPI spec and Swagger UI, so any language can call the connectors over HTTP. |
@@ -18,7 +18,7 @@ Every connector is keyless today. There are no API keys to request and no secret
 
 ## Connectors
 
-Thirty-three adapters in `@uk-open-data-connectors/uk-sources`, all keyless.
+Adapters in `@uk-open-data-connectors/uk-sources` are all keyless.
 Most carry Open Government Licence v3 data; the two TfL adapters carry TfL
 Open Data, the carbon intensity series is Creative Commons Attribution 4.0
 under the operator's own terms, and the Parliament seat counts carry the Open
@@ -29,13 +29,13 @@ the Open Government Licence with a BGS acknowledgement. The postcode lookup
 goes through postcodes.io, a third party that
 serves Open Government Licence postcode data from the ONS and Ordnance
 Survey. Data.gov.uk packages carry their own licence identifiers and can
-differ. GOV.UK content carries the Open Government Licence v3. Seven adapters
+differ. GOV.UK content carries the Open Government Licence v3. Several adapters
 copy the licence and attribution values their source supplies onto each
 record: `flood-stations`, `flood-readings`, `planning-datasets`,
 `find-a-tender`, `data-gov-uk-ckan`, `ons-geography`, and `neso-catalogue`. The
 other adapters leave the publisher's page as the source for those terms.
 
-Thirty-two of the 33 adapters use the shared `httpGet` helper in
+Most adapters use the shared `httpGet` helper in
 `packages/uk-sources/src/http.ts`. It sends the same `User-Agent`
 (`uk-open-data-connectors (Language=TypeScript)`), waits at most 30 seconds for
 a response, and marks rate-limited (HTTP 429), server-error (HTTP 5xx) and

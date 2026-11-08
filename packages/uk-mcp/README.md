@@ -1,6 +1,6 @@
 # @uk-open-data-connectors/uk-mcp
 
-An MCP server that gives Claude, ChatGPT, and other MCP clients access to 33 UK open data sources.
+An MCP server that gives Claude, ChatGPT, and other MCP clients access to UK open data sources.
 
 ## What this package does
 

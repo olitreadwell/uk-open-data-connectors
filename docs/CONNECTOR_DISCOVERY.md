@@ -2,7 +2,7 @@
 
 Notes on which UK sources this repo uses, and which obvious ones do not work
 as they stand. Every endpoint below was checked against the live service
-before an adapter was written. The eleven adapters added on 2026-10-05 were
+before an adapter was written. The adapters added on 2026-10-05 were
 probed again that day.
 
 ## In use

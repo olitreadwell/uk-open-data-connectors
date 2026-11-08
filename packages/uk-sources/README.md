@@ -1,10 +1,10 @@
 # @uk-open-data-connectors/uk-sources
 
-Uniform TypeScript adapters for 33 UK public data sources, for JavaScript and TypeScript developers.
+Uniform TypeScript adapters for UK public data sources, for JavaScript and TypeScript developers.
 
 ## What this package does
 
-- Ships one adapter for each of 33 UK public data sources.
+- Ships one adapter for each supported UK public data source.
 - Gives every adapter the same shape: a live fetch, a strict parse, and a committed fixture for tests.
 - Lets you build and test offline, because tests read the fixtures directly.
 - Exposes a registry (`UK_DATA_SOURCES`) and probe helpers (`probeUkDataSource`, `probeAllUkDataSources`).
@@ -68,7 +68,7 @@ The `auth` field is `none` for every adapter.
 
 ## Notes and limits
 
-- All 33 adapters are keyless. `fetchTflBikePoints` and `fetchTflLineStatuses` take an optional `apiKey`, sent as the `app_key` query parameter.
+- All adapters are keyless. `fetchTflBikePoints` and `fetchTflLineStatuses` take an optional `apiKey`, sent as the `app_key` query parameter.
 - A live fetch throws when the API fails. Fixtures are read only through `loadFixture`, so a stale snapshot never appears silently. Call `probeUkDataSource` before you quote a number.
 - The fixtures in `src/fixtures` are real snapshots from the live APIs. The newer files carry their capture date in the filename.
 - Tests never reach the network unless `RUN_SMOKE=1` is set. The smoke test hits the real endpoints and needs no keys.
@@ -85,7 +85,7 @@ The `auth` field is `none` for every adapter.
 - A vacant seat appears as its own party, named `Vacant`, with one seat and no members behind it. The summary keeps it in `seats` and reports the gap per row as `unallocatedSeatCount`.
 - `backgroundColour` and `foregroundColour` are null for some parties, including the Speaker. A chart needs its own fallback colour.
 - The Parliament call can be slow. A request in this repo timed out after 25 seconds, and the next one answered in two.
-- The Nomis catalogue returns 1,617 dataset definitions in about 5.4 MB of JSON. The committed fixture keeps the first 25 definitions. The adapter reads the whole live catalogue.
+- The Nomis catalogue returns the dataset definitions as a large JSON document. The committed fixture keeps a short excerpt. The adapter reads the whole live catalogue.
 - The Public Health Scotland portal is occasionally flaky. Calls can answer 200, answer 504, or reset the connection. The adapter has no retry, so a smoke run can fail on this source now and then.
 - The London Datastore call answers a 307 redirect. Node's `fetch` follows it, so the adapter keeps the documented path.
 - The Discovery adapter sends `Accept: application/json`, because the API documents the header.
@@ -94,7 +94,7 @@ The `auth` field is `none` for every adapter.
 - `postcode-lookup` reads from postcodes.io, a third-party service. It is not a government API, though it serves ONS and Ordnance Survey postcode data under the Open Government Licence v3.
 - Only the Find a Tender `license` field and the Data.gov.uk, NESO `ESO`, NHSBSA `OGL-UK-3.0`, and Public Health Scotland `uk-ogl` package metadata were read directly from the service. The other licences come from the publishers' standard terms.
 - `ons-geography` returns the portal's per-record `license` and `licenseInfo` values. `neso-catalogue` returns the CKAN licence id, title, and URL on each package. `legislation-search` and `gazette-notices` leave the publisher's page as the source for their terms.
-- The eleven adapters added on 2026-10-05 were probed live on that day.
+- The adapters added on 2026-10-05 were probed live on that day.
 - The Data.gov.uk adapter was probed live on 2026-11-05.
 - The GOV.UK Content API has no listing endpoint. The adapter reads one content
   item by path and defaults to `/government/how-government-works`. The adapter
@@ -114,13 +114,13 @@ The `auth` field is `none` for every adapter.
 - The legislation.gov.uk adapter reads the Atom search feed. The search path redirected to `/all/data.feed` on 2026-11-08, and Node's `fetch` followed it. The feed answers 20 results per page and reports the remaining pages. The committed fixture keeps the first 2 of those 20 results for the default `environment` query.
 - The Gazette's JSON feed answered 10 notices per page on 2026-11-08. The feed reports a `f:total` across the whole archive, not the page size. The committed fixture keeps the first 3 notices from a live page whose total was 4,889,773. The `content` field can end with an ellipsis because the feed shortens long notices.
 - The ONS Open Geography Portal search answered 3,497 matches for an unfiltered page on 2026-11-08. The adapter asks for 20 by default. Paging uses `startindex`; `start` and `f` are rejected as invalid queryables. The committed fixture keeps the first 2 features.
-- The NESO Data Portal catalogue reported 131 packages on 2026-11-08. Every package carries `license_id: ESO`, `license_title: NESO Open Data Licence`, and the licence URL. The committed fixture keeps the first package from the captured page.
+- The NESO Data Portal catalogue reports packages carrying `license_id: ESO`, `license_title: NESO Open Data Licence`, and the licence URL. The committed fixture keeps the first package from the captured page.
 - The BGS WMS capabilities document reports version 1.3.0, the title `BGS 50000 scale digital geology`, and 6 named layers. The fixture keeps the service metadata and layer blocks, and drops per-layer style, metadata, data, legend, and bounding-box blocks to stay within the commit size limit.
 - The legislation.gov.uk, Gazette, ONS geography, NESO catalogue, and BGS WMS adapters were probed live on 2026-11-08.
 
 ## Data sources and licences
 
-This package reads 33 sources. Most come from UK public bodies. The postcode lookup comes from postcodes.io, a third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts and committee listings carry the Open Parliament Licence v3.0. The Elexon system prices carry the BMRS open data licence. The UKRI Gateway to Research terms say the service is open and free to use. The NESO generation mix and NESO catalogue carry the NESO Open Data Licence. The Gazette carries Crown copyright under the Open Government Licence v3.0, except for personal data. BGS OpenGeoscience carries the Open Government Licence with a BGS acknowledgement. Data.gov.uk licences vary by dataset. GOV.UK content carries the Open Government Licence v3. The ONS geography search reports a licence field and links each dataset to the ONS geography licence page. Seven adapters copy the licence and attribution values their source supplies onto each record. The other adapters do not, because their endpoints do not carry per-record licence fields.
+This package reads UK public data sources. Most come from UK public bodies. The postcode lookup comes from postcodes.io, a third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts and committee listings carry the Open Parliament Licence v3.0. The Elexon system prices carry the BMRS open data licence. The UKRI Gateway to Research terms say the service is open and free to use. The NESO generation mix and NESO catalogue carry the NESO Open Data Licence. The Gazette carries Crown copyright under the Open Government Licence v3.0, except for personal data. BGS OpenGeoscience carries the Open Government Licence with a BGS acknowledgement. Data.gov.uk licences vary by dataset. GOV.UK content carries the Open Government Licence v3. The ONS geography search reports a licence field and links each dataset to the ONS geography licence page. Several adapters copy the licence and attribution values their source supplies onto each record. The other adapters do not, because their endpoints do not carry per-record licence fields.
 
 | Adapter | Publisher | Source URL | Data licence |
 | ------- | --------- | ---------- | ------------ |

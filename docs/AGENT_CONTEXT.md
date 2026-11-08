@@ -32,7 +32,7 @@ npm workspaces, one package per concern.
 - Adapters live in `packages/uk-sources/src/*.ts` next to their tests, with
   committed fixtures in `packages/uk-sources/src/fixtures/`. New fixtures are
   dated in their filenames.
-- Thirty-two of the 33 adapters fetch through `httpGet` in
+- Most adapters fetch through `httpGet` in
   `packages/uk-sources/src/http.ts`: one `User-Agent`, a 30 second timeout, and
   `retryable` set on HTTP 429, HTTP 5xx and network failures. A caller-supplied
   `User-Agent` replaces the default. The carbon intensity adapter calls `fetch`
