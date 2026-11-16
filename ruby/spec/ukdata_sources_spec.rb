@@ -140,6 +140,25 @@ class UkdataSourcesSpec < Minitest::Test
     end
   end
 
+  def test_registry_descriptions_match_typescript
+    descriptions = {
+      'police-crimes' =>
+        'Street-level crime recorded within a mile of a point, counted by crime type ' \
+        'and by outcome.',
+      'carbon-intensity' =>
+        'Half-hourly carbon intensity for Great Britain, with the cleanest and dirtiest ' \
+        'half hours in the window.',
+      'postcode-lookup' =>
+        "One postcode's country, region, wards, and coordinates, default SW1A1AA.",
+      'neso-generation-mix' =>
+        'Half-hourly Great Britain generation by fuel, with the cleanest and dirtiest ' \
+        'half hours in the window.'
+    }
+    descriptions.each do |source_id, description|
+      assert_equal description, Ukdata.get_uk_data_source(source_id).description
+    end
+  end
+
   def test_every_adapter_has_a_parser_fixture_and_fetcher
     Ukdata::UK_DATA_SOURCES.each do |source|
       refute_nil source.load_fixture.call

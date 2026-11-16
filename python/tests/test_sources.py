@@ -206,6 +206,30 @@ def test_registry_lookup_and_metadata() -> None:
         assert source.description
 
 
+def test_registry_descriptions_match_typescript() -> None:
+    descriptions = {
+        "police-crimes": (
+            "Street-level crime recorded within a mile of a point, counted by crime type "
+            "and by outcome."
+        ),
+        "carbon-intensity": (
+            "Half-hourly carbon intensity for Great Britain, with the cleanest and dirtiest "
+            "half hours in the window."
+        ),
+        "postcode-lookup": (
+            "One postcode's country, region, wards, and coordinates, default SW1A1AA."
+        ),
+        "neso-generation-mix": (
+            "Half-hourly Great Britain generation by fuel, with the cleanest and dirtiest "
+            "half hours in the window."
+        ),
+    }
+    for source_id, description in descriptions.items():
+        source = get_uk_data_source(source_id)
+        assert source is not None
+        assert source.description == description
+
+
 @pytest.mark.parametrize("source", UK_DATA_SOURCES, ids=lambda source: source.id)
 def test_every_adapter_has_a_parser_fixture_and_fetcher(source: Any) -> None:
     assert source.load_fixture() is not None

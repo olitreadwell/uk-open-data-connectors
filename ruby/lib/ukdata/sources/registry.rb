@@ -49,14 +49,14 @@ module Ukdata
                 ->(payload) { parse_bank_rate_csv(payload) },
                 -> { parse_bank_rate_csv(read_fixture_text('bank-rate.csv')) }),
     Adapter.new('police-crimes', 'Home Office police.uk recorded crime', 'none',
-                'Street-level crime recorded within a mile of a point, counted by type ' \
-                'and outcome.',
+                'Street-level crime recorded within a mile of a point, counted by crime ' \
+                'type and by outcome.',
                 ->(fetch_impl: nil) { fetch_police_crime_summary(fetch_impl: fetch_impl) },
                 ->(payload) { parse_police_crime_summary(payload) },
                 -> { parse_police_crime_summary(read_fixture_json('police-crimes.json')) }),
     Adapter.new('carbon-intensity', 'National Energy System Operator carbon intensity', 'none',
                 'Half-hourly carbon intensity for Great Britain, with the cleanest and ' \
-                'dirtiest half hours.',
+                'dirtiest half hours in the window.',
                 ->(fetch_impl: nil) { fetch_carbon_intensity_window(fetch_impl: fetch_impl) },
                 ->(payload) { parse_carbon_intensity_window(payload) },
                 -> { parse_carbon_intensity_window(read_fixture_json('carbon-intensity.json')) }),
@@ -67,7 +67,7 @@ module Ukdata
                 ->(payload) { parse_parliament_seats(payload) },
                 -> { parse_parliament_seats(read_fixture_json('parliament-seats.json')) }),
     Adapter.new('postcode-lookup', 'postcodes.io postcode lookup', 'none',
-                "One postcode's country, region, wards, and coordinates.",
+                "One postcode's country, region, wards, and coordinates, default SW1A1AA.",
                 ->(fetch_impl: nil) { fetch_postcode_lookup(fetch_impl: fetch_impl) },
                 ->(payload) { parse_postcode_lookup(payload) },
                 lambda {
@@ -158,7 +158,7 @@ module Ukdata
                 }),
     Adapter.new('neso-generation-mix', 'National Energy System Operator generation mix', 'none',
                 'Half-hourly Great Britain generation by fuel, with the cleanest and dirtiest ' \
-                'half hours.',
+                'half hours in the window.',
                 ->(fetch_impl: nil) { fetch_neso_generation_mix_window(fetch_impl: fetch_impl) },
                 ->(payload) { parse_neso_generation_mix(payload) },
                 lambda {

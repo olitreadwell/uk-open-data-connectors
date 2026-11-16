@@ -2932,7 +2932,8 @@ UK_DATA_SOURCES: list[UkDataAdapter] = [
         "police-crimes",
         "Home Office police.uk recorded crime",
         "none",
-        "Street-level crime recorded within a mile of a point, counted by type and outcome.",
+        "Street-level crime recorded within a mile of a point, counted by crime type and by "
+        "outcome.",
         lambda fetch_impl=None: fetch_police_crime_summary(fetch_impl=fetch_impl),
         parse_police_crime_summary,
         lambda: parse_police_crime_summary(read_fixture_json("police-crimes.json")),
@@ -2942,7 +2943,7 @@ UK_DATA_SOURCES: list[UkDataAdapter] = [
         "National Energy System Operator carbon intensity",
         "none",
         "Half-hourly carbon intensity for Great Britain, with the cleanest and dirtiest "
-        "half hours.",
+        "half hours in the window.",
         lambda fetch_impl=None: fetch_carbon_intensity_window(fetch_impl=fetch_impl),
         parse_carbon_intensity_window,
         lambda: parse_carbon_intensity_window(read_fixture_json("carbon-intensity.json")),
@@ -2960,7 +2961,7 @@ UK_DATA_SOURCES: list[UkDataAdapter] = [
         "postcode-lookup",
         "postcodes.io postcode lookup",
         "none",
-        "One postcode's country, region, wards, and coordinates.",
+        "One postcode's country, region, wards, and coordinates, default SW1A1AA.",
         lambda fetch_impl=None: fetch_postcode_lookup(fetch_impl=fetch_impl),
         parse_postcode_lookup,
         lambda: parse_postcode_lookup(read_fixture_json("postcode-lookup-2026-10-05.json")),
@@ -3067,7 +3068,8 @@ UK_DATA_SOURCES: list[UkDataAdapter] = [
         "neso-generation-mix",
         "National Energy System Operator generation mix",
         "none",
-        "Half-hourly Great Britain generation by fuel, with the cleanest and dirtiest half hours.",
+        "Half-hourly Great Britain generation by fuel, with the cleanest and dirtiest "
+        "half hours in the window.",
         lambda fetch_impl=None: fetch_neso_generation_mix_window(fetch_impl=fetch_impl),
         parse_neso_generation_mix,
         lambda: parse_neso_generation_mix(read_fixture_json("neso-generation-mix-2026-10-18.json")),
