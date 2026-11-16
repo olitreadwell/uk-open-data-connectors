@@ -20,6 +20,7 @@ probed again that day.
 | `flood-stations` | Environment Agency flood-monitoring | `https://environment.data.gov.uk/flood-monitoring/id/stations` | Yes |
 | `food-hygiene-authorities` | Food Standards Agency | `https://api.ratings.food.gov.uk/Authorities/basic` | Yes |
 | `gov-uk-content` | GOV.UK Content API | `https://www.gov.uk/api/content/{path}` | Yes |
+| `hm-land-registry-price-paid` | HM Land Registry | `https://landregistry.data.gov.uk/data/ppi/transaction-record.json?propertyAddress.postcode={postcode}` | Yes |
 | `london-datastore` | Greater London Authority | `https://data.london.gov.uk/api/3/action/package_list` | Yes |
 | `nhsbsa-ckan` | NHS Business Services Authority | `https://opendata.nhsbsa.net/api/3/action/package_list` | Yes |
 | `neso-generation-mix` | National Energy System Operator | `https://api.neso.energy/api/3/action/datastore_search?resource_id={resource}&sort=DATETIME+desc&limit={halfHours}` | Yes |
@@ -46,6 +47,46 @@ probed again that day.
 Adapters keep a committed fixture in `packages/uk-sources/src/fixtures/` so
 tests run offline, plus a smoke test gated on `RUN_SMOKE=1` that hits the
 live endpoint.
+
+## Added 2026-11-17
+
+One keyless adapter, for HM Land Registry's Linked Data Price Paid records.
+The request below returned HTTP 200 with no key on 2026-11-17.
+
+```sh
+UA='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
+
+# hm-land-registry-price-paid: the three newest sales for M1 1AE
+curl -sSL -H "User-Agent: $UA" \
+  'https://landregistry.data.gov.uk/data/ppi/transaction-record.json?_pageSize=3&_sort=-transactionDate&propertyAddress.postcode=M1%201AE'
+```
+
+| Adapter | Fixture | Licence |
+| --- | --- | --- |
+| `hm-land-registry-price-paid` | `hm-land-registry-price-paid-2026-11-17.json` (the first 3 of at least 6 transactions for `M1 1AE`, newest first) | Open Government Licence v3 |
+
+What was verified live on 2026-11-17, and what was not:
+
+- The linked data API answered with `format: linked-data-api` and `version:
+  0.2`. Each transaction carried `transactionId`, `transactionDate` as text
+  such as `Fri, 05 Jan 2024`, `pricePaid`, `newBuild`, `propertyType`,
+  `estateType`, `recordStatus`, `transactionCategory`, and a
+  `propertyAddress` block.
+- The postcode queryable is `propertyAddress.postcode` and matches the full
+  postcode exactly. Lower-case values, values without the space, and values
+  with two spaces all returned zero records. The adapter normalises the value
+  before the request.
+- A sorted read across the whole dataset, with no postcode filter, answered
+  HTTP 500 after about 90 seconds. The adapter always sends the default
+  postcode `M1 1AE` unless the caller names another one.
+- The `min-transactionDate` and `max-transactionDate` filters worked with
+  `YYYY-MM-DD` values. The property type terms are `detached`,
+  `semi-detached`, `terraced`, and `flat-maisonette`, with `other` mapped to
+  `otherPropertyType`.
+- The response has no total count. `next` is the only signal that another
+  page exists, so the adapter reports `hasNextPage` and `nextPageUrl`.
+- The fixture keeps the first 3 transactions from a page that reported a next
+  link. It does not claim to be the complete set for the postcode.
 
 ## Added 2026-11-08
 
@@ -409,6 +450,7 @@ attribution. The exceptions are listed in the table.
 | `ons-geography` | Office for National Statistics | Open Government Licence v3; the search returns a licence label and links to the ONS geography licence page |
 | `neso-catalogue` | National Energy System Operator | The NESO Open Data Licence, reported as `ESO` |
 | `bgs-opengeoscience-wms` | British Geological Survey | Open Government Licence, with the acknowledgement `Contains British Geological Survey materials copyright UKRI [year]` |
+| `hm-land-registry-price-paid` | HM Land Registry | Open Government Licence v3 |
 
 Seven adapters return source-supplied licence and attribution metadata per
 record. `flood-stations` and `flood-readings` copy `meta.publisher` and

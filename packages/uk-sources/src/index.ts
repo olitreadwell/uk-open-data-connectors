@@ -218,6 +218,27 @@ export {
 } from './legislationSearch.js';
 /** legislation.gov.uk search types. */
 export type { LegislationSearchPage, LegislationSearchResult } from './legislationSearch.js';
+/** HM Land Registry Price Paid Data for one postcode (keyless). */
+export {
+  buildLandRegistryPricePaidUrl,
+  DEFAULT_LAND_REGISTRY_PAGE_SIZE,
+  DEFAULT_LAND_REGISTRY_POSTCODE,
+  fetchLandRegistryPricePaidTransactions,
+  LAND_REGISTRY_PRICE_PAID_SOURCE_ID,
+  LAND_REGISTRY_PRICE_PAID_URL,
+  landRegistryPricePaidAdapter,
+  normalizeLandRegistryPostcode,
+  parseLandRegistryPricePaid,
+} from './landRegistryPricePaid.js';
+/** HM Land Registry Price Paid Data types. */
+export type {
+  LandRegistryAddress,
+  LandRegistryPricePaidOptions,
+  LandRegistryPricePaidOrder,
+  LandRegistryPricePaidPage,
+  LandRegistryPricePaidTransaction,
+  LandRegistryPropertyType,
+} from './landRegistryPricePaid.js';
 /** London Datastore catalogue, published by the Greater London Authority (keyless). */
 export {
   fetchLondonDatastorePackages,

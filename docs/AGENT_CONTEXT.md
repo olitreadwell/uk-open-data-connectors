@@ -15,7 +15,7 @@ npm workspaces, one package per concern.
 ## Current state
 
 - `main` is the integration branch. Pull requests target `main`.
-- Thirty-three UK adapters, all keyless. Eleven shipped earlier (Environment
+- Thirty-four UK adapters, all keyless. Eleven shipped earlier (Environment
   Agency flood-monitoring, ONS dataset catalogue, FSA food hygiene, TfL cycle
   hire, Planning Data, Natural England ancient woodland, Bank of England Bank
   Rate, police.uk crime, carbon intensity, Parliament seats). Eleven more
@@ -27,7 +27,8 @@ npm workspaces, one package per concern.
   2026-11-07, `uk-parliament-committees`, `elexon-system-prices` and
   `ukri-gtr-awards` on 2026-11-08, plus `legislation-search`,
   `gazette-notices`, `ons-geography`, `neso-catalogue`, and
-  `bgs-opengeoscience-wms` on the same day. Licences and endpoints are in
+  `bgs-opengeoscience-wms` on the same day, plus `hm-land-registry-price-paid`
+  on 2026-11-17. Licences and endpoints are in
   `docs/CONNECTOR_DISCOVERY.md`.
 - Adapters live in `packages/uk-sources/src/*.ts` next to their tests, with
   committed fixtures in `packages/uk-sources/src/fixtures/`. New fixtures are

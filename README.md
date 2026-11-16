@@ -80,6 +80,7 @@ adapter and the police street crime month calls do.
 | `ons-geography` | ONS Open Geography Portal boundary and geography datasets | Yes | `npx tsx packages/cli/src/cli.ts probe ons-geography` |
 | `neso-catalogue` | NESO Data Portal open data catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe neso-catalogue` |
 | `bgs-opengeoscience-wms` | BGS 1:50,000 digital geology WMS | Yes | `npx tsx packages/cli/src/cli.ts probe bgs-opengeoscience-wms` |
+| `hm-land-registry-price-paid` | HM Land Registry sold property prices for one postcode | Yes | `npx tsx packages/cli/src/cli.ts probe hm-land-registry-price-paid` |
 
 A source that looks obvious for a UK repo and is not usable as it stands:
 
@@ -130,8 +131,9 @@ the Open Parliament Licence v3.0.
 
 ### Added 2026-10-05 onward
 
-Twenty-two more keyless adapters, each checked live on 2026-10-05, 2026-10-18,
-2026-11-05, 2026-11-07 or 2026-11-08 and covered by a committed fixture:
+Twenty-three more keyless adapters, each checked live on 2026-10-05,
+2026-10-18, 2026-11-05, 2026-11-07, 2026-11-08 or 2026-11-17 and covered by
+a committed fixture:
 
 - `postcode-lookup` reads one postcode from postcodes.io, default SW1A 1AA.
 - `explore-education-statistics` reads the Department for Education's most
@@ -171,6 +173,9 @@ Twenty-two more keyless adapters, each checked live on 2026-10-05, 2026-10-18,
   package's licence and resource count.
 - `bgs-opengeoscience-wms` reads the BGS 1:50,000 digital geology WMS
   capabilities, with its layers, bounds, and coordinate systems.
+- `hm-land-registry-price-paid` reads HM Land Registry Price Paid Data for one
+  postcode, newest first, with the address, property type, and completion
+  date.
 
 The full endpoint list, exact curl commands, and licences are in
 `docs/CONNECTOR_DISCOVERY.md`.

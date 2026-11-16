@@ -63,6 +63,7 @@ console.log(summary.latest?.value, summary.trend);
 | `ons-geography` | ONS Open Geography Portal | none | Boundary and geography datasets, with tags, licence text, and download URLs. |
 | `neso-catalogue` | NESO Data Portal | none | The NESO open data catalogue, with licence and resource counts. |
 | `bgs-opengeoscience-wms` | British Geological Survey | none | BGS 1:50,000 digital geology layers, service bounds, and coordinate systems. |
+| `hm-land-registry-price-paid` | HM Land Registry | none | Sold property prices for one UK postcode, with address, property type, and completion date. |
 
 The `auth` field is `none` for every adapter.
 
@@ -117,6 +118,8 @@ The `auth` field is `none` for every adapter.
 - The NESO Data Portal catalogue reports packages carrying `license_id: ESO`, `license_title: NESO Open Data Licence`, and the licence URL. The committed fixture keeps the first package from the captured page.
 - The BGS WMS capabilities document reports version 1.3.0, the title `BGS 50000 scale digital geology`, and 6 named layers. The fixture keeps the service metadata and layer blocks, and drops per-layer style, metadata, data, legend, and bounding-box blocks to stay within the commit size limit.
 - The legislation.gov.uk, Gazette, ONS geography, NESO catalogue, and BGS WMS adapters were probed live on 2026-11-08.
+- The HM Land Registry adapter reads Price Paid Data through the linked data API for one full postcode, default `M1 1AE`. The API matches a full postcode exactly, so `normalizeLandRegistryPostcode` upper-cases the value and puts one space before the inward code. A sorted read across the whole dataset answered HTTP 500 after about 90 seconds on 2026-11-17, so the adapter always sends a postcode filter. Dates come back as text such as `Fri, 05 Jan 2024`; the adapter converts them to ISO dates without a timezone shift. Page numbers are one-based, while the API's `_page` is zero-based. The committed fixture keeps the first 3 transactions for `M1 1AE`, newest first, from a page that carried a next link, captured on 2026-11-17.
+- The HM Land Registry adapter was probed live on 2026-11-17.
 
 ## Data sources and licences
 
@@ -157,6 +160,7 @@ This package reads UK public data sources. Most come from UK public bodies. The 
 | `ons-geography` | Office for National Statistics | <https://geoportal.statistics.gov.uk/api/search/v1/collections/all/items?limit=20> | Open Government Licence v3; the search links each dataset to the ONS geography licence page |
 | `neso-catalogue` | National Energy System Operator | <https://api.neso.energy/api/3/action/package_search> | The NESO Open Data Licence, the portal reports `ESO` |
 | `bgs-opengeoscience-wms` | British Geological Survey | <https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?service=WMS&request=GetCapabilities> | Open Government Licence, with the acknowledgement `Contains British Geological Survey materials copyright UKRI [year]` |
+| `hm-land-registry-price-paid` | HM Land Registry | <https://landregistry.data.gov.uk/data/ppi/transaction-record.json> | Open Government Licence v3 |
 
 ## Package licence
 

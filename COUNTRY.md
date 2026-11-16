@@ -40,8 +40,8 @@ adapters in `packages/uk-sources`, and there is no Python or Ruby port.
 | ONS Open Geography Portal | `ons-geography` | Done, verified live 2026-11-08 |
 | NESO Data Portal catalogue | `neso-catalogue` | Done, verified live 2026-11-08 |
 | BGS OpenGeoscience WMS | `bgs-opengeoscience-wms` | Done, verified live 2026-11-08 |
+| HM Land Registry Price Paid Data | `hm-land-registry-price-paid` | Done, verified live 2026-11-17 |
 | Companies House | - | Pending, needs a key |
-| HM Land Registry | - | Pending |
 | Met Office DataPoint | - | Pending, needs a key |
 
 ## Checklist

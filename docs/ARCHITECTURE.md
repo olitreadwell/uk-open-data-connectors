@@ -62,6 +62,7 @@ Registered adapters:
 | `ons-geography` | ONS Open Geography Portal | A page of boundary and geography datasets |
 | `neso-catalogue` | NESO Data Portal | A page of datasets, with licence and resource counts |
 | `bgs-opengeoscience-wms` | BGS OpenGeoscience | WMS layers, bounds, and coordinate systems |
+| `hm-land-registry-price-paid` | HM Land Registry | Price Paid transaction records for one postcode, newest first |
 
 ## Summaries built into the adapters
 

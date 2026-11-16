@@ -12,6 +12,7 @@ import { foodHygieneAuthoritiesAdapter } from './foodHygiene.js';
 import { gazetteNoticesAdapter } from './gazetteNotices.js';
 import { govUkContentAdapter } from './govUkContent.js';
 import { legislationSearchAdapter } from './legislationSearch.js';
+import { landRegistryPricePaidAdapter } from './landRegistryPricePaid.js';
 import { londonDatastoreAdapter } from './londonDatastore.js';
 import { nesoCatalogueAdapter } from './nesoCatalogue.js';
 import { nesoGenerationMixAdapter } from './nesoGenerationMix.js';
@@ -67,6 +68,7 @@ export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [
   onsGeographyAdapter,
   nesoCatalogueAdapter,
   bgsWmsAdapter,
+  landRegistryPricePaidAdapter,
 ];
 
 /** Looks up a source adapter by id. */

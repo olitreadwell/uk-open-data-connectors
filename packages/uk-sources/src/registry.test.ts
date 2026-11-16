@@ -151,6 +151,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     if (new URL(target).hostname === 'map.bgs.ac.uk') {
       return new Response(readFixtureText('bgs-wms-2026-11-08.xml'), { status: 200 });
     }
+    if (new URL(target).hostname === 'landregistry.data.gov.uk') {
+      return jsonResponse(readFixtureJson('hm-land-registry-price-paid-2026-11-17.json'));
+    }
     if (target.includes('/readings')) {
       return jsonResponse(readFixtureJson('flood-station-readings.json'));
     }
@@ -234,6 +237,7 @@ describe('registry', () => {
       'ons-geography',
       'neso-catalogue',
       'bgs-opengeoscience-wms',
+      'hm-land-registry-price-paid',
     ]);
   });
 
@@ -271,6 +275,7 @@ describe('registry', () => {
     expect(getUkDataSource('ons-geography')?.name).toContain('ONS Open Geography Portal');
     expect(getUkDataSource('neso-catalogue')?.name).toContain('NESO Data Portal');
     expect(getUkDataSource('bgs-opengeoscience-wms')?.name).toContain('BGS');
+    expect(getUkDataSource('hm-land-registry-price-paid')?.name).toContain('HM Land Registry');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 

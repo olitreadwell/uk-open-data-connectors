@@ -1,0 +1,3 @@
+# Connector docs carry the full source table and the dated discovery log.
+docs/CONNECTOR_DISCOVERY.md
+packages/uk-sources/README.md
