@@ -1,0 +1,29 @@
+{
+  "90366": {
+    "LatestChangeTimestampOverride": "2023-02-07T00:00:00",
+    "SpecialCases": null,
+    "AlwaysShowSexWithIndicatorName": false,
+    "AlwaysShowAgeWithIndicatorName": false,
+    "AlwaysShowYearRangeWithIndicatorName": false,
+    "ShouldCountBeDisplayed": false,
+    "DataQualityNote": { "Id": 0, "Text": "None", "Comment": null },
+    "Unit": { "Id": 11, "Value": 1.0, "Label": "Years" },
+    "YearType": { "Id": 1, "Name": "Calendar" },
+    "ValueType": { "Id": 11, "Name": "Life expectancy" },
+    "ConfidenceIntervalMethod": {
+      "Id": 97,
+      "Name": "Other method - see below",
+      "Description": null
+    },
+    "IID": 90366,
+    "Descriptive": {
+      "Name": "Life expectancy at birth",
+      "DataSource": "Office for National Statistics"
+    },
+    "DataChange": {
+      "LastUploadedAt": "2026-04-20T16:25:53",
+      "LastDeletedAt": "2026-01-20T12:58:30"
+    },
+    "InequalitiesExcludedCategoryTypeIds": []
+  }
+}

@@ -1,0 +1,254 @@
+[
+  {
+    "id": "BikePoints_532",
+    "commonName": "Jubilee Plaza, Canary Wharf",
+    "additionalProperties": [
+      {
+        "key": "TerminalName",
+        "value": "200163"
+      },
+      {
+        "key": "Installed",
+        "value": "true"
+      },
+      {
+        "key": "Temporary",
+        "value": "false"
+      },
+      {
+        "key": "RemovalDate",
+        "value": ""
+      },
+      {
+        "key": "NbBikes",
+        "value": "37"
+      },
+      {
+        "key": "NbEBikes",
+        "value": "1"
+      },
+      {
+        "key": "NbEmptyDocks",
+        "value": "21"
+      },
+      {
+        "key": "NbDocks",
+        "value": "63"
+      },
+      {
+        "key": "InstallDate",
+        "value": "1328886360000"
+      }
+    ]
+  },
+  {
+    "id": "BikePoints_280",
+    "commonName": "Royal Avenue 2, Chelsea",
+    "additionalProperties": [
+      {
+        "key": "TerminalName",
+        "value": "003462"
+      },
+      {
+        "key": "Installed",
+        "value": "true"
+      },
+      {
+        "key": "Temporary",
+        "value": "false"
+      },
+      {
+        "key": "RemovalDate",
+        "value": ""
+      },
+      {
+        "key": "NbBikes",
+        "value": "1"
+      },
+      {
+        "key": "NbEBikes",
+        "value": "1"
+      },
+      {
+        "key": "NbEmptyDocks",
+        "value": "9"
+      },
+      {
+        "key": "NbDocks",
+        "value": "10"
+      },
+      {
+        "key": "InstallDate",
+        "value": "1279726440000"
+      }
+    ]
+  },
+  {
+    "id": "BikePoints_864",
+    "commonName": "Abbey Orchard Street, Westminster",
+    "additionalProperties": [
+      {
+        "key": "TerminalName",
+        "value": "003429"
+      },
+      {
+        "key": "Installed",
+        "value": "true"
+      },
+      {
+        "key": "Temporary",
+        "value": "false"
+      },
+      {
+        "key": "RemovalDate",
+        "value": ""
+      },
+      {
+        "key": "NbBikes",
+        "value": "23"
+      },
+      {
+        "key": "NbEBikes",
+        "value": "1"
+      },
+      {
+        "key": "NbEmptyDocks",
+        "value": "5"
+      },
+      {
+        "key": "NbDocks",
+        "value": "29"
+      },
+      {
+        "key": "InstallDate",
+        "value": "1279107720000"
+      }
+    ]
+  },
+  {
+    "id": "BikePoints_323",
+    "commonName": "Clifton Street, Shoreditch",
+    "additionalProperties": [
+      {
+        "key": "TerminalName",
+        "value": "003501"
+      },
+      {
+        "key": "Installed",
+        "value": "true"
+      },
+      {
+        "key": "Temporary",
+        "value": "true"
+      },
+      {
+        "key": "RemovalDate",
+        "value": ""
+      },
+      {
+        "key": "NbBikes",
+        "value": "10"
+      },
+      {
+        "key": "NbEBikes",
+        "value": "1"
+      },
+      {
+        "key": "NbEmptyDocks",
+        "value": "14"
+      },
+      {
+        "key": "NbDocks",
+        "value": "24"
+      },
+      {
+        "key": "InstallDate",
+        "value": "1279892040000"
+      }
+    ]
+  },
+  {
+    "id": "BikePoints_9",
+    "commonName": "New Globe Walk, Bankside",
+    "additionalProperties": [
+      {
+        "key": "TerminalName",
+        "value": "001015"
+      },
+      {
+        "key": "Installed",
+        "value": "true"
+      },
+      {
+        "key": "Temporary",
+        "value": "false"
+      },
+      {
+        "key": "RemovalDate",
+        "value": ""
+      },
+      {
+        "key": "NbBikes",
+        "value": "0"
+      },
+      {
+        "key": "NbEBikes",
+        "value": "0"
+      },
+      {
+        "key": "NbEmptyDocks",
+        "value": "19"
+      },
+      {
+        "key": "NbDocks",
+        "value": "19"
+      },
+      {
+        "key": "InstallDate",
+        "value": "1278242340000"
+      }
+    ]
+  },
+  {
+    "id": "BikePoints_193",
+    "commonName": "Bankside Mix, Bankside",
+    "additionalProperties": [
+      {
+        "key": "TerminalName",
+        "value": "000963"
+      },
+      {
+        "key": "Installed",
+        "value": "true"
+      },
+      {
+        "key": "Temporary",
+        "value": "false"
+      },
+      {
+        "key": "RemovalDate",
+        "value": ""
+      },
+      {
+        "key": "NbBikes",
+        "value": "5"
+      },
+      {
+        "key": "NbEBikes",
+        "value": "0"
+      },
+      {
+        "key": "NbEmptyDocks",
+        "value": "53"
+      },
+      {
+        "key": "NbDocks",
+        "value": "60"
+      },
+      {
+        "key": "InstallDate",
+        "value": "1279392479356"
+      }
+    ]
+  }
+]

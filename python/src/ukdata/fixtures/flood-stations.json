@@ -1,0 +1,55 @@
+{
+  "@context": "http://environment.data.gov.uk/flood-monitoring/meta/context.jsonld",
+  "meta": {
+    "publisher": "Environment Agency",
+    "licence": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "documentation": "http://environment.data.gov.uk/flood-monitoring/doc/reference",
+    "version": "0.9",
+    "comment": "Status: Beta service",
+    "hasFormat": [
+      "http://environment.data.gov.uk/flood-monitoring/id/stations.csv?_limit=2",
+      "http://environment.data.gov.uk/flood-monitoring/id/stations.rdf?_limit=2",
+      "http://environment.data.gov.uk/flood-monitoring/id/stations.ttl?_limit=2",
+      "http://environment.data.gov.uk/flood-monitoring/id/stations.html?_limit=2"
+    ],
+    "limit": 2
+  },
+  "items": [
+    {
+      "@id": "http://environment.data.gov.uk/flood-monitoring/id/stations/1029TH",
+      "RLOIid": "7041",
+      "catchmentName": "Cotswolds",
+      "dateOpened": "1994-01-01",
+      "easting": 417990,
+      "label": "Bourton Dickler",
+      "lat": 51.874767,
+      "long": -1.740083,
+      "measures": [
+        {
+          "@id": "http://environment.data.gov.uk/flood-monitoring/id/measures/1029TH-level-downstage-i-15_min-mASD",
+          "parameter": "level",
+          "parameterName": "Water Level",
+          "period": 900,
+          "qualifier": "Downstream Stage",
+          "unitName": "mASD"
+        },
+        {
+          "@id": "http://environment.data.gov.uk/flood-monitoring/id/measures/1029TH-level-stage-i-15_min-mASD",
+          "parameter": "level",
+          "parameterName": "Water Level",
+          "period": 900,
+          "qualifier": "Stage",
+          "unitName": "mASD"
+        }
+      ],
+      "northing": 219610,
+      "notation": "1029TH",
+      "riverName": "River Dikler",
+      "stageScale": "http://environment.data.gov.uk/flood-monitoring/id/stations/1029TH/stageScale",
+      "stationReference": "1029TH",
+      "status": "http://environment.data.gov.uk/flood-monitoring/def/core/statusActive",
+      "town": "Little Rissington",
+      "wiskiID": "1029TH"
+    }
+  ]
+}

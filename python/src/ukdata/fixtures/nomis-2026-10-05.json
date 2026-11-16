@@ -1,0 +1,3055 @@
+{
+  "structure": {
+    "header": {
+      "id": "none",
+      "prepared": "2026-10-05T10:55:10Z",
+      "sender": {
+        "contact": {
+          "email": "support@nomisweb.co.uk",
+          "name": "Nomis",
+          "uri": "https://www.nomisweb.co.uk"
+        },
+        "id": "NOMIS"
+      },
+      "test": "false"
+    },
+    "keyfamilies": {
+      "keyfamily": [
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Current (being actively updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Claimants,JSA,Rates",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "jsa",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": 1,
+                "annotationtitle": "contenttype/sorting"
+              },
+              {
+                "annotationtext": "usw91 usp usu",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "us",
+                "annotationtitle": "Mnemonic"
+              },
+              {
+                "annotationtext": "2004-06-16 09:30:00",
+                "annotationtitle": "FirstReleased"
+              },
+              {
+                "annotationtext": "2026-09-15 07:00:00",
+                "annotationtitle": "LastUpdated"
+              }
+            ]
+          },
+          "id": "NM_1_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_1_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_1_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_1_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_1_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_1_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_1_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "Records the number of people claiming Jobseeker's Allowance (JSA) and National Insurance credits at Jobcentre Plus local offices. This is not an official measure of unemployment, but is the only indicative statistic available for areas smaller than Local Authorities.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "Jobseeker's Allowance with rates and proportions",
+            "lang": "en"
+          },
+          "uri": "Nm-1d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Historical (not actively being updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Claimants,JSA,Age,Duration",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "jsa",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "usadw91 usadp usadu",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "usad",
+                "annotationtitle": "Mnemonic"
+              }
+            ]
+          },
+          "id": "NM_2_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_2_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_2_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_2_1_AGE_DUR",
+                "conceptref": "AGE_DUR"
+              },
+              {
+                "codelist": "CL_2_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_2_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_2_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "A quartery count of claimants who were claiming Jobseeker's Allowance on the count date analysed by their age and the duration.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "claimant count - age and duration",
+            "lang": "en"
+          },
+          "uri": "Nm-2d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Current (being actively updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "previously unavailable",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "wfdenoms",
+                "annotationtitle": "Mnemonic"
+              }
+            ]
+          },
+          "id": "NM_3_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_3_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_3_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_3_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_3_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_3_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "An estimate of the workforce used for calculating claimant count rates.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "claimant count denominators - workforce series",
+            "lang": "en"
+          },
+          "uri": "Nm-3d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Current (being actively updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "jsa",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "ucadw91",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "ucad",
+                "annotationtitle": "Mnemonic"
+              },
+              {
+                "annotationtext": "2004-06-16 09:30:00",
+                "annotationtitle": "FirstReleased"
+              },
+              {
+                "annotationtext": "2026-09-15 07:00:00",
+                "annotationtitle": "LastUpdated"
+              },
+              {
+                "annotationtext": "2017-02-15 09:30:00",
+                "annotationtitle": "LastRevised"
+              }
+            ]
+          },
+          "id": "NM_4_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_4_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_4_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_4_1_AGE_DUR",
+                "conceptref": "AGE_DUR"
+              },
+              {
+                "codelist": "CL_4_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_4_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_4_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "A monthly count of Jobseeker's Allowance (JSA) claimants broken down by age and the duration of claim. Totals exclude non-computerised clerical claims (approx. 1%). Available for areas smaller than Local Authorities.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "Jobseeker's Allowance by age and duration",
+            "lang": "en"
+          },
+          "uri": "Nm-4d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Historical (not actively being updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "jsa",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "ubrd",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "ubrd",
+                "annotationtitle": "Mnemonic"
+              }
+            ]
+          },
+          "id": "NM_5_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_5_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_5_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_5_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_5_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_5_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_5_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "A midyear estimate of the workforce (the denominator) which was used for calculating claimant count rates prior to January 2003. The estimates are broken down by sex but not age.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "claimant count denominators - historical workforce series",
+            "lang": "en"
+          },
+          "uri": "Nm-5d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Historical (not actively being updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Claimants,JSA,Occupation",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "jsa",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "usocw91",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "usoc",
+                "annotationtitle": "Mnemonic"
+              }
+            ]
+          },
+          "id": "NM_6_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_6_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_6_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_6_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_6_1_OCCUPATION",
+                "conceptref": "OCCUPATION"
+              },
+              {
+                "codelist": "CL_6_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_6_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_6_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "A quarterly count of  Jobseeker's Allowance claimants analysed by their sought and usual occupation.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "claimant count - occupation",
+            "lang": "en"
+          },
+          "uri": "Nm-6d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Historical (not actively being updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Claimants,JSA,Occupation,Age,Duration",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "jsa",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "previously unavailable",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "usocad",
+                "annotationtitle": "Mnemonic"
+              }
+            ]
+          },
+          "id": "NM_7_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_7_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_7_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_7_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_7_1_OCCUPATION",
+                "conceptref": "OCCUPATION"
+              },
+              {
+                "codelist": "CL_7_1_AGE_DUR",
+                "conceptref": "AGE_DUR"
+              },
+              {
+                "codelist": "CL_7_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_7_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_7_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "A quarterly count of  Jobseeker's Allowance claimants analysed by their sought and usual occupation, their age and the duration of their claim.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "claimant count - occupation, age and duration",
+            "lang": "en"
+          },
+          "uri": "Nm-7d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Current (being actively updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Claimants,JSA,Age,Duration",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "jsa",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "previously unavailable",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "udad",
+                "annotationtitle": "Mnemonic"
+              },
+              {
+                "annotationtext": "2004-03-17 09:30:00",
+                "annotationtitle": "FirstReleased"
+              },
+              {
+                "annotationtext": "2026-01-20 07:00:00",
+                "annotationtitle": "LastUpdated"
+              },
+              {
+                "annotationtext": "2017-02-15 09:30:00",
+                "annotationtitle": "LastRevised"
+              }
+            ]
+          },
+          "id": "NM_8_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_8_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_8_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_8_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_8_1_AGE_DUR",
+                "conceptref": "AGE_DUR"
+              },
+              {
+                "codelist": "CL_8_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_8_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_8_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "name": {
+            "value": "Jobseeker's Allowance off-flows by reason, age and duration",
+            "lang": "en"
+          },
+          "uri": "Nm-8d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Current (being actively updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Claimants,JSA,Age,Duration",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "jsa",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "ufadw91 ufadp ufadu",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "ufad",
+                "annotationtitle": "Mnemonic"
+              },
+              {
+                "annotationtext": "2004-03-17 09:30:00",
+                "annotationtitle": "FirstReleased"
+              },
+              {
+                "annotationtext": "2026-01-20 07:00:00",
+                "annotationtitle": "LastUpdated"
+              },
+              {
+                "annotationtext": "2017-02-15 09:30:00",
+                "annotationtitle": "LastRevised"
+              }
+            ]
+          },
+          "id": "NM_9_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_9_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_9_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_9_1_AGE_DUR",
+                "conceptref": "AGE_DUR"
+              },
+              {
+                "codelist": "CL_9_1_FLOW",
+                "conceptref": "FLOW"
+              },
+              {
+                "codelist": "CL_9_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_9_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_9_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "A monthly count of JSA claimants who either a) ended a claim (off-flows) during the previous accounting month analysed by age and duration of their completed claims or b) started a new claim (on-flows) during the previous accounting month analysed by their age; by definition durations are not applicable to on-flows.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "Jobseeker's Allowance flows by age and duration",
+            "lang": "en"
+          },
+          "uri": "Nm-9d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Current (being actively updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Claimants,JSA",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "jsa",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "ufw91 ufp ufu",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "uf",
+                "annotationtitle": "Mnemonic"
+              },
+              {
+                "annotationtext": "2004-03-17 09:30:00",
+                "annotationtitle": "FirstReleased"
+              },
+              {
+                "annotationtext": "2026-01-20 07:00:00",
+                "annotationtitle": "LastUpdated"
+              },
+              {
+                "annotationtext": "2017-02-15 09:30:00",
+                "annotationtitle": "LastRevised"
+              }
+            ]
+          },
+          "id": "NM_10_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_10_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_10_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_10_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_10_1_FLOW",
+                "conceptref": "FLOW"
+              },
+              {
+                "codelist": "CL_10_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_10_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_10_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "A monthly count of claimants who either a) were claiming Jobseeker's Allowance (stocks) on the count date, b) ended a claim (off-flows) during the previous accounting month or c) started a new claim (on-flows) during the previous accounting month.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "Jobseeker's Allowance flows",
+            "lang": "en"
+          },
+          "uri": "Nm-10d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Current (being actively updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Claimants,JSA,Seasonally adjusted",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "cc",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "usac",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "usac",
+                "annotationtitle": "Mnemonic"
+              },
+              {
+                "annotationtext": "2004-06-16 09:30:00",
+                "annotationtitle": "FirstReleased"
+              },
+              {
+                "annotationtext": "2026-09-15 07:00:00",
+                "annotationtitle": "LastUpdated"
+              },
+              {
+                "annotationtext": "2026-09-15 07:00:00",
+                "annotationtitle": "LastRevised"
+              }
+            ]
+          },
+          "id": "NM_11_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_11_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_11_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_11_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_11_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_11_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "The seasonally adjusted series takes into account seasonal patterns of claims and previous changes to the way in which claimants are counted so that the whole series from 1971 is consistent with the current data. This allow comparisons over time to be made which are not affected by the discontinuities found in the unadjusted series. The current seasonally adjusted series relates only to claimants aged 18 or over.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "Claimant Count - seasonally adjusted",
+            "lang": "en"
+          },
+          "uri": "Nm-11d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Current (being actively updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "DWP benefits,ESA",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "dwp_wpls",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "besasa",
+                "annotationtitle": "Mnemonic"
+              },
+              {
+                "annotationtext": "2017-02-15 09:30:00",
+                "annotationtitle": "FirstReleased"
+              },
+              {
+                "annotationtext": "2019-05-14 09:30:00",
+                "annotationtitle": "LastUpdated"
+              }
+            ]
+          },
+          "id": "NM_12_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_12_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_12_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_12_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_12_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_12_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "name": {
+            "value": "benefit claimants - employment and support allowance for small areas",
+            "lang": "en"
+          },
+          "uri": "Nm-12d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Current (being actively updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Employment,Unemployment,Occupation,Industry,Qualification,Ethnic,Disability,Country of Birth,Hours Worked,Full-time,Part-time,Self-employed,Sex,Age",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "aps",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "previously unavailable",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "apsnew",
+                "annotationtitle": "Mnemonic"
+              },
+              {
+                "annotationtext": "2006-03-29 09:30:00",
+                "annotationtitle": "FirstReleased"
+              },
+              {
+                "annotationtext": "2026-07-21 07:00:00",
+                "annotationtitle": "LastUpdated"
+              },
+              {
+                "annotationtext": "2023-01-27 10:00:00",
+                "annotationtitle": "LastRevised"
+              }
+            ]
+          },
+          "id": "NM_17_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_17_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_17_1_CELL",
+                "conceptref": "CELL"
+              },
+              {
+                "codelist": "CL_17_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_17_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_17_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "A residence based labour market survey encompassing population, economic activity (employment and unemployment), economic inactivity and qualifications. These are broken down where possible by gender, age, ethnicity, industry and occupation. Available at Local Authority level and above. Updated quarterly.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "annual population survey",
+            "lang": "en"
+          },
+          "uri": "Nm-17d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Current (being actively updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Employment,Unemployment,Occupation,Industry,Qualification,Ethnic,Disability,Country of Birth,Hours Worked,Full-time,Part-time,Self-employed,Sex,Age",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "aps",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "previously unavailable",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "apsnew",
+                "annotationtitle": "Mnemonic"
+              },
+              {
+                "annotationtext": "2006-03-29 09:30:00",
+                "annotationtitle": "FirstReleased"
+              },
+              {
+                "annotationtext": "2026-07-21 07:00:00",
+                "annotationtitle": "LastUpdated"
+              },
+              {
+                "annotationtext": "2023-01-27 10:00:00",
+                "annotationtitle": "LastRevised"
+              }
+            ]
+          },
+          "id": "NM_17_5",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_17_5_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_17_5_VARIABLE",
+                "conceptref": "VARIABLE"
+              },
+              {
+                "codelist": "CL_17_5_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_17_5_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_17_5_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "A residence based labour market survey encompassing population, economic activity (employment and unemployment), economic inactivity and qualifications. These are broken down where possible by gender, age, ethnicity, industry and occupation. Available at Local Authority level and above. Updated quarterly.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "annual population survey (variables (percentages))",
+            "lang": "en"
+          },
+          "uri": "Nm-17d5",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Current (being actively updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Claimants,JSA,Age,Duration,Rates",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "jsa",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "na",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "ccadr",
+                "annotationtitle": "Mnemonic"
+              },
+              {
+                "annotationtext": "2004-06-16 09:30:00",
+                "annotationtitle": "FirstReleased"
+              },
+              {
+                "annotationtext": "2026-09-15 07:00:00",
+                "annotationtitle": "LastUpdated"
+              },
+              {
+                "annotationtext": "2017-02-15 09:30:00",
+                "annotationtitle": "LastRevised"
+              }
+            ]
+          },
+          "id": "NM_18_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_18_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_18_1_AGE",
+                "conceptref": "AGE"
+              },
+              {
+                "codelist": "CL_18_1_DURATION",
+                "conceptref": "DURATION"
+              },
+              {
+                "codelist": "CL_18_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_18_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_18_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_18_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "A monthly count of Jobseeker's Allowance (JSA) claimants broken down by age and duration of claim together with age based proportions. Totals exclude non-computerised clerical claims (approx. 1%). Available for Local Authorities.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "Jobseeker's Allowance by age and duration with proportions",
+            "lang": "en"
+          },
+          "uri": "Nm-18d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Historical (not actively being updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "JCP Vacancies",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "vacs",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "vsa",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "vsa",
+                "annotationtitle": "Mnemonic"
+              }
+            ]
+          },
+          "id": "NM_19_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_19_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_19_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_19_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_19_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_19_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "an analysis of seasonally adjusted jobcentre inflows, outflows and placings during the previous accounting period together with the stock of vacancies remaining unfilled on the count date",
+            "lang": "en"
+          },
+          "name": {
+            "value": "vacancies - seasonally adjusted series",
+            "lang": "en"
+          },
+          "uri": "Nm-19d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Historical (not actively being updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "JCP Vacancies",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "vacs",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "vsic92",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "vsic",
+                "annotationtitle": "Mnemonic"
+              }
+            ]
+          },
+          "id": "NM_20_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_20_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_20_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_20_1_INDUSTRY",
+                "conceptref": "INDUSTRY"
+              },
+              {
+                "codelist": "CL_20_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_20_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_20_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "a quarterly count of vacancies notified to employment service job centres broken down classified at the 1992 standard industrial classification (SIC92) category and broad industry group levels",
+            "lang": "en"
+          },
+          "name": {
+            "value": "vacancies by industry",
+            "lang": "en"
+          },
+          "uri": "Nm-20d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Historical (not actively being updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "JCP Vacancies",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "vacs",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "vsic92m",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "vsicm",
+                "annotationtitle": "Mnemonic"
+              }
+            ]
+          },
+          "id": "NM_21_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_21_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_21_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_21_1_INDUSTRY",
+                "conceptref": "INDUSTRY"
+              },
+              {
+                "codelist": "CL_21_1_VACTYPE",
+                "conceptref": "VACTYPE"
+              },
+              {
+                "codelist": "CL_21_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_21_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_21_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "a quarterly analysis of jobcentre vacancies analysed by 1992 standard industrial classification (SIC92) division and higher levels.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "vacancies by industry with duration analysis",
+            "lang": "en"
+          },
+          "uri": "Nm-21d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Historical (not actively being updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "JCP Vacancies",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "vacs",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "vsoc90",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "vsoc",
+                "annotationtitle": "Mnemonic"
+              }
+            ]
+          },
+          "id": "NM_22_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_22_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_22_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_22_1_OCCUPATION",
+                "conceptref": "OCCUPATION"
+              },
+              {
+                "codelist": "CL_22_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_22_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_22_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "a count of vacancies notified to jobcentres during each accounting quarter analysed by standard occupational classification (SOC) major groups",
+            "lang": "en"
+          },
+          "name": {
+            "value": "vacancies by occupation",
+            "lang": "en"
+          },
+          "uri": "Nm-22d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Historical (not actively being updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "JCP Vacancies",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "vacs",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "vsoc90m",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "vsocm",
+                "annotationtitle": "Mnemonic"
+              }
+            ]
+          },
+          "id": "NM_23_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_23_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_23_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_23_1_OCCUPATION",
+                "conceptref": "OCCUPATION"
+              },
+              {
+                "codelist": "CL_23_1_VACTYPE",
+                "conceptref": "VACTYPE"
+              },
+              {
+                "codelist": "CL_23_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_23_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_23_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "a quarterly analysis of vacancies notified to employment service jobcentres analysed by 1990 standard occupational classification occupation unit groups. information is available on the average time taken to fill vacancies, the average time for which unfilled vacancies have been on the books, and the breakdowns by full/part-time and standard/self-employed jobs.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "vacancies by occupation with duration analysis",
+            "lang": "en"
+          },
+          "uri": "Nm-23d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Historical (not actively being updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "JCP Vacancies",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "vacs",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "vsum",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "vsum",
+                "annotationtitle": "Mnemonic"
+              }
+            ]
+          },
+          "id": "NM_24_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_24_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_24_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_24_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_24_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_24_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "a monthly count of standard plus self-employed vacancies notified to jobcentres during the previous accounting month and a stock count of unfilled vacancies on the count date.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "vacancies - summary analysis",
+            "lang": "en"
+          },
+          "uri": "Nm-24d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Historical (not actively being updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "VAT,Registration,Deregistration,Stock",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Businesses",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "vat",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "vat",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "vat92",
+                "annotationtitle": "Mnemonic"
+              },
+              {
+                "annotationtext": "2004-11-01 09:30:00",
+                "annotationtitle": "FirstReleased"
+              },
+              {
+                "annotationtext": "2008-12-02 09:30:00",
+                "annotationtitle": "LastUpdated"
+              }
+            ]
+          },
+          "id": "NM_29_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_29_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_29_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_29_1_INDUSTRY",
+                "conceptref": "INDUSTRY"
+              },
+              {
+                "codelist": "CL_29_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_29_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_29_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "VAT registrations and de-registrations are the best official guide to the pattern of business start-ups and closures. They are an indicator of the level of entrepreneurship and of the health of the business population.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "vat registrations/deregistrations by industry",
+            "lang": "en"
+          },
+          "uri": "Nm-29d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Current (being actively updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Earnings,Hours worked,Pay,Resident",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "GB pounds,GB pounds per week,Hours per week",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "ashe",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "previously unavailable",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "asher",
+                "annotationtitle": "Mnemonic"
+              },
+              {
+                "annotationtext": "2005-11-17 09:30:00",
+                "annotationtitle": "FirstReleased"
+              },
+              {
+                "annotationtext": "2025-11-03 17:30:00",
+                "annotationtitle": "LastUpdated"
+              },
+              {
+                "annotationtext": "2025-11-03 17:30:00",
+                "annotationtitle": "LastRevised"
+              }
+            ]
+          },
+          "id": "NM_30_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_30_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_30_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_30_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_30_1_PAY",
+                "conceptref": "PAY"
+              },
+              {
+                "codelist": "CL_30_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_30_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_30_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "name": {
+            "value": "annual survey of hours and earnings - resident analysis",
+            "lang": "en"
+          },
+          "uri": "Nm-30d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Current (being actively updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "Population,Age,Mid-year",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Persons",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "pest",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "pest",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "pestnew",
+                "annotationtitle": "Mnemonic"
+              },
+              {
+                "annotationtext": "2004-09-09 09:30:00",
+                "annotationtitle": "FirstReleased"
+              },
+              {
+                "annotationtext": "2025-07-30 09:30:00",
+                "annotationtitle": "LastUpdated"
+              },
+              {
+                "annotationtext": "2025-07-30 09:30:00",
+                "annotationtitle": "LastRevised"
+              }
+            ]
+          },
+          "id": "NM_31_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_31_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_31_1_SEX",
+                "conceptref": "SEX"
+              },
+              {
+                "codelist": "CL_31_1_AGE",
+                "conceptref": "AGE"
+              },
+              {
+                "codelist": "CL_31_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_31_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_31_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "The midyear (30 June) estimates of population are based on results from the latest Census of Population with allowance for under-enumeration. Available at Local Authority level and above.",
+            "lang": "en"
+          },
+          "name": {
+            "value": "Population estimates - local authority based by five year age band",
+            "lang": "en"
+          },
+          "uri": "Nm-31d1",
+          "version": 1
+        },
+        {
+          "agencyid": "NOMIS",
+          "annotations": {
+            "annotation": [
+              {
+                "annotationtext": "Historical (not actively being updated)",
+                "annotationtitle": "Status"
+              },
+              {
+                "annotationtext": "VAT,Registration,Deregistration,Stock",
+                "annotationtitle": "Keywords"
+              },
+              {
+                "annotationtext": "Businesses",
+                "annotationtitle": "Units"
+              },
+              {
+                "annotationtext": "vat",
+                "annotationtitle": "contenttype/sources"
+              },
+              {
+                "annotationtext": "vat",
+                "annotationtitle": "SubDescription"
+              },
+              {
+                "annotationtext": "vat68",
+                "annotationtitle": "Mnemonic"
+              }
+            ]
+          },
+          "id": "NM_34_1",
+          "components": {
+            "attribute": [
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_STATUS",
+                "conceptref": "OBS_STATUS"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_CONF",
+                "conceptref": "OBS_CONF"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Observation",
+                "codelist": "CL_OBS_ROUND",
+                "conceptref": "OBS_ROUND"
+              },
+              {
+                "assignmentstatus": "Conditional",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT_MULT",
+                "conceptref": "UNIT_MULTIPLIER"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_TIME_FORMAT",
+                "conceptref": "TIME_FORMAT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "codelist": "CL_UNIT",
+                "conceptref": "UNIT"
+              },
+              {
+                "assignmentstatus": "Mandatory",
+                "attachmentlevel": "Series",
+                "conceptref": "TITLE_COMPL"
+              }
+            ],
+            "dimension": [
+              {
+                "codelist": "CL_34_1_GEOGRAPHY",
+                "conceptref": "GEOGRAPHY"
+              },
+              {
+                "codelist": "CL_34_1_ITEM",
+                "conceptref": "ITEM"
+              },
+              {
+                "codelist": "CL_34_1_INDUSTRY",
+                "conceptref": "INDUSTRY"
+              },
+              {
+                "codelist": "CL_34_1_MEASURES",
+                "conceptref": "MEASURES"
+              },
+              {
+                "codelist": "CL_34_1_FREQ",
+                "conceptref": "FREQ",
+                "isfrequencydimension": "true"
+              }
+            ],
+            "primarymeasure": {
+              "conceptref": "OBS_VALUE"
+            },
+            "timedimension": {
+              "codelist": "CL_34_1_TIME",
+              "conceptref": "TIME"
+            }
+          },
+          "description": {
+            "value": "This data set is produced by the department of trade and industry based on vat information help by the office for national statistics, which in turn receives it from HM customs and excise",
+            "lang": "en"
+          },
+          "name": {
+            "value": "vat registrations/deregistrations by industry - 1968 SIC",
+            "lang": "en"
+          },
+          "uri": "Nm-34d1",
+          "version": 1
+        }
+      ]
+    },
+    "xmlns": "http://www.SDMX.org/resources/SDMXML/schemas/v2_0/message",
+    "common": "http://www.SDMX.org/resources/SDMXML/schemas/v2_0/common",
+    "structure": "http://www.SDMX.org/resources/SDMXML/schemas/v2_0/structure",
+    "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "schemalocation": "http://sdmx.org/docs/2_0/SDMXMessage.xsd"
+  }
+}
