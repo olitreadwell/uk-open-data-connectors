@@ -15,6 +15,9 @@ module Ukdata
   def parse_flood_stations(payload)
     source = 'flood-monitoring'
     data = need_hash(source, payload)
+    meta = data['meta'].is_a?(Hash) ? data['meta'] : {}
+    publisher = flood_text(meta['publisher'])
+    licence = flood_text(meta['licence'])
     need_array(source, data['items'], 'items').map do |item|
       row = need_hash(source, item)
       measures = need_array(source, row.fetch('measures', []), 'measures').map do |raw_measure|
@@ -34,6 +37,8 @@ module Ukdata
         'label' => flood_text(row['label']),
         'riverName' => flood_text(row['riverName']),
         'catchmentName' => flood_text(row['catchmentName']),
+        'publisher' => publisher,
+        'licence' => licence,
         'latitude' => row['lat'],
         'longitude' => row['long'],
         'measures' => measures
@@ -44,12 +49,17 @@ module Ukdata
   def parse_flood_readings(payload)
     source = 'flood-monitoring'
     data = need_hash(source, payload)
+    meta = data['meta'].is_a?(Hash) ? data['meta'] : {}
+    publisher = flood_text(meta['publisher'])
+    licence = flood_text(meta['licence'])
     need_array(source, data['items'], 'items').map do |item|
       row = need_hash(source, item)
       {
         'measureId' => need_string(source, row['measure'], 'measure'),
         'dateTime' => need_string(source, row['dateTime'], 'dateTime'),
-        'value' => need_number(source, row['value'], 'value')
+        'value' => need_number(source, row['value'], 'value'),
+        'publisher' => publisher,
+        'licence' => licence
       }
     end
   end

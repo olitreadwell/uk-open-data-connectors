@@ -8,6 +8,8 @@ module Ukdata
   def parse_find_a_tender_releases(payload)
     source = 'find-a-tender'
     data = need_hash(source, payload)
+    publisher = data['publisher'].is_a?(Hash) ? data['publisher']['name'].to_s.strip : ''
+    licence = data['license'].is_a?(String) ? data['license'].strip : ''
     releases = need_array(source, data['releases'], 'releases').map do |raw|
       row = need_hash(source, raw)
       tender = row['tender'].is_a?(Hash) ? row['tender'] : {}
@@ -22,7 +24,9 @@ module Ukdata
         'tenderStatus' => tender['status'].to_s,
         'procurementMethod' => tender['procurementMethod'].to_s,
         'buyerName' => buyer['name'].to_s,
-        'tenderValueAmount' => value['amount']
+        'tenderValueAmount' => value['amount'],
+        'publisher' => publisher,
+        'licence' => licence
       }
     end
     {

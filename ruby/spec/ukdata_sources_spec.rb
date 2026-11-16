@@ -193,8 +193,19 @@ class UkdataSourcesSpec < Minitest::Test
 
   def test_port_field_names_match_typescript
     flood = Ukdata.get_uk_data_source('flood-stations').load_fixture.call.first
-    assert_equal %w[catchmentName id label latitude longitude measures notation riverName], flood.keys.sort
-    assert_equal %w[dateTime measureId value], Ukdata.get_uk_data_source('flood-readings').load_fixture.call.first.keys.sort
+    assert_equal %w[catchmentName id label latitude licence longitude measures notation publisher riverName],
+                 flood.keys.sort
+    assert_equal %w[dateTime licence measureId publisher value],
+                 Ukdata.get_uk_data_source('flood-readings').load_fixture.call.first.keys.sort
+    assert_equal %w[attribution dataset entityCount licence name phase themes typology],
+                 Ukdata.get_uk_data_source('planning-datasets').load_fixture.call.first.keys.sort
+    assert_equal %w[buyerName date id licence ocid procurementMethod publisher tags tenderStatus
+                    tenderTitle tenderValueAmount],
+                 Ukdata.get_uk_data_source('find-a-tender').load_fixture.call['releases']
+                       .first.keys.sort
+    assert_equal %w[licenceId licenceTitle licenceUrl modifiedAt name publisher resourceCount tags title],
+                 Ukdata.get_uk_data_source('data-gov-uk-ckan').load_fixture.call['datasets']
+                       .first.keys.sort
     point = Ukdata.get_uk_data_source('ukhsa-dashboard').load_fixture.call['points'].first
     assert_includes point.keys, 'geographyCode'
     refute_includes point.keys, 'geographicCode'

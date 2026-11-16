@@ -22,6 +22,8 @@ module Ukdata
         'title' => need_string(source, row['title'], 'title'),
         'publisher' => optional_text(organization['title']),
         'licenceId' => optional_text(row['license_id']),
+        'licenceTitle' => optional_text(row['license_title']),
+        'licenceUrl' => optional_text(row['license_url']),
         'resourceCount' => need_int(source, row['num_resources'], 'num_resources'),
         'modifiedAt' => row['metadata_modified'],
         'tags' => tags.filter_map do |tag|

@@ -19,7 +19,8 @@ module Ukdata
         'themes' => need_array(source, row.fetch('themes', []), 'themes'),
         'typology' => row['typology'].to_s,
         'phase' => row['phase'].to_s,
-        'licence' => row['licence'].to_s
+        'licence' => row['licence'].to_s,
+        'attribution' => row['attribution'].to_s
       }
     end
   end

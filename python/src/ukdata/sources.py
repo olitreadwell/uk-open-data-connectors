@@ -1,4 +1,4 @@
-"""Uniform adapters for the 24 keyless UK data sources in the TypeScript port."""
+"""Uniform adapters for the 34 keyless UK data sources in the TypeScript registry."""
 
 from __future__ import annotations
 
@@ -162,6 +162,10 @@ def parse_flood_stations(payload: Any) -> list[dict[str, Any]]:
     """Parses an Environment Agency /id/stations payload into stations."""
     source = "flood-monitoring"
     data = _need_dict(source, payload)
+    meta_value = data.get("meta")
+    meta: dict[str, Any] = meta_value if isinstance(meta_value, dict) else {}
+    publisher = _flood_text(meta.get("publisher"))
+    licence = _flood_text(meta.get("licence"))
     stations: list[dict[str, Any]] = []
     for item in _need_list(source, data.get("items"), "items"):
         row = _need_dict(source, item)
@@ -187,6 +191,8 @@ def parse_flood_stations(payload: Any) -> list[dict[str, Any]]:
                 "label": _flood_text(row.get("label")),
                 "riverName": _flood_text(row.get("riverName")),
                 "catchmentName": _flood_text(row.get("catchmentName")),
+                "publisher": publisher,
+                "licence": licence,
                 "latitude": row.get("lat"),
                 "longitude": row.get("long"),
                 "measures": measures,
@@ -199,11 +205,17 @@ def parse_flood_readings(payload: Any) -> list[dict[str, Any]]:
     """Parses an Environment Agency /readings payload into readings."""
     source = "flood-monitoring"
     data = _need_dict(source, payload)
+    meta_value = data.get("meta")
+    meta: dict[str, Any] = meta_value if isinstance(meta_value, dict) else {}
+    publisher = _flood_text(meta.get("publisher"))
+    licence = _flood_text(meta.get("licence"))
     return [
         {
             "measureId": _need_str(source, _need_dict(source, item).get("measure"), "measure"),
             "dateTime": _need_str(source, _need_dict(source, item).get("dateTime"), "dateTime"),
             "value": _need_number(source, _need_dict(source, item).get("value"), "value"),
+            "publisher": publisher,
+            "licence": licence,
         }
         for item in _need_list(source, data.get("items"), "items")
     ]
@@ -402,6 +414,7 @@ def parse_planning_datasets(payload: Any) -> list[dict[str, Any]]:
                 "typology": str(row.get("typology") or ""),
                 "phase": str(row.get("phase") or ""),
                 "licence": str(row.get("licence") or ""),
+                "attribution": str(row.get("attribution") or ""),
             }
         )
     return datasets
@@ -1317,6 +1330,13 @@ def parse_find_a_tender_releases(payload: Any) -> dict[str, Any]:
     """Parses an OCDS release packages payload into releases."""
     source = "find-a-tender"
     data = _need_dict(source, payload)
+    publisher_value = data.get("publisher")
+    publisher_box: dict[str, Any] = (
+        publisher_value if isinstance(publisher_value, dict) else {}
+    )
+    publisher = str(publisher_box.get("name") or "").strip()
+    license_value = data.get("license")
+    licence = license_value.strip() if isinstance(license_value, str) else ""
     releases: list[dict[str, Any]] = []
     for raw in _need_list(source, data.get("releases"), "releases"):
         row = _need_dict(source, raw)
@@ -1337,6 +1357,8 @@ def parse_find_a_tender_releases(payload: Any) -> dict[str, Any]:
                 "procurementMethod": str(tender.get("procurementMethod") or ""),
                 "buyerName": str(buyer.get("name") or ""),
                 "tenderValueAmount": value.get("amount"),
+                "publisher": publisher,
+                "licence": licence,
             }
         )
     return {
@@ -1558,6 +1580,8 @@ def parse_data_gov_uk_packages(payload: Any) -> dict[str, Any]:
                 "title": _need_str(source, row.get("title"), "title"),
                 "publisher": _optional_text(organization.get("title")),
                 "licenceId": _optional_text(row.get("license_id")),
+                "licenceTitle": _optional_text(row.get("license_title")),
+                "licenceUrl": _optional_text(row.get("license_url")),
                 "resourceCount": _need_int(source, row.get("num_resources"), "num_resources"),
                 "modifiedAt": row.get("metadata_modified"),
                 "tags": [

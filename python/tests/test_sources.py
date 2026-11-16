@@ -245,11 +245,19 @@ def test_port_field_names_match_typescript() -> None:
         "label",
         "riverName",
         "catchmentName",
+        "publisher",
+        "licence",
         "latitude",
         "longitude",
         "measures",
     }
-    assert set(first["flood-readings"]) == {"measureId", "dateTime", "value"}
+    assert set(first["flood-readings"]) == {
+        "measureId",
+        "dateTime",
+        "value",
+        "publisher",
+        "licence",
+    }
     assert set(first["ons-datasets"]) == {
         "id",
         "title",
@@ -283,6 +291,7 @@ def test_port_field_names_match_typescript() -> None:
         "typology",
         "phase",
         "licence",
+        "attribution",
     }
     assert set(first["bank-rate"]) == {"date", "ratePercent"}
     assert set(first["parliament-seats"]) == {
@@ -365,6 +374,8 @@ def test_port_field_names_match_typescript() -> None:
         "procurementMethod",
         "buyerName",
         "tenderValueAmount",
+        "publisher",
+        "licence",
     }
     assert set(first["tfl-line-status"]) == {
         "id",
@@ -381,6 +392,8 @@ def test_port_field_names_match_typescript() -> None:
         "title",
         "publisher",
         "licenceId",
+        "licenceTitle",
+        "licenceUrl",
         "resourceCount",
         "modifiedAt",
         "tags",
