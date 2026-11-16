@@ -1,0 +1,194 @@
+{
+  "format": "linked-data-api",
+  "version": "0.2",
+  "result": {
+    "_about": "https://landregistry.data.gov.uk/data/ppi/transaction-record.json?_pageSize=3&propertyAddress.postcode=M1+1AE&_sort=-transactionDate",
+    "definition": "https://landregistry.data.gov.uk/meta/data/ppi/transaction-record.json?propertyAddress.postcode=M1+1AE&_sort=-transactionDate",
+    "extendedMetadataVersion": "https://landregistry.data.gov.uk/data/ppi/transaction-record.json?_pageSize=3&propertyAddress.postcode=M1+1AE&_metadata=all&_sort=-transactionDate",
+    "first": "https://landregistry.data.gov.uk/data/ppi/transaction-record.json?_pageSize=3&_page=0&propertyAddress.postcode=M1+1AE&_sort=-transactionDate",
+    "isPartOf": {
+      "_about": "https://landregistry.data.gov.uk/data/ppi/transaction-record.json?propertyAddress.postcode=M1+1AE&_sort=-transactionDate",
+      "definition": "https://landregistry.data.gov.uk/meta/data/ppi/transaction-record.json?propertyAddress.postcode=M1+1AE&_sort=-transactionDate",
+      "hasPart": "https://landregistry.data.gov.uk/data/ppi/transaction-record.json?_pageSize=3&propertyAddress.postcode=M1+1AE&_sort=-transactionDate",
+      "type": ["http://purl.org/linked-data/api/vocab#ListEndpoint"]
+    },
+    "items": [
+      {
+        "_about": "http://landregistry.data.gov.uk/data/ppi/transaction/152AB733-F4DC-E651-E063-4704A8C061D9/current",
+        "estateType": {
+          "_about": "http://landregistry.data.gov.uk/def/common/leasehold",
+          "label": [{ "_value": "Leasehold", "_datatype": "langString", "_lang": "en" }],
+          "prefLabel": [{ "_value": "Leasehold", "_datatype": "langString", "_lang": "en" }]
+        },
+        "hasTransaction": "http://landregistry.data.gov.uk/data/ppi/transaction/152AB733-F4DC-E651-E063-4704A8C061D9",
+        "newBuild": false,
+        "pricePaid": 300000,
+        "propertyAddress": {
+          "_about": "http://landregistry.data.gov.uk/data/ppi/address/88af33457c2b27983c0c93dfe30350557ce21ba3",
+          "county": "GREATER MANCHESTER",
+          "district": "MANCHESTER",
+          "paon": "113",
+          "postcode": "M1 1AE",
+          "saon": "APARTMENT 21",
+          "street": "NEWTON STREET",
+          "town": "MANCHESTER",
+          "type": ["http://landregistry.data.gov.uk/def/common/BS7666Address"]
+        },
+        "propertyType": {
+          "_about": "http://landregistry.data.gov.uk/def/common/flat-maisonette",
+          "label": [{ "_value": "Flat-maisonette", "_datatype": "langString", "_lang": "en" }],
+          "prefLabel": [{ "_value": "flat-maisonette", "_datatype": "langString", "_lang": "en" }]
+        },
+        "recordStatus": {
+          "_about": "http://landregistry.data.gov.uk/def/ppi/add",
+          "label": [{ "_value": "Add", "_datatype": "langString", "_lang": "en" }],
+          "prefLabel": [{ "_value": "Add", "_datatype": "langString", "_lang": "en" }]
+        },
+        "transactionCategory": {
+          "_about": "http://landregistry.data.gov.uk/def/ppi/standardPricePaidTransaction",
+          "label": [
+            {
+              "_value": "Standard price paid transaction",
+              "_datatype": "langString",
+              "_lang": "en"
+            }
+          ],
+          "prefLabel": [
+            {
+              "_value": "Standard price paid transaction",
+              "_datatype": "langString",
+              "_lang": "en"
+            }
+          ]
+        },
+        "transactionDate": "Fri, 05 Jan 2024",
+        "transactionId": "152AB733-F4DC-E651-E063-4704A8C061D9",
+        "type": [
+          {
+            "_about": "http://landregistry.data.gov.uk/def/ppi/TransactionRecord",
+            "label": [{ "_value": "TransactionRecord", "_datatype": "langString", "_lang": "en" }]
+          }
+        ]
+      },
+      {
+        "_about": "http://landregistry.data.gov.uk/data/ppi/transaction/06C9F487-6090-9388-E063-4804A8C0BD98/current",
+        "estateType": {
+          "_about": "http://landregistry.data.gov.uk/def/common/leasehold",
+          "label": [{ "_value": "Leasehold", "_datatype": "langString", "_lang": "en" }],
+          "prefLabel": [{ "_value": "Leasehold", "_datatype": "langString", "_lang": "en" }]
+        },
+        "hasTransaction": "http://landregistry.data.gov.uk/data/ppi/transaction/06C9F487-6090-9388-E063-4804A8C0BD98",
+        "newBuild": false,
+        "pricePaid": 180000,
+        "propertyAddress": {
+          "_about": "http://landregistry.data.gov.uk/data/ppi/address/ef55da69eb45e912a6469db36d8fc247536388c2",
+          "county": "GREATER MANCHESTER",
+          "district": "MANCHESTER",
+          "paon": "113",
+          "postcode": "M1 1AE",
+          "saon": "APARTMENT 6",
+          "street": "NEWTON STREET",
+          "town": "MANCHESTER",
+          "type": ["http://landregistry.data.gov.uk/def/common/BS7666Address"]
+        },
+        "propertyType": {
+          "_about": "http://landregistry.data.gov.uk/def/common/flat-maisonette",
+          "label": [{ "_value": "Flat-maisonette", "_datatype": "langString", "_lang": "en" }],
+          "prefLabel": [{ "_value": "flat-maisonette", "_datatype": "langString", "_lang": "en" }]
+        },
+        "recordStatus": {
+          "_about": "http://landregistry.data.gov.uk/def/ppi/add",
+          "label": [{ "_value": "Add", "_datatype": "langString", "_lang": "en" }],
+          "prefLabel": [{ "_value": "Add", "_datatype": "langString", "_lang": "en" }]
+        },
+        "transactionCategory": {
+          "_about": "http://landregistry.data.gov.uk/def/ppi/standardPricePaidTransaction",
+          "label": [
+            {
+              "_value": "Standard price paid transaction",
+              "_datatype": "langString",
+              "_lang": "en"
+            }
+          ],
+          "prefLabel": [
+            {
+              "_value": "Standard price paid transaction",
+              "_datatype": "langString",
+              "_lang": "en"
+            }
+          ]
+        },
+        "transactionDate": "Fri, 28 Jul 2023",
+        "transactionId": "06C9F487-6090-9388-E063-4804A8C0BD98",
+        "type": [
+          {
+            "_about": "http://landregistry.data.gov.uk/def/ppi/TransactionRecord",
+            "label": [{ "_value": "TransactionRecord", "_datatype": "langString", "_lang": "en" }]
+          }
+        ]
+      },
+      {
+        "_about": "http://landregistry.data.gov.uk/data/ppi/transaction/F87E72F8-EB95-176C-E053-6B04A8C0D2BE/current",
+        "estateType": {
+          "_about": "http://landregistry.data.gov.uk/def/common/leasehold",
+          "label": [{ "_value": "Leasehold", "_datatype": "langString", "_lang": "en" }],
+          "prefLabel": [{ "_value": "Leasehold", "_datatype": "langString", "_lang": "en" }]
+        },
+        "hasTransaction": "http://landregistry.data.gov.uk/data/ppi/transaction/F87E72F8-EB95-176C-E053-6B04A8C0D2BE",
+        "newBuild": false,
+        "pricePaid": 185105,
+        "propertyAddress": {
+          "_about": "http://landregistry.data.gov.uk/data/ppi/address/87e9cbec75a0a1998f4379cc7ad425247dffd897",
+          "county": "GREATER MANCHESTER",
+          "district": "MANCHESTER",
+          "paon": "113",
+          "postcode": "M1 1AE",
+          "saon": "APARTMENT 8",
+          "street": "NEWTON STREET",
+          "town": "MANCHESTER",
+          "type": ["http://landregistry.data.gov.uk/def/common/BS7666Address"]
+        },
+        "propertyType": {
+          "_about": "http://landregistry.data.gov.uk/def/common/flat-maisonette",
+          "label": [{ "_value": "Flat-maisonette", "_datatype": "langString", "_lang": "en" }],
+          "prefLabel": [{ "_value": "flat-maisonette", "_datatype": "langString", "_lang": "en" }]
+        },
+        "recordStatus": {
+          "_about": "http://landregistry.data.gov.uk/def/ppi/add",
+          "label": [{ "_value": "Add", "_datatype": "langString", "_lang": "en" }],
+          "prefLabel": [{ "_value": "Add", "_datatype": "langString", "_lang": "en" }]
+        },
+        "transactionCategory": {
+          "_about": "http://landregistry.data.gov.uk/def/ppi/standardPricePaidTransaction",
+          "label": [
+            {
+              "_value": "Standard price paid transaction",
+              "_datatype": "langString",
+              "_lang": "en"
+            }
+          ],
+          "prefLabel": [
+            {
+              "_value": "Standard price paid transaction",
+              "_datatype": "langString",
+              "_lang": "en"
+            }
+          ]
+        },
+        "transactionDate": "Mon, 30 Jan 2023",
+        "transactionId": "F87E72F8-EB95-176C-E053-6B04A8C0D2BE",
+        "type": [
+          {
+            "_about": "http://landregistry.data.gov.uk/def/ppi/TransactionRecord",
+            "label": [{ "_value": "TransactionRecord", "_datatype": "langString", "_lang": "en" }]
+          }
+        ]
+      }
+    ],
+    "itemsPerPage": 3,
+    "next": "https://landregistry.data.gov.uk/data/ppi/transaction-record.json?_pageSize=3&_page=1&propertyAddress.postcode=M1+1AE&_sort=-transactionDate",
+    "page": 0,
+    "startIndex": 1,
+    "type": ["http://purl.org/linked-data/api/vocab#Page"]
+  }
+}

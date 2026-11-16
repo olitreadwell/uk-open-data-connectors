@@ -1,0 +1,299 @@
+{
+  "id": "https://www.thegazette.co.uk/all-notices/notice/data.feed?&results-page=1",
+  "link": [
+    {
+      "@href": "https://www.thegazette.co.uk/all-notices/notice/data.feed?&results-page=1",
+      "@rel": "alternate",
+      "@type": "application/atom+xml",
+      "@title": "ATOM"
+    },
+    {
+      "@href": "https://www.thegazette.co.uk/all-notices/notice/data.json?&results-page=1",
+      "@rel": "first",
+      "@type": "application/json"
+    },
+    {
+      "@href": "https://www.thegazette.co.uk/all-notices/notice/data.json?&results-page=2",
+      "@rel": "next",
+      "@type": "application/json"
+    },
+    {
+      "@href": "https://www.thegazette.co.uk/all-notices/notice/data.json?&results-page=488978",
+      "@rel": "last",
+      "@type": "application/json"
+    },
+    {
+      "@href": "https://www.thegazette.co.uk/all-notices/notice/data.htm?&results-page=1",
+      "@rel": "alternate",
+      "@title": "HTML",
+      "@type": "application/xhtml+xml"
+    },
+    {
+      "@href": "https://www.thegazette.co.uk/all-notices/notice/data.json?&results-page=1",
+      "@rel": "self",
+      "@type": "application/json"
+    }
+  ],
+  "title": "Search Result",
+  "updated": "2026-11-08T09:29:06.756396Z",
+  "openSearch:Query": {
+    "@role": "request"
+  },
+  "f:page-number": "1",
+  "f:page-size": "10",
+  "f:page-start": "1",
+  "f:page-stop": "10",
+  "f:total": "4889773",
+  "f:total-errors": "1893",
+  "f:facets": null,
+  "entry": [
+    {
+      "id": "https://www.thegazette.co.uk/id/notice/5247115",
+      "f:status": "published",
+      "f:notice-code": "1209",
+      "f:name": "Gerard",
+      "f:familyName": "Kerr",
+      "title": "Northern Ireland Assembly",
+      "link": [
+        {
+          "@href": "https://www.thegazette.co.uk/id/notice/5247115",
+          "@rel": "self"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5247115"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5247115/data.ttl",
+          "@rel": "alternate",
+          "@title": "TURTLE",
+          "@type": "text/turtle"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5247115/data.jsonld",
+          "@rel": "alternate",
+          "@title": "JSON-LD",
+          "@type": "application/json"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5247115/data.rdf",
+          "@rel": "alternate",
+          "@title": "RDF/XML",
+          "@type": "application/rdf+xml"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5247115/data.ttl?view=linked-data",
+          "@rel": "alternate",
+          "@title": "TURTLE",
+          "@type": "text/turtle"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5247115/data.json?view=linked-data",
+          "@rel": "alternate",
+          "@title": "JSON-SIMPLE",
+          "@type": "application/json"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5247115/data.rdfjson?view=linked-data",
+          "@rel": "alternate",
+          "@title": "JSON-RDF",
+          "@type": "application/rdf+json"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5247115/data.rdf?view=linked-data",
+          "@rel": "alternate",
+          "@title": "RDF/XML",
+          "@type": "application/rdf+xml"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5247115/data.xml?view=linked-data",
+          "@rel": "alternate",
+          "@title": "XML",
+          "@type": "application/xml"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5247115/data.html?view=linked-data",
+          "@rel": "alternate",
+          "@title": "HTML",
+          "@type": "application/html"
+        }
+      ],
+      "author": {
+        "name": "tso"
+      },
+      "updated": "2026-11-07T12:00:09Z",
+      "published": "2026-11-07T12:00:08",
+      "category": {
+        "@term": "Northern Ireland Assembly"
+      },
+      "content": "<div><p>Northern Ireland Assembly THE NORTHERN IRELAND (ROYAL ASSENT TO BILLS) ORDER 1999 The following Letters Patent were signed by His Majesty The King on 19 October 2026 in respect of the Administrative a…</p></div>"
+    },
+    {
+      "id": "https://www.thegazette.co.uk/id/notice/5245728",
+      "f:status": "published",
+      "f:notice-code": "2603",
+      "f:name": "Gemma",
+      "f:familyName": "Spencer",
+      "title": "RED HIRE AND SALES LTD",
+      "link": [
+        {
+          "@href": "https://www.thegazette.co.uk/id/notice/5245728",
+          "@rel": "self"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245728"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245728/data.ttl",
+          "@rel": "alternate",
+          "@title": "TURTLE",
+          "@type": "text/turtle"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245728/data.jsonld",
+          "@rel": "alternate",
+          "@title": "JSON-LD",
+          "@type": "application/json"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245728/data.rdf",
+          "@rel": "alternate",
+          "@title": "RDF/XML",
+          "@type": "application/rdf+xml"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245728/data.ttl?view=linked-data",
+          "@rel": "alternate",
+          "@title": "TURTLE",
+          "@type": "text/turtle"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245728/data.json?view=linked-data",
+          "@rel": "alternate",
+          "@title": "JSON-SIMPLE",
+          "@type": "application/json"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245728/data.rdfjson?view=linked-data",
+          "@rel": "alternate",
+          "@title": "JSON-RDF",
+          "@type": "application/rdf+json"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245728/data.rdf?view=linked-data",
+          "@rel": "alternate",
+          "@title": "RDF/XML",
+          "@type": "application/rdf+xml"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245728/data.xml?view=linked-data",
+          "@rel": "alternate",
+          "@title": "XML",
+          "@type": "application/xml"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245728/data.html?view=linked-data",
+          "@rel": "alternate",
+          "@title": "HTML",
+          "@type": "application/html"
+        }
+      ],
+      "author": {
+        "name": "tso"
+      },
+      "updated": "2026-11-06T18:20:20Z",
+      "published": "2026-11-06T18:20:19",
+      "category": {
+        "@term": "Notice of Disclaimer"
+      },
+      "geo:Point": {
+        "geo:lat": "51.37474",
+        "geo:long": "0.082817"
+      },
+      "content": "<div><p>NOTICE OF DISCLAIMER UNDER SECTION 1013 OF THE COMPANIES ACT 2006 DISCLAIMER OF WHOLE OF THE PROPERTY T S ref: COMP26#26568/1 1 In this notice the following shall apply: Company Name: RED HIRE AND SAL…</p></div>"
+    },
+    {
+      "id": "https://www.thegazette.co.uk/id/notice/5245727",
+      "f:status": "published",
+      "f:notice-code": "2603",
+      "f:name": "Gemma",
+      "f:familyName": "Spencer",
+      "title": "ACORN HOMES OF SELBY LIMITED",
+      "link": [
+        {
+          "@href": "https://www.thegazette.co.uk/id/notice/5245727",
+          "@rel": "self"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245727"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245727/data.ttl",
+          "@rel": "alternate",
+          "@title": "TURTLE",
+          "@type": "text/turtle"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245727/data.jsonld",
+          "@rel": "alternate",
+          "@title": "JSON-LD",
+          "@type": "application/json"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245727/data.rdf",
+          "@rel": "alternate",
+          "@title": "RDF/XML",
+          "@type": "application/rdf+xml"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245727/data.ttl?view=linked-data",
+          "@rel": "alternate",
+          "@title": "TURTLE",
+          "@type": "text/turtle"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245727/data.json?view=linked-data",
+          "@rel": "alternate",
+          "@title": "JSON-SIMPLE",
+          "@type": "application/json"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245727/data.rdfjson?view=linked-data",
+          "@rel": "alternate",
+          "@title": "JSON-RDF",
+          "@type": "application/rdf+json"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245727/data.rdf?view=linked-data",
+          "@rel": "alternate",
+          "@title": "RDF/XML",
+          "@type": "application/rdf+xml"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245727/data.xml?view=linked-data",
+          "@rel": "alternate",
+          "@title": "XML",
+          "@type": "application/xml"
+        },
+        {
+          "@href": "https://www.thegazette.co.uk/notice/5245727/data.html?view=linked-data",
+          "@rel": "alternate",
+          "@title": "HTML",
+          "@type": "application/html"
+        }
+      ],
+      "author": {
+        "name": "tso"
+      },
+      "updated": "2026-11-06T18:20:17Z",
+      "published": "2026-11-06T18:20:16",
+      "category": {
+        "@term": "Notice of Disclaimer"
+      },
+      "geo:Point": {
+        "geo:lat": "51.37626",
+        "geo:long": "-0.093827"
+      },
+      "content": "<div><p>NOTICE OF DISCLAIMER UNDER SECTION 1013 OF THE COMPANIES ACT 2006 DISCLAIMER OF WHOLE OF THE PROPERTY T S ref: COMP26#752/1 1 In this notice the following shall apply: Company Name: ACORN HOMES OF SEL…</p></div>"
+    }
+  ]
+}

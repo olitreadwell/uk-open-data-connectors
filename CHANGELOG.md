@@ -5,7 +5,9 @@
 - Connectors: add keyless adapters for BGS open geoscience WMS, Elexon system
   prices, The Gazette notices, legislation search, the NESO catalogue, ONS
   geography, UK Parliament committees, and UKRI Gateway to Research awards.
-- Remove the NZ Python and Ruby copies and their publishing workflows. The repo is TypeScript only.
+- Ports: add Python and Ruby `ukdata` packages for all 34 keyless adapters,
+  with fetchers, parsers, committed fixtures, and offline tests. The old NZ
+  copies and their publishing workflows stay removed.
 - MCP: add named tools for every registered source, probe only the source ids a caller asks for, and reject unknown ids.
 - `data-gov-uk-ckan`: search the Data.gov.uk CKAN catalogue for UK public
   datasets, with publisher, licence, resource count, and tags. Keyless, checked

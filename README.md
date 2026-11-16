@@ -283,9 +283,15 @@ Unit tests use committed fixture snapshots pulled from the live APIs, so they ru
 
 ## Other languages
 
-The repo has no Python or Ruby port. Earlier copies were carried over from
-the New Zealand origin, still fetched NZ data, and would have published as
-the `nzdata` package. They were removed on 2026-11-05.
+The repo has Python and Ruby ports under `python/` and `ruby/`. Both carry the
+same 34 keyless adapters as the TypeScript registry, use their own `ukdata`
+package names, and ship the same committed fixtures for offline tests. The
+old NZ copies were removed on 2026-11-05; these ports only fetch UK data.
+
+```sh
+cd python && .venv/bin/pytest
+cd ruby && bundle exec rake check
+```
 
 Use the HTTP API or the `ukdata` CLI from Python, R, Julia, or any other
 language. Both print or serve JSON.

@@ -1,0 +1,623 @@
+{
+  "totals": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "GlobalID",
+    "geometryType": "esriGeometryPolygon",
+    "spatialReference": {
+      "wkid": 27700,
+      "latestWkid": 27700
+    },
+    "fields": [
+      {
+        "name": "recordCount",
+        "type": "esriFieldTypeInteger",
+        "alias": "recordCount",
+        "sqlType": "sqlTypeInteger",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "hectares",
+        "type": "esriFieldTypeDouble",
+        "alias": "hectares",
+        "sqlType": "sqlTypeFloat",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "largestHectares",
+        "type": "esriFieldTypeDouble",
+        "alias": "largestHectares",
+        "sqlType": "sqlTypeDouble",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "averageHectares",
+        "type": "esriFieldTypeDouble",
+        "alias": "averageHectares",
+        "sqlType": "sqlTypeFloat",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "recordCount": 53638,
+          "hectares": 365049.8460172203,
+          "largestHectares": 719.427161103768,
+          "averageHectares": 6.805806443514305
+        }
+      }
+    ]
+  },
+  "categoryTotals": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "GlobalID",
+    "geometryType": "esriGeometryPolygon",
+    "spatialReference": {
+      "wkid": 27700,
+      "latestWkid": 27700
+    },
+    "fields": [
+      {
+        "name": "recordCount",
+        "type": "esriFieldTypeInteger",
+        "alias": "recordCount",
+        "sqlType": "sqlTypeInteger",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "hectares",
+        "type": "esriFieldTypeDouble",
+        "alias": "hectares",
+        "sqlType": "sqlTypeFloat",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "Woodland Status (Abbreviated)",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "domain": null,
+        "defaultValue": null,
+        "description": "{\"value\":\"Designated\",\"fieldValueType\":\"typeOrCategory\"}"
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "recordCount": 39233,
+          "hectares": 215100.2035393183,
+          "STATUS": "ASNW"
+        }
+      },
+      {
+        "attributes": {
+          "recordCount": 64,
+          "hectares": 137.83951790040896,
+          "STATUS": "AWP"
+        }
+      },
+      {
+        "attributes": {
+          "recordCount": 14341,
+          "hectares": 149811.80296000149,
+          "STATUS": "PAWS"
+        }
+      }
+    ]
+  },
+  "sizeBandCounts": [
+    {
+      "objectIdFieldName": "OBJECTID",
+      "uniqueIdField": {
+        "name": "OBJECTID",
+        "isSystemMaintained": true
+      },
+      "globalIdFieldName": "GlobalID",
+      "geometryType": "esriGeometryPolygon",
+      "spatialReference": {
+        "wkid": 27700,
+        "latestWkid": 27700
+      },
+      "fields": [
+        {
+          "name": "recordCount",
+          "type": "esriFieldTypeInteger",
+          "alias": "recordCount",
+          "sqlType": "sqlTypeInteger",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "hectares",
+          "type": "esriFieldTypeDouble",
+          "alias": "hectares",
+          "sqlType": "sqlTypeFloat",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "STATUS",
+          "type": "esriFieldTypeString",
+          "alias": "Woodland Status (Abbreviated)",
+          "sqlType": "sqlTypeOther",
+          "length": 8,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Designated\",\"fieldValueType\":\"typeOrCategory\"}"
+        }
+      ],
+      "features": [
+        {
+          "attributes": {
+            "recordCount": 11992,
+            "hectares": 6110.027470950214,
+            "STATUS": "ASNW"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 32,
+            "hectares": 14.103750555887181,
+            "STATUS": "AWP"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 2701,
+            "hectares": 1404.7129677483715,
+            "STATUS": "PAWS"
+          }
+        }
+      ]
+    },
+    {
+      "objectIdFieldName": "OBJECTID",
+      "uniqueIdField": {
+        "name": "OBJECTID",
+        "isSystemMaintained": true
+      },
+      "globalIdFieldName": "GlobalID",
+      "geometryType": "esriGeometryPolygon",
+      "spatialReference": {
+        "wkid": 27700,
+        "latestWkid": 27700
+      },
+      "fields": [
+        {
+          "name": "recordCount",
+          "type": "esriFieldTypeInteger",
+          "alias": "recordCount",
+          "sqlType": "sqlTypeInteger",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "hectares",
+          "type": "esriFieldTypeDouble",
+          "alias": "hectares",
+          "sqlType": "sqlTypeFloat",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "STATUS",
+          "type": "esriFieldTypeString",
+          "alias": "Woodland Status (Abbreviated)",
+          "sqlType": "sqlTypeOther",
+          "length": 8,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Designated\",\"fieldValueType\":\"typeOrCategory\"}"
+        }
+      ],
+      "features": [
+        {
+          "attributes": {
+            "recordCount": 6964,
+            "hectares": 10183.598477911244,
+            "STATUS": "ASNW"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 12,
+            "hectares": 17.9623594655401,
+            "STATUS": "AWP"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 2271,
+            "hectares": 3360.5186006030317,
+            "STATUS": "PAWS"
+          }
+        }
+      ]
+    },
+    {
+      "objectIdFieldName": "OBJECTID",
+      "uniqueIdField": {
+        "name": "OBJECTID",
+        "isSystemMaintained": true
+      },
+      "globalIdFieldName": "GlobalID",
+      "geometryType": "esriGeometryPolygon",
+      "spatialReference": {
+        "wkid": 27700,
+        "latestWkid": 27700
+      },
+      "fields": [
+        {
+          "name": "recordCount",
+          "type": "esriFieldTypeInteger",
+          "alias": "recordCount",
+          "sqlType": "sqlTypeInteger",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "hectares",
+          "type": "esriFieldTypeDouble",
+          "alias": "hectares",
+          "sqlType": "sqlTypeFloat",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "STATUS",
+          "type": "esriFieldTypeString",
+          "alias": "Woodland Status (Abbreviated)",
+          "sqlType": "sqlTypeOther",
+          "length": 8,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Designated\",\"fieldValueType\":\"typeOrCategory\"}"
+        }
+      ],
+      "features": [
+        {
+          "attributes": {
+            "recordCount": 9883,
+            "hectares": 31724.115361893757,
+            "STATUS": "ASNW"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 13,
+            "hectares": 45.171384891670684,
+            "STATUS": "AWP"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 3832,
+            "hectares": 12609.485990380714,
+            "STATUS": "PAWS"
+          }
+        }
+      ]
+    },
+    {
+      "objectIdFieldName": "OBJECTID",
+      "uniqueIdField": {
+        "name": "OBJECTID",
+        "isSystemMaintained": true
+      },
+      "globalIdFieldName": "GlobalID",
+      "geometryType": "esriGeometryPolygon",
+      "spatialReference": {
+        "wkid": 27700,
+        "latestWkid": 27700
+      },
+      "fields": [
+        {
+          "name": "recordCount",
+          "type": "esriFieldTypeInteger",
+          "alias": "recordCount",
+          "sqlType": "sqlTypeInteger",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "hectares",
+          "type": "esriFieldTypeDouble",
+          "alias": "hectares",
+          "sqlType": "sqlTypeFloat",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "STATUS",
+          "type": "esriFieldTypeString",
+          "alias": "Woodland Status (Abbreviated)",
+          "sqlType": "sqlTypeOther",
+          "length": 8,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Designated\",\"fieldValueType\":\"typeOrCategory\"}"
+        }
+      ],
+      "features": [
+        {
+          "attributes": {
+            "recordCount": 5398,
+            "hectares": 37861.9695940096,
+            "STATUS": "ASNW"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 5,
+            "hectares": 28.712987702203932,
+            "STATUS": "AWP"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 2342,
+            "hectares": 16613.942497748052,
+            "STATUS": "PAWS"
+          }
+        }
+      ]
+    },
+    {
+      "objectIdFieldName": "OBJECTID",
+      "uniqueIdField": {
+        "name": "OBJECTID",
+        "isSystemMaintained": true
+      },
+      "globalIdFieldName": "GlobalID",
+      "geometryType": "esriGeometryPolygon",
+      "spatialReference": {
+        "wkid": 27700,
+        "latestWkid": 27700
+      },
+      "fields": [
+        {
+          "name": "recordCount",
+          "type": "esriFieldTypeInteger",
+          "alias": "recordCount",
+          "sqlType": "sqlTypeInteger",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "hectares",
+          "type": "esriFieldTypeDouble",
+          "alias": "hectares",
+          "sqlType": "sqlTypeFloat",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "STATUS",
+          "type": "esriFieldTypeString",
+          "alias": "Woodland Status (Abbreviated)",
+          "sqlType": "sqlTypeOther",
+          "length": 8,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Designated\",\"fieldValueType\":\"typeOrCategory\"}"
+        }
+      ],
+      "features": [
+        {
+          "attributes": {
+            "recordCount": 2997,
+            "hectares": 41691.44138979282,
+            "STATUS": "ASNW"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 1,
+            "hectares": 10.658018632180996,
+            "STATUS": "AWP"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 1521,
+            "hectares": 21345.97519164423,
+            "STATUS": "PAWS"
+          }
+        }
+      ]
+    },
+    {
+      "objectIdFieldName": "OBJECTID",
+      "uniqueIdField": {
+        "name": "OBJECTID",
+        "isSystemMaintained": true
+      },
+      "globalIdFieldName": "GlobalID",
+      "geometryType": "esriGeometryPolygon",
+      "spatialReference": {
+        "wkid": 27700,
+        "latestWkid": 27700
+      },
+      "fields": [
+        {
+          "name": "recordCount",
+          "type": "esriFieldTypeInteger",
+          "alias": "recordCount",
+          "sqlType": "sqlTypeInteger",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "hectares",
+          "type": "esriFieldTypeDouble",
+          "alias": "hectares",
+          "sqlType": "sqlTypeFloat",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "STATUS",
+          "type": "esriFieldTypeString",
+          "alias": "Woodland Status (Abbreviated)",
+          "sqlType": "sqlTypeOther",
+          "length": 8,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Designated\",\"fieldValueType\":\"typeOrCategory\"}"
+        }
+      ],
+      "features": [
+        {
+          "attributes": {
+            "recordCount": 1558,
+            "hectares": 46516.54630422605,
+            "STATUS": "ASNW"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 1,
+            "hectares": 21.23101665292606,
+            "STATUS": "AWP"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 1134,
+            "hectares": 35115.94503406387,
+            "STATUS": "PAWS"
+          }
+        }
+      ]
+    },
+    {
+      "objectIdFieldName": "OBJECTID",
+      "uniqueIdField": {
+        "name": "OBJECTID",
+        "isSystemMaintained": true
+      },
+      "globalIdFieldName": "GlobalID",
+      "geometryType": "esriGeometryPolygon",
+      "spatialReference": {
+        "wkid": 27700,
+        "latestWkid": 27700
+      },
+      "fields": [
+        {
+          "name": "recordCount",
+          "type": "esriFieldTypeInteger",
+          "alias": "recordCount",
+          "sqlType": "sqlTypeInteger",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "hectares",
+          "type": "esriFieldTypeDouble",
+          "alias": "hectares",
+          "sqlType": "sqlTypeFloat",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "STATUS",
+          "type": "esriFieldTypeString",
+          "alias": "Woodland Status (Abbreviated)",
+          "sqlType": "sqlTypeOther",
+          "length": 8,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Designated\",\"fieldValueType\":\"typeOrCategory\"}"
+        }
+      ],
+      "features": [
+        {
+          "attributes": {
+            "recordCount": 336,
+            "hectares": 23102.90681981059,
+            "STATUS": "ASNW"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 351,
+            "hectares": 24082.975451589104,
+            "STATUS": "PAWS"
+          }
+        }
+      ]
+    },
+    {
+      "objectIdFieldName": "OBJECTID",
+      "uniqueIdField": {
+        "name": "OBJECTID",
+        "isSystemMaintained": true
+      },
+      "globalIdFieldName": "GlobalID",
+      "geometryType": "esriGeometryPolygon",
+      "spatialReference": {
+        "wkid": 27700,
+        "latestWkid": 27700
+      },
+      "fields": [
+        {
+          "name": "recordCount",
+          "type": "esriFieldTypeInteger",
+          "alias": "recordCount",
+          "sqlType": "sqlTypeInteger",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "hectares",
+          "type": "esriFieldTypeDouble",
+          "alias": "hectares",
+          "sqlType": "sqlTypeFloat",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "STATUS",
+          "type": "esriFieldTypeString",
+          "alias": "Woodland Status (Abbreviated)",
+          "sqlType": "sqlTypeOther",
+          "length": 8,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Designated\",\"fieldValueType\":\"typeOrCategory\"}"
+        }
+      ],
+      "features": [
+        {
+          "attributes": {
+            "recordCount": 105,
+            "hectares": 17909.598120723578,
+            "STATUS": "ASNW"
+          }
+        },
+        {
+          "attributes": {
+            "recordCount": 189,
+            "hectares": 35278.24722622412,
+            "STATUS": "PAWS"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ukdata"
+version = "0.1.0"
+description = "Keyless UK public data connectors"
+readme = { text = "Keyless connectors for 34 UK public data sources.", content-type = "text/markdown" }
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "Oli Treadwell", email = "oliver.treadwell@gmail.com" }]
+keywords = ["united-kingdom", "open-data", "ons", "flood-monitoring", "ckan"]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "mypy==1.19.1",
+  "pytest==8.4.2",
+  "pytest-cov==7.1.0",
+  "ruff==0.16.9",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ukdata = ["fixtures/*.json", "fixtures/*.csv", "fixtures/*.xml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=ukdata --cov-fail-under=60 --cov-report=term"
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+
+[tool.mypy]
+python_version = "3.9"
+files = ["src/ukdata"]
+warn_unused_ignores = true
