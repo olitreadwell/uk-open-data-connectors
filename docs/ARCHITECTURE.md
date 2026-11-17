@@ -63,6 +63,7 @@ Registered adapters:
 | `neso-catalogue` | NESO Data Portal | A page of datasets, with licence and resource counts |
 | `bgs-opengeoscience-wms` | BGS OpenGeoscience | WMS layers, bounds, and coordinate systems |
 | `hm-land-registry-price-paid` | HM Land Registry | Price Paid transaction records for one postcode, newest first |
+| `orr-data-portal` | Office of Rail and Road data portal | Rail performance and usage table catalogue, with descriptions |
 
 ## Summaries built into the adapters
 

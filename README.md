@@ -33,7 +33,9 @@ differ. GOV.UK content carries the Open Government Licence v3. Several adapters
 copy the licence and attribution values their source supplies onto each
 record: `flood-stations`, `flood-readings`, `planning-datasets`,
 `find-a-tender`, `data-gov-uk-ckan`, `ons-geography`, and `neso-catalogue`. The
-other adapters leave the publisher's page as the source for those terms.
+Office of Rail and Road data portal tables carry the Open Government Licence
+v3. The other adapters leave the publisher's page as the source for those
+terms.
 
 Most adapters use the shared `httpGet` helper in
 `packages/uk-sources/src/http.ts`. It sends the same `User-Agent`
@@ -81,6 +83,7 @@ adapter and the police street crime month calls do.
 | `neso-catalogue` | NESO Data Portal open data catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe neso-catalogue` |
 | `bgs-opengeoscience-wms` | BGS 1:50,000 digital geology WMS | Yes | `npx tsx packages/cli/src/cli.ts probe bgs-opengeoscience-wms` |
 | `hm-land-registry-price-paid` | HM Land Registry sold property prices for one postcode | Yes | `npx tsx packages/cli/src/cli.ts probe hm-land-registry-price-paid` |
+| `orr-data-portal` | Office of Rail and Road rail performance and usage table catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe orr-data-portal` |
 
 A source that looks obvious for a UK repo and is not usable as it stands:
 
@@ -131,7 +134,7 @@ the Open Parliament Licence v3.0.
 
 ### Added 2026-10-05 onward
 
-Twenty-three more keyless adapters, each checked live on 2026-10-05,
+Twenty-four more keyless adapters, each checked live on 2026-10-05,
 2026-10-18, 2026-11-05, 2026-11-07, 2026-11-08 or 2026-11-17 and covered by
 a committed fixture:
 
@@ -176,6 +179,8 @@ a committed fixture:
 - `hm-land-registry-price-paid` reads HM Land Registry Price Paid Data for one
   postcode, newest first, with the address, property type, and completion
   date.
+- `orr-data-portal` reads the Office of Rail and Road data portal catalogue,
+  with every rail performance and usage table's id and description.
 
 The full endpoint list, exact curl commands, and licences are in
 `docs/CONNECTOR_DISCOVERY.md`.
@@ -283,10 +288,10 @@ Unit tests use committed fixture snapshots pulled from the live APIs, so they ru
 
 ## Other languages
 
-The repo has Python and Ruby ports under `python/` and `ruby/`. Both carry the
-same 34 keyless adapters as the TypeScript registry, use their own `ukdata`
-package names, and ship the same committed fixtures for offline tests. The
-old NZ copies were removed on 2026-11-05; these ports only fetch UK data.
+The repo has Python and Ruby ports under `python/` and `ruby/`. Both carry
+their own copies of the keyless adapters, use their own `ukdata` package names,
+and ship committed fixtures for offline tests. The old NZ copies were removed
+on 2026-11-05; these ports only fetch UK data.
 
 ```sh
 cd python && .venv/bin/pytest

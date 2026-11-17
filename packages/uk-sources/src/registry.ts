@@ -20,6 +20,7 @@ import { nhsbsaCkanAdapter } from './nhsbsaCkan.js';
 import { nomisAdapter } from './nomis.js';
 import { onsGeographyAdapter } from './onsGeography.js';
 import { onsDatasetsAdapter } from './onsDatasets.js';
+import { orrDataPortalAdapter } from './orrDataPortal.js';
 import { parliamentSeatsAdapter } from './parliamentSeats.js';
 import { planningDatasetsAdapter } from './planningDatasets.js';
 import { policeCrimesAdapter } from './policeCrimes.js';
@@ -69,6 +70,7 @@ export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [
   nesoCatalogueAdapter,
   bgsWmsAdapter,
   landRegistryPricePaidAdapter,
+  orrDataPortalAdapter,
 ];
 
 /** Looks up a source adapter by id. */

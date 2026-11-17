@@ -41,6 +41,7 @@ adapters in `packages/uk-sources`, and there is no Python or Ruby port.
 | NESO Data Portal catalogue | `neso-catalogue` | Done, verified live 2026-11-08 |
 | BGS OpenGeoscience WMS | `bgs-opengeoscience-wms` | Done, verified live 2026-11-08 |
 | HM Land Registry Price Paid Data | `hm-land-registry-price-paid` | Done, verified live 2026-11-17 |
+| Office of Rail and Road data portal | `orr-data-portal` | Done, verified live 2026-11-17 |
 | Companies House | - | Pending, needs a key |
 | Met Office DataPoint | - | Pending, needs a key |
 

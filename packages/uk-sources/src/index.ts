@@ -333,6 +333,18 @@ export {
 } from './onsDatasets.js';
 /** ONS catalogue types. */
 export type { OnsDatasetRecord, OnsDatasetSummary, OnsDatasetYearCount } from './onsDatasets.js';
+/** Office of Rail and Road data portal table catalogue (keyless). */
+export {
+  buildOrrMetadataUrl,
+  fetchOrrDataPortalCatalogue,
+  ORR_DATA_API_BASE_URL,
+  ORR_DATA_PORTAL_SOURCE_ID,
+  ORR_METADATA_PATH,
+  orrDataPortalAdapter,
+  parseOrrDataPortalCatalogue,
+} from './orrDataPortal.js';
+/** ORR data portal catalogue types. */
+export type { OrrDataPortalCatalogue, OrrDataTableSummary } from './orrDataPortal.js';
 /** UK Parliament state of the parties in the Commons and the Lords (keyless). */
 export {
   buildParliamentSeatsUrl,

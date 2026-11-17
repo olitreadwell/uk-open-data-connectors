@@ -1,0 +1,258 @@
+{
+  "statusCode": 200,
+  "message": "SUCCEEDED",
+  "timestamp": "2026-11-17T11:45:54.8256835Z",
+  "validationErrors": [],
+  "columnCount": 6,
+  "columnNames": ["theme", "table", "api_table_name", "description", "row_count", "last_updated"],
+  "dataRows": [
+    [
+      "performance",
+      "3114a",
+      "performance__3114a",
+      "This data shows the percentage of trains in each railway period (4 weeks) arriving at their destination within the Public Performance Measure (10 minutes for long-distance operators, 5 minutes for all others) for train operators, sectors and nations within Great Britain.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3114b",
+      "performance__3114b",
+      "This data shows the percentage of trains in the last 13 railway periods (one year) arriving at their destination within the Public Performance Measure (10 minutes for long-distance operators, 5 minutes for all others) for train operators, sectors and nations within Great Britain.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3121",
+      "performance__3121",
+      "This data shows the percentage of cancellations in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail region.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3122",
+      "performance__3122",
+      "This data shows the percentage of cancellations in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail route.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3124",
+      "performance__3124",
+      "This data shows the percentage of cancellations in each railway period (4 weeks) and over the last 13 railway periods (one year) for each train operator and nation within Great Britain. It also includes a breakdown of cancellations by responsibility (infrastructure owner or train operator fault), the number of trains planned, fully cancelled or part cancelled.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3130a",
+      "performance__3130a",
+      "This data shows the percentage of trains arriving at each station within three minutes of their scheduled arrival time and the percentage of cancellations. The data is broken down by station.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3130b",
+      "performance__3130b",
+      "This data shows the percentage of trains arriving at each station within three minutes of their scheduled arrival time and the percentage of cancellations. The data is broken down by station and the train operators serving that station.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3130c",
+      "performance__3130c",
+      "This data shows the percentage of trains arriving at each station within three minutes of their scheduled arrival time and the percentage of cancellations. The data is broken down by Network Rail region and route.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3131",
+      "performance__3131",
+      "This data shows the percentage of trains on time at recorded station stops in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail region.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3132",
+      "performance__3132",
+      "This data shows the percentage of trains on time at recorded station stops in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail route.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3138",
+      "performance__3138",
+      "This data shows train punctuality by time band at recorded station stops in each railway period (4 weeks) and over the last 13 railway periods (one year) for train operators, sectors and nations within Great Britain.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3144a",
+      "performance__3144a",
+      "This data shows the average passenger lateness (minutes) in each railway period (4 weeks) for train operators, sectors and nations within Great Britain.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3144b",
+      "performance__3144b",
+      "This data shows the average passenger lateness (minutes) in the last 13 railway periods (one year) for train operators, sectors and nations within Great Britain.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3157a",
+      "performance__3157a",
+      "This data shows the number of severely disrupted days within each railway period (4 weeks) on the rail network in Great Britain.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3157b",
+      "performance__3157b",
+      "This data shows the number of days where train operators (and their sub-operations) were affected by severe disruption within each railway period (4 weeks).",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3167",
+      "performance__3167",
+      "This data shows the number of trains planned, recorded stations stops, train cancellations and punctuality (time to 3) for each train operator (and their sub-operators) within each railway period (4 weeks).",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3181a",
+      "performance__3181a",
+      "This data shows the total volume of delay minutes per 1000 train miles in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail region.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3181b",
+      "performance__3181b",
+      "This data shows the volume of delay minutes attributable to Network Rail per 1000 train miles in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail region.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3181c",
+      "performance__3181c",
+      "This data shows the volume of delay minutes attributable to train operators per 1000 train miles in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail region.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3182a",
+      "performance__3182a",
+      "This data shows the total volume of delay minutes per 1000 train miles in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail route.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3182b",
+      "performance__3182b",
+      "This data shows the volume of delay minutes attributable to Network Rail per 1000 train miles in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail route.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3182c",
+      "performance__3182c",
+      "This data shows the volume of delay minutes attributable to train operators per 1000 train miles in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail route.",
+      null,
+      null
+    ],
+    [
+      "performance",
+      "3184",
+      "performance__3184",
+      "This data shows the volume of delay minutes impacting each train operator in each railway period (4 weeks). This is broken down by the type of delay (Network Rail caused, TOC on TOC or TOC on Self) and sub-category (e.g. non-track assets, weather, fleet, traincrew etc).",
+      null,
+      null
+    ],
+    [
+      "usage",
+      "1214",
+      "usage__1214",
+      "This data shows travel revenue in each railway period (4 weeks), broken down by operators that are publicly owned (DfTO) and those privately owned (Other).",
+      null,
+      null
+    ],
+    [
+      "usage",
+      "1224",
+      "usage__1224",
+      "This data shows the number of passenger journeys taken in each railway period (4 weeks), broken down by operators that are publicly owned (DfTO) and those privately owned (Other).",
+      null,
+      null
+    ],
+    [
+      "usage",
+      "1311",
+      "usage__1311",
+      "This data shows freight moved based on the contracted distance travelled in each Network Rail region. This does not include freight moved on non-Network Rail infrastructure and services carrying engineering haulage or charter services.",
+      null,
+      null
+    ],
+    [
+      "usage",
+      "1314",
+      "usage__1314",
+      "This data shows freight moved for each commodity based on the contracted distance travelled. This does include freight moved on mainline, non-Network Rail infrastructure and services carrying engineering haulage or charter services are included in a specific infrastructure total.",
+      null,
+      null
+    ],
+    [
+      "usage",
+      "1351",
+      "usage__1351",
+      "This data shows the percentage of commercial freight services cancelled in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail region. This only includes services that are cancelled by the infrastructure manager or another operator that is not a commercial freight operator.",
+      null,
+      null
+    ],
+    [
+      "usage",
+      "1352",
+      "usage__1352",
+      "This data shows the percentage of commercial freight services cancelled in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail route. This only includes services that are cancelled by the infrastructure manager or another operator that is not a commercial freight operator.",
+      null,
+      null
+    ],
+    [
+      "usage",
+      "1361",
+      "usage__1361",
+      "This data shows the percentage of commercial freight services cancelled or arriving at destination 15 minutes or more late in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail region. This only includes services that are cancelled or delayed by the infrastructure manager or another operator that is not a commercial freight operator.",
+      null,
+      null
+    ],
+    [
+      "usage",
+      "1362",
+      "usage__1362",
+      "This data shows the percentage of commercial freight services cancelled or arriving at destination 15 minutes or more late in each railway period (4 weeks) and over the last 13 railway periods (one year) for each Network Rail route. This only includes services that are cancelled or delayed by the infrastructure manager or another operator that is not a commercial freight operator.",
+      null,
+      null
+    ]
+  ]
+}

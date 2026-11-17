@@ -154,6 +154,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     if (new URL(target).hostname === 'landregistry.data.gov.uk') {
       return jsonResponse(readFixtureJson('hm-land-registry-price-paid-2026-11-17.json'));
     }
+    if (new URL(target).hostname === 'api.dataportal.orr.gov.uk') {
+      return jsonResponse(readFixtureJson('orr-data-portal-2026-11-17.json'));
+    }
     if (target.includes('/readings')) {
       return jsonResponse(readFixtureJson('flood-station-readings.json'));
     }
@@ -238,6 +241,7 @@ describe('registry', () => {
       'neso-catalogue',
       'bgs-opengeoscience-wms',
       'hm-land-registry-price-paid',
+      'orr-data-portal',
     ]);
   });
 
@@ -276,6 +280,7 @@ describe('registry', () => {
     expect(getUkDataSource('neso-catalogue')?.name).toContain('NESO Data Portal');
     expect(getUkDataSource('bgs-opengeoscience-wms')?.name).toContain('BGS');
     expect(getUkDataSource('hm-land-registry-price-paid')?.name).toContain('HM Land Registry');
+    expect(getUkDataSource('orr-data-portal')?.name).toContain('Office of Rail and Road');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 

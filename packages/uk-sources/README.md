@@ -64,6 +64,7 @@ console.log(summary.latest?.value, summary.trend);
 | `neso-catalogue` | NESO Data Portal | none | The NESO open data catalogue, with licence and resource counts. |
 | `bgs-opengeoscience-wms` | British Geological Survey | none | BGS 1:50,000 digital geology layers, service bounds, and coordinate systems. |
 | `hm-land-registry-price-paid` | HM Land Registry | none | Sold property prices for one UK postcode, with address, property type, and completion date. |
+| `orr-data-portal` | Office of Rail and Road | none | The rail performance and usage table catalogue, with each table's id and description. |
 
 The `auth` field is `none` for every adapter.
 
@@ -120,10 +121,12 @@ The `auth` field is `none` for every adapter.
 - The legislation.gov.uk, Gazette, ONS geography, NESO catalogue, and BGS WMS adapters were probed live on 2026-11-08.
 - The HM Land Registry adapter reads Price Paid Data through the linked data API for one full postcode, default `M1 1AE`. The API matches a full postcode exactly, so `normalizeLandRegistryPostcode` upper-cases the value and puts one space before the inward code. A sorted read across the whole dataset answered HTTP 500 after about 90 seconds on 2026-11-17, so the adapter always sends a postcode filter. Dates come back as text such as `Fri, 05 Jan 2024`; the adapter converts them to ISO dates without a timezone shift. Page numbers are one-based, while the API's `_page` is zero-based. The committed fixture keeps the first 3 transactions for `M1 1AE`, newest first, from a page that carried a next link, captured on 2026-11-17.
 - The HM Land Registry adapter was probed live on 2026-11-17.
+- The Office of Rail and Road data portal API is open and needs no key. `GET /api/metadata` returned 31 tables across 2 themes on 2026-11-17, with the six columns `theme`, `table`, `api_table_name`, `description`, `row_count`, and `last_updated`. Every `row_count` and `last_updated` value was null in that snapshot. The adapter returns the catalogue; an individual table is available from `GET /api/tables/{theme}/{table}`. The API documentation advertises JSON and CSV, but both CSV requests made on 2026-11-17 returned a message that CSV formatting was unsupported. The adapter asks for JSON.
+- The Office of Rail and Road data portal adapter was probed live on 2026-11-17.
 
 ## Data sources and licences
 
-This package reads UK public data sources. Most come from UK public bodies. The postcode lookup comes from postcodes.io, a third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts and committee listings carry the Open Parliament Licence v3.0. The Elexon system prices carry the BMRS open data licence. The UKRI Gateway to Research terms say the service is open and free to use. The NESO generation mix and NESO catalogue carry the NESO Open Data Licence. The Gazette carries Crown copyright under the Open Government Licence v3.0, except for personal data. BGS OpenGeoscience carries the Open Government Licence with a BGS acknowledgement. Data.gov.uk licences vary by dataset. GOV.UK content carries the Open Government Licence v3. The ONS geography search reports a licence field and links each dataset to the ONS geography licence page. Several adapters copy the licence and attribution values their source supplies onto each record. The other adapters do not, because their endpoints do not carry per-record licence fields.
+This package reads UK public data sources. Most come from UK public bodies. The postcode lookup comes from postcodes.io, a third-party service. Most data carries the Open Government Licence v3. The two TfL adapters carry TfL Open Data. The carbon intensity series carries Creative Commons Attribution 4.0. The Parliament seat counts and committee listings carry the Open Parliament Licence v3.0. The Elexon system prices carry the BMRS open data licence. The UKRI Gateway to Research terms say the service is open and free to use. The NESO generation mix and NESO catalogue carry the NESO Open Data Licence. The Gazette carries Crown copyright under the Open Government Licence v3.0, except for personal data. BGS OpenGeoscience carries the Open Government Licence with a BGS acknowledgement. Office of Rail and Road data portal tables carry the Open Government Licence v3. Data.gov.uk licences vary by dataset. GOV.UK content carries the Open Government Licence v3. The ONS geography search reports a licence field and links each dataset to the ONS geography licence page. Several adapters copy the licence and attribution values their source supplies onto each record. The other adapters do not, because their endpoints do not carry per-record licence fields.
 
 | Adapter | Publisher | Source URL | Data licence |
 | ------- | --------- | ---------- | ------------ |
@@ -161,6 +164,7 @@ This package reads UK public data sources. Most come from UK public bodies. The 
 | `neso-catalogue` | National Energy System Operator | <https://api.neso.energy/api/3/action/package_search> | The NESO Open Data Licence, the portal reports `ESO` |
 | `bgs-opengeoscience-wms` | British Geological Survey | <https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?service=WMS&request=GetCapabilities> | Open Government Licence, with the acknowledgement `Contains British Geological Survey materials copyright UKRI [year]` |
 | `hm-land-registry-price-paid` | HM Land Registry | <https://landregistry.data.gov.uk/data/ppi/transaction-record.json> | Open Government Licence v3 |
+| `orr-data-portal` | Office of Rail and Road | <https://api.dataportal.orr.gov.uk/api/metadata> | Open Government Licence v3 |
 
 ## Package licence
 

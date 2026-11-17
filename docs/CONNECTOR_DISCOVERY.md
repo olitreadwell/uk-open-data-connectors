@@ -43,10 +43,52 @@ probed again that day.
 | `ons-geography` | ONS Open Geography Portal | `https://geoportal.statistics.gov.uk/api/search/v1/collections/all/items?limit={limit}` | Yes |
 | `neso-catalogue` | NESO Data Portal | `https://api.neso.energy/api/3/action/package_search?rows={limit}` | Yes |
 | `bgs-opengeoscience-wms` | British Geological Survey | `https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?service=WMS&request=GetCapabilities` | Yes |
+| `orr-data-portal` | Office of Rail and Road | `https://api.dataportal.orr.gov.uk/api/metadata` | Yes |
 
 Adapters keep a committed fixture in `packages/uk-sources/src/fixtures/` so
 tests run offline, plus a smoke test gated on `RUN_SMOKE=1` that hits the
 live endpoint.
+
+## Added 2026-11-17 (ORR data portal)
+
+One keyless adapter, for the Office of Rail and Road data portal's rail
+statistics catalogue. The request below returned HTTP 200 with no key on
+2026-11-17.
+
+```sh
+# orr-data-portal: every rail statistics theme and table
+curl -sS -H 'Accept: application/json' \
+  'https://api.dataportal.orr.gov.uk/api/metadata'
+```
+
+| Adapter | Fixture | Licence |
+| --- | --- | --- |
+| `orr-data-portal` | `orr-data-portal-2026-11-17.json` (the complete metadata response, 31 tables across 2 themes) | Open Government Licence v3 |
+
+What was verified live on 2026-11-17, and what was not:
+
+- The ORR Data API documentation says the API is open and needs no API key or
+  token. The metadata call answered HTTP 200 with a `statusCode` of 200 and
+  `message` of `SUCCEEDED`.
+- The metadata response carried the six columns `theme`, `table`,
+  `api_table_name`, `description`, `row_count`, and `last_updated`. It listed
+  31 tables across 2 themes, `performance` and `usage`.
+- Every `row_count` and `last_updated` value was null in the captured metadata.
+  The parser accepts a number, numeric string, or null for the count, and a
+  text value or null for the update stamp.
+- `GET /api/tables/usage/1214` answered HTTP 200 with 33 rows and four columns.
+  `GET /api/tables/usage/1214/columns` returned the same four column names.
+- The documentation advertises `Accept: text/csv`, but requests for CSV from
+  both the table and columns endpoints returned the text `Request resulted in
+  an attempt to format ... as CSV, which is unsupported`. The adapter asks for
+  JSON.
+- The OpenAPI document at `/swagger/v1/swagger.json` also documents
+  `POST /api/data/query` for filtered table reads. The adapter reads the
+  catalogue from `/api/metadata`; callers can use the table endpoint directly
+  for rows.
+- The Office of Rail and Road site carries Crown copyright and the statement
+  that content is available under the Open Government Licence v3.0, except
+  where otherwise stated.
 
 ## Added 2026-11-17
 
@@ -451,6 +493,7 @@ attribution. The exceptions are listed in the table.
 | `neso-catalogue` | National Energy System Operator | The NESO Open Data Licence, reported as `ESO` |
 | `bgs-opengeoscience-wms` | British Geological Survey | Open Government Licence, with the acknowledgement `Contains British Geological Survey materials copyright UKRI [year]` |
 | `hm-land-registry-price-paid` | HM Land Registry | Open Government Licence v3 |
+| `orr-data-portal` | Office of Rail and Road | Open Government Licence v3 |
 
 Seven adapters return source-supplied licence and attribution metadata per
 record. `flood-stations` and `flood-readings` copy `meta.publisher` and
