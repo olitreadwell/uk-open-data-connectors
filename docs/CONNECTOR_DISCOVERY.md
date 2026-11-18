@@ -26,6 +26,7 @@ probed again that day.
 | `neso-generation-mix` | National Energy System Operator | `https://api.neso.energy/api/3/action/datastore_search?resource_id={resource}&sort=DATETIME+desc&limit={halfHours}` | Yes |
 | `nomis` | ONS Nomis | `https://www.nomisweb.co.uk/api/v01/dataset/def.sdmx.json` | Yes |
 | `ons-datasets` | ONS beta API | `https://api.beta.ons.gov.uk/v1/datasets` | Yes |
+| `ons-beta-observations` | ONS beta API | `https://api.beta.ons.gov.uk/v1/datasets/{datasetId}/editions/{edition}/versions/{version}/observations` | Yes |
 | `parliament-seats` | UK Parliament | `https://members-api.parliament.uk/api/Parties/StateOfTheParties/{house}` | Yes |
 | `planning-datasets` | MHCLG Planning Data | `https://www.planning.data.gov.uk/dataset.json` | Yes |
 | `police-crimes` | Home Office police.uk | `https://data.police.uk/api/crimes-street/all-crime` | Yes |
@@ -463,6 +464,7 @@ attribution. The exceptions are listed in the table.
 | --- | --- | --- |
 | `flood-stations`, `flood-readings` | Environment Agency | Open Government Licence v3, returned as `licence` with `publisher` on every record |
 | `ons-datasets` | Office for National Statistics | Open Government Licence v3 |
+| `ons-beta-observations` | Office for National Statistics | Open Government Licence v3 |
 | `food-hygiene-authorities` | Food Standards Agency | Open Government Licence v3 |
 | `tfl-bike-points`, `tfl-line-status` | Transport for London | TfL Open Data, the operator's own terms |
 | `planning-datasets` | Planning Data, MHCLG | Open Government Licence v3, returned as `licence` with the source `attribution` on every dataset |

@@ -60,6 +60,20 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     const target =
       typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
     if (new URL(target).hostname === 'api.beta.ons.gov.uk') {
+      const url = new URL(target);
+      if (url.pathname.endsWith('/observations')) {
+        return jsonResponse(readFixtureJson('ons-beta-observations-2026-11-19.json'));
+      }
+      const detail = /\/v1\/datasets\/([^/]+)$/.exec(url.pathname);
+      if (detail !== null) {
+        const catalogue = readFixtureJson('ons-datasets.json') as {
+          items: Array<{ id: string; links?: { latest_version?: { href: string } } }>;
+        };
+        const item = catalogue.items.find((entry) => entry.id === detail[1]);
+        if (item !== undefined) {
+          return jsonResponse(item);
+        }
+      }
       return jsonResponse(readFixtureJson('ons-datasets.json'));
     }
     if (new URL(target).hostname === 'api.ratings.food.gov.uk') {
@@ -210,6 +224,7 @@ describe('registry', () => {
       'flood-stations',
       'flood-readings',
       'ons-datasets',
+      'ons-beta-observations',
       'food-hygiene-authorities',
       'tfl-bike-points',
       'planning-datasets',
@@ -248,6 +263,9 @@ describe('registry', () => {
   it('looks up a source adapter by id', () => {
     expect(getUkDataSource('flood-readings')?.name).toContain('Environment Agency');
     expect(getUkDataSource('ons-datasets')?.name).toContain('Office for National Statistics');
+    expect(getUkDataSource('ons-beta-observations')?.name).toContain(
+      'Office for National Statistics'
+    );
     expect(getUkDataSource('food-hygiene-authorities')?.name).toContain('Food Standards Agency');
     expect(getUkDataSource('tfl-bike-points')?.name).toContain('Transport for London');
     expect(getUkDataSource('planning-datasets')?.name).toContain('Ministry of Housing');

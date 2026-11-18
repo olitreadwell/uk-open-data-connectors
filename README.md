@@ -52,6 +52,7 @@ adapter and the police street crime month calls do.
 | `flood-stations` | Environment Agency flood-monitoring stations, with river and catchment | Yes | `npx tsx packages/cli/src/cli.ts probe flood-stations` |
 | `flood-readings` | Recent water levels for one station, newest first | Yes | `npx tsx packages/cli/src/cli.ts probe flood-readings` |
 | `ons-datasets` | Office for National Statistics dataset catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe ons-datasets` |
+| `ons-beta-observations` | ONS beta API observations for one dataset and dimension filter, from the latest version | Yes | `npx tsx packages/cli/src/cli.ts probe ons-beta-observations` |
 | `food-hygiene-authorities` | FSA food hygiene registers, with establishment counts | Yes | `npx tsx packages/cli/src/cli.ts probe food-hygiene-authorities` |
 | `tfl-bike-points` | TfL Santander Cycles docking stations, with docking points and docked bikes | Yes | `npx tsx packages/cli/src/cli.ts probe tfl-bike-points` |
 | `planning-datasets` | Planning Data platform datasets, with the records published behind each one | Yes | `npx tsx packages/cli/src/cli.ts probe planning-datasets` |
@@ -91,9 +92,10 @@ A source that looks obvious for a UK repo and is not usable as it stands:
   plain-text decommission notice, so an entry that still points at it returns
   HTTP 200 while serving nothing usable.
 The live ONS beta API at `api.beta.ons.gov.uk/v1` answers with JSON and backs
-the `ons-datasets` adapter. The FSA Food Hygiene Rating Scheme API at
-`api.ratings.food.gov.uk` answers keyless as long as the call carries the
-`x-api-version: 2` header, and backs `food-hygiene-authorities`.
+the `ons-datasets` and `ons-beta-observations` adapters. The FSA Food Hygiene
+Rating Scheme API at `api.ratings.food.gov.uk` answers keyless as long as the
+call carries the `x-api-version: 2` header, and backs
+`food-hygiene-authorities`.
 
 The Data.gov.uk CKAN API at `www.data.gov.uk/api/3/action` redirects to
 `ckan.publishing.service.gov.uk`, which answers keyless JSON. The

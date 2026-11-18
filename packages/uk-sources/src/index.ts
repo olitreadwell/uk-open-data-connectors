@@ -333,6 +333,26 @@ export {
 } from './onsDatasets.js';
 /** ONS catalogue types. */
 export type { OnsDatasetRecord, OnsDatasetSummary, OnsDatasetYearCount } from './onsDatasets.js';
+/** ONS beta API observations, filtered by dataset and dimension (keyless). */
+export {
+  buildOnsBetaObservationsUrl,
+  DEFAULT_ONS_BETA_DATASET_ID,
+  DEFAULT_ONS_BETA_DIMENSIONS,
+  DEFAULT_ONS_BETA_EDITION,
+  fetchOnsBetaObservations,
+  ONS_BETA_API_BASE_URL,
+  ONS_BETA_OBSERVATIONS_SOURCE_ID,
+  onsBetaObservationsAdapter,
+  parseOnsBetaObservations,
+} from './onsBetaObservations.js';
+/** ONS beta API observation types. */
+export type {
+  OnsBetaObservation,
+  OnsBetaObservationDimension,
+  OnsBetaObservationOptions,
+  OnsBetaObservationPage,
+  OnsBetaObservationUrlOptions,
+} from './onsBetaObservations.js';
 /** Office of Rail and Road data portal table catalogue (keyless). */
 export {
   buildOrrMetadataUrl,

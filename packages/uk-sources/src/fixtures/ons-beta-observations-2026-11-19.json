@@ -1,0 +1,88 @@
+{
+  "dimensions": {
+    "estimate": {
+      "option": {
+        "href": "https://api.beta.ons.gov.uk/v1/code-lists/wellbeing-estimate/codes/good",
+        "id": "good"
+      }
+    },
+    "geography": {
+      "option": {
+        "href": "https://api.beta.ons.gov.uk/v1/code-lists/uk-only/codes/K02000001",
+        "id": "K02000001"
+      }
+    },
+    "measureofwellbeing": {
+      "option": {
+        "href": "https://api.beta.ons.gov.uk/v1/code-lists/measure-of-wellbeing/codes/life-satisfaction",
+        "id": "life-satisfaction"
+      }
+    },
+    "seasonaladjustment": {
+      "option": {
+        "href": "https://api.beta.ons.gov.uk/v1/code-lists/seasonal-adjustment/codes/non-seasonal-adjustment",
+        "id": "non-seasonal-adjustment"
+      }
+    }
+  },
+  "limit": 10000,
+  "links": {
+    "dataset_metadata": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/wellbeing-quarterly/editions/time-series/versions/9/metadata"
+    },
+    "self": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/wellbeing-quarterly/editions/time-series/versions/9/observations?time=*&geography=K02000001&estimate=good&measureofwellbeing=life-satisfaction&seasonaladjustment=non-seasonal-adjustment"
+    },
+    "version": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/wellbeing-quarterly/editions/time-series/versions/9",
+      "id": "9"
+    }
+  },
+  "observations": [
+    {
+      "dimensions": {
+        "Time": {
+          "href": "http://10.30.156.84:10500/code-lists/yyyy-qq/codes/2017-q3",
+          "id": "2017-q3",
+          "label": "2017 Q3"
+        }
+      },
+      "metadata": {
+        "LCL": "51.9",
+        "UCL": "53.3"
+      },
+      "observation": "52.60"
+    },
+    {
+      "dimensions": {
+        "Time": {
+          "href": "http://10.30.156.84:10500/code-lists/yyyy-qq/codes/2021-q4",
+          "id": "2021-q4",
+          "label": "2021 Q4"
+        }
+      },
+      "metadata": {
+        "LCL": "54.3",
+        "UCL": "56.3"
+      },
+      "observation": "55.30"
+    },
+    {
+      "dimensions": {
+        "Time": {
+          "href": "http://10.30.156.84:10500/code-lists/yyyy-qq/codes/2022-q4",
+          "id": "2022-q4",
+          "label": "2022 Q4"
+        }
+      },
+      "metadata": {
+        "LCL": "54.5",
+        "UCL": "56.7"
+      },
+      "observation": "55.60"
+    }
+  ],
+  "offset": 0,
+  "total_observations": 49,
+  "unit_of_measure": "Percentage"
+}

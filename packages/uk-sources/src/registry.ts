@@ -18,6 +18,7 @@ import { nesoCatalogueAdapter } from './nesoCatalogue.js';
 import { nesoGenerationMixAdapter } from './nesoGenerationMix.js';
 import { nhsbsaCkanAdapter } from './nhsbsaCkan.js';
 import { nomisAdapter } from './nomis.js';
+import { onsBetaObservationsAdapter } from './onsBetaObservations.js';
 import { onsGeographyAdapter } from './onsGeography.js';
 import { onsDatasetsAdapter } from './onsDatasets.js';
 import { orrDataPortalAdapter } from './orrDataPortal.js';
@@ -39,6 +40,7 @@ export const UK_DATA_SOURCES: UkDataAdapter<unknown>[] = [
   floodStationsAdapter,
   floodReadingsAdapter,
   onsDatasetsAdapter,
+  onsBetaObservationsAdapter,
   foodHygieneAuthoritiesAdapter,
   tflBikePointsAdapter,
   planningDatasetsAdapter,

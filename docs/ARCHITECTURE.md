@@ -52,6 +52,7 @@ Registered adapters:
 | `flood-stations` | Environment Agency flood-monitoring | Monitoring stations, with river and catchment |
 | `flood-readings` | Environment Agency flood-monitoring | Recent water levels for one station, newest first |
 | `ons-datasets` | ONS beta API dataset catalogue | Dataset records, with state, stamp, and national-statistic flag |
+| `ons-beta-observations` | ONS beta API observations | Observation rows for one dataset and dimension filter, from the latest version |
 | `data-gov-uk-ckan` | Data.gov.uk CKAN catalogue | A search page of datasets, with publisher, licence, and resource count |
 | `gov-uk-content` | GOV.UK Content API | One GOV.UK page, with taxons, organisations, and dates |
 | `uk-parliament-committees` | UK Parliament OData API | A page of committees, with remit and start and end dates |
