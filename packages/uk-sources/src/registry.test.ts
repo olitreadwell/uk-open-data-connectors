@@ -171,6 +171,9 @@ function fixtureFetchImpl(): typeof globalThis.fetch {
     if (new URL(target).hostname === 'api.dataportal.orr.gov.uk') {
       return jsonResponse(readFixtureJson('orr-data-portal-2026-11-17.json'));
     }
+    if (new URL(target).hostname === 'naturalengland-defra.opendata.arcgis.com') {
+      return jsonResponse(readFixtureJson('natural-england-datasets-2026-11-20.json'));
+    }
     if (target.includes('/readings')) {
       return jsonResponse(readFixtureJson('flood-station-readings.json'));
     }
@@ -257,6 +260,7 @@ describe('registry', () => {
       'bgs-opengeoscience-wms',
       'hm-land-registry-price-paid',
       'orr-data-portal',
+      'natural-england-datasets',
     ]);
   });
 
@@ -299,6 +303,7 @@ describe('registry', () => {
     expect(getUkDataSource('bgs-opengeoscience-wms')?.name).toContain('BGS');
     expect(getUkDataSource('hm-land-registry-price-paid')?.name).toContain('HM Land Registry');
     expect(getUkDataSource('orr-data-portal')?.name).toContain('Office of Rail and Road');
+    expect(getUkDataSource('natural-england-datasets')?.name).toContain('Natural England');
     expect(getUkDataSource('does-not-exist')).toBeUndefined();
   });
 

@@ -66,6 +66,7 @@ console.log(summary.latest?.value, summary.trend);
 | `bgs-opengeoscience-wms` | British Geological Survey | none | BGS 1:50,000 digital geology layers, service bounds, and coordinate systems. |
 | `hm-land-registry-price-paid` | HM Land Registry | none | Sold property prices for one UK postcode, with address, property type, and completion date. |
 | `orr-data-portal` | Office of Rail and Road | none | The rail performance and usage table catalogue, with each table's id and description. |
+| `natural-england-datasets` | Natural England | none | The open data catalogue, with each dataset's licence, formats, and last update. |
 
 The `auth` field is `none` for every adapter.
 
@@ -78,6 +79,7 @@ The `auth` field is `none` for every adapter.
 - `api.ons.gov.uk` was retired on 2024-11-25. Every path answers HTTP 200 with a plain-text decommission notice, so a naive health check reads it as healthy. The `ons-datasets` adapter uses `api.beta.ons.gov.uk/v1` instead.
 - `ons-beta-observations` reads `/datasets/{id}/editions/{edition}/versions/{version}/observations`. It resolves the latest edition and version from the dataset detail first. The default query is the ONS `wellbeing-quarterly` dataset: good life satisfaction in the UK, non-seasonally adjusted, across all quarters. The API allows one wildcard dimension value, and the adapter passes the filter through unchanged. A blank observation stays in the response as `""`, with `numericValue: null`. The committed fixture keeps the first 3 of 49 live observations captured on 2026-11-19.
 - Both ONS beta API adapters were probed live on 2026-11-19.
+- `natural-england-datasets` reads the geoportal's DCAT feed. The feed lists the site's own pages as datasets, so the adapter keeps entries whose landing page is under `/datasets/`. Descriptions and licence text arrive as HTML and the adapter returns plain text. The committed fixture keeps 3 of 227 live datasets captured on 2026-11-20, one from each of the three largest licence families.
 - The Data.gov.uk endpoint on `www.data.gov.uk` redirects to `ckan.publishing.service.gov.uk`, and Node's `fetch` follows it. The adapter reads `package_search` and exposes each dataset's `license_id`, `license_title` and `license_url` as `licenceId`, `licenceTitle` and `licenceUrl`, with blank values as `null`. The dataset publisher is returned as `publisher`.
 - The FSA endpoint answers only with the `x-api-version: 2` header. Without it the endpoint returns HTTP 404. The adapter sends the header.
 - The Planning Data file lists datasets and pipeline tables. The adapter keeps the entries whose `realm` is `dataset`.
@@ -169,6 +171,7 @@ This package reads UK public data sources. Most come from UK public bodies. The 
 | `bgs-opengeoscience-wms` | British Geological Survey | <https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?service=WMS&request=GetCapabilities> | Open Government Licence, with the acknowledgement `Contains British Geological Survey materials copyright UKRI [year]` |
 | `hm-land-registry-price-paid` | HM Land Registry | <https://landregistry.data.gov.uk/data/ppi/transaction-record.json> | Open Government Licence v3 |
 | `orr-data-portal` | Office of Rail and Road | <https://api.dataportal.orr.gov.uk/api/metadata> | Open Government Licence v3 |
+| `natural-england-datasets` | Natural England | <https://naturalengland-defra.opendata.arcgis.com/api/feed/dcat-us/1.1.json> | Mixed per dataset: mostly Open Government Licence v3, plus Natural England terms of use, the Non-Commercial Government Licence, Creative Commons Attribution 4.0, and one unstated. The adapter returns the portal's text and a `licence` family on each dataset. |
 
 ## Package licence
 

@@ -45,6 +45,7 @@ probed again that day.
 | `neso-catalogue` | NESO Data Portal | `https://api.neso.energy/api/3/action/package_search?rows={limit}` | Yes |
 | `bgs-opengeoscience-wms` | British Geological Survey | `https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?service=WMS&request=GetCapabilities` | Yes |
 | `orr-data-portal` | Office of Rail and Road | `https://api.dataportal.orr.gov.uk/api/metadata` | Yes |
+| `natural-england-datasets` | Natural England | `https://naturalengland-defra.opendata.arcgis.com/api/feed/dcat-us/1.1.json` | Yes |
 
 Adapters keep a committed fixture in `packages/uk-sources/src/fixtures/` so
 tests run offline, plus a smoke test gated on `RUN_SMOKE=1` that hits the
@@ -454,6 +455,33 @@ What was verified live on 2026-10-05, and what was not:
 | ------ | ----- | --- |
 | `api.ons.gov.uk` | RETIRED | Retired on 2024-11-25. Every path answers with a plain-text decommission notice while still returning HTTP 200, so a naive health check reads it as healthy. Use `api.beta.ons.gov.uk/v1` instead. |
 
+## Added 2026-11-20 (Natural England open data)
+
+One keyless adapter, for the Natural England Open Data Geoportal. The DCAT
+feed returned HTTP 200 with no key on 2026-11-20.
+
+```sh
+# natural-england-datasets: every dataset in the geoportal catalogue
+curl -sS -H 'Accept: application/json' \
+  'https://naturalengland-defra.opendata.arcgis.com/api/feed/dcat-us/1.1.json'
+```
+
+| Adapter | Fixture | Licence |
+| --- | --- | --- |
+| `natural-england-datasets` | `natural-england-datasets-2026-11-20.json` (3 of 227 datasets) | Mixed per dataset: 177 Open Government Licence, 37 Natural England terms of use, 11 Non-Commercial Government Licence, 1 Creative Commons Attribution 4.0, and 1 unstated |
+
+What was verified live on 2026-11-20:
+
+- The feed answered HTTP 200 with 252 `dcat:Dataset` entries. Of those, 227
+  land on `/datasets/` and hold data distributions; the other 25 are the
+  geoportal's own pages.
+- Every data entry carried a `distribution` list with a Web Page link plus
+  ArcGIS GeoServices, CSV, ZIP, GeoJSON, KML, TXT, XLSX, GPKG, or GDB links.
+- The licence text is free-form HTML. The adapter turns it into plain text and
+  classifies each dataset into one licence family, so callers can count or
+  filter without parsing the portal's prose.
+- Descriptions are HTML too. The adapter returns plain text.
+
 ## Licences and attribution
 
 The MIT licence in this repo covers the code, not the data. Most of the
@@ -496,8 +524,9 @@ attribution. The exceptions are listed in the table.
 | `bgs-opengeoscience-wms` | British Geological Survey | Open Government Licence, with the acknowledgement `Contains British Geological Survey materials copyright UKRI [year]` |
 | `hm-land-registry-price-paid` | HM Land Registry | Open Government Licence v3 |
 | `orr-data-portal` | Office of Rail and Road | Open Government Licence v3 |
+| `natural-england-datasets` | Natural England | Mixed per dataset. The portal reports 177 Open Government Licence, 37 Natural England terms of use, 11 Non-Commercial Government Licence, 1 Creative Commons Attribution 4.0, and 1 unstated across 227 datasets on 2026-11-20. The adapter returns the portal's `licenceText` and a `licence` family on each dataset. |
 
-Seven adapters return source-supplied licence and attribution metadata per
+Eight adapters return source-supplied licence and attribution metadata per
 record. `flood-stations` and `flood-readings` copy `meta.publisher` and
 `meta.licence` onto each record. `find-a-tender` copies the package publisher
 and `license` onto each release. `planning-datasets` returns the source
@@ -505,6 +534,8 @@ and `license` onto each release. `planning-datasets` returns the source
 `licenceId`, `licenceTitle` and `licenceUrl` for each dataset.
 `neso-catalogue` returns the same four CKAN metadata values on each package.
 `ons-geography` returns the portal's `license` value and its `licenseInfo` text.
+`natural-england-datasets` returns the portal's `licenceText` and a `licence`
+family for each dataset.
 
 The other adapters do not return licence metadata, because their endpoints do
 not carry it per record. Check the publisher's page before you reuse their

@@ -32,10 +32,12 @@ Survey. Data.gov.uk packages carry their own licence identifiers and can
 differ. GOV.UK content carries the Open Government Licence v3. Several adapters
 copy the licence and attribution values their source supplies onto each
 record: `flood-stations`, `flood-readings`, `planning-datasets`,
-`find-a-tender`, `data-gov-uk-ckan`, `ons-geography`, and `neso-catalogue`. The
-Office of Rail and Road data portal tables carry the Open Government Licence
-v3. The other adapters leave the publisher's page as the source for those
-terms.
+`find-a-tender`, `data-gov-uk-ckan`, `ons-geography`, `neso-catalogue`, and
+`natural-england-datasets`. Natural England reports a mix of licences per
+dataset, and the adapter returns the portal's text plus a licence family. The
+Office of Rail and Road data portal tables carry the
+Open Government Licence v3. The other adapters leave the publisher's page as
+the source for those terms.
 
 Most adapters use the shared `httpGet` helper in
 `packages/uk-sources/src/http.ts`. It sends the same `User-Agent`
@@ -85,6 +87,7 @@ adapter and the police street crime month calls do.
 | `bgs-opengeoscience-wms` | BGS 1:50,000 digital geology WMS | Yes | `npx tsx packages/cli/src/cli.ts probe bgs-opengeoscience-wms` |
 | `hm-land-registry-price-paid` | HM Land Registry sold property prices for one postcode | Yes | `npx tsx packages/cli/src/cli.ts probe hm-land-registry-price-paid` |
 | `orr-data-portal` | Office of Rail and Road rail performance and usage table catalogue | Yes | `npx tsx packages/cli/src/cli.ts probe orr-data-portal` |
+| `natural-england-datasets` | Natural England open data catalogue, with each dataset's licence and formats | Yes | `npx tsx packages/cli/src/cli.ts probe natural-england-datasets` |
 
 A source that looks obvious for a UK repo and is not usable as it stands:
 
@@ -136,9 +139,9 @@ the Open Parliament Licence v3.0.
 
 ### Added 2026-10-05 onward
 
-Twenty-four more keyless adapters, each checked live on 2026-10-05,
-2026-10-18, 2026-11-05, 2026-11-07, 2026-11-08 or 2026-11-17 and covered by
-a committed fixture:
+Twenty-five more keyless adapters, each checked live on 2026-10-05,
+2026-10-18, 2026-11-05, 2026-11-07, 2026-11-08, 2026-11-17 or 2026-11-20 and
+covered by a committed fixture:
 
 - `postcode-lookup` reads one postcode from postcodes.io, default SW1A 1AA.
 - `explore-education-statistics` reads the Department for Education's most
@@ -183,6 +186,8 @@ a committed fixture:
   date.
 - `orr-data-portal` reads the Office of Rail and Road data portal catalogue,
   with every rail performance and usage table's id and description.
+- `natural-england-datasets` reads the Natural England Open Data Geoportal's
+  DCAT catalogue, with each dataset's licence and formats.
 
 The full endpoint list, exact curl commands, and licences are in
 `docs/CONNECTOR_DISCOVERY.md`.

@@ -250,6 +250,25 @@ export {
 } from './londonDatastore.js';
 /** London Datastore types. */
 export type { LondonDatastorePackage, LondonDatastoreSummary } from './londonDatastore.js';
+/** Natural England open data catalogue for England (keyless). */
+export {
+  classifyNaturalEnglandLicence,
+  DEFAULT_NEWEST_DATASET_LIMIT,
+  fetchNaturalEnglandDatasets,
+  NATURAL_ENGLAND_DATASETS_SOURCE_ID,
+  NATURAL_ENGLAND_DATASETS_URL,
+  naturalEnglandDatasetsAdapter,
+  parseNaturalEnglandDatasets,
+  summarizeNaturalEnglandDatasets,
+} from './naturalEnglandDatasets.js';
+/** Natural England catalogue types. */
+export type {
+  NaturalEnglandDataset,
+  NaturalEnglandDatasetSummary,
+  NaturalEnglandDistribution,
+  NaturalEnglandFormatCount,
+  NaturalEnglandLicence,
+} from './naturalEnglandDatasets.js';
 /** NESO Data Portal catalogue (keyless). */
 export {
   buildNesoCatalogueUrl,

@@ -29,8 +29,8 @@ npm workspaces, one package per concern.
   `gazette-notices`, `ons-geography`, `neso-catalogue`, and
   `bgs-opengeoscience-wms` on the same day, plus `hm-land-registry-price-paid`
   and `orr-data-portal` on 2026-11-17, plus `ons-beta-observations` on
-  2026-11-19. Licences and endpoints are in
-  `docs/CONNECTOR_DISCOVERY.md`.
+  2026-11-19 and `natural-england-datasets` on 2026-11-20. Licences and
+  endpoints are in `docs/CONNECTOR_DISCOVERY.md`.
 - Adapters live in `packages/uk-sources/src/*.ts` next to their tests, with
   committed fixtures in `packages/uk-sources/src/fixtures/`. New fixtures are
   dated in their filenames.

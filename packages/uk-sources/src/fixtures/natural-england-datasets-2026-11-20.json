@@ -1,0 +1,311 @@
+{
+  "@context": "https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld",
+  "@type": "dcat:Catalog",
+  "conformsTo": "https://project-open-data.cio.gov/v1.1/schema",
+  "describedBy": "https://project-open-data.cio.gov/v1.1/schema/catalog.json",
+  "dataset": [
+    {
+      "@type": "dcat:Dataset",
+      "identifier": "https://www.arcgis.com/home/item.html?id=abd37b3b518b4171b9bc64ddd64902ad&sublayer=0",
+      "landingPage": "https://naturalengland-defra.opendata.arcgis.com/datasets/Defra::great-crested-newt-edna-cheshire",
+      "title": "Great Crested Newt eDNA (Cheshire)",
+      "description": "Presence/absence records for great crested newts in Cheshire Ponds as determined by eDNA analysis (2016).  Data underpins district licensing strategy in Cheshire. <div><br /></div><div>Full metadata can be viewed on data.gov.uk.</div>",
+      "keyword": ["Natural England", "ecology", "Habitats", "Habitats Species", "species"],
+      "issued": "2018-05-11T17:47:50.000Z",
+      "modified": "2018-05-11T17:53:23.318Z",
+      "publisher": {
+        "name": "Defra group ArcGIS Online organisation"
+      },
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Opendata_NE",
+        "hasEmail": "mailto:GI-Office@defra.gov.uk"
+      },
+      "accessLevel": "public",
+      "spatial": "-3.0690,52.9613,-2.0064,53.4319",
+      "license": "There are no public access constraints to this data. Use of this data is subject to the Open Government Licence - <a href='https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3' target='_blank' rel='nofollow ugc noopener noreferrer'>https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3</a>",
+      "distribution": [
+        {
+          "@type": "dcat:Distribution",
+          "title": "ArcGIS Hub Dataset",
+          "format": "Web Page",
+          "mediaType": "text/html",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/datasets/Defra::great-crested-newt-edna-cheshire"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "ArcGIS GeoService",
+          "format": "ArcGIS GeoServices REST API",
+          "mediaType": "application/json",
+          "accessURL": "https://services.arcgis.com/JJzESW51TqeY9uat/arcgis/rest/services/Great_Crested_Newt_eDNA_Cheshire/FeatureServer/0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "CSV",
+          "format": "CSV",
+          "mediaType": "text/csv",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/abd37b3b518b4171b9bc64ddd64902ad/csv?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "Shapefile",
+          "format": "ZIP",
+          "mediaType": "application/zip",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/abd37b3b518b4171b9bc64ddd64902ad/shapefile?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "GeoJSON",
+          "format": "GeoJSON",
+          "mediaType": "application/vnd.geo+json",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/abd37b3b518b4171b9bc64ddd64902ad/geojson?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "KML",
+          "format": "KML",
+          "mediaType": "application/vnd.google-earth.kml+xml",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/abd37b3b518b4171b9bc64ddd64902ad/kml?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "File Geodatabase",
+          "format": "ZIP",
+          "mediaType": "application/zip",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/abd37b3b518b4171b9bc64ddd64902ad/filegdb?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "Feature Collection",
+          "format": "TXT",
+          "mediaType": "text/plain",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/abd37b3b518b4171b9bc64ddd64902ad/featureCollection?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "Excel",
+          "format": "XLSX",
+          "mediaType": "application/vnd.ms-excel",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/abd37b3b518b4171b9bc64ddd64902ad/excel?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "GeoPackage",
+          "format": "GPKG",
+          "mediaType": "application/geopackage+sqlite3",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/abd37b3b518b4171b9bc64ddd64902ad/geoPackage?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "SQLite Geodatabase",
+          "format": "GDB",
+          "mediaType": "application/geopackage+sqlite3",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/abd37b3b518b4171b9bc64ddd64902ad/sqlite?layers=0"
+        }
+      ],
+      "theme": ["geospatial"]
+    },
+    {
+      "@type": "dcat:Dataset",
+      "identifier": "https://www.arcgis.com/home/item.html?id=8f3f436ed1ff492293b2dc3c51fd56de&sublayer=0",
+      "landingPage": "https://naturalengland-defra.opendata.arcgis.com/datasets/Defra::gcn-risk-zones-north-and-east-yorkshire",
+      "title": "GCN Risk Zones (North and East Yorkshire)",
+      "description": "This dataset identifies areas where the distribution of great crested newts (GCN) has been categorised into zones relating to GCN occurrence and the level of impact development is likely to have on this species. Red zones contain key populations of GCN, which are important on a regional, national or international scale and include designated Sites of Special Scientific Interest for GCN. Amber zones contain main population centres for GCN and comprise important connecting habitat that aids natural dispersal. Green zones contain sparsely distributed GCN and are less likely to contain important pathways of connecting habitat for this species. White zones contain no GCN. However, as most of England forms the natural range of GCN, white zones are rare and will only be used when it is certain that there are no GCN.<div><br /></div><div>Full metadata can be viewed on data.gov.uk.</div>",
+      "keyword": ["Natural England", " Habitats Species", " species"],
+      "issued": "2022-03-23T09:58:20.000Z",
+      "modified": "2022-03-31T21:22:21.808Z",
+      "publisher": {
+        "name": "Defra group ArcGIS Online organisation"
+      },
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Opendata_NE",
+        "hasEmail": "mailto:GI-Office@defra.gov.uk"
+      },
+      "accessLevel": "public",
+      "spatial": "-1.7099,53.6232,-0.1916,54.6364",
+      "license": "<p><span style='font-family: &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 15px;'>Use of this data is subject to Natural England's Terms of Use Licence:&nbsp;</span></p><div style='font-family: &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 15px;'><a href='https://www.gov.uk/government/publications/natural-englands-maps-and-data-terms-of-use/terms-of-use-for-natural-englands-maps-and-data' target='_blank' rel='nofollow ugc noopener noreferrer'>https://www.gov.uk/government/publications/natural-englands-maps-and-data-terms-of-use/terms-of-use-for-natural-englands-maps-and-data</a></div>",
+      "distribution": [
+        {
+          "@type": "dcat:Distribution",
+          "title": "ArcGIS Hub Dataset",
+          "format": "Web Page",
+          "mediaType": "text/html",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/datasets/Defra::gcn-risk-zones-north-and-east-yorkshire"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "ArcGIS GeoService",
+          "format": "ArcGIS GeoServices REST API",
+          "mediaType": "application/json",
+          "accessURL": "https://services.arcgis.com/JJzESW51TqeY9uat/arcgis/rest/services/GCN_Risk_Zones_North_East_Yorkshire/FeatureServer/0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "CSV",
+          "format": "CSV",
+          "mediaType": "text/csv",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/8f3f436ed1ff492293b2dc3c51fd56de/csv?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "Shapefile",
+          "format": "ZIP",
+          "mediaType": "application/zip",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/8f3f436ed1ff492293b2dc3c51fd56de/shapefile?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "GeoJSON",
+          "format": "GeoJSON",
+          "mediaType": "application/vnd.geo+json",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/8f3f436ed1ff492293b2dc3c51fd56de/geojson?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "KML",
+          "format": "KML",
+          "mediaType": "application/vnd.google-earth.kml+xml",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/8f3f436ed1ff492293b2dc3c51fd56de/kml?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "File Geodatabase",
+          "format": "ZIP",
+          "mediaType": "application/zip",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/8f3f436ed1ff492293b2dc3c51fd56de/filegdb?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "Feature Collection",
+          "format": "TXT",
+          "mediaType": "text/plain",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/8f3f436ed1ff492293b2dc3c51fd56de/featureCollection?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "Excel",
+          "format": "XLSX",
+          "mediaType": "application/vnd.ms-excel",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/8f3f436ed1ff492293b2dc3c51fd56de/excel?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "GeoPackage",
+          "format": "GPKG",
+          "mediaType": "application/geopackage+sqlite3",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/8f3f436ed1ff492293b2dc3c51fd56de/geoPackage?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "SQLite Geodatabase",
+          "format": "GDB",
+          "mediaType": "application/geopackage+sqlite3",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/8f3f436ed1ff492293b2dc3c51fd56de/sqlite?layers=0"
+        }
+      ],
+      "theme": ["geospatial"]
+    },
+    {
+      "@type": "dcat:Dataset",
+      "identifier": "https://www.arcgis.com/home/item.html?id=c830aa87797c45a397baba125460e77f&sublayer=0",
+      "landingPage": "https://naturalengland-defra.opendata.arcgis.com/datasets/Defra::gcn-risk-zones-kent",
+      "title": "GCN Risk Zones (Kent)",
+      "description": "<p>This dataset identifies areas where the distribution of Great Crested Newts (GCN) has been categorised into district zones relating to GCN occurrence and the level of impact development is likely to have on this species.</p>\n<ul><li>Red zones contain key populations of GCN, which are important on a regional, national or international scale and include designated Sites of Special Scientific Interest for GCN.</li>\n<li>Amber zones contain main population centres for GCN and comprise important connecting habitat that aids natural dispersal.</li>\n<li>Green zones contain sparsely distributed GCN and are less likely to contain important pathways of connecting habitat for this species.</li>\n<li>White zones contain no GCN. However, as most of England forms the natural range of GCN, white zones are rare and will only be used when it is certain that there are no GCN.</li></ul><p>Full metadata can be viewed on <a target='_blank' href='https://data.gov.uk/dataset/a4211b7c-aa1b-4be3-b664-7b34cd53b936/gcn-risk-zones-kent' rel='nofollow ugc noopener noreferrer'>data.gov.uk</a>.</p>",
+      "keyword": ["Natural England", " landscape", " ecology", " Habitats"],
+      "issued": "2019-03-26T14:12:44.000Z",
+      "modified": "2024-04-29T10:31:03.162Z",
+      "publisher": {
+        "name": "Defra group ArcGIS Online organisation"
+      },
+      "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Opendata_NE",
+        "hasEmail": "mailto:GI-Office@defra.gov.uk"
+      },
+      "accessLevel": "public",
+      "spatial": "0.0212,50.9311,1.4563,51.4639",
+      "license": "<p>Use of this data is subject to the terms of the Non-Commercial Government Licence: <a href='https://www.nationalarchives.gov.uk/doc/non-commercial-government-licence/version/2/' target='_blank' rel='nofollow ugc noopener noreferrer'>https://www.nationalarchives.gov.uk/doc/non-commercial-government-licence/version/2/</a><br /></p>",
+      "distribution": [
+        {
+          "@type": "dcat:Distribution",
+          "title": "ArcGIS Hub Dataset",
+          "format": "Web Page",
+          "mediaType": "text/html",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/datasets/Defra::gcn-risk-zones-kent"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "ArcGIS GeoService",
+          "format": "ArcGIS GeoServices REST API",
+          "mediaType": "application/json",
+          "accessURL": "https://services.arcgis.com/JJzESW51TqeY9uat/arcgis/rest/services/GCN_Risk_Zones_Kent/FeatureServer/0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "CSV",
+          "format": "CSV",
+          "mediaType": "text/csv",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/c830aa87797c45a397baba125460e77f/csv?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "Shapefile",
+          "format": "ZIP",
+          "mediaType": "application/zip",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/c830aa87797c45a397baba125460e77f/shapefile?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "GeoJSON",
+          "format": "GeoJSON",
+          "mediaType": "application/vnd.geo+json",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/c830aa87797c45a397baba125460e77f/geojson?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "KML",
+          "format": "KML",
+          "mediaType": "application/vnd.google-earth.kml+xml",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/c830aa87797c45a397baba125460e77f/kml?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "File Geodatabase",
+          "format": "ZIP",
+          "mediaType": "application/zip",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/c830aa87797c45a397baba125460e77f/filegdb?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "Feature Collection",
+          "format": "TXT",
+          "mediaType": "text/plain",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/c830aa87797c45a397baba125460e77f/featureCollection?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "Excel",
+          "format": "XLSX",
+          "mediaType": "application/vnd.ms-excel",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/c830aa87797c45a397baba125460e77f/excel?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "GeoPackage",
+          "format": "GPKG",
+          "mediaType": "application/geopackage+sqlite3",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/c830aa87797c45a397baba125460e77f/geoPackage?layers=0"
+        },
+        {
+          "@type": "dcat:Distribution",
+          "title": "SQLite Geodatabase",
+          "format": "GDB",
+          "mediaType": "application/geopackage+sqlite3",
+          "accessURL": "https://naturalengland-defra.opendata.arcgis.com/api/download/v1/items/c830aa87797c45a397baba125460e77f/sqlite?layers=0"
+        }
+      ],
+      "theme": ["geospatial"]
+    }
+  ]
+}
